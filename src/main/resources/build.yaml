@@ -3,9 +3,9 @@ product:
   abbreviation: Fuse-and-FIS
   stage: CR*
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
-version: 7.0.0
-milestone: Sprint25
-group: Fuse Standalone and FIS 20180604
+version: 7.1.0
+milestone: Sprint 30
+group: Fuse Standalone and FIS
 defaultBuildParameters:
   environmentId: 1
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
@@ -37,7 +37,7 @@ builds:
     - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
     - '-DdependencyOverride.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyOverride.com.fasterxml.jackson.datatype:*@*='
-    - '-D projectMetaSkip=true'
+    - '-DprojectMetaSkip=true'
   buildScript: 'mvn  -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat
     -Pdeploy clean deploy'
   dependencies:
