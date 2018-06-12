@@ -54,10 +54,16 @@
 
     <version.hawtio>2.0.0.fuse-000157</version.hawtio>
     <version.hawtio.online>1.0.0.fuse-000016-redhat-1</version.hawtio.online>
+    <version.hawtio.integration></version.hawtio.integration>
 
     <version.kubernetes.model>2.0.8.fuse-000004-redhat-1</version.kubernetes.model>
     <version.kubernetes.client>3.0.3.fuse-000018-redhat-1</version.kubernetes.client>
 
+    <version.application.templates></version.application.templates>
+    <version.cxf.xjc-utils></version.cxf.xjc-utils>
+    <version.ipaas.quickstarts></version.ipaas.quickstarts>
+    <version.spring-cloud-kubernetes></version.spring-cloud-kubernetes>
+    <version.wsdl2rest></version.wsdl2rest>
     <version.docker.maven.plugin>0.23.0.fuse-000015-redhat-1</version.docker.maven.plugin>
     <version.fuse.patch>3.0.0.fuse-000018-redhat-1</version.fuse.patch>
     <version.wildfly.camel.examples>5.1.0.fuse-000014-redhat-1</version.wildfly.camel.examples>
