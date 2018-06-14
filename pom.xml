@@ -41,8 +41,8 @@
 
   <properties>
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
-    <version.camel>2.21.0.fuse-000055-redhat-2</version.camel>
-    <version.camel.extra>2.21.0.fuse-000096</version.camel.extra>
+    <version.camel>2.21.0.fuse-000096</version.camel>
+    <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
     <version.cxf>3.1.11.fuse-000265</version.cxf>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
     <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
@@ -57,6 +57,12 @@
 
     <version.kubernetes.model>2.0.9.fuse-000020</version.kubernetes.model>
     <version.kubernetes.client>3.0.3.fuse-000056</version.kubernetes.client>
+
+    <version.application.templates>2.1.fuse-000087</version.application.templates>
+    <version.cxf.xjc-utils>3.1.1.fuse-000118</version.cxf.xjc-utils>
+    <version.ipaas.quickstarts>2.2.0.fuse-000098</version.ipaas.quickstarts>
+    <version.spring-cloud-kubernetes>0.1.6.fuse-000056</version.spring-cloud-kubernetes>
+    <version.wsdl2rest>0.7.0.fuse-000071</version.wsdl2rest>
 
     <version.docker.maven.plugin>0.23.0.fuse-000051</version.docker.maven.plugin>
     <version.fuse.patch>3.0.0.fuse-000069</version.fuse.patch>
