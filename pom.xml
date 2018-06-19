@@ -40,6 +40,7 @@
   </prerequisites>
 
   <properties>
+    <version.fuse.prefix>7.0.1</version.fuse>
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
     <version.camel>2.21.0.fuse-000096</version.camel>
     <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>

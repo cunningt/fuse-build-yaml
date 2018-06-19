@@ -3,7 +3,7 @@ product:
   abbreviation: Fuse-and-FIS
   stage: CR*
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
-version: 7.0.0
+version: ${version.fuse.prefix}
 milestone: Sprint25
 group: Fuse Standalone and FIS 20180604
 defaultBuildParameters:
@@ -71,7 +71,7 @@ builds:
   dependencies:
   - camel-2.21.0
 
-- name: fuse-components-7.0.0
+- name: fuse-components-${version.fuse.prefix}
   project: jboss-fuse/fuse-components
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-components.git
@@ -121,7 +121,7 @@ builds:
   dependencies:
   - hawtio-2.0.0
 
-- name: fuse-karaf-7.0.0
+- name: fuse-karaf-${version.fuse.prefix}
   project: jboss-fuse/fuse-karaf
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-karaf.git
@@ -129,7 +129,7 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
     clean deploy '
   dependencies:
-  - fuse-components-7.0.0
+  - fuse-components-${version.fuse.prefix}
   - karaf-4.2.0
   - hawtio-2.0.0
   - camel-2.21.0
@@ -178,7 +178,7 @@ builds:
   scmUrl: git+ssh://code.stage.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
 
-- name: fuse-eap-7.0.0
+- name: fuse-eap-${version.fuse.prefix}
   project: jboss-fuse/fuse-eap
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-eap.git
   scmRevision: fuse-eap-${version.fuse.eap}
@@ -195,7 +195,7 @@ builds:
   scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
 
-- name: redhat-fuse-7.0.0
+- name: redhat-fuse-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/redhat-fuse.git
   scmRevision: redhat-fuse-${fuse-bom.version}
