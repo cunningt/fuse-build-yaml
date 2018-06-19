@@ -52,8 +52,11 @@
     <version.fusesource.camel.sap>7.0.1.fuse-000002</version.fusesource.camel.sap>
     <karaf.plugin.version>4.2.0.fuse-000262</karaf.plugin.version>
 
+    <application-templates.version>2.1.fuse-000091</application-templates.version>
+    <fuse-bom.version>7.1.0.fuse-000005</fuse-bom.version>
     <version.hawtio>2.0.0.fuse-000186</version.hawtio>
     <version.hawtio.online>1.0.0.fuse-000054</version.hawtio.online>
+    <version.hawtio.integration>1.0.0.fuse-000034</version.hawtio.integration>
 
     <version.kubernetes.model>2.0.9.fuse-000020</version.kubernetes.model>
     <version.kubernetes.client>3.0.3.fuse-000056</version.kubernetes.client>
@@ -64,7 +67,7 @@
     <version.spring-cloud-kubernetes>0.1.6.fuse-000056</version.spring-cloud-kubernetes>
     <version.wsdl2rest>0.7.0.fuse-000071</version.wsdl2rest>
 
-    <version.docker.maven.plugin>0.23.0.fuse-000051</version.docker.maven.plugin>
+    <docker.maven.plugin.version>0.23.0.fuse-000051</docker.maven.plugin.version>
     <version.fuse.patch>3.0.0.fuse-000069</version.fuse.patch>
     <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>

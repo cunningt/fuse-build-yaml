@@ -138,7 +138,7 @@ builds:
   project: fabric8io/kubernetes-client
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
   scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-kubernetes-client.git
-  scmRevision: kubernetes-client-${version.kubernetes.model}
+  scmRevision: kubernetes-client-${version.kubernetes.client}
   dependencies:
   - kubernetes-model-2.0.9
 
@@ -154,7 +154,7 @@ builds:
 - name: docker-maven-plugin-0.23.0
   project: fabric8io/docker-maven-plugin
   scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-docker-maven-plugin.git
-  scmRevision: docker-maven-plugin-0.23.0.fuse-000048
+  scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
   dependencies:
   - spring-cloud-kubernetes-0.1.6
 
