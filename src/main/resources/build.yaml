@@ -186,7 +186,7 @@ builds:
 - name: ipaas-quickstarts-2.2.0
   project: fabric8io/ipaas-quickstarts
   scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
-  scmRevision: ipaas-quickstarts-${fabric8.archetypes.release.version}
+  scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
     deploy -Dquickstart.git.repos=repolist.txt'
 
