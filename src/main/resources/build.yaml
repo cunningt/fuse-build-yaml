@@ -1,31 +1,31 @@
 product:
   name: Red Hat Fuse
   abbreviation: Fuse-and-FIS
-  stage: CR*
+  stage: EA1
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
-milestone: Sprint25
-group: Fuse Standalone and FIS 20180604
+milestone: Sprint 30
+group: Fuse Standalone and FIS 7.1
 defaultBuildParameters:
   environmentId: 1
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
-- name: karaf-4.2.0
+- name: karaf-4.2.0-${version.fuse.prefix}
   project: jboss-fuse/karaf
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/karaf.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/karaf.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf.git
   scmRevision: karaf-${version.karaf}
   customPmeParameters:
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
 
-- name: cxf-3.1.11
+- name: cxf-3.1.11-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/cxf.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/cxf.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
   customPmeParameters:
     - '-DdependencyOverride.org.codehaus.woodstox:*@*='
@@ -37,54 +37,54 @@ builds:
     - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
     - '-DdependencyOverride.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyOverride.com.fasterxml.jackson.datatype:*@*='
-    - '-D projectMetaSkip=true'
+    - '-DprojectMetaSkip=true'
   buildScript: 'mvn  -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat
     -Pdeploy clean deploy'
   dependencies:
-  - cxf-xjc-utils-3.1.1
+  - cxf-xjc-utils-3.1.1-${version.fuse.prefix}
 
-- name: camel-2.21.0
+- name: camel-2.21.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/camel.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
   dependencies:
-  - cxf-3.1.11
-  - karaf-4.2.0
+  - cxf-3.1.11-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
 
-- name: camel-extra-2.21.0
+- name: camel-extra-2.21.0-${version.fuse.prefix}
   project: jboss-fuse/camel-extra
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/camel-extra.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-extra.git
   scmRevision: camel-extra-${version.camel.extra}
   dependencies:
-  - camel-2.21.0
+  - camel-2.21.0-${version.fuse.prefix}
 
-- name: wsdl2rest-0.7.0
+- name: wsdl2rest-0.7.0-${version.fuse.prefix}
   project: jboss-fuse/wsdl2rest
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/wdl2rest.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wdl2rest.git
   scmRevision: wsdl2rest-${version.wsdl2rest}
   dependencies:
-  - camel-2.21.0
+  - camel-2.21.0-${version.fuse.prefix}
 
 - name: fuse-components-${version.fuse.prefix}
   project: jboss-fuse/fuse-components
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-components.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-components.git
   scmRevision: fuse-components-${version.fusesource.camel.sap}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease,all,enable-schemagen,deploy,ts.all,jaxws22,nochecks,sap,quickstarts,apt,spring3.2,jetty9
     clean install -U -f camel-sap/pom.xml'
   dependencies:
-  - camel-2.21.0
+  - camel-2.21.0-${version.fuse.prefix}
 
-- name: hawtio-2.0.0
+- name: hawtio-2.0.0-${version.fuse.prefix}
   project: jboss-fuse/hawtio
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/hawtio.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio.git
   scmRevision: hawtio-${version.hawtio}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49183
@@ -100,13 +100,13 @@ builds:
     - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:yarn-config-groovy:groovy:1.0.4.redhat-1'
     - '-DgroovyManipulationPrecedence=FIRST'
   dependencies:
-  - camel-2.21.0
-  - karaf-4.2.0
+  - camel-2.21.0-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
 
-- name: hawtio-online-1.0.0
+- name: hawtio-online-1.0.0-${version.fuse.prefix}
   project: hawtio/hawtio-online
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/hawtio/hawtio-online.git
+  scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-online.git
   scmRevision: hawtio-online-${version.hawtio.online}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49183 
@@ -119,115 +119,115 @@ builds:
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
-  - hawtio-2.0.0
+  - hawtio-2.0.0-${version.fuse.prefix}
 
 - name: fuse-karaf-${version.fuse.prefix}
   project: jboss-fuse/fuse-karaf
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-karaf.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-karaf.git
   scmRevision: fuse-karaf-${version.bom.fuse}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
     clean deploy '
   dependencies:
-  - fuse-components-${version.fuse.prefix}
-  - karaf-4.2.0
-  - hawtio-2.0.0
-  - camel-2.21.0
+  - fuse-components-7.0.0-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
+  - camel-2.21.0-${version.fuse.prefix}
 
-- name: kubernetes-client-3.0.3
+- name: kubernetes-client-3.0.3-${version.fuse.prefix}
   project: fabric8io/kubernetes-client
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
   scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-kubernetes-client.git
   scmRevision: kubernetes-client-${version.kubernetes.client}
   dependencies:
-  - kubernetes-model-2.0.9
+  - kubernetes-model-2.0.9-${version.fuse.prefix}
 
 
-- name: spring-cloud-kubernetes-0.1.6
+- name: spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
   project: fabric8io/spring-cloud-kubernetes
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/camel.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-spring-cloud-kubernetes.git
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-spring-cloud-kubernetes.git
   scmRevision: spring-cloud-kubernetes-${version.spring-cloud-kubernetes}
   dependencies:
-  - kubernetes-client-3.0.3
+  - kubernetes-client-3.0.3-${version.fuse.prefix}
 
-- name: docker-maven-plugin-0.23.0
+- name: docker-maven-plugin-0.23.0-${version.fuse.prefix}
   project: fabric8io/docker-maven-plugin
   scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-docker-maven-plugin.git
   scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
   dependencies:
-  - spring-cloud-kubernetes-0.1.6
+  - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
 
-- name: fabric8-maven-plugin-3.5.33
+- name: fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
   project: fabric8io/fabric8-maven-plugin
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-fabric8-maven-plugin.git
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-fabric8-maven-plugin.git
   scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
 
-- name: fuse-patch-3.0.0
+- name: fuse-patch-3.0.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-patch
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-patch.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
 
-- name: wildfly-camel-5.1.0
+- name: wildfly-camel-5.1.0-${version.fuse.prefix}
   project: jboss-fuse/wildfly-camel
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/wildfly-camel.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
 
-- name: wildfly-camel-examples-5.1.0
+- name: wildfly-camel-examples-5.1.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
+  scmUrl: git+ssh://code.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
 
 - name: fuse-eap-${version.fuse.prefix}
   project: jboss-fuse/fuse-eap
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-eap.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-eap.git
   scmRevision: fuse-eap-${version.fuse.eap}
 
-- name: ipaas-quickstarts-2.2.0
+- name: ipaas-quickstarts-2.2.0-${version.fuse.prefix}
   project: fabric8io/ipaas-quickstarts
   scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
     deploy -Dquickstart.git.repos=repolist.txt'
 
-- name: fabric8v2-3.0.11
+- name: fabric8v2-3.0.11-${version.fuse.prefix}
   project: jboss-fuse/fabric8
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/fabric8io-fabric8.git
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
 
 - name: redhat-fuse-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/redhat-fuse.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
   scmRevision: redhat-fuse-${fuse-bom.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
     deploy -DskipClean'
 
-- project: jboss-fuse/cxf-xjc-utils
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
+- name: cxf-xjc-utils-3.1.1-${version.fuse.prefix}
+  project: jboss-fuse/cxf-xjc-utils
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
     -Dcheckstyle.skip=true clean deploy
-  name: cxf-xjc-utils-3.1.1
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
 
-- project: jboss-fuse/hawtio-integration
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/hawtio-integration.git
+- name: hawtio-integration-1.0.0-${version.fuse.prefix}
+  project: jboss-fuse/hawtio-integration
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio-integration.git
   buildScript: mvn clean deploy
-  name: hawtio-integration-1.0.0
   scmRevision: hawtio-integration-${version.hawtio.integration}
 
-- project: jboss-fuse/kubernetes-model
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/kubernetes-model.git
+- name: kubernetes-model-2.0.9-${version.fuse.prefix}
+  project: jboss-fuse/kubernetes-model
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
     install '
-  name: kubernetes-model-2.0.9
   scmRevision: kubernetes-model-${version.kubernetes.model}
 
-- project: jboss-fuse/application-templates
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/application-templates.git
+- name: application-templates-2.1-${version.fuse.prefix}
+  project: jboss-fuse/application-templates
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
     install '
-  name: application-templates-2.1
   scmRevision: application-templates-${version.application.templates}
 
 outputPrefixes:
