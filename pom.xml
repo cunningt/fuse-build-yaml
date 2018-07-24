@@ -72,6 +72,22 @@
     <version.fuse.patch>3.0.0.fuse-000069</version.fuse.patch>
     <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
+
+    <!-- quickstarts -->
+    <karaf-camel-amq.version>1.0.0.fuse-710004</karaf-camel-amq.version>
+    <karaf-camel-log.version>1.0.0.fuse-710004</karaf-camel-log.version>
+    <karaf-camel-rest-sql.version>1.0.0.fuse-710004</karaf-camel-rest-sql.version>
+    <karaf-cxf-rest.version>1.0.0.fuse-710004</karaf-cxf-rest.version>
+    <spring-boot-camel.version>1.0.0.fuse-710004</spring-boot-camel.version>
+    <spring-boot-camel-amq.version>1.0.0.fuse-710004</spring-boot-camel-amq.version>
+    <spring-boot-camel-config.version>1.0.0.fuse-710004</spring-boot-camel-config.version>
+    <spring-boot-camel-drools.version>1.0.0.fuse-710004</spring-boot-camel-drools.version>
+    <spring-boot-camel-infinispan.version>1.0.0.fuse-710004</spring-boot-camel-infinispan.version>
+    <spring-boot-camel-rest-sql.version>1.0.0.fuse-710004</spring-boot-camel-rest-sql.version>
+    <spring-boot-camel-teiid.version>1.0.0.fuse-710004</spring-boot-camel-teiid.version>
+    <spring-boot-camel-xml.version>1.0.0.fuse-710004</spring-boot-camel-xml.version>
+    <spring-boot-cxf-jaxrs.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs.version>
+    <spring-boot-cxf-jaxws.version>1.0.0.fuse-710004</spring-boot-cxf-jaxws.version>
   </properties>
 
   <build>
@@ -100,6 +116,11 @@
                   <file>target/extra-resources/build.yaml</file>
                   <type>yaml</type>
                   <classifier>yaml</classifier>
+                </artifact>
+                <artifact>
+                  <file>target/extra-resources/release_fis_quickstarts.sh</file>
+                  <type>sh</type>
+                  <classifier>sh</classifier>
                 </artifact>
               </artifacts>
             </configuration>
