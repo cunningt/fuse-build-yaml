@@ -223,12 +223,12 @@ builds:
     install '
   scmRevision: kubernetes-model-${version.kubernetes.model}
 
-- name: application-templates-2.1-${version.fuse.prefix}
-  project: jboss-fuse/application-templates
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
-    install '
-  scmRevision: application-templates-${version.application.templates}
+#- name: application-templates-2.1-${version.fuse.prefix}
+#  project: jboss-fuse/application-templates
+#  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
+#  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+#    install '
+#  scmRevision: application-templates-${version.application.templates}
 
 outputPrefixes:
   releaseFile: fuse-test
