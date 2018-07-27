@@ -129,7 +129,7 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
     clean deploy '
   dependencies:
-  - fuse-components-7.0.0-${version.fuse.prefix}
+  - fuse-components-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
   - camel-2.21.0-${version.fuse.prefix}
