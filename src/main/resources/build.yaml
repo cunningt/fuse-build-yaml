@@ -4,7 +4,7 @@ product:
   stage: EA1
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
-milestone: Sprint 30
+milestone: Sprint30
 group: Fuse Standalone and FIS 7.2
 defaultBuildParameters:
   environmentId: 1

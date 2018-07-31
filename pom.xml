@@ -90,19 +90,18 @@
     <spring-boot-cxf-jaxws.version>1.0.0.fuse-710004</spring-boot-cxf-jaxws.version>
 
     <!-- Tag and SCM info -->
-    <karaf.tag></karaf.tag>
-    <karaf.scmUrl></karaf.scmUrl>
-    <karaf.buildCommand></karaf.buildCommand>
-    <cxf-xjc-utils.tag></cxf-xjc-utils.tag>
-    <cxf-xjc-utils.scmUrl></cxf-xjc-utils.scmUrl>
-    <cxf-xjc-utils.buildCommand></cxf-xjc-utils.buildCommand>
-    <cxf.tag></cxf.tag>
-    <cxf.scmUrl></cxf.scmUrl>
-    <cxf.buildCommand></cxf.buildCommand>
-    <camel.tag></camel.tag>
-    <camel.scmUrl></camel.scmUrl>
-    <camel.buildCommand></camel.buildCommand>
-
+    <karaf.tag>1</karaf.tag>
+    <karaf.scmUrl>1</karaf.scmUrl>
+    <karaf.buildCommand>1</karaf.buildCommand>
+    <cxf-xjc-utils.tag>1</cxf-xjc-utils.tag>
+    <cxf-xjc-utils.scmUrl>1</cxf-xjc-utils.scmUrl>
+    <cxf-xjc-utils.buildCommand>1</cxf-xjc-utils.buildCommand>
+    <cxf.tag>1</cxf.tag>
+    <cxf.scmUrl>1</cxf.scmUrl>
+    <cxf.buildCommand>1</cxf.buildCommand>
+    <camel.tag>1</camel.tag>
+    <camel.scmUrl>1</camel.scmUrl>
+    <camel.buildCommand>1</camel.buildCommand>
     <fuse-extras-distro.tag>1</fuse-extras-distro.tag>
     <fuse-extras-distro.scmUrl>1</fuse-extras-distro.scmUrl>
     <fuse-extras-distro.buildCommand>1</fuse-extras-distro.buildCommand>
