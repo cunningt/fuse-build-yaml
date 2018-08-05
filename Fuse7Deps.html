@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Fuse 7 Dependencies</title>
+<script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
+<link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1>Fuse 7 Dependencies</h1>
+
+<div id="deptree"></div>
+
+<script type="text/javascript">
+var components = new vis.DataSet([
+{ id: 1, label: 'Karaf' },
+{ id: 2, label: 'CXF XJC Utils' },
+{ id: 3, label: 'CXF' },
+{ id: 4, label: 'Camel' },
+{ id: 5, label: 'Fuse Extras Distro' },
+{ id: 6, label: 'Camel Extra' },
+{ id: 7, label: 'Wsdl2rest' },
+{ id: 8, label: 'Fuse Components' },
+{ id: 9, label: 'HawtIO' },
+{ id: 10, label: 'HawtIO Online' },
+{ id: 11, label: 'Fuse Karaf' },
+{ id: 12, label: 'Kubernetes Model' },
+{ id: 13, label: 'Kubernetes Client' },
+{ id: 14, label: 'Spring Cloud Kubernetes' },
+{ id: 15, label: 'Docker Maven Plugin' },
+{ id: 16, label: 'Fabric8 v2' },
+{ id: 17, label: 'Fabric8 Maven Plugin' },
+{ id: 18, label: 'Fuse Patch' },
+{ id: 19, label: 'Wildfly Camel' },
+{ id: 20, label: 'Wildfly Camel Examples' },
+{ id: 21, label: 'Fuse EAP' },
+{ id: 22, label: 'Red Hat Fuse' },
+{ id: 23, label: 'iPaaS Quickstarts' },
+{ id: 24, label: 'AtlasMap' },
+{ id: 25, label: 'Syndesis' }
+]);
+
+var dependencies = new vis.DataSet([
+{ from: 3, to: 1, arrows: 'to' },
+{ from: 3, to: 2, arrows: 'to' },
+{ from: 4, to: 1, arrows: 'to' },
+{ from: 4, to: 3, arrows: 'to' },
+{ from: 5, to: 4, arrows: 'to' },
+{ from: 6, to: 4, arrows: 'to' },
+{ from: 7, to: 4, arrows: 'to' },
+{ from: 8, to: 4, arrows: 'to' },
+{ from: 9, to: 4, arrows: 'to' },
+{ from: 11, to: 6, arrows: 'to' },
+{ from: 11, to: 8, arrows: 'to' },
+{ from: 11, to: 9, arrows: 'to' },
+{ from: 13, to: 12, arrows: 'to' },
+{ from: 14, to: 13, arrows: 'to' },
+{ from: 16, to: 11, arrows: 'to' },
+{ from: 16, to: 15, arrows: 'to' },
+{ from: 16, to: 14, arrows: 'to' },
+{ from: 17, to: 16, arrows: 'to' },
+{ from: 19, to: 18, arrows: 'to' },
+{ from: 19, to: 8, arrows: 'to' },
+{ from: 19, to: 9, arrows: 'to' },
+{ from: 20, to: 19, arrows: 'to' },
+{ from: 21, to: 20, arrows: 'to' },
+{ from: 22, to: 21, arrows: 'to' },
+{ from: 22, to: 11, arrows: 'to' },
+{ from: 22, to: 17, arrows: 'to' },
+{ from: 23, to: 16, arrows: 'to' },
+{ from: 24, to: 4, arrows: 'to' },
+{ from: 25, to: 24, arrows: 'to' }
+]);
+
+var container = document.getElementById('deptree');
+var data = {
+   nodes: components,
+   edges: dependencies
+};
+
+var options = {
+};
+
+var deptree = new vis.Network(container, data, options);
+</script>
+</body> </html>
+

@@ -48,6 +48,7 @@ builds:
     -Pdeploy clean deploy'
   dependencies:
   - cxf-xjc-utils-3.1.1-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
 
 - name: camel-2.21.0-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -191,8 +192,6 @@ builds:
     #buildCommand: ${docker-maven-plugin.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-docker-maven-plugin.git
   scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
-  dependencies:
-  - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
 
 - name: fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
   project: fabric8io/fabric8-maven-plugin
@@ -201,6 +200,8 @@ builds:
     #buildCommand: ${fabric8-maven-plugin.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-fabric8-maven-plugin.git
   scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
+  dependencies:
+  - fabric8v2-3.0.11-${version.fuse.prefix} 
 
 - name: fuse-patch-3.0.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-patch
@@ -217,6 +218,8 @@ builds:
     #buildCommand: ${wildfly-camel.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
+  dependencies:
+  - fuse-components-${version.fuse.prefix}
 
 - name: wildfly-camel-examples-5.1.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
@@ -225,6 +228,8 @@ builds:
     #buildCommand: ${wildfly-camel-examples.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
+  dependencies:
+  - wildfly-camel-5.1.0-${version.fuse.prefix}
 
 - name: fuse-eap-${version.fuse.prefix}
     #internalScmUrl: ${fuse-eap.scmUrl}
@@ -233,6 +238,19 @@ builds:
   project: jboss-fuse/fuse-eap
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-eap.git
   scmRevision: fuse-eap-${version.fuse.eap}
+  dependencies:
+  - wildfly-camel-examples-5.1.0-${version.fuse.prefix}
+
+- name: redhat-fuse-${version.fuse.prefix}
+  project: jboss-fuse/redhat-fuse
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
+  scmRevision: redhat-fuse-${fuse-bom.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+    deploy -DskipClean'
+  dependencies:
+  - fuse-karaf-${version.fuse.prefix}
+  - fuse-eap-${version.fuse.prefix}
+  - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-2.2.0-${version.fuse.prefix}
   project: fabric8io/ipaas-quickstarts
@@ -243,6 +261,8 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
     deploy -Dquickstart.git.repos=repolist.txt'
+  dependencies:
+  - fabric8v2-3.0.11-${version.fuse.prefix} 
 
 - name: fabric8v2-3.0.11-${version.fuse.prefix}
   project: jboss-fuse/fabric8
@@ -251,16 +271,9 @@ builds:
     #buildCommand: ${fabric8.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
-
-- name: redhat-fuse-${version.fuse.prefix}
-  project: jboss-fuse/redhat-fuse
-    #internalScmUrl: ${redhat-fuse.scmUrl}
-    #tag: ${redhat-fuse.tag}
-    #buildCommand: ${redhat-fuse.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
-  scmRevision: redhat-fuse-${fuse-bom.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
-    deploy -DskipClean'
+  dependencies:
+  - docker-maven-plugin-0.23.0-${version.fuse.prefix}
+  - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
 
 - name: cxf-xjc-utils-3.1.1-${version.fuse.prefix}
   project: jboss-fuse/cxf-xjc-utils
