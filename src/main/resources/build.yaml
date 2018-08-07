@@ -353,7 +353,7 @@ builds:
     #buildCommand: ${kubernetes-model.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
-    install '
+    deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
 
 - name: spring-boot-camel-xa-quickstart-1.0.0-7.1.0
