@@ -112,8 +112,7 @@ builds:
     #buildCommand: ${fuse-components.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-components.git
   scmRevision: fuse-components-${version.fusesource.camel.sap}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease,all,enable-schemagen,deploy,ts.all,jaxws22,nochecks,sap,quickstarts,apt,spring3.2,jetty9
-    clean install -U -f camel-sap/pom.xml'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-Drepo-reporting-removal=true'
@@ -237,7 +236,7 @@ builds:
     #internalScmUrl: ${fuse-patch.scmUrl}
     #tag: ${fuse-patch.tag}
     #buildCommand: ${fuse-patch.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-patch.git
+  scmUrl: git+ssh://code.engineering.redhat.com/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
   customPmeParameters:
     - '-DprojectMetaSkip=true'
@@ -339,11 +338,11 @@ builds:
 
 - name: hawtio-integration-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/hawtio-integration
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio-integration.git
+  scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-integration.git
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
-    sed -i "s#resolved \"https:\/\/registry.yarnpkg.com\/#resolved \"${REG}\/#g" yarn.lock
-    sed -i "s#https:#http:#g" yarn.lock
+    sed -i 's#https://registry.yarnpkg.com/#${REG}#g' yarn.lock
+    sed -i 's#https:#http:#g' yarn.lock
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ clean deploy
   scmRevision: hawtio-integration-${version.hawtio.integration}
 
@@ -356,6 +355,22 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
     install '
   scmRevision: kubernetes-model-${version.kubernetes.model}
+
+- name: spring-boot-camel-xa-quickstart-1.0.0-7.1.0
+  project: jboss-fuse/spring-boot-camel-xa
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
+  scmRevision: spring-boot-camel-xa-quickstart-1.0.0.fuse-710001
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
+  dependencies:
+    - redhat-fuse-7.1.0
+
+- name: narayana-spring-boot-quickstart-1.0.2-7.1.0
+  project: jboss-fuse/narayana-spring-boot
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
+  scmRevision: narayana-spring-boot-quickstart-1.0.2.fuse-710001
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
+  dependencies:
+    - redhat-fuse-7.1.0
 
 #- name: application-templates-2.1-${version.fuse.prefix}
 #  project: jboss-fuse/application-templates
