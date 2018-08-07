@@ -356,21 +356,21 @@ builds:
     deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
 
-- name: spring-boot-camel-xa-quickstart-1.0.0-7.1.0
+- name: spring-boot-camel-xa-quickstart-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/spring-boot-camel-xa
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
   scmRevision: spring-boot-camel-xa-quickstart-1.0.0.fuse-710001
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
   dependencies:
-    - redhat-fuse-7.1.0
+    - redhat-fuse-${version.fuse.prefix}
 
-- name: narayana-spring-boot-quickstart-1.0.2-7.1.0
+- name: narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
   project: jboss-fuse/narayana-spring-boot
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
   scmRevision: narayana-spring-boot-quickstart-1.0.2.fuse-710001
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
   dependencies:
-    - redhat-fuse-7.1.0
+    - redhat-fuse-${version.fuse.prefix}
 
 #- name: application-templates-2.1-${version.fuse.prefix}
 #  project: jboss-fuse/application-templates
