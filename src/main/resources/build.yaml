@@ -306,6 +306,7 @@ builds:
     #buildCommand: ${wildfly-camel-examples.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
@@ -322,6 +323,7 @@ builds:
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
+  - wildfly-camel-5.1.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-2.2.0-${version.fuse.prefix}
