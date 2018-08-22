@@ -12,6 +12,14 @@ defaultBuildParameters:
     deploy'
 
 builds:
+- name: cxf-xjc-utils-3.2.3-${version.fuse.prefix}
+  project: jboss-fuse/cxf-xjc-utils
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
+  buildScript: >
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
+    -Dcheckstyle.skip=true clean deploy
+  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
+
 - name: karaf-4.2.0-${version.fuse.prefix}
   project: jboss-fuse/karaf
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/karaf.git
@@ -47,7 +55,7 @@ builds:
   buildScript: 'mvn  -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat
     -Pdeploy clean deploy'
   dependencies:
-  - cxf-xjc-utils-3.1.1-${version.fuse.prefix}
+  - cxf-xjc-utils-3.2.3-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
 
 - name: camel-2.21.0-${version.fuse.prefix}
@@ -116,6 +124,9 @@ builds:
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-Drepo-reporting-removal=true'
+    - '-DgroovyScript=org.jboss.fuse.pom-manipulation:manifest-version-update:groovy:1.0.6.redhat-00001'
+    - '-DgroovyManipulationPrecedence=FIRST'
+
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
 
@@ -129,6 +140,15 @@ builds:
   scmRevision: hawtio-${version.hawtio}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
+    
+    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/yarn.lock
+    
+    sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
+    
+    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/app/yarn.lock
+    
+    sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
+
     mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/  
@@ -138,7 +158,7 @@ builds:
   customPmeParameters:  
     - '-DdependencyOverride.com.fasterxml.jackson.core:*@*='
     - '-DprojectMetaSkip=true'
-    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:yarn-config-groovy:groovy:1.0.4.redhat-1'
+    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:yarn-config-groovy:groovy:1.0.6.redhat-00001'
     - '-DgroovyManipulationPrecedence=FIRST'
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
@@ -153,7 +173,12 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-online.git
   scmRevision: hawtio-online-${version.hawtio.online}
   buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160 
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
+
+    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" yarn.lock
+
+    sed -i 's#https:#http:#g' yarn.lock
+
     mvn -e -V -B -DskipTests -DfailIfNoTests=false
     -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
@@ -249,10 +274,30 @@ builds:
     #buildCommand: ${wildfly-camel.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -Dts.all -Prelease'
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+    - '-Dplugin-removal=org.ec4j.maven:editorconfig-maven-plugin'
+    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+  dependencies:
+  - fuse-components-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
+
+- name: redhat-fuse-${version.fuse.prefix}
+  project: jboss-fuse/redhat-fuse
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
+  scmRevision: redhat-fuse-${fuse-bom.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+    deploy -DskipClean'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
-  - fuse-components-${version.fuse.prefix}
+  - fuse-karaf-${version.fuse.prefix}
+  - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
+  - wildfly-camel-5.1.0-${version.fuse.prefix}
+  - hawtio-online-1.0.0-${version.fuse.prefix}
 
 - name: wildfly-camel-examples-5.1.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
@@ -265,6 +310,7 @@ builds:
     - '-DprojectMetaSkip=true'
   dependencies:
   - wildfly-camel-5.1.0-${version.fuse.prefix}
+  - fuse-eap-${version.fuse.prefix}
 
 - name: fuse-eap-${version.fuse.prefix}
     #internalScmUrl: ${fuse-eap.scmUrl}
@@ -276,20 +322,7 @@ builds:
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
-  - wildfly-camel-examples-5.1.0-${version.fuse.prefix}
-
-- name: redhat-fuse-${version.fuse.prefix}
-  project: jboss-fuse/redhat-fuse
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
-  scmRevision: redhat-fuse-${fuse-bom.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
-    deploy -DskipClean'
-  customPmeParameters:
-    - '-DprojectMetaSkip=true'
-  dependencies:
-  - fuse-karaf-${version.fuse.prefix}
-  - fuse-eap-${version.fuse.prefix}
-  - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-2.2.0-${version.fuse.prefix}
   project: fabric8io/ipaas-quickstarts
@@ -304,6 +337,7 @@ builds:
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix} 
+  - redhat-fuse-${version.fuse.prefix}
 
 - name: fabric8v2-3.0.11-${version.fuse.prefix}
   project: jboss-fuse/fabric8
@@ -324,6 +358,7 @@ builds:
   dependencies:
   - docker-maven-plugin-0.23.0-${version.fuse.prefix}
   - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
+  - fuse-karaf-${version.fuse.prefix}
 
 - name: cxf-xjc-utils-3.1.1-${version.fuse.prefix}
   project: jboss-fuse/cxf-xjc-utils
@@ -336,15 +371,15 @@ builds:
     -Dcheckstyle.skip=true clean deploy
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
 
-- name: hawtio-integration-1.0.0-${version.fuse.prefix}
-  project: jboss-fuse/hawtio-integration
-  scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-integration.git
-  buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
-    sed -i 's#https://registry.yarnpkg.com/#${REG}#g' yarn.lock
-    sed -i 's#https:#http:#g' yarn.lock
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ clean deploy
-  scmRevision: hawtio-integration-${version.hawtio.integration}
+#- name: hawtio-integration-1.0.0-${version.fuse.prefix}
+#  project: jboss-fuse/hawtio-integration
+#  scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-integration.git
+#  buildScript: >
+#    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
+#    sed -i 's#https://registry.yarnpkg.com/#${REG}#g' yarn.lock
+#    sed -i 's#https:#http:#g' yarn.lock
+#    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ clean deploy
+#  scmRevision: hawtio-integration-${version.hawtio.integration}
 
 - name: kubernetes-model-2.0.9-${version.fuse.prefix}
   project: jboss-fuse/kubernetes-model
