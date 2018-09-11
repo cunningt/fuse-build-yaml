@@ -88,6 +88,90 @@
     <spring-boot-camel-xml.version>1.0.0.fuse-710004</spring-boot-camel-xml.version>
     <spring-boot-cxf-jaxrs.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs.version>
     <spring-boot-cxf-jaxws.version>1.0.0.fuse-710004</spring-boot-cxf-jaxws.version>
+
+    <!-- Tag and SCM info -->
+    <karaf.tag></karaf.tag>
+    <karaf.scmUrl></karaf.scmUrl>
+    <karaf.buildCommand></karaf.buildCommand>
+    <cxf-xjc-utils.tag></cxf-xjc-utils.tag>
+    <cxf-xjc-utils.scmUrl></cxf-xjc-utils.scmUrl>
+    <cxf-xjc-utils.buildCommand></cxf-xjc-utils.buildCommand>
+    <cxf.tag></cxf.tag>
+    <cxf.scmUrl></cxf.scmUrl>
+    <cxf.buildCommand></cxf.buildCommand>
+    <camel.tag></camel.tag>
+    <camel.scmUrl></camel.scmUrl>
+    <camel.buildCommand></camel.buildCommand>
+
+    <fuse-extras-distro.tag>1</fuse-extras-distro.tag>
+    <fuse-extras-distro.scmUrl>1</fuse-extras-distro.scmUrl>
+    <fuse-extras-distro.buildCommand>1</fuse-extras-distro.buildCommand>
+    <camel-extra.tag>1</camel-extra.tag>
+    <camel-extra.scmUrl>1</camel-extra.scmUrl>
+    <camel-extra.buildCommand>1</camel-extra.buildCommand>
+    <wsdl2rest.tag>1</wsdl2rest.tag>
+    <wsdl2rest.scmUrl>1</wsdl2rest.scmUrl>
+    <wsdl2rest.buildCommand>1</wsdl2rest.buildCommand>
+    <fuse-components.tag>1</fuse-components.tag>
+    <fuse-components.scmUrl>1</fuse-components.scmUrl>
+    <fuse-components.buildCommand>1</fuse-components.buildCommand>
+    <hawtio.tag>1</hawtio.tag>
+    <hawtio.scmUrl>1</hawtio.scmUrl>
+    <hawtio.buildCommand>1</hawtio.buildCommand>
+    <hawtio-online.tag>1</hawtio-online.tag>
+    <hawtio-online.scmUrl>1</hawtio-online.scmUrl>
+    <hawtio-online.buildCommand>1</hawtio-online.buildCommand>
+    <fuse-karaf.tag>1</fuse-karaf.tag>
+    <fuse-karaf.scmUrl>1</fuse-karaf.scmUrl>
+    <fuse-karaf.buildCommand>1</fuse-karaf.buildCommand>
+    <kubernetes-model.tag></kubernetes-model.tag>
+    <kubernetes-model.scmUrl>1</kubernetes-model.scmUrl>
+    <kubernetes-model.buildCommand>1</kubernetes-model.buildCommand>
+    <kubernetes-client.tag>1</kubernetes-client.tag>
+    <kubernetes-client.scmUrl>1</kubernetes-client.scmUrl>
+    <kubernetes-client.buildCommand>1</kubernetes-client.buildCommand>
+    <spring-cloud-kubernetes.tag>1</spring-cloud-kubernetes.tag>
+    <spring-cloud-kubernetes.scmUrl>1</spring-cloud-kubernetes.scmUrl>
+    <spring-cloud-kubernetes.buildCommand>1</spring-cloud-kubernetes.buildCommand>
+    <docker-maven-plugin.tag>1</docker-maven-plugin.tag>
+    <docker-maven-plugin.scmUrl>1</docker-maven-plugin.scmUrl>
+    <docker-maven-plugin.buildCommand>1</docker-maven-plugin.buildCommand>
+    <narayana-spring-boot.tag>1</narayana-spring-boot.tag>
+    <narayana-spring-boot.scmUrl>1</narayana-spring-boot.scmUrl>
+    <narayana-spring-boot.buildCommand>1</narayana-spring-boot.buildCommand>
+    <fabric8v2.tag>1</fabric8v2.tag>
+    <fabric8v2.scmUrl>1</fabric8v2.scmUrl>
+    <fabric8v2.buildCommand>1</fabric8v2.buildCommand>
+    <fabric8-maven-plugin.tag>1</fabric8-maven-plugin.tag>
+    <fabric8-maven-plugin.scmUrl>1</fabric8-maven-plugin.scmUrl>
+    <fabric8-maven-plugin.buildCommand>1</fabric8-maven-plugin.buildCommand>
+    <fuse-patch.tag>1</fuse-patch.tag>
+    <fuse-patch.scmUrl>1</fuse-patch.scmUrl>
+    <fuse-patch.buildCommand>1</fuse-patch.buildCommand>
+    <wildfly-camel.tag>1</wildfly-camel.tag>
+    <wildfly-camel.scmUrl>1</wildfly-camel.scmUrl>
+    <wildfly-camel.buildCommand>1</wildfly-camel.buildCommand>
+    <apicurito.tag>1</apicurito.tag>
+    <apicurito.scmUrl>1</apicurito.scmUrl>
+    <apicurito.buildCommand>1</apicurito.buildCommand>
+    <redhat-fuse.tag>1</redhat-fuse.tag>
+    <redhat-fuse.scmUrl>1</redhat-fuse.scmUrl>
+    <redhat-fuse.buildCommand>1</redhat-fuse.buildCommand>
+    <fuse-apicurito-generator.tag>1</fuse-apicurito-generator.tag>
+    <fuse-apicurito-generator.scmUrl>1</fuse-apicurito-generator.scmUrl>
+    <fuse-apicurito-generator.buildCommand>1</fuse-apicurito-generator.buildCommand>
+    <wildfly-camel-examples.tag>1</wildfly-camel-examples.tag>
+    <wildfly-camel-examples.scmUrl>1</wildfly-camel-examples.scmUrl>
+    <wildfly-camel-examples.buildCommand>1</wildfly-camel-examples.buildCommand>
+    <fuse-eap.tag>1</fuse-eap.tag>
+    <fuse-eap.scmUrl>1</fuse-eap.scmUrl>
+    <fuse-eap.buildCommand>1</fuse-eap.buildCommand>
+    <ipaas-quickstarts.tag>1</ipaas-quickstarts.tag>
+    <ipaas-quickstarts.scmUrl>1</ipaas-quickstarts.scmUrl>
+    <ipaas-quickstarts.buildCommand>1</ipaas-quickstarts.buildCommand>
+    <application-templates.tags>1</application-templates.tags>
+    <application-templates.scmUrl>1</application-templates.scmUrl>
+    <application-templates.buildCommand>1</application-templates.buildCommand>
   </properties>
 
   <build>
