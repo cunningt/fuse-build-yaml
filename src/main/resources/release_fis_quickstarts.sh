@@ -25,7 +25,7 @@ function add_redhat_version() {
   find . -name "*.json" | xargs perl -p -i -e "s/$1/$1-redhat-1/"	
 }
 
-# 701 values from https://fusesource-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/JBoss%20Fuse%207.0/job/fuse-7.0.1-release-pipeline/25/console
+# ${version.fuse.prefix} values from ${build.url}
 release karaf-camel-amq ${karaf-camel-amq.version}
 release karaf-camel-log ${karaf-camel-log.version}
 release karaf-camel-rest-sql ${karaf-camel-rest-sql.version}
