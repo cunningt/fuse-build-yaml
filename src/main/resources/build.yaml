@@ -14,6 +14,10 @@ defaultBuildParameters:
 builds:
 - name: cxf-xjc-utils-3.2.3-${version.fuse.prefix}
   project: jboss-fuse/cxf-xjc-utils
+    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/jboss-fuse/cxf-xjc-utils.git
+    #internalScmUrl: ${cxf-xjc-utils.scmUrl}
+    #tag: ${cxf-xjc-utils.tag}
+    #buildCommand: ${cxf-xjc-utils.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
@@ -361,17 +365,6 @@ builds:
   - docker-maven-plugin-0.23.0-${version.fuse.prefix}
   - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
-
-- name: cxf-xjc-utils-3.1.1-${version.fuse.prefix}
-  project: jboss-fuse/cxf-xjc-utils
-    #internalScmUrl: ${cxf-xjc-utils.scmUrl}
-    #tag: ${cxf-xjc-utils.tag}
-    #buildCommand: ${cxf-xjc-utils.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
-  buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
-    -Dcheckstyle.skip=true clean deploy
-  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
 
 #- name: hawtio-integration-1.0.0-${version.fuse.prefix}
 #  project: jboss-fuse/hawtio-integration
