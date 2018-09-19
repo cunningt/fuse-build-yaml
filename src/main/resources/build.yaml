@@ -338,9 +338,9 @@ builds:
 
 - name: fabric8v2-3.0.11-${version.fuse.prefix}
   project: jboss-fuse/fabric8
-    #internalScmUrl: ${fabric8.scmUrl}
-    #tag: ${fabric8.tag}
-    #buildCommand: ${fabric8.buildCommand}
+    #internalScmUrl: ${fabric8v2.scmUrl}
+    #tag: ${fabric8v2.tag}
+    #buildCommand: ${fabric8v2.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
   customPmeParameters:
