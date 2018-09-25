@@ -62,6 +62,8 @@
 
     <version.kubernetes.model>2.0.9.fuse-000020</version.kubernetes.model>
     <version.kubernetes.client>3.0.3.fuse-000056</version.kubernetes.client>
+    <version.apicurito>1.0.0.fuse-720005</version.apicurito>
+    <version.apicurito-generator>1.0.0.fuse-720004</version.apicurito-generator>
 
     <version.application.templates>2.1.fuse-000087</version.application.templates>
     <version.cxf.xjc-utils>3.1.1.fuse-000118</version.cxf.xjc-utils>

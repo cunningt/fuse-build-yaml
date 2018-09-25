@@ -248,6 +248,17 @@ builds:
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix} 
 
+- name: apicurito-3.5.33-${version.fuse.prefix}
+  project: apicurio/apicurito
+    #internalScmUrl: ${apicurito.scmUrl}
+    #tag: ${apicurito.tag}
+    #buildCommand: ${apicurito.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/apicurito.git
+  scmRevision: fabric8-maven-plugin-${version.apicurito}
+  dependencies:
+  - docker-maven-plugin-0.23.0-${version.fuse.prefix}
+  - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
+
 - name: fuse-patch-3.0.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-patch
     #internalScmUrl: ${fuse-patch.scmUrl}
@@ -293,6 +304,21 @@ builds:
   - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
   - wildfly-camel-5.1.0-${version.fuse.prefix}
   - hawtio-online-1.0.0-${version.fuse.prefix}
+
+- name: fuse-apicurito-generator-${version.fuse.prefix}
+  project: jboss-fuse/fuse-apicurito-generator
+    #internalScmUrl: ${fuse-apicurito-generator.scmUrl}
+    #tag: ${fuse-apicurito-generator.tag}
+    #buildCommand: ${rfuse-apicurito-generator.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-apicurito-generator.git
+  scmRevision: fuse-apicurito-generator-${version.apicurito-generator}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+    deploy -DskipClean'
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+  dependencies:
+  - redhat-fuse-${version.fuse.prefix}
+
 
 - name: wildfly-camel-examples-5.1.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
