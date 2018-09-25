@@ -172,6 +172,14 @@
     <application-templates.tags>1</application-templates.tags>
     <application-templates.scmUrl>1</application-templates.scmUrl>
     <application-templates.buildCommand>1</application-templates.buildCommand>
+
+    <!-- Syndesis project -->
+    <atlasmap.tag>1</atlasmap.tag>
+    <atlasmap.scmUrl>1</atlasmap.scmUrl>
+    <atlasmap.buildCommand>1</atlasmap.buildCommand>
+    <syndesis.tag>1</syndesis.tag>
+    <syndesis.scmUrl>1</syndesis.scmUrl>
+    <syndesis.buildCommand>1</syndesis.buildCommand>
   </properties>
 
   <build>

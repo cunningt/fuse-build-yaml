@@ -1,0 +1,67 @@
+product:
+  name: Red Hat iPaas 
+  abbreviation: Fuse-iPaaS
+  stage: CR*
+  issueTrackerUrl: https://github.com/syndesisio/syndesis/issues 
+version: ${version.fuse.prefix}
+milestone: ${version.sprint.milestone}
+group: Fuse iPaaS
+defaultBuildParameters:
+  environmentId: 1
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: atlasmap-1.35.5
+  project: atlasmap/atlasmap
+    #internalScmUrl: ${atlasmap.scmUrl}
+    #tag: ${atlasmap.tag}
+    #buildCommand: ${atlasmap.buildCommand}
+    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/atlasmap/atlasmap.git
+  scmRevision: atlasmap-${version.atlasmap}
+  customPmeParameters:
+  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
+  - '-DdependencyOverride.org.ow2.asm:*@*='
+  - '-DprojectMetaSkip=true'
+
+- name: syndesis-3.1.11
+  project: syndesisio/syndesis
+    #internalScmUrl: ${syndesis.scmUrl}
+    #tag: ${syndesis.tag}
+    #buildCommand: ${syndesis.buildCommand}
+    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/syndesisio/syndesis.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/syndesisio/syndesis.git
+  scmRevision: syndesis-${version.syndesis}
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+    - '--file=app/pom.xml'
+    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+  buildScript: 'export MAVEN_OPTS="-Xmx2048m"
+    export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49195
+    sed -i "s#resolved \"https:\/\/registry.yarnpkg.com\/#resolved \"${REG}\/#g" app/ui/yarn.lock
+    sed -i "s#resolved \"http:\/\/registry.npmjs.org\/#resolved \"${REG}\/#g" app/ui/yarn.lock
+    sed -i "s#https:#http:#g" app/ui/yarn.lock
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml'
+    -Pdeploy clean deploy'
+  dependencies:
+  - atlasmap-1.35.5
+
+outputPrefixes:
+  releaseFile: ipaas-test
+  releaseDir: ipaas-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
