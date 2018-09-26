@@ -205,7 +205,7 @@
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>target/extra-resources/build.yaml</file>
+                  <file>target/extra-resources/fusefis.yaml</file>
                   <type>yaml</type>
                   <classifier>yaml</classifier>
                 </artifact>
