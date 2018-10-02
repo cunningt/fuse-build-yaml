@@ -92,93 +92,124 @@
 
     <!-- Tag and SCM info -->
     <karaf.tag>1</karaf.tag>
-    <karaf.scmUrl>1</karaf.scmUrl>
+    <karaf.fetch.scmUrl>1</karaf.fetch.scmUrl>
+    <karaf.push.scmUrl>1</karaf.push.scmUrl>
     <karaf.buildCommand>1</karaf.buildCommand>
     <cxf-xjc-utils.tag>1</cxf-xjc-utils.tag>
-    <cxf-xjc-utils.scmUrl>1</cxf-xjc-utils.scmUrl>
+    <cxf-xjc-utils.fetch.scmUrl>1</cxf-xjc-utils.fetch.scmUrl>
+    <cxf-xjc-utils.push.scmUrl>1</cxf-xjc-utils.push.scmUrl>
     <cxf-xjc-utils.buildCommand>1</cxf-xjc-utils.buildCommand>
     <cxf.tag>1</cxf.tag>
-    <cxf.scmUrl>1</cxf.scmUrl>
+    <cxf.fetch.scmUrl>1</cxf.fetch.scmUrl>
+    <cxf.push.scmUrl>1</cxf.push.scmUrl>
     <cxf.buildCommand>1</cxf.buildCommand>
     <camel.tag>1</camel.tag>
-    <camel.scmUrl>1</camel.scmUrl>
+    <camel.fetch.scmUrl>1</camel.fetch.scmUrl>
+    <camel.push.scmUrl>1</camel.push.scmUrl>
     <camel.buildCommand>1</camel.buildCommand>
     <fuse-extras-distro.tag>1</fuse-extras-distro.tag>
-    <fuse-extras-distro.scmUrl>1</fuse-extras-distro.scmUrl>
+    <fuse-extras-distro.fetch.scmUrl>1</fuse-extras-distro.fetch.scmUrl>
+    <fuse-extras-distro.push.scmUrl>1</fuse-extras-distro.push.scmUrl>
     <fuse-extras-distro.buildCommand>1</fuse-extras-distro.buildCommand>
     <camel-extra.tag>1</camel-extra.tag>
-    <camel-extra.scmUrl>1</camel-extra.scmUrl>
+    <camel-extra.fetch.scmUrl>1</camel-extra.fetch.scmUrl>
+    <camel-extra.push.scmUrl>1</camel-extra.push.scmUrl>
     <camel-extra.buildCommand>1</camel-extra.buildCommand>
     <wsdl2rest.tag>1</wsdl2rest.tag>
-    <wsdl2rest.scmUrl>1</wsdl2rest.scmUrl>
+    <wsdl2rest.fetch.scmUrl>1</wsdl2rest.fetch.scmUrl>
+    <wsdl2rest.push.scmUrl>1</wsdl2rest.push.scmUrl>
     <wsdl2rest.buildCommand>1</wsdl2rest.buildCommand>
     <fuse-components.tag>1</fuse-components.tag>
-    <fuse-components.scmUrl>1</fuse-components.scmUrl>
+    <fuse-components.fetch.scmUrl>1</fuse-components.fetch.scmUrl>
+    <fuse-components.push.scmUrl>1</fuse-components.push.scmUrl>
     <fuse-components.buildCommand>1</fuse-components.buildCommand>
     <hawtio.tag>1</hawtio.tag>
-    <hawtio.scmUrl>1</hawtio.scmUrl>
+    <hawtio.fetch.scmUrl>1</hawtio.fetch.scmUrl>
+    <hawtio.push.scmUrl>1</hawtio.push.scmUrl>
     <hawtio.buildCommand>1</hawtio.buildCommand>
     <hawtio-online.tag>1</hawtio-online.tag>
-    <hawtio-online.scmUrl>1</hawtio-online.scmUrl>
+    <hawtio-online.fetch.scmUrl>1</hawtio-online.fetch.scmUrl>
+    <hawtio-online.push.scmUrl>1</hawtio-online.push.scmUrl>
     <hawtio-online.buildCommand>1</hawtio-online.buildCommand>
     <fuse-karaf.tag>1</fuse-karaf.tag>
-    <fuse-karaf.scmUrl>1</fuse-karaf.scmUrl>
+    <fuse-karaf.fetch.scmUrl>1</fuse-karaf.fetch.scmUrl>
+    <fuse-karaf.push.scmUrl>1</fuse-karaf.push.scmUrl>
     <fuse-karaf.buildCommand>1</fuse-karaf.buildCommand>
     <kubernetes-model.tag></kubernetes-model.tag>
-    <kubernetes-model.scmUrl>1</kubernetes-model.scmUrl>
+    <kubernetes-model.fetch.scmUrl>1</kubernetes-model.fetch.scmUrl>
+    <kubernetes-model.push.scmUrl>1</kubernetes-model.push.scmUrl>
     <kubernetes-model.buildCommand>1</kubernetes-model.buildCommand>
     <kubernetes-client.tag>1</kubernetes-client.tag>
-    <kubernetes-client.scmUrl>1</kubernetes-client.scmUrl>
+    <kubernetes-client.fetch.scmUrl>1</kubernetes-client.fetch.scmUrl>
+    <kubernetes-client.push.scmUrl>1</kubernetes-client.push.scmUrl>
     <kubernetes-client.buildCommand>1</kubernetes-client.buildCommand>
     <spring-cloud-kubernetes.tag>1</spring-cloud-kubernetes.tag>
-    <spring-cloud-kubernetes.scmUrl>1</spring-cloud-kubernetes.scmUrl>
+    <spring-cloud-kubernetes.fetch.scmUrl>1</spring-cloud-kubernetes.fetch.scmUrl>
+    <spring-cloud-kubernetes.push.scmUrl>1</spring-cloud-kubernetes.push.scmUrl>
     <spring-cloud-kubernetes.buildCommand>1</spring-cloud-kubernetes.buildCommand>
     <docker-maven-plugin.tag>1</docker-maven-plugin.tag>
-    <docker-maven-plugin.scmUrl>1</docker-maven-plugin.scmUrl>
+    <docker-maven-plugin.fetch.scmUrl>1</docker-maven-plugin.fetch.scmUrl>
+    <docker-maven-plugin.push.scmUrl>1</docker-maven-plugin.push.scmUrl>
     <docker-maven-plugin.buildCommand>1</docker-maven-plugin.buildCommand>
     <narayana-spring-boot.tag>1</narayana-spring-boot.tag>
-    <narayana-spring-boot.scmUrl>1</narayana-spring-boot.scmUrl>
+    <narayana-spring-boot.fetch.scmUrl>1</narayana-spring-boot.fetch.scmUrl>
+    <narayana-spring-boot.push.scmUrl>1</narayana-spring-boot.push.scmUrl>
     <narayana-spring-boot.buildCommand>1</narayana-spring-boot.buildCommand>
     <fabric8v2.tag>1</fabric8v2.tag>
-    <fabric8v2.scmUrl>1</fabric8v2.scmUrl>
+    <fabric8v2.fetch.scmUrl>1</fabric8v2.fetch.scmUrl>
+    <fabric8v2.push.scmUrl>1</fabric8v2.push.scmUrl>
     <fabric8v2.buildCommand>1</fabric8v2.buildCommand>
     <fabric8-maven-plugin.tag>1</fabric8-maven-plugin.tag>
-    <fabric8-maven-plugin.scmUrl>1</fabric8-maven-plugin.scmUrl>
+    <fabric8-maven-plugin.fetch.scmUrl>1</fabric8-maven-plugin.fetch.scmUrl>
+    <fabric8-maven-plugin.push.scmUrl>1</fabric8-maven-plugin.push.scmUrl>
     <fabric8-maven-plugin.buildCommand>1</fabric8-maven-plugin.buildCommand>
     <fuse-patch.tag>1</fuse-patch.tag>
-    <fuse-patch.scmUrl>1</fuse-patch.scmUrl>
+    <fuse-patch.fetch.scmUrl>1</fuse-patch.fetch.scmUrl>
+    <fuse-patch.push.scmUrl>1</fuse-patch.push.scmUrl>
     <fuse-patch.buildCommand>1</fuse-patch.buildCommand>
     <wildfly-camel.tag>1</wildfly-camel.tag>
-    <wildfly-camel.scmUrl>1</wildfly-camel.scmUrl>
+    <wildfly-camel.fetch.scmUrl>1</wildfly-camel.fetch.scmUrl>
+    <wildfly-camel.push.scmUrl>1</wildfly-camel.push.scmUrl>
     <wildfly-camel.buildCommand>1</wildfly-camel.buildCommand>
     <apicurito.tag>1</apicurito.tag>
-    <apicurito.scmUrl>1</apicurito.scmUrl>
+    <apicurito.fetch.scmUrl>1</apicurito.fetch.scmUrl>
+    <apicurito.push.scmUrl>1</apicurito.push.scmUrl>
     <apicurito.buildCommand>1</apicurito.buildCommand>
     <redhat-fuse.tag>1</redhat-fuse.tag>
-    <redhat-fuse.scmUrl>1</redhat-fuse.scmUrl>
+    <redhat-fuse.fetch.scmUrl>1</redhat-fuse.fetch.scmUrl>
+    <redhat-fuse.push.scmUrl>1</redhat-fuse.push.scmUrl>
     <redhat-fuse.buildCommand>1</redhat-fuse.buildCommand>
     <fuse-apicurito-generator.tag>1</fuse-apicurito-generator.tag>
-    <fuse-apicurito-generator.scmUrl>1</fuse-apicurito-generator.scmUrl>
+    <fuse-apicurito-generator.fetch.scmUrl>1</fuse-apicurito-generator.fetch.scmUrl>
+    <fuse-apicurito-generator.push.scmUrl>1</fuse-apicurito-generator.push.scmUrl>
     <fuse-apicurito-generator.buildCommand>1</fuse-apicurito-generator.buildCommand>
     <wildfly-camel-examples.tag>1</wildfly-camel-examples.tag>
-    <wildfly-camel-examples.scmUrl>1</wildfly-camel-examples.scmUrl>
+    <wildfly-camel-examples.fetch.scmUrl>1</wildfly-camel-examples.fetch.scmUrl>
+    <wildfly-camel-examples.push.scmUrl>1</wildfly-camel-examples.push.scmUrl>
     <wildfly-camel-examples.buildCommand>1</wildfly-camel-examples.buildCommand>
     <fuse-eap.tag>1</fuse-eap.tag>
-    <fuse-eap.scmUrl>1</fuse-eap.scmUrl>
+    <fuse-eap.fetch.scmUrl>1</fuse-eap.fetch.scmUrl>
+    <fuse-eap.push.scmUrl>1</fuse-eap.push.scmUrl>
     <fuse-eap.buildCommand>1</fuse-eap.buildCommand>
     <ipaas-quickstarts.tag>1</ipaas-quickstarts.tag>
-    <ipaas-quickstarts.scmUrl>1</ipaas-quickstarts.scmUrl>
+    <ipaas-quickstarts.fetch.scmUrl>1</ipaas-quickstarts.fetch.scmUrl>
+    <ipaas-quickstarts.push.scmUrl>1</ipaas-quickstarts.push.scmUrl>
     <ipaas-quickstarts.buildCommand>1</ipaas-quickstarts.buildCommand>
     <application-templates.tags>1</application-templates.tags>
     <application-templates.scmUrl>1</application-templates.scmUrl>
+    <application-templates.tags>1</application-templates.tags>
+    <application-templates.fetch.scmUrl>1</application-templates.fetch.scmUrl>
+    <application-templates.push.scmUrl>1</application-templates.push.scmUrl>
     <application-templates.buildCommand>1</application-templates.buildCommand>
 
     <!-- Syndesis project -->
     <atlasmap.tag>1</atlasmap.tag>
-    <atlasmap.scmUrl>1</atlasmap.scmUrl>
+    <atlasmap.fetch.scmUrl>1</atlasmap.fetch.scmUrl>
+    <atlasmap.push.scmUrl>1</atlasmap.push.scmUrl>
     <atlasmap.buildCommand>1</atlasmap.buildCommand>
     <syndesis.tag>1</syndesis.tag>
-    <syndesis.scmUrl>1</syndesis.scmUrl>
+    <syndesis.fetch.scmUrl>1</syndesis.fetch.scmUrl>
+    <syndesis.push.scmUrl>1</syndesis.push.scmUrl>
     <syndesis.buildCommand>1</syndesis.buildCommand>
   </properties>
 

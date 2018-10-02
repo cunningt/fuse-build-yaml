@@ -14,7 +14,8 @@ defaultBuildParameters:
 builds:
 - name: atlasmap-1.35.5
   project: atlasmap/atlasmap
-    #internalScmUrl: ${atlasmap.scmUrl}
+    #fetchScmUrl: ${atlasmap.fetch.scmUrl}
+    #pushScmUrl: ${atlasmap.push.scmUrl}
     #tag: ${atlasmap.tag}
     #buildCommand: ${atlasmap.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
@@ -27,7 +28,8 @@ builds:
 
 - name: syndesis-3.1.11
   project: syndesisio/syndesis
-    #internalScmUrl: ${syndesis.scmUrl}
+    #fetchScmUrl: ${syndesis.fetch.scmUrl}
+    #pushScmUrl: ${syndesis.push.scmUrl}
     #tag: ${syndesis.tag}
     #buildCommand: ${syndesis.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/syndesisio/syndesis.git
