@@ -130,6 +130,7 @@ builds:
     - '-Drepo-reporting-removal=true'
     - '-DgroovyScript=org.jboss.fuse.pom-manipulation:manifest-version-update:groovy:1.0.6.redhat-00001'
     - '-DgroovyManipulationPrecedence=FIRST'
+    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:manifest-version-update:groovy:1.0.7.redhat-00001'
 
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
@@ -145,11 +146,11 @@ builds:
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
     
-    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/yarn.lock
+    sed -i 's#https://registry.yarnpkg.com/#${REG}/#g' hawtio-console-assembly/yarn.lock
     
     sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
     
-    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/app/yarn.lock
+    sed -i 's#https://registry.yarnpkg.com/#${REG}/#g' hawtio-console-assembly/app/yarn.lock
     
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
 
@@ -179,7 +180,7 @@ builds:
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
 
-    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" yarn.lock
+    sed -i 's#https://registry.yarnpkg.com/#${REG}/#g' yarn.lock
 
     sed -i 's#https:#http:#g' yarn.lock
 
@@ -322,6 +323,7 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
+    - '-DdependencyRemoval=org.wildfly.camel.example:example-camel-rest-swagger'
   dependencies:
   - wildfly-camel-5.1.0-${version.fuse.prefix}
   - fuse-eap-${version.fuse.prefix}
