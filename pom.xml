@@ -247,20 +247,7 @@
                 </artifact>
               </artifacts>
             </configuration>
-        </execution>
-        <execution>
-            <id>osgi-i-fi</id>
-            <goals>
-                <goal>regex-property</goal>
-            </goals>
-            <configuration>
-                <name>version.karaf.osgi</name>
-                <value>${version.karaf}</value>
-                <regex>(\d+\.\d+\.\d)(.*)</regex>
-                <replacement>$1</replacement>
-                <failIfNoMatch>true</failIfNoMatch>
-            </configuration>
-        </execution>
+          </execution>
         </executions>
       </plugin>
 
