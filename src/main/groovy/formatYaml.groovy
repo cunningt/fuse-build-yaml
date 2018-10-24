@@ -509,7 +509,7 @@ class BuildConfig {
 //project.getProperties().each { k, v -> println "${k}:${v}" }
 
 //org.apache.maven.project.MavenProject project
-def yamlpath = Paths.get(project.getBuild().getDirectory(), "extra-resources", "build.yaml").toString()
+def yamlpath = Paths.get(project.getBuild().getDirectory(), "extra-resources", "fusefis.yaml").toString()
 log.info("Attempting to load file $yamlpath") 
 def rawYamlFileH = new File(yamlpath)
 
