@@ -55,6 +55,7 @@ builds:
     - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
     - '-DdependencyOverride.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyOverride.com.fasterxml.jackson.datatype:*@*='
+    - '-DdependencyOverride.org.bouncycastle:*@*='
     - '-DprojectMetaSkip=true'
   buildScript: 'mvn  -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat
     -Pdeploy clean deploy'
@@ -109,8 +110,9 @@ builds:
     #pushScmUrl: ${wsdl2rest.push.scmUrl}
     #tag: ${wsdl2rest.tag}
     #buildCommand: ${wsdl2rest.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wdl2rest.git
-  scmRevision: wsdl2rest-${version.wsdl2rest}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wsdl2rest.git
+  scmRevision: wsdl2rest-${version.wsdl2rest}-redhat
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
@@ -122,8 +124,9 @@ builds:
     #pushScmUrl: ${fuse-components.push.scmUrl}
     #tag: ${fuse-components.tag}
     #buildCommand: ${fuse-components.buildCommand}
+    #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-components.git
-  scmRevision: fuse-components-${version.fusesource.camel.sap}
+  scmRevision: fuse-components-${version.fusesource.camel.sap}-redhat
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
@@ -175,8 +178,9 @@ builds:
     #pushScmUrl: ${hawtio-online.push.scmUrl}
     #tag: ${hawtio-online.tag}
     #buildCommand: ${hawtio-online.buildCommand}
+    #cherrypick: true 
   scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-online.git
-  scmRevision: hawtio-online-${version.hawtio.online}
+  scmRevision: hawtio-online-${version.hawtio.online}-redhat
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
 
@@ -258,8 +262,9 @@ builds:
     #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
     #tag: ${fabric8-maven-plugin.tag}
     #buildCommand: ${fabric8-maven-plugin.buildCommand}
+    #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-fabric8-maven-plugin.git
-  scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
+  scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}-redhat
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix} 
 
@@ -283,7 +288,7 @@ builds:
     #buildCommand: ${wildfly-camel.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-Dplugin-removal=org.ec4j.maven:editorconfig-maven-plugin'
@@ -348,8 +353,9 @@ builds:
     #pushScmUrl : ${ipaas-quickstarts.push.scmUrl}
     #tag: ${ipaas-quickstarts.tag}
     #buildCommand: ${ipaas-quickstarts.buildCommand}
+    #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
-  scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
+  scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}-redhat
   buildScript: >
     mv repolist.txt repolist.txt.orig
     sed 's/https:\/\/github\.com/https:\/\/code.engineering.redhat.com\/gerrit/g' repolist.txt.orig > repolist.txt
@@ -409,7 +415,7 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
-    - narayana-spring-boot-1.0.2-${version.fuse.prefix}
+    - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
 
 #- name: application-templates-2.1-${version.fuse.prefix}
 #  project: jboss-fuse/application-templates
