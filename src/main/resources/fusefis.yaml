@@ -87,6 +87,7 @@ builds:
     - '-DdependencyExclusion.org.codehaus.woodstox:*@*='
     - '-DdependencyExclusion.org.apache.abdera:*@*='
     - '-DdependencyExclusion.org.reactivestreams:*@*='
+    - '-DdependencyOverride.org.bouncycastle:*@*='
   dependencies:
   - cxf-3.1.11-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
