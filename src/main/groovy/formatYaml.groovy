@@ -249,6 +249,22 @@ class BuildConfigSection {
         }
     }
 
+    public boolean checkKeysPresent()
+    {
+        def neededkeys = ["name", "project", "scmUrl", "scmRevision"]
+        def ret = false
+        for(k in neededkeys)
+        {
+            ret = getAdjusted()[0].containsKey(k)
+            if(!ret)
+            {
+                log.error("$k is missing!")
+                return ret
+            }
+        }
+        return ret
+    }
+
     public void adjustProjectName()
     {
         def project = getAdjusted()[0]['project']
@@ -267,6 +283,7 @@ class BuildConfigSection {
         def uri =  new URI(fixeduri)
         def path = uri.getPath()
 
+        log.debug("URI: $uri, path:$path, project:$project")
         def (repo, proj) = project.split("/")
         //work around for fabric8io- instead of fabric8io/
         def splpath = path.split("/")
@@ -452,6 +469,8 @@ class BuildConfig {
         def buildsections = this.preParse(rawFileContents)
         for(section in buildsections)
         {
+            //Sanity check
+            assert section.checkKeysPresent()
             //Use github (upstream/midstream)
         //section.swapInternalAndExternalURL()
             //Change the BC name to match the scm tag ver
