@@ -223,6 +223,7 @@
 
     <plugins>
 
+<!--
     <plugin>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>groovy-maven-plugin</artifactId>
@@ -260,7 +261,7 @@
             </dependency>
         </dependencies>
     </plugin>
-    
+-->    
     <plugin> 
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
