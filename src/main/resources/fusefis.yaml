@@ -403,6 +403,7 @@ builds:
     #pushScmUrl: ${narayana-spring-boot.push.scmUrl}
     #tag: ${narayana-spring-boot.tag}
     #buildCommand: ${narayana-spring-boot.buildCommand}
+  project: jboss-fuse/narayana-spring-boot
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
   scmRevision: narayana-spring-boot-1.0.2.fuse-710001
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
