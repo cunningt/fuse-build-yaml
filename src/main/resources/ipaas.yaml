@@ -1,8 +1,8 @@
 product:
-  name: Red Hat iPaas 
+  name: Red Hat iPaas
   abbreviation: Fuse-iPaaS
   stage: CR*
-  issueTrackerUrl: https://github.com/syndesisio/syndesis/issues 
+  issueTrackerUrl: https://github.com/syndesisio/syndesis/issues
 version: ${version.fuse.prefix}
 milestone: ${version.sprint.milestone}
 group: Fuse iPaaS
@@ -43,6 +43,7 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:syndesis-updates:groovy:1.0.8'
   buildScript: 'export MAVEN_OPTS="-Xmx2048m"
     export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49195
