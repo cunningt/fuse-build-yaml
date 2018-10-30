@@ -332,6 +332,7 @@ class BuildConfigSection {
 
     public void adjustDependencies(BuildConfigSection other)
     {
+        def alteredDeps = []
         for (dependency in adjustedParsedSection[0]['dependencies'])
         {
             def otherOriginalName = other.getOriginal()[0]['name']
@@ -344,6 +345,11 @@ class BuildConfigSection {
                     log.info("Adjusting dependency in ${adjustedParsedSection[0]['name']} from $otherOriginalName to $dependency")
                 }
             }
+            alteredDeps.add(dependency)
+        }
+        if(adjustedParsedSection[0].containsKey('dependencies'))
+        {
+            adjustedParsedSection[0]['dependencies'] = alteredDeps
         }
     }
 }
