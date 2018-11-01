@@ -519,7 +519,7 @@ class BuildConfig {
         String ret = parsedAmalgimatedYaml.dump(parsed)
 
         def spl = ret.split("builds:")
-        def pretty = spl[0]
+        def pretty = spl[0] + "\nbuilds:\n"
         for(b in preParse(ret))
         {
             pretty = pretty + "\n" + b.getOriginalAsString() + "\n"
