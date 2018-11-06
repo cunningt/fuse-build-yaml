@@ -112,7 +112,7 @@ builds:
     #tag: ${fuse-extras.tag}
     #buildCommand: ${fuse-extras.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-extras-distro.git
-  scmRevision: fuse-extras-distro-${version.camel.extra}
+  scmRevision: fuse-extras-distro-${version.fuse.extras.distro}
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
