@@ -45,6 +45,7 @@
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
     <version.camel>2.21.0.fuse-000096</version.camel>
     <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
+    <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
     <version.cxf>3.1.11.fuse-000265</version.cxf>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
     <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
