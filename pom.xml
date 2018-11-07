@@ -163,6 +163,10 @@
     <narayana-spring-boot.fetch.scmUrl>1</narayana-spring-boot.fetch.scmUrl>
     <narayana-spring-boot.push.scmUrl>1</narayana-spring-boot.push.scmUrl>
     <narayana-spring-boot.buildCommand>1</narayana-spring-boot.buildCommand>
+    <spring-boot-camel-xa.tag>1</spring-boot-camel-xa.tag>
+    <spring-boot-camel-xa.fetch.scmUrl>1</spring-boot-camel-xa.fetch.scmUrl>
+    <spring-boot-camel-xa.push.scmUrl>1</spring-boot-camel-xa.push.scmUrl>
+    <spring-boot-camel-xa.buildCommand>1</spring-boot-camel-xa.buildCommand>
     <fabric8v2.tag>1</fabric8v2.tag>
     <fabric8v2.fetch.scmUrl>1</fabric8v2.fetch.scmUrl>
     <fabric8v2.push.scmUrl>1</fabric8v2.push.scmUrl>

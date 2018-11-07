@@ -418,15 +418,19 @@ builds:
     #buildCommand: ${narayana-spring-boot.buildCommand}
   project: jboss-fuse/narayana-spring-boot
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
-  scmRevision: narayana-spring-boot-1.0.2.fuse-710001
+  scmRevision: ${narayana-spring-boot.tag}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-xa-quickstart-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-xa-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${spring-boot-camel-xa.fetch.scmUrl}
+    #pushScmUrl: ${spring-boot-camel-xa.push.scmUrl}
+    #tag: ${spring-boot-camel-xa.tag}
+    #buildCommand: ${spring-boot-camel-xa.buildCommand}
   project: jboss-fuse/spring-boot-camel-xa
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
-  scmRevision: spring-boot-camel-xa-quickstart-1.0.0.fuse-710001
+  scmRevision: ${spring-boot-camel-xa.tag}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
