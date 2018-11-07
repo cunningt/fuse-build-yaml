@@ -1,19 +1,30 @@
 package com.redhat.fuse
 
+//Yaml Decode/Encode
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.DumperOptions
 //import org.jboss.prod.preProcessYaml
+
+//Deep copy (reflection) 
+import com.rits.cloning.Cloner
+
+//File ops
 import java.nio.file.Paths
 import java.nio.file.Path
+//Groovy adaptations
+import groovy.io.FileType
+import groovy.io.FileVisitResult
+
+//Version and String Manipulation
 import java.util.regex.Pattern
 import java.util.regex.Matcher
 import groovy.util.logging.Slf4j
 import java.net.URLDecoder
 import java.net.URLEncoder
 import groovy.json.JsonOutput.*
-//GStringTemplateEngine
+
+//HTML deptree output
 import groovy.text.*
-import com.rits.cloning.Cloner
 import java.net.URI
 import org.apache.commons.lang3.text.WordUtils
 import groovy.json.*
@@ -524,6 +535,9 @@ class BuildConfig {
         {
             pretty = pretty + "\n" + b.getOriginalAsString() + "\n"
         }
+        //Add our post build output
+        def post = rawFileContents.split("outputPrefixes:")
+        pretty = pretty + "\n" + "outputPrefixes:" + post[1]
         return pretty
     }
 
@@ -533,19 +547,18 @@ class BuildConfig {
 //List all properties
 //project.getProperties().each { k, v -> println "${k}:${v}" }
 
-//org.apache.maven.project.MavenProject project
-def yamlpath = Paths.get(project.getBuild().getDirectory(), "extra-resources", "fusefis.yaml").toString()
-log.info("Attempting to load file $yamlpath") 
-def rawYamlFileH = new File(yamlpath)
+def yamlpath = Paths.get(project.getBuild().getDirectory(), "extra-resources").toString()
 
-//Load our YAML file and fix it
-BuildConfig bc = new BuildConfig(rawYamlFileH, project.getProperties())
-
-//Print the fixed yaml to term (we can add a write back funct at some point)
-print bc.dump()
-
-//Write and print the depgraph to the target dir, we need to add it to the POM to deploy it (todo)
-def depgraphoutputf = new File(Paths.get(project.getBuild().getDirectory(), "extra-resources", "Deptree.html").toString())
-depgraphoutputf << bc.depGraph()
-print bc.depGraph()
-
+//Spider for yaml files and run our operations on them
+new File(yamlpath).traverse(
+    type: FileType.FILES,
+    maxDepth: 0,
+    nameFilter: ~/.*.yaml$/,
+    ){ yf ->
+        log.info("Attempting to load $yf.name")
+        BuildConfig bc = new BuildConfig(yf, project.getProperties())
+        modified = new File(yf.toString()+".modified")
+        modified << bc.dump()
+        deptree = new File(yf.toString()+".html")
+        deptree << bc.depGraph()
+}
