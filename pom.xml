@@ -75,6 +75,10 @@
     <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
 
+    <!-- build information -->
+    <build.stage>EA</build.stage>
+    <build.milestone>EA*</build.milestone>
+
     <!-- quickstarts -->
     <karaf-camel-amq.version>1.0.0.fuse-710004</karaf-camel-amq.version>
     <karaf-camel-log.version>1.0.0.fuse-710004</karaf-camel-log.version>
