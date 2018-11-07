@@ -160,8 +160,9 @@ builds:
     #pushScmUrl: ${hawtio.push.scmUrl}
     #tag: ${hawtio.tag}
     #buildCommand: ${hawtio.buildCommand}
+    #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio.git
-  scmRevision: hawtio-${version.hawtio}
+  scmRevision: hawtio-${version.hawtio}-redhat
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
     
