@@ -286,11 +286,44 @@
             </goals>
             <configuration>
               <artifacts>
+                <!-- Fuse and FIS Original (template) -->
                 <artifact>
                   <file>target/extra-resources/fusefis.yaml</file>
                   <type>yaml</type>
-                  <classifier>yaml</classifier>
+                  <classifier>fuse-fis-yaml</classifier>
                 </artifact>
+                <!-- Fuse and FIS Fixed -->
+                <artifact>
+                  <file>target/extra-resources/fusefis.yaml.modified</file>
+                  <type>yaml</type>
+                  <classifier>fuse-fis-modified-yaml</classifier>
+                </artifact>
+                <!-- Fuse and FIS Deptree -->
+                <artifact>
+                  <file>target/extra-resources/fusefis.yaml.html</file>
+                  <type>html</type>
+                  <classifier>fuse-fis-deptree</classifier>
+                </artifact>
+
+                <!-- IPaaS Original (template) -->
+                <artifact>
+                  <file>target/extra-resources/ipaas.yaml</file>
+                  <type>yaml</type>
+                  <classifier>ipaas-yaml</classifier>
+                </artifact>
+                <!-- IPaaS and FIS Fixed -->
+                <artifact>
+                  <file>target/extra-resources/ipaas.yaml.modified</file>
+                  <type>yaml</type>
+                  <classifier>ipaas-modified-yaml</classifier>
+                </artifact>
+                <!-- IPaaS Deptree -->
+                <artifact>
+                  <file>target/extra-resources/ipaas.yaml.html</file>
+                  <type>html</type>
+                  <classifier>ipaas-deptree</classifier>
+                </artifact>
+
                 <artifact>
                   <file>target/extra-resources/release_fis_quickstarts.sh</file>
                   <type>sh</type>
@@ -314,13 +347,13 @@
             </goals>
             <configuration>
               <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
-              <resources>          
+              <resources>
                 <resource>
                   <directory>src/main/resources</directory>
                   <filtering>true</filtering>
                 </resource>
-              </resources>              
-            </configuration>            
+              </resources>
+            </configuration>
           </execution>
         </executions>
       </plugin>
