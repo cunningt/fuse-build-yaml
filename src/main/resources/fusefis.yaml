@@ -400,6 +400,7 @@ builds:
   - docker-maven-plugin-0.23.0-${version.fuse.prefix}
   - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
+  - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
 
 - name: kubernetes-model-2.0.9-${version.fuse.prefix}
   project: jboss-fuse/kubernetes-model
@@ -422,7 +423,7 @@ builds:
   scmRevision: narayana-spring-boot-1.0.2.fuse-710001
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - camel-2.21.0-${version.fuse.prefix}
 
 - name: spring-boot-camel-xa-quickstart-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/spring-boot-camel-xa
