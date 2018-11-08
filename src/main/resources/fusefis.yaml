@@ -272,6 +272,7 @@ builds:
     #buildCommand: ${docker-maven-plugin.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-docker-maven-plugin.git
   scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
 - name: fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
   project: fabric8io/fabric8-maven-plugin
