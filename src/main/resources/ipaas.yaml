@@ -44,7 +44,7 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:syndesis-updates:groovy:1.0.8'
+    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:syndesis-updates:groovy:1.0.8.redhat-00001'
   buildScript: > 
     export MAVEN_OPTS="-Xmx2048m"
     export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
