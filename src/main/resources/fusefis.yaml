@@ -231,6 +231,7 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyOverride.org.bouncycastle:*@*='
   dependencies:
   - fuse-components-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
