@@ -231,6 +231,7 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyOverride.org.bouncycastle:*@*='
   dependencies:
   - fuse-components-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -282,7 +283,8 @@ builds:
     #buildCommand: ${fabric8-maven-plugin.buildCommand}
     #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-fabric8-maven-plugin.git
-  scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}-redhat
+  scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix} 
 
