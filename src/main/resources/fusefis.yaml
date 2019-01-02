@@ -21,7 +21,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
-    -Dcheckstyle.skip=true clean deploy
+    -Dcheckstyle.skip=true -Dgpg.skip=true -Papache-release clean deploy
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
 
 - name: karaf-4.2.0-${version.fuse.prefix}
