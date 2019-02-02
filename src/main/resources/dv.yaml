@@ -1,0 +1,59 @@
+product:
+  name: Red Hat DV
+  abbreviation: Fuse-DV
+  stage: CR*
+  issueTrackerUrl: https://github.com/teiid/teiid/issues
+version: ${version.fuse.prefix}
+milestone: ${version.sprint.milestone}
+group: Fuse DV
+defaultBuildParameters:
+  environmentId: 1
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: teiid-12.1.0
+  project: teiid/teiid
+    #fetchScmUrl: ${teiid.fetch.scmUrl}
+    #pushScmUrl: ${teiid.push.scmUrl}
+    #tag: ${teiid.tag}
+    #buildCommand: ${teiid.buildCommand}
+    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/teiid/teiid.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid/teiid.git
+  scmRevision: teiid-${version.teiid}
+  customPmeParameters:
+  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
+  - '-DdependencyOverride.org.ow2.asm:*@*='
+  - '-DprojectMetaSkip=true'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+
+- name: teiid-spring-boot-1.0.3
+  project: teiid/teiid-spring-boot
+    #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
+    #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
+    #tag: ${teiid-spring-boot.tag}
+    #buildCommand: ${teiid-spring-boot.buildCommand}
+    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/teiid/teiid-spring-boot.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid/teiid-spring-boot.git
+  scmRevision: teiid-spring-boot-${version.teiid-springboot}
+  customPmeParameters:
+  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
+  - '-DdependencyOverride.org.ow2.asm:*@*='
+  - '-DprojectMetaSkip=true'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  dependencies:
+  - teiid-12.1.0
+
+outputPrefixes:
+  releaseFile: dv-test
+  releaseDir: dv-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'

@@ -41,6 +41,7 @@
 
   <properties>
     <version.fuse.prefix>7.2.0</version.fuse.prefix>
+    <version.sprint.milestone>1</version.sprint.milestone>
     <build.number>1</build.number>
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
     <version.camel>2.21.0.fuse-000096</version.camel>
@@ -223,6 +224,19 @@
     <syndesis.fetch.scmUrl>1</syndesis.fetch.scmUrl>
     <syndesis.push.scmUrl>1</syndesis.push.scmUrl>
     <syndesis.buildCommand>1</syndesis.buildCommand>
+
+    <!-- DV project -->
+    <version.teiid>1</version.teiid>
+    <teiid.tag>DUMMY-TAG-0.0.0</teiid.tag>
+    <teiid.fetch.scmUrl>1</teiid.fetch.scmUrl>
+    <teiid.push.scmUrl>1</teiid.push.scmUrl>
+    <teiid.buildCommand>1</teiid.buildCommand>
+    <version.teiid-springboot>1</version.teiid-springboot>
+    <teiid-spring-boot.tag>DUMMY-TAG-0.0.0</teiid-spring-boot.tag>
+    <teiid-spring-boot.fetch.scmUrl>1</teiid-spring-boot.fetch.scmUrl>
+    <teiid-spring-boot.push.scmUrl>1</teiid-spring-boot.push.scmUrl>
+    <teiid-spring-boot.buildCommand>1</teiid-spring-boot.buildCommand>
+
   </properties>
 
   <build>
@@ -322,6 +336,25 @@
                   <file>target/extra-resources/ipaas.yaml.html</file>
                   <type>html</type>
                   <classifier>ipaas-deptree</classifier>
+                </artifact>
+
+                <!-- DV Original (template) -->
+                <artifact>
+                  <file>target/extra-resources/dv.yaml</file>
+                  <type>yaml</type>
+                  <classifier>dv-yaml</classifier>
+                </artifact>
+                <!-- DV Fixed -->
+                <artifact>
+                  <file>target/extra-resources/dv.yaml.modified</file>
+                  <type>yaml</type>
+                  <classifier>dv-modified-yaml</classifier>
+                </artifact>
+                <!-- DV Deptree -->
+                <artifact>
+                  <file>target/extra-resources/dv.yaml.html</file>
+                  <type>html</type>
+                  <classifier>dv-deptree</classifier>
                 </artifact>
 
                 <artifact>
