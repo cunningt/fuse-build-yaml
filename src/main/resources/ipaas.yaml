@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: atlasmap-1.35.5
+- name: atlasmap-1.40.0
   project: atlasmap/atlasmap
     #fetchScmUrl: ${atlasmap.fetch.scmUrl}
     #pushScmUrl: ${atlasmap.push.scmUrl}
@@ -27,7 +27,7 @@ builds:
   - '-DprojectMetaSkip=true'
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
-- name: syndesis-3.1.11
+- name: syndesis-1.6.0
   project: syndesisio/syndesis
     #fetchScmUrl: ${syndesis.fetch.scmUrl}
     #pushScmUrl: ${syndesis.push.scmUrl}
@@ -54,7 +54,7 @@ builds:
     sed -i "s#https:#http:#g" app/ui/yarn.lock
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml
   dependencies:
-  - atlasmap-1.35.5
+  - atlasmap-1.40.0
 
 outputPrefixes:
   releaseFile: ipaas-test

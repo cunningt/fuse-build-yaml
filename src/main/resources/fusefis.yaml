@@ -5,14 +5,14 @@ product:
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}
-group: Fuse Standalone and FIS 7.2
+group: Fuse Standalone and FIS 7.3
 defaultBuildParameters:
   environmentId: 1
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
-- name: cxf-xjc-utils-3.2.3-${version.fuse.prefix}
+- name: cxf-xjc-utils-3.2.4-${version.fuse.prefix}
   project: jboss-fuse/cxf-xjc-utils
     #fetchScmUrl: ${cxf-xjc-utils.fetch.scmUrl}
     #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
@@ -37,7 +37,7 @@ builds:
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
 
-- name: cxf-3.1.11-${version.fuse.prefix}
+- name: cxf-3.2.7-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: ${cxf.fetch.scmUrl}
     #pushScmUrl: ${cxf.push.scmUrl}
@@ -60,8 +60,35 @@ builds:
   buildScript: 'mvn  -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat
     -Pdeploy clean deploy'
   dependencies:
-  - cxf-xjc-utils-3.2.3-${version.fuse.prefix}
+  - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
+
+- name: kubernetes-model-2.0.10-${version.fuse.prefix}
+  project: jboss-fuse/kubernetes-model
+    #fetchScmUrl: ${kubernetes-model.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes-model.push.scmUrl}
+    #tag: ${kubernetes-model.tag}
+    #buildCommand: ${kubernetes-model.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+    deploy'
+  scmRevision: kubernetes-model-${version.kubernetes.model}
+
+- name: kubernetes-client-3.1.12-${version.fuse.prefix}
+  project: fabric8io/kubernetes-client
+    #fetchScmUrl: ${kubernetes-client.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes-client.push.scmUrl}
+    #tag: ${kubernetes-client.tag}
+    #buildCommand: ${kubernetes-client.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-kubernetes-client.git
+  scmRevision: kubernetes-client-${version.kubernetes.client}
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+  dependencies:
+  - kubernetes-model-2.0.10-${version.fuse.prefix}
 
 - name: camel-2.21.0-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -91,8 +118,10 @@ builds:
     - '-DdependencyExclusion.org.apache.kafka:*@*='
 
   dependencies:
-  - cxf-3.1.11-${version.fuse.prefix}
+  - cxf-3.2.7-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
+  - kubernetes-model-2.0.10-${version.fuse.prefix}
+  - kubernetes-client-3.1.12-${version.fuse.prefix}
 
 - name: camel-extra-2.21.0-${version.fuse.prefix}
   project: jboss-fuse/camel-extra
@@ -119,9 +148,9 @@ builds:
     - '-DprojectMetaSkip=true'
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
-  - cxf-3.1.11-${version.fuse.prefix}
+  - cxf-3.2.7-${version.fuse.prefix}
 
-- name: wsdl2rest-0.7.0-${version.fuse.prefix}
+- name: wsdl2rest-0.8.0-${version.fuse.prefix}
   project: jboss-fuse/wsdl2rest
     #fetchScmUrl: ${wsdl2rest.fetch.scmUrl}
     #pushScmUrl: ${wsdl2rest.push.scmUrl}
@@ -238,22 +267,6 @@ builds:
   - hawtio-2.0.0-${version.fuse.prefix}
   - camel-2.21.0-${version.fuse.prefix}
 
-- name: kubernetes-client-3.0.3-${version.fuse.prefix}
-  project: fabric8io/kubernetes-client
-    #fetchScmUrl: ${kubernetes-client.fetch.scmUrl}
-    #pushScmUrl: ${kubernetes-client.push.scmUrl}
-    #tag: ${kubernetes-client.tag}
-    #buildCommand: ${kubernetes-client.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-kubernetes-client.git
-  scmRevision: kubernetes-client-${version.kubernetes.client}
-  customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
-  dependencies:
-  - kubernetes-model-2.0.9-${version.fuse.prefix}
-
 - name: spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
   project: fabric8io/spring-cloud-kubernetes
     #fetchScmUrl: ${spring-cloud-kubernetes.fetch.scmUrl}
@@ -263,7 +276,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-spring-cloud-kubernetes.git
   scmRevision: spring-cloud-kubernetes-${version.spring-cloud-kubernetes}
   dependencies:
-  - kubernetes-client-3.0.3-${version.fuse.prefix}
+  - kubernetes-client-3.1.12-${version.fuse.prefix}
 
 - name: docker-maven-plugin-0.23.0-${version.fuse.prefix}
   project: fabric8io/docker-maven-plugin
@@ -288,7 +301,7 @@ builds:
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix} 
 
-- name: fuse-patch-3.0.0-${version.fuse.prefix}
+- name: fuse-patch-3.2.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-patch
     #fetchScmUrl: ${fuse-patch.fetch.scmUrl}
     #pushScmUrl: ${fuse-patch.push.scmUrl}
@@ -300,7 +313,7 @@ builds:
     - '-DprojectMetaSkip=true'
     - '-Dplugin-removal=org.ec4j.maven:editorconfig-maven-plugin'
 
-- name: wildfly-camel-5.1.0-${version.fuse.prefix}
+- name: wildfly-camel-5.3.0-${version.fuse.prefix}
   project: jboss-fuse/wildfly-camel
     #fetchScmUrl: ${wildfly-camel.fetch.scmUrl}
     #pushScmUrl: ${wildfly-camel.push.scmUrl}
@@ -334,10 +347,10 @@ builds:
   dependencies:
   - fuse-karaf-${version.fuse.prefix}
   - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
-  - wildfly-camel-5.1.0-${version.fuse.prefix}
+  - wildfly-camel-5.3.0-${version.fuse.prefix}
   - hawtio-online-1.0.0-${version.fuse.prefix}
 
-- name: wildfly-camel-examples-5.1.0-${version.fuse.prefix}
+- name: wildfly-camel-examples-5.3.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
     #fetchScmUrl: ${wildfly-camel-examples.fetch.scmUrl}
     #pushScmUrl: ${wildfly-camel-examples.push.scmUrl}
@@ -350,7 +363,7 @@ builds:
     - '-DprojectMetaSkip=true'
     - '-DdependencyRemoval=org.wildfly.camel.example:example-camel-rest-swagger'
   dependencies:
-  - wildfly-camel-5.1.0-${version.fuse.prefix}
+  - wildfly-camel-5.3.0-${version.fuse.prefix}
   - fuse-eap-${version.fuse.prefix}
 
 - name: fuse-eap-${version.fuse.prefix}
@@ -364,7 +377,7 @@ builds:
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
-  - wildfly-camel-5.1.0-${version.fuse.prefix}
+  - wildfly-camel-5.3.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-2.2.0-${version.fuse.prefix}
@@ -408,17 +421,6 @@ builds:
   - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
   - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
-
-- name: kubernetes-model-2.0.9-${version.fuse.prefix}
-  project: jboss-fuse/kubernetes-model
-    #fetchScmUrl: ${kubernetes-model.fetch.scmUrl}
-    #pushScmUrl: ${kubernetes-model.push.scmUrl}
-    #tag: ${kubernetes-model.tag}
-    #buildCommand: ${kubernetes-model.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
-    deploy'
-  scmRevision: kubernetes-model-${version.kubernetes.model}
 
 - name: apicurito-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/apicurito
@@ -473,6 +475,18 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
     - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
+
+- name: camel-k-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k.fetch.scmUrl}
+    #pushScmUrl: ${camel-k.push.scmUrl}
+    #tag: ${camel-k.tag}
+    #buildCommand: ${camel-k.buildCommand}
+  project: jboss-fuse/camel-k
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
+  scmRevision: ${camel-k.tag}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean -f runtime/pom.xml'
+  dependencies:
+    - camel-2.21.0-${version.fuse.prefix}
 
 #- name: application-templates-2.1-${version.fuse.prefix}
 #  project: jboss-fuse/application-templates

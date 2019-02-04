@@ -76,6 +76,9 @@
     <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
 
+    <version.camel-k>1.0.0.fuse-730005</version.camel-k>
+
+
     <!-- build information -->
     <build.stage>EA</build.stage>
     <build.milestone>EA*</build.milestone>
@@ -214,6 +217,11 @@
     <application-templates.fetch.scmUrl>1</application-templates.fetch.scmUrl>
     <application-templates.push.scmUrl>1</application-templates.push.scmUrl>
     <application-templates.buildCommand>1</application-templates.buildCommand>
+    <camel-k.tag>DUMMY-TAG-0.0.0</camel-k.tag>
+    <camel-k.fetch.scmUrl>1</camel-k.fetch.scmUrl>
+    <camel-k.push.scmUrl>1</camel-k.push.scmUrl>
+    <camel-k.buildCommand>1</camel-k.buildCommand>
+
 
     <!-- Syndesis project -->
     <atlasmap.tag>DUMMY-TAG-0.0.0</atlasmap.tag>
