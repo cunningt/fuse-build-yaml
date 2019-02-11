@@ -19,6 +19,7 @@ builds:
     #tag: ${cxf-xjc-utils.tag}
     #buildCommand: ${cxf-xjc-utils.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
+  externalScmUrl: https://github.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
     -Dcheckstyle.skip=true clean deploy
@@ -31,12 +32,40 @@ builds:
     #tag: ${karaf.tag}
     #buildCommand: ${karaf.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf.git
+  externalScmUrl: https://github.com/jboss-fuse/karaf.git
   scmRevision: karaf-${version.karaf}
   customPmeParameters:
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
 
+- name: kubernetes-model-2.0.10-7.3.0
+  project: jboss-fuse/kubernetes-model
+    #fetchScmUrl: ${kubernetes-model.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes-model.push.scmUrl}
+    #tag: ${kubernetes-model.tag}
+    #buildCommand: ${kubernetes-model.buildCommand}
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/kubernetes-model.git
+  externalScmUrl: https://github.com/jboss-fuse/kubernetes-model.git
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy'
+  scmRevision: kubernetes-model-${version.kubernetes.model}
+
+- name: kubernetes-client-3.1.12-7.3.0
+  project: jboss-fuse/kubernetes-client
+    #fetchScmUrl: ${kubernetes-client.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes-client.push.scmUrl}
+    #tag: ${kubernetes-client.tag}
+    #buildCommand: ${kubernetes-client.buildCommand}
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/gerrit/fuse/kubernetes-client.git
+  externalScmUrl: https://github.com/jboss-fuse/kubernetes-client.git
+  scmRevision: kubernetes-client-${version.kubernetes.client}
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+  dependencies:
+  - kubernetes-model-2.0.10-7.3.0
 
 outputPrefixes:
   releaseFile: fuse-test
