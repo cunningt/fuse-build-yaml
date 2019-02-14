@@ -1,10 +1,10 @@
 product:
   name: Red Hat Fuse
   abbreviation: Fuse-and-FIS
-  stage: ${build.stage}
+  stage: EA
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
-milestone: ${build.milestone}
+milestone: EA
 group: Fuse Standalone and FIS 7.3
 defaultBuildParameters:
   environmentId: 1
