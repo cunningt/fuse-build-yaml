@@ -18,8 +18,8 @@ builds:
     #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
     #tag: ${cxf-xjc-utils.tag}
     #buildCommand: ${cxf-xjc-utils.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
-  externalScmUrl: https://github.com/jboss-fuse/cxf-xjc-utils.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
     -Dcheckstyle.skip=true clean deploy
@@ -31,8 +31,8 @@ builds:
     #pushScmUrl: ${karaf.push.scmUrl}
     #tag: ${karaf.tag}
     #buildCommand: ${karaf.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf.git
-  externalScmUrl: https://github.com/jboss-fuse/karaf.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/karaf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/karaf.git
   scmRevision: karaf-${version.karaf}
   customPmeParameters:
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
@@ -46,7 +46,7 @@ builds:
     #tag: ${kubernetes-model.tag}
     #buildCommand: ${kubernetes-model.buildCommand}
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/kubernetes-model.git
-  externalScmUrl: https://github.com/jboss-fuse/kubernetes-model.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
 
@@ -57,7 +57,7 @@ builds:
     #tag: ${kubernetes-client.tag}
     #buildCommand: ${kubernetes-client.buildCommand}
   scmUrl: git+ssh://code.stage.engineering.redhat.com/gerrit/fuse/kubernetes-client.git
-  externalScmUrl: https://github.com/jboss-fuse/kubernetes-client.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
   scmRevision: kubernetes-client-${version.kubernetes.client}
   customPmeParameters:
     - '-DprojectMetaSkip=true'
