@@ -25,7 +25,22 @@ builds:
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy'
+  buildScript: >
+     sed -i "s|<module>accumulo</module>|<!--module>accumulo</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>cassandra</module>|<!--module>cassandra</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>google</module>|<!--module>google</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>ldap</module>|<!--module>ldap</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>couchbase</module>|<!--module>couchbase</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>amazon</module>|<!--module>amazon</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>salesforce</module>|<!--module>salesforce</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>solr</module>|<!--module>solr</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>odata</module>|<!--module>odata</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>swagger</module>|<!--module>swagger</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>sandbox</module>|<!--module>sandbox</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>infinispan</module>|<!--module>infinispan</module-->|" "connectors/pom.xml"
+     sed -i "s|<module>translator-jpa</module>|<!--module>translator-jpa</module-->|" "connectors/misc/pom.xml"
+     sed -i "s|<module>translator-olap</module>|<!--module>translator-olap</module-->|" "connectors/misc/pom.xml"
+     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
 
 - name: teiid-spring-boot-1.0.3
   project: teiid/teiid-spring-boot
@@ -43,6 +58,21 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
   - teiid-12.1.0
+
+- name: teiid-openshift-examples-1.0.0
+  project: teiid/teiid-openshift-examples
+    #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
+    #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
+    #tag: ${teiid-openshift-examples.tag}
+    #buildCommand: ${teiid-openshift-examples.buildCommand}
+    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/teiid/teiid-openshift-examples.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid/teiid-openshift-examples.git
+  scmRevision: teiid-openshift-examples-${version.teiid-openshift-examples}
+  customPmeParameters:
+  - '-DprojectMetaSkip=true'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
+  dependencies:
+  - teiid-spring-boot-1.0.3
 
 outputPrefixes:
   releaseFile: dv-test
