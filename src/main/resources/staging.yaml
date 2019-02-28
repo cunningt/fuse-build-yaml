@@ -56,7 +56,7 @@ builds:
     #pushScmUrl: ${kubernetes-client.push.scmUrl}
     #tag: ${kubernetes-client.tag}
     #buildCommand: ${kubernetes-client.buildCommand}
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/gerrit/fuse/kubernetes-client.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/kubernetes-client.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
   scmRevision: kubernetes-client-${version.kubernetes.client}
   customPmeParameters:
