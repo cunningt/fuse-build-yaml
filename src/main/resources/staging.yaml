@@ -5,7 +5,7 @@ product:
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: EA
-group: Fuse Standalone and FIS 7.3
+group: Fuse Staging Standalone and FIS 7.3
 defaultBuildParameters:
   environmentId: 1
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean

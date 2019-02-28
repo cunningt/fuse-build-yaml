@@ -380,6 +380,23 @@ builds:
   - wildfly-camel-5.3.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
 
+- name: karaf-quickstarts-${version.fuse.prefix}
+    #fetchScmUrl: ${karaf-quickstarts.fetch.scmUrl}
+    #pushScmUrl: ${karaf-quickstarts.push.scmUrl}
+    #tag: ${karaf-quickstarts.tag}
+    #buildCommand: ${karaf-quickstarts.buildCommand}
+  project: jboss-fuse/karaf-quickstarts
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf-quickstarts.git
+  scmRevision: karaf-quickstarts-${version.karaf-quickstarts}
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+  dependencies:
+  - cxf-3.2.7-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
+  - camel-2.21.0-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
+
+
 - name: ipaas-quickstarts-2.2.0-${version.fuse.prefix}
   project: fabric8io/ipaas-quickstarts
     #fetchScmUrl : ${ipaas-quickstarts.fetch.scmUrl}
