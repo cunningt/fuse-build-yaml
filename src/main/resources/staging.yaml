@@ -73,7 +73,7 @@ builds:
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #tag: 3.2.x.redhat-7-x
     #buildCommand: 1
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/cxf.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.kubernetes.cxf}
   customPmeParameters:
@@ -534,7 +534,7 @@ builds:
 
 #- name: application-templates-2.1-${version.fuse.prefix}
 #  project: jboss-fuse/application-templates
-#  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
+#  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/application-templates.git
 #  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
 #    install '
 #  scmRevision: application-templates-${version.application.templates}
