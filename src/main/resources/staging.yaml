@@ -67,6 +67,32 @@ builds:
   dependencies:
   - kubernetes-model-2.0.10-7.3.0
 
+- name: cxf-3.2.7-7.3.0
+  project: jboss-fuse/cxf
+    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #tag: 3.2.x.redhat-7-x
+    #buildCommand: 1
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
+  scmRevision: cxf-3.2.7.fuse-730021
+  customPmeParameters:
+    - '-DdependencyOverride.org.codehaus.woodstox:*@*='
+    - '-DdependencyOverride.org.apache.abdera:*@*='
+    - '-DdependencyOverride.javax.annotation:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.module:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.datatype:*@*='
+    - '-DdependencyOverride.org.bouncycastle:*@*='
+    - '-DprojectMetaSkip=true'
+  buildScript: 'mvn  -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat
+    -Pdeploy clean deploy'
+  dependencies:
+  - cxf-xjc-utils-3.2.4-7.3.0
+  - karaf-4.2.0-7.3.0
+
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
