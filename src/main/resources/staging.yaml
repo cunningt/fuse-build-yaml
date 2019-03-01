@@ -75,7 +75,7 @@ builds:
     #buildCommand: 1
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/cxf.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
-  scmRevision: cxf-${version.kubernetes.cxf}
+  scmRevision: cxf-${version.cxf}
   customPmeParameters:
     - '-DdependencyOverride.org.codehaus.woodstox:*@*='
     - '-DdependencyOverride.org.apache.abdera:*@*='
@@ -280,7 +280,7 @@ builds:
   - camel-2.21.0-${version.fuse.prefix}
 
 - name: spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
-  project: fabric8io/spring-cloud-kubernetes
+  project: jboss-fuse/spring-cloud-kubernetes
     #fetchScmUrl: ${spring-cloud-kubernetes.fetch.scmUrl}
     #pushScmUrl: ${spring-cloud-kubernetes.push.scmUrl}
     #tag: ${spring-cloud-kubernetes.tag}
@@ -292,7 +292,7 @@ builds:
   - kubernetes-client-3.1.12-${version.fuse.prefix}
 
 - name: docker-maven-plugin-0.23.0-${version.fuse.prefix}
-  project: fabric8io/docker-maven-plugin
+  project: jboss-fuse/docker-maven-plugin
     #fetchScmUrl: ${docker-maven-plugin.fetch.scmUrl}
     #pushScmUrl: ${docker-maven-plugin.push.scmUrl}
     #tag: ${docker-maven-plugin.tag}
@@ -303,7 +303,7 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
 - name: fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
-  project: fabric8io/fabric8-maven-plugin
+  project: jboss-fuse/fabric8-maven-plugin
     #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
     #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
     #tag: ${fabric8-maven-plugin.tag}
