@@ -145,10 +145,10 @@ builds:
 
 - name: fuse-extras-7.3.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-extras-distro
-    #fetchScmUrl: ${fuse-extras.fetch.scmUrl}
-    #pushScmUrl: ${fuse-extras.push.scmUrl}
-    #tag: ${fuse-extras.tag}
-    #buildCommand: ${fuse-extras.buildCommand}
+    #fetchScmUrl: ${fuse-extras-distro.fetch.scmUrl}
+    #pushScmUrl: ${fuse-extras-distro.push.scmUrl}
+    #tag: ${fuse-extras-distro.tag}
+    #buildCommand: ${fuse-extras-distro.buildCommand}
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-extras-distro.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-extras-distro.git
   scmRevision: fuse-extras-distro-${version.fuse.extras.distro}

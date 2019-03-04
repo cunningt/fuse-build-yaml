@@ -77,7 +77,7 @@
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
 
     <version.camel-k>1.0.0.fuse-730005</version.camel-k>
-
+    <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
 
     <!-- build information -->
     <build.stage>EA</build.stage>
@@ -107,6 +107,10 @@
     <karaf.fetch.scmUrl>1</karaf.fetch.scmUrl>
     <karaf.push.scmUrl>1</karaf.push.scmUrl>
     <karaf.buildCommand>1</karaf.buildCommand>
+    <karaf-quickstarts.tag>DUMMY-TAG-0.0.0</karaf-quickstarts.tag>
+    <karaf-quickstarts.fetch.scmUrl>1</karaf-quickstarts.fetch.scmUrl>
+    <karaf-quickstarts.push.scmUrl>1</karaf-quickstarts.push.scmUrl>
+    <karaf-quickstarts.buildCommand>1</karaf-quickstarts.buildCommand>
     <cxf-xjc-utils.tag>DUMMY-TAG-0.0.0</cxf-xjc-utils.tag>
     <cxf-xjc-utils.fetch.scmUrl>1</cxf-xjc-utils.fetch.scmUrl>
     <cxf-xjc-utils.push.scmUrl>1</cxf-xjc-utils.push.scmUrl>
