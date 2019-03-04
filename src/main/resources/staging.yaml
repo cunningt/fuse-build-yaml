@@ -323,7 +323,7 @@ builds:
     #pushScmUrl: ${fuse-patch.push.scmUrl}
     #tag: ${fuse-patch.tag}
     #buildCommand: ${fuse-patch.buildCommand}
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/fuse-patch.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-patch.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
   customPmeParameters:
