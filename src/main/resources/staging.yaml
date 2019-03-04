@@ -71,7 +71,7 @@ builds:
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
-    #tag: 3.2.x.redhat-7-x
+    #tag: ${cxf.tag}
     #buildCommand: 1
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/cxf.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
@@ -87,6 +87,7 @@ builds:
     - '-DdependencyOverride.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyOverride.com.fasterxml.jackson.datatype:*@*='
     - '-DdependencyOverride.org.bouncycastle:*@*='
+    - '-DdependencyOverride.org.apache.velocity:*@*='
     - '-DprojectMetaSkip=true'
   buildScript: 'mvn  -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat
     -Pdeploy clean deploy'
