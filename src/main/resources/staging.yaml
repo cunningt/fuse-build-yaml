@@ -104,7 +104,9 @@ builds:
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
+  buildScript: >
+    export MAVEN_OPTS="-Xmx3G -XX:MaxPermSize=3048m"
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
   customPmeParameters:
