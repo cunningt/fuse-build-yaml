@@ -41,7 +41,7 @@
 
   <properties>
     <version.fuse.prefix>7.3.0</version.fuse.prefix>
-    <version.sprint.milestone>41</version.sprint.milestone>
+    <version.sprint.milestone>42</version.sprint.milestone>
     <build.number>1</build.number>
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
     <version.camel>2.21.0.fuse-000096</version.camel>
@@ -80,8 +80,8 @@
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
 
     <!-- build information -->
-    <build.stage>EA</build.stage>
-    <build.milestone>EA*</build.milestone>
+    <build.stage>CR1</build.stage>
+    <build.milestone>CR1*</build.milestone>
 
     <!-- pom manipulation scripts version (global) -->
     <version.pom-manipulation>1.0.8.redhat-00001</version.pom-manipulation>
