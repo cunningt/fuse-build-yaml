@@ -338,8 +338,8 @@ builds:
     #pushScmUrl: ${wildfly-camel.push.scmUrl}
     #tag: ${wildfly-camel.tag}
     #buildCommand: ${wildfly-camel.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/wildfly-camel.git
+  scmUrl: git+ssh://code.engineering.redhat.com/wildfly-extras/wildfly-camel.git
+  externalScmUrl: ssh://git@github.com/wildfly-extras/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy'
   customPmeParameters:
