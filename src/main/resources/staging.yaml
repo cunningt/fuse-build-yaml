@@ -108,7 +108,7 @@ builds:
     export MAVEN_OPTS=\"-Xmx3G -XX:MaxPermSize=3048m\"
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
-    !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
+    !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-DdependencyExclusion.io.vertx:*@*=3.5.1.redhat-004'
