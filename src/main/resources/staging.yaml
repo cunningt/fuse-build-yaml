@@ -105,7 +105,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
   buildScript: >
-    export MAVEN_OPTS=\"-Xmx3G -XX:MaxPermSize=3048m\"
+    export JAVA_TOOL_OPTIONS=\""-Xmx3G\"
+    export MAVEN_OPTS=\"-Xmx5G -XX:MaxPermSize=3048m\"
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml
@@ -124,6 +125,7 @@ builds:
     - '-DdependencyExclusion.org.reactivestreams:*@*='
     - '-DdependencyOverride.org.bouncycastle:*@*='
     - '-DdependencyExclusion.org.apache.kafka:*@*='
+    - '-DdependencyExclusion.javax.ws.rs.:*@*='
 
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
