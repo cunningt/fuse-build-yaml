@@ -21,7 +21,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
     -Dcheckstyle.skip=true clean deploy
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
 
@@ -124,6 +124,7 @@ builds:
     - '-DdependencyExclusion.org.reactivestreams:*@*='
     - '-DdependencyOverride.org.bouncycastle:*@*='
     - '-DdependencyExclusion.org.apache.kafka:*@*='
+    - '-DdependencyExclusion.javax.ws.rs.:*@*='
 
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
