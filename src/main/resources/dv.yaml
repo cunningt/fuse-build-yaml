@@ -18,8 +18,8 @@ builds:
     #pushScmUrl: ${teiid.push.scmUrl}
     #tag: ${teiid.tag}
     #buildCommand: ${teiid.buildCommand}
-    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/teiid/teiid.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid/teiid.git
+  scmUrl: git+ssh://code.engineering.redhat.com/gerrit/teiid.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid.git
   scmRevision: teiid-${version.teiid}
   customPmeParameters:
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
@@ -48,8 +48,8 @@ builds:
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
     #tag: ${teiid-spring-boot.tag}
     #buildCommand: ${teiid-spring-boot.buildCommand}
-    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/teiid/teiid-spring-boot.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid/teiid-spring-boot.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid-spring-boot.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
   scmRevision: teiid-spring-boot-${version.teiid-springboot}
   customPmeParameters:
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
@@ -65,8 +65,8 @@ builds:
     #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
     #tag: ${teiid-openshift-examples.tag}
     #buildCommand: ${teiid-openshift-examples.buildCommand}
-    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/teiid/teiid-openshift-examples.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid/teiid-openshift-examples.git
+  scmUrl: git+ssh://code.engineering.redhat.com/teiid/teiid-openshift-examples.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-openshift-examples.git
   scmRevision: teiid-openshift-examples-${version.teiid-openshift-examples}
   customPmeParameters:
   - '-DprojectMetaSkip=true'

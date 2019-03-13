@@ -248,6 +248,11 @@
     <teiid-spring-boot.fetch.scmUrl>1</teiid-spring-boot.fetch.scmUrl>
     <teiid-spring-boot.push.scmUrl>1</teiid-spring-boot.push.scmUrl>
     <teiid-spring-boot.buildCommand>1</teiid-spring-boot.buildCommand>
+    <version.teiid-openshift-examples>1</version.teiid-openshift-examples>
+    <teiid-openshift-examples.tag>1</teiid-openshift-examples.tag>
+    <teiid-openshift-examples.fetch.scmUrl>1</teiid-openshift-examples.fetch.scmUrl>
+    <teiid-openshift-examples.push.scmUrl>1</teiid-openshift-examples.push.scmUrl>
+    <teiid-openshift-examples.buildCommand>1</teiid-openshift-examples.buildCommand>
 
   </properties>
 

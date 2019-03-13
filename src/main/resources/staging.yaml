@@ -128,7 +128,7 @@ builds:
     - '-DdependencyExclusion.org.reactivestreams:*@*='
     - '-DdependencyOverride.org.bouncycastle:*@*='
     - '-DdependencyExclusion.org.apache.kafka:*@*='
-    - '-DdependencyExclusion.javax.ws.rs.:*@*='
+    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
 
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}

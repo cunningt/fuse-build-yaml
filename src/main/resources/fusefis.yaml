@@ -108,14 +108,15 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
   buildScript: >
-    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
-    export MAVEN_OPTS=\"-Xmx5g -XX:MaxPermSize=3048m\"
+    export JAVA_TOOL_OPTIONS=\"-Xmx2g\"
+    export MAVEN_OPTS=\"-Xmx3g -XX:MaxPermSize=3048m\"
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-DdependencyExclusion.io.vertx:*@*=3.5.1.redhat-004'
+    - '-DdependencyExclusion.org.mongodb:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
@@ -128,7 +129,8 @@ builds:
     - '-DdependencyExclusion.org.reactivestreams:*@*='
     - '-DdependencyOverride.org.bouncycastle:*@*='
     - '-DdependencyExclusion.org.apache.kafka:*@*='
-    - '-DdependencyExclusion.javax.ws.rs:*@*='
+    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
+    - '-DdependencyOverride.javax.ws.rs:*@*=3.6.3'
 
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
