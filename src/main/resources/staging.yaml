@@ -24,6 +24,8 @@ builds:
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false 
     -Dcheckstyle.skip=true clean deploy
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
+  customPmeParameters:
+  - '-DscanActiveProfiles=true'
 
 - name: karaf-4.2.0-${version.fuse.prefix}
   project: jboss-fuse/karaf
@@ -77,6 +79,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
   customPmeParameters:
+    - '-DdependencyOverride.javax.xml.bind:*@*=2.2.11'
     - '-DdependencyOverride.org.codehaus.woodstox:*@*='
     - '-DdependencyOverride.org.apache.abdera:*@*='
     - '-DdependencyOverride.javax.annotation:*@*='
