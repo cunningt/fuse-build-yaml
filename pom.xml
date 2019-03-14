@@ -26,7 +26,7 @@
   <packaging>pom</packaging>
   <name>Fuse Build YAML</name>
   <description>Fuse Build YAML descriptor generator</description>
- 
+
    <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -82,6 +82,7 @@
     <!-- build information -->
     <build.stage>CR1</build.stage>
     <build.milestone>CR1</build.milestone>
+    <port.number>49168</port.number>
 
     <!-- pom manipulation scripts version (global) -->
     <version.pom-manipulation>1.0.8.redhat-00001</version.pom-manipulation>
@@ -303,8 +304,8 @@
             </dependency>
         </dependencies>
     </plugin>
-    
-    <plugin> 
+
+    <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
         <version>3.0.0</version>

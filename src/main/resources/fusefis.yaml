@@ -214,7 +214,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio.git
   scmRevision: hawtio-${version.hawtio}-redhat
   buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
 
     sed -i 's#https://registry.yarnpkg.com/#${REG}/#g' hawtio-console-assembly/yarn.lock
 
@@ -250,7 +250,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio-online.git
   scmRevision: hawtio-online-${version.hawtio.online}-redhat
   buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49160
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
 
     sed -i 's#https://registry.yarnpkg.com/#${REG}/#g' yarn.lock
 
@@ -482,9 +482,9 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
   scmRevision: ${apicurito.tag}
   buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49223
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
 
-    sed -i 's#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49223/#g' ui/yarn.lock
+    sed -i 's#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}/#g' ui/yarn.lock
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
