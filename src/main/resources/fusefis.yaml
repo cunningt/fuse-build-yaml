@@ -110,7 +110,7 @@ builds:
   scmRevision: camel-${version.camel}
   buildScript: >
     export JAVA_TOOL_OPTIONS=\"-Xmx2g\"
-    export MAVEN_OPTS=\"-Xmx3g -XX:MaxPermSize=3048m\"
+    export MAVEN_OPTS=\"-Xmx3g\"
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml
