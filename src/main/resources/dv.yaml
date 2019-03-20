@@ -22,24 +22,15 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid.git
   scmRevision: teiid-${version.teiid}
   customPmeParameters:
+  - '-DdependencyOverride.com.fasterxml.jackson.core:*@*=2.9.8'
+  - '-DdependencyOverride.wsdl4j:wsdl4j@*=1.6.3'
+  - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
+  - '-DdependencyOverride.commons-configuration:*@*=1.6'
+  - '-DdependencyOverride.com.io7m.xom:*@*=1.2.10'
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
   buildScript: >
-     sed -i "s|<module>accumulo</module>|<!--module>accumulo</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>cassandra</module>|<!--module>cassandra</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>google</module>|<!--module>google</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>ldap</module>|<!--module>ldap</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>couchbase</module>|<!--module>couchbase</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>amazon</module>|<!--module>amazon</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>salesforce</module>|<!--module>salesforce</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>solr</module>|<!--module>solr</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>odata</module>|<!--module>odata</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>swagger</module>|<!--module>swagger</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>sandbox</module>|<!--module>sandbox</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>infinispan</module>|<!--module>infinispan</module-->|" "connectors/pom.xml"
-     sed -i "s|<module>translator-jpa</module>|<!--module>translator-jpa</module-->|" "connectors/misc/pom.xml"
-     sed -i "s|<module>translator-olap</module>|<!--module>translator-olap</module-->|" "connectors/misc/pom.xml"
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
 
 - name: teiid-spring-boot-1.0.3
@@ -52,6 +43,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
   scmRevision: teiid-spring-boot-${version.teiid-springboot}
   customPmeParameters:
+  - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
   - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
