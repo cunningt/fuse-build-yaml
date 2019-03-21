@@ -26,6 +26,7 @@ builds:
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
   customPmeParameters:
   - '-DscanActiveProfiles=true'
+  - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
 
 - name: karaf-4.2.0-${version.fuse.prefix}
   project: jboss-fuse/karaf
@@ -74,7 +75,7 @@ builds:
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #tag: ${cxf.tag}
-    #buildCommand: 1
+    #buildCommand: ${cxf.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
@@ -131,8 +132,6 @@ builds:
     - '-DdependencyOverride.org.bouncycastle:*@*='
     - '-DdependencyExclusion.org.apache.kafka:*@*='
     - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
-    - '-DdependencyOverride.javax.ws.rs:*@*=3.6.3'
-
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -215,15 +214,10 @@ builds:
   scmRevision: hawtio-${version.hawtio}-redhat
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
-
-    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/yarn.lock
-
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
     sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
-
-    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/app/yarn.lock
-
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/app/yarn.lock
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
-
     mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
@@ -251,11 +245,8 @@ builds:
   scmRevision: hawtio-online-${version.hawtio.online}-redhat
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
-
-    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" yarn.lock
-
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" yarn.lock
     sed -i 's#https:#http:#g' yarn.lock
-
     mvn -e -V -B -DskipTests -DfailIfNoTests=false
     -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
@@ -349,13 +340,19 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy'
+  buildScript: >
+    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+    export M2_HOME=/usr/share/maven
+    mvn -e -V -B -DskipTests -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-Dplugin-removal=org.ec4j.maven:editorconfig-maven-plugin'
     - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyOverride.org.codehaus.mojo:license-maven-plugin@*=1.20.jbossorg-2'
+    - '-DversionSuffixStrip=\"(.*)(.MYSUFFIX)$\"'
   dependencies:
   - fuse-components-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
@@ -422,6 +419,7 @@ builds:
   scmRevision: karaf-quickstarts-${version.karaf-quickstarts}
   customPmeParameters:
     - '-DprojectMetaSkip=true'
+    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -440,9 +438,7 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}-redhat
   buildScript: >
     mv repolist.txt repolist.txt.orig
-
     sed 's/https:\/\/github\.com/https:\/\/code.engineering.redhat.com\/gerrit/g' repolist.txt.orig > repolist.txt
-
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
@@ -483,11 +479,8 @@ builds:
   scmRevision: ${apicurito.tag}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
-
-    sed -i "s#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}/#g" ui/yarn.lock
-
+    sed -i \"s#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}/#g\" ui/yarn.lock
     sed -i 's#https:#http:#g' ui/yarn.lock
-
     mvn  -e -V -B  -DnpmRegistryURL2=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
 
 - name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
