@@ -18,7 +18,7 @@ builds:
     #pushScmUrl: ${teiid.push.scmUrl}
     #tag: ${teiid.tag}
     #buildCommand: ${teiid.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/gerrit/teiid.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid.git
   scmRevision: teiid-${version.teiid}
   customPmeParameters:
@@ -39,7 +39,7 @@ builds:
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
     #tag: ${teiid-spring-boot.tag}
     #buildCommand: ${teiid-spring-boot.buildCommand}
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/teiid-spring-boot.git
+  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/teiid-spring-boot.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
   scmRevision: teiid-spring-boot-${version.teiid-springboot}
   customPmeParameters:
@@ -57,7 +57,7 @@ builds:
     #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
     #tag: ${teiid-openshift-examples.tag}
     #buildCommand: ${teiid-openshift-examples.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/teiid/teiid-openshift-examples.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-openshift-examples.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-openshift-examples.git
   scmRevision: teiid-openshift-examples-${version.teiid-openshift-examples}
   customPmeParameters:
