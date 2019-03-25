@@ -27,11 +27,11 @@ builds:
   - '-DprojectMetaSkip=true'
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49168
-    sed -i \"s#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49223/#g\" ui/yarn.lock
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
     sed -i 's#https:#http:#g' ui/yarn.lock
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy
 
-- name: syndesis-1.6.0
+- name: syndesis-1.6.2
   project: syndesisio/syndesis
     #fetchScmUrl: ${syndesis.fetch.scmUrl}
     #pushScmUrl: ${syndesis.push.scmUrl}
@@ -48,7 +48,6 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:syndesis-updates:groovy:1.0.8.redhat-00001'
   buildScript: > 
     export MAVEN_OPTS=\"-Xmx2048m\"
     export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
@@ -56,7 +55,7 @@ builds:
     sed -i \"s#resolved \"https:\/\/registry.yarnpkg.com\/#resolved \"${REG}\/#g\" app/ui/yarn.lock
     sed -i \"s#resolved \"http:\/\/registry.npmjs.org\/#resolved \"${REG}\/#g\" app/ui/yarn.lock
     sed -i \"s#https:#http:#g\" app/ui/yarn.lock
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml
   dependencies:
   - atlasmap-1.39.5
 
