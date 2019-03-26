@@ -99,7 +99,7 @@ builds:
     - '-DdependencyOverride.org.apache.velocity:*@*='
     - '-DprojectMetaSkip=true'
   buildScript: >
-    mvn  -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy'
+    mvn  -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
   dependencies:
   - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
