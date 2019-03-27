@@ -76,7 +76,7 @@
     <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
 
-    <version.camel-k>1.0.0.fuse-730005</version.camel-k>
+    <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
 
     <!-- build information -->
@@ -222,10 +222,10 @@
     <application-templates.fetch.scmUrl>1</application-templates.fetch.scmUrl>
     <application-templates.push.scmUrl>1</application-templates.push.scmUrl>
     <application-templates.buildCommand>1</application-templates.buildCommand>
-    <camel-k.tag>DUMMY-TAG-0.0.0</camel-k.tag>
-    <camel-k.fetch.scmUrl>1</camel-k.fetch.scmUrl>
-    <camel-k.push.scmUrl>1</camel-k.push.scmUrl>
-    <camel-k.buildCommand>1</camel-k.buildCommand>
+    <camel-k-runtime.tag>DUMMY-TAG-0.0.0</camel-k-runtime.tag>
+    <camel-k-runtime.fetch.scmUrl>1</camel-k-runtime.fetch.scmUrl>
+    <camel-k-runtime.push.scmUrl>1</camel-k-runtime.push.scmUrl>
+    <camel-k-runtime.buildCommand>1</camel-k-runtime.buildCommand>
 
 
     <!-- Syndesis project -->

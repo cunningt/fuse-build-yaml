@@ -523,16 +523,16 @@ builds:
     - redhat-fuse-${version.fuse.prefix}
     - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
 
-- name: camel-k-1.0.0-${version.fuse.prefix}
-    #fetchScmUrl: ${camel-k.fetch.scmUrl}
-    #pushScmUrl: ${camel-k.push.scmUrl}
-    #tag: ${camel-k.tag}
-    #buildCommand: ${camel-k.buildCommand}
-  project: jboss-fuse/camel-k
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k.git
-  scmRevision: ${camel-k.tag}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean -f runtime/pom.xml'
+- name: camel-k-runtime-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
+    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
+    #tag: ${camel-k-runtime.tag}
+    #buildCommand: ${camel-k-runtime.buildCommand}
+  project: jboss-fuse/camel-k-runtime-${version.fuse.prefix}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
+  scmRevision: ${camel-k-runtime.tag}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
