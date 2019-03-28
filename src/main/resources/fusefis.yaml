@@ -111,10 +111,12 @@ builds:
   scmRevision: camel-${version.camel}
   buildScript: >
     export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+
     export MAVEN_OPTS=\"-Xmx4g\"
+    
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
-    !org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml
+    '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-DdependencyExclusion.io.vertx:*@*=3.5.1.redhat-004'
@@ -214,10 +216,15 @@ builds:
   scmRevision: hawtio-${version.hawtio}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
+    
     sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
+    
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/app/yarn.lock
+    
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
+    
     mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
@@ -245,8 +252,11 @@ builds:
   scmRevision: hawtio-online-${version.hawtio.online}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+    
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" yarn.lock
+    
     sed -i 's#https:#http:#g' yarn.lock
+    
     mvn -e -V -B -DskipTests -DfailIfNoTests=false
     -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
@@ -342,7 +352,9 @@ builds:
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
   buildScript: >
     export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+    
     export M2_HOME=/usr/share/maven
+    
     mvn -e -V -B -DskipTests -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
   customPmeParameters:
     - '-DprojectMetaSkip=true'
@@ -438,7 +450,9 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
     mv repolist.txt repolist.txt.orig
+    
     sed 's/https:\/\/github\.com/https:\/\/code.engineering.redhat.com\/gerrit/g' repolist.txt.orig > repolist.txt
+    
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
@@ -479,8 +493,11 @@ builds:
   scmRevision: ${apicurito.tag}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+    
     sed -i \"s#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}/#g\" ui/yarn.lock
+    
     sed -i 's#https:#http:#g' ui/yarn.lock
+    
     mvn  -e -V -B  -DnpmRegistryURL2=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
 
 - name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
