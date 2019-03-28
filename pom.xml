@@ -55,7 +55,8 @@
     <version.bom.wildfly.camel>5.1.0.fuse-000071</version.bom.wildfly.camel>
     <version.fusesource.camel.sap>7.0.1.fuse-000002</version.fusesource.camel.sap>
     <karaf.plugin.version>4.2.0.fuse-000262</karaf.plugin.version>
-
+    <narayana-spring-boot.version>1.0.3.fuse-730042</narayana-spring-boot.version>
+    <spring-boot-camel-xa.version>1.0.0.fuse-730038</spring-boot-camel-xa.version>
     <application-templates.version>2.1.fuse-000091</application-templates.version>
     <fuse-bom.version>7.1.0.fuse-000005</fuse-bom.version>
     <version.hawtio>2.0.0.fuse-000186</version.hawtio>

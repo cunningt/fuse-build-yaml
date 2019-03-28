@@ -176,7 +176,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wsdl2rest.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/wsdl2rest.git
-  scmRevision: wsdl2rest-${version.wsdl2rest}-redhat
+  scmRevision: wsdl2rest-${version.wsdl2rest}
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
@@ -191,7 +191,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-components.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-components.git
-  scmRevision: fuse-components-${version.fusesource.camel.sap}-redhat
+  scmRevision: fuse-components-${version.fusesource.camel.sap}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
@@ -211,7 +211,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio.git
-  scmRevision: hawtio-${version.hawtio}-redhat
+  scmRevision: hawtio-${version.hawtio}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
@@ -242,7 +242,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-online.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio-online.git
-  scmRevision: hawtio-online-${version.hawtio.online}-redhat
+  scmRevision: hawtio-online-${version.hawtio.online}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" yarn.lock
@@ -435,7 +435,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
   externalScmUrl: ssh://git@github.com/fabric8io/karaf-quickstarts.git
-  scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}-redhat
+  scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
     mv repolist.txt repolist.txt.orig
     sed 's/https:\/\/github\.com/https:\/\/code.engineering.redhat.com\/gerrit/g' repolist.txt.orig > repolist.txt
@@ -504,7 +504,7 @@ builds:
   project: jboss-fuse/narayana-spring-boot
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/narayana-spring-boot.git
-  scmRevision: ${narayana-spring-boot.tag}
+  scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
@@ -517,7 +517,7 @@ builds:
   project: jboss-fuse/spring-boot-camel-xa
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
-  scmRevision: ${spring-boot-camel-xa.tag}
+  scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
