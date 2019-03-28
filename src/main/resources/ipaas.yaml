@@ -1,13 +1,13 @@
 product:
   name: Red Hat iPaas
   abbreviation: Fuse-iPaaS
-  stage: CR*
+  stage: ${build.stage}
   issueTrackerUrl: https://github.com/syndesisio/syndesis/issues
 version: ${version.fuse.prefix}
-milestone: ${version.sprint.milestone}
+milestone: ${build.milestone}
 group: Fuse iPaaS ${version.fuse.prefix}
 defaultBuildParameters:
-  environmentId: 1
+  environmentId: 7
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
