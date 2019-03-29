@@ -66,7 +66,7 @@ builds:
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml
   dependencies:
-  - atlasmap-1.39.5
+  - atlasmap-1.39.6
 
 outputPrefixes:
   releaseFile: ipaas-test
