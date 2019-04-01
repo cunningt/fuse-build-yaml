@@ -39,7 +39,7 @@ builds:
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dcheckstyle.skip=true clean deploy
   scmRevision: karaf-${version.karaf}
   customPmeParameters:
-  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
+  - '-DdependencyOverride.com.sun.xml.bind:*@*='
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
 
@@ -85,7 +85,7 @@ builds:
   scmRevision: cxf-${version.cxf}
   customPmeParameters:
     - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
-    - '-DdependencyOverride.javax.xml.bind:*@*=2.2.11'
+    - '-DdependencyOverride.javax.xml.bind:*@*='
     - '-DdependencyOverride.org.codehaus.woodstox:*@*='
     - '-DdependencyOverride.org.apache.abdera:*@*='
     - '-DdependencyOverride.javax.annotation:*@*='
@@ -131,7 +131,7 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyExclusion.com.sun.xml.bind:*@*=2.2.11.redhat-4'
+    - '-DdependencyExclusion.com.sun.xml.bind:*@*='
     - '-DdependencyExclusion.com.github.everit-org.json-schema:*@*=1.6.0.redhat-1'
     - '-DdependencyExclusion.org.codehaus.woodstox:*@*='
     - '-DdependencyExclusion.org.apache.abdera:*@*='
@@ -183,7 +183,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/wsdl2rest.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/wsdl2rest.git
-  scmRevision: wsdl2rest-${version.wsdl2rest}-redhat
+  scmRevision: wsdl2rest-${version.wsdl2rest}
   customPmeParameters:
     - '-DprojectMetaSkip=true'
   dependencies:
@@ -198,7 +198,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/fuse-components.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-components.git
-  scmRevision: fuse-components-${version.fusesource.camel.sap}-redhat
+  scmRevision: fuse-components-${version.fusesource.camel.sap}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
@@ -217,7 +217,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/hawtio.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio.git
-  scmRevision: hawtio-${version.hawtio}-redhat
+  scmRevision: hawtio-${version.hawtio}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
 
@@ -253,7 +253,7 @@ builds:
     #cherrypick: true
   scmUrl: git+ssh://code.stage.engineering.redhat.com/hawtio/hawtio-online.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio-online.git
-  scmRevision: hawtio-online-${version.hawtio.online}-redhat
+  scmRevision: hawtio-online-${version.hawtio.online}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
     
