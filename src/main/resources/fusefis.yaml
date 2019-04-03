@@ -80,7 +80,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
   customPmeParameters:
-    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
+    - '-DdependencyExclusion.javax.ws.rs:*@*=2.1.1'
     - '-DdependencyOverride.javax.xml.bind:*@*='
     - '-DdependencyOverride.org.codehaus.woodstox:*@*='
     - '-DdependencyOverride.org.apache.abdera:*@*='
