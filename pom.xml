@@ -83,8 +83,8 @@
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
 
     <!-- build information -->
-    <build.stage>CR1</build.stage>
-    <build.milestone>CR1</build.milestone>
+    <build.stage>CR2</build.stage>
+    <build.milestone>CR2</build.milestone>
     <port.number>49168</port.number>
 
     <!-- pom manipulation scripts version (global) -->

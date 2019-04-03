@@ -5,7 +5,7 @@ product:
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}
-group: Fuse Standalone and FIS 7.3
+group: Fuse Standalone and FIS 7.3 ${build.milestone}
 defaultBuildParameters:
   environmentId: 1
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
@@ -334,7 +334,7 @@ builds:
     #pushScmUrl: ${fuse-patch.push.scmUrl}
     #tag: ${fuse-patch.tag}
     #buildCommand: ${fuse-patch.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-patch.git
+  scmUrl: git+ssh://code.engineering.redhat.com/fuse-patch.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
   customPmeParameters:
