@@ -409,6 +409,48 @@
       </plugin>
 
       <plugin>
+        <groupId>com.coderplus.maven.plugins</groupId>
+        <artifactId>copy-rename-maven-plugin</artifactId>
+        <version>1.0</version>
+        <executions>
+          <execution>
+            <id>copy-file</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <sourceFile>target/extra-resources/fusefis.yaml</sourceFile>
+              <destinationFile>target/extra-resources/staging.yaml</destinationFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+       <groupId>com.google.code.maven-replacer-plugin</groupId>
+       <artifactId>maven-replacer-plugin</artifactId>
+       <version>1.3.7</version>
+       <executions>
+           <execution>
+               <phase>prepare-package</phase>
+               <goals>
+                   <goal>replace</goal>
+               </goals>
+           </execution>
+       </executions>
+       <configuration>
+           <file>target/extra-resources/staging.yaml</file>
+           <replacements>
+               <replacement>
+                   <token>code.engineering</token>
+                   <value>code.stage.engineering</value>
+               </replacement>
+           </replacements>
+       </configuration>
+      </plugin>
+
+      <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.1.0</version>
         <executions>
