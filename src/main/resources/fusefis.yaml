@@ -446,7 +446,7 @@ builds:
     #buildCommand: ${ipaas-quickstarts.buildCommand}
     #cherrypick: true
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
-  externalScmUrl: ssh://git@github.com/fabric8io/karaf-quickstarts.git
+  externalScmUrl: ssh://git@github.com/fabric8io/ipaas-quickstarts.git
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
     mv repolist.txt repolist.txt.orig
