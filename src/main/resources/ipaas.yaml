@@ -22,9 +22,9 @@ builds:
   scmUrl: git+ssh://code.stage.engineering.redhat.com/atlasmap/atlasmap.git
   scmRevision: atlasmap-${version.atlasmap}
   customPmeParameters:
-  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
-  - '-DdependencyOverride.org.ow2.asm:*@*='
-  - '-DprojectMetaSkip=true'
+    - '-DdependencyExclusion.com.sun.xml.bind:*@*='
+    - '-DdependencyOverride.org.ow2.asm:*@*='
+    - '-DprojectMetaSkip=true'
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49168
 

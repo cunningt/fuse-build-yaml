@@ -27,7 +27,7 @@ builds:
   - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
   - '-DdependencyOverride.commons-configuration:*@*=1.6'
   - '-DdependencyOverride.com.io7m.xom:*@*=1.2.10'
-  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
+  - '-DdependencyExclusion.com.sun.xml.bind:*@*='
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
   buildScript: >
@@ -44,7 +44,7 @@ builds:
   scmRevision: teiid-spring-boot-${version.teiid-springboot}
   customPmeParameters:
   - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
-  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
+  - '-DdependencyExclusion.com.sun.xml.bind:*@*='
   - '-DdependencyOverride.org.ow2.asm:*@*='
   - '-DprojectMetaSkip=true'
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
