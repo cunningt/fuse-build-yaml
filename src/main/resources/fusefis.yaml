@@ -549,7 +549,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: ${camel-k-runtime.tag}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Prelease -Dtest=false -P clean deploy -DskipClean'
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
