@@ -80,7 +80,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
   customPmeParameters:
-    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
+    - '-DdependencyExclusion.javax.ws.rs:*@*=2.1.1'
     - '-DdependencyOverride.javax.xml.bind:*@*='
     - '-DdependencyOverride.org.codehaus.woodstox:*@*='
     - '-DdependencyOverride.org.apache.abdera:*@*='
@@ -476,6 +476,8 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
     - '-DdependencyExclusion.org.glassfish.web:*@*='
+    - '-DdependencyExclusion.javax.ws.rs:*@*=2.1.1'
+    - '-DdependencyExclusion.org.apache.activemq:*@*='
   dependencies:
   - docker-maven-plugin-0.23.0-${version.fuse.prefix}
   - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
