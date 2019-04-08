@@ -135,6 +135,7 @@ builds:
     - '-DdependencyExclusion.org.apache.kafka:*@*='
     - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
     - '-DdependencyExclusion.io.reactivex.rxjava2:*@*='
+    - '-DdependencyExclusion.org.apache.activemq:*@*='
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -285,6 +286,7 @@ builds:
     - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
     - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
     - '-DdependencyOverride.org.bouncycastle:*@*='
+    - '-DdependencyExclusion.org.apache.activemq:*@*='
   dependencies:
   - fuse-components-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
