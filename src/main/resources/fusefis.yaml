@@ -420,6 +420,7 @@ builds:
     - '-DprojectMetaSkip=true'
   dependencies:
   - wildfly-camel-5.3.0-${version.fuse.prefix}
+  - wildfly-camel-examples-5.3.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
 
 - name: karaf-quickstarts-${version.fuse.prefix}
