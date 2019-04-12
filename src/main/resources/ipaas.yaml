@@ -19,7 +19,7 @@ builds:
     #tag: ${atlasmap.tag}
     #buildCommand: ${atlasmap.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/atlasmap/atlasmap.git
+  scmUrl: git+ssh://code.engineering.redhat.com/atlasmap/atlasmap.git
   scmRevision: atlasmap-${version.atlasmap}
   customPmeParameters:
     - '-DdependencyExclusion.com.sun.xml.bind:*@*='
@@ -41,7 +41,7 @@ builds:
     #tag: ${syndesis.tag}
     #buildCommand: ${syndesis.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/syndesisio/syndesis.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/syndesisio/syndesis.git
+  scmUrl: git+ssh://code.engineering.redhat.com/syndesisio/syndesis.git
   scmRevision: syndesis-${version.syndesis}
   customPmeParameters:
     - '-DprojectMetaSkip=true'

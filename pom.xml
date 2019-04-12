@@ -414,7 +414,7 @@
         <version>1.0</version>
         <executions>
           <execution>
-            <id>copy-file</id>
+            <id>copy-file-fusefis</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>copy</goal>
@@ -422,6 +422,28 @@
             <configuration>
               <sourceFile>target/extra-resources/fusefis.yaml</sourceFile>
               <destinationFile>target/extra-resources/staging.yaml</destinationFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-file-ipaas</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <sourceFile>target/extra-resources/ipaas.yaml</sourceFile>
+              <destinationFile>target/extra-resources/ipaas-staging.yaml</destinationFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-file-dv</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <sourceFile>target/extra-resources/dv.yaml</sourceFile>
+              <destinationFile>target/extra-resources/dv-staging.yaml</destinationFile>
             </configuration>
           </execution>
         </executions>
@@ -440,7 +462,11 @@
            </execution>
        </executions>
        <configuration>
-           <file>target/extra-resources/staging.yaml</file>
+          <includes>
+            <include>target/extra-resources/staging.yaml</include>
+            <include>target/extra-resources/ipaas-staging.yaml</include>
+            <include>target/extra-resources/dv-staging.yaml</include>
+          </includes>
            <replacements>
                <replacement>
                    <token>code.engineering</token>

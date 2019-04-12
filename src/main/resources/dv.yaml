@@ -39,7 +39,7 @@ builds:
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
     #tag: ${teiid-spring-boot.tag}
     #buildCommand: ${teiid-spring-boot.buildCommand}
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/jboss-fuse/teiid-spring-boot.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-spring-boot.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
   scmRevision: teiid-spring-boot-${version.teiid-springboot}
   customPmeParameters:
