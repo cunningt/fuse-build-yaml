@@ -205,12 +205,10 @@ builds:
 
     find . -name \"MANIFEST.MF\" -print | xargs sed -i \"s/Bundle-Version: $STRIPVERSION/Bundle-Version: $VERSION/g\"
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy'
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
   customPmeParameters:
     - '-DprojectMetaSkip=true'
     - '-Drepo-reporting-removal=true'
-    - '-DgroovyManipulationPrecedence=FIRST'
-    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:manifest-version-update:groovy:${version.pom-manipulation}'
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
 
@@ -244,8 +242,6 @@ builds:
   customPmeParameters:
     - '-DdependencyOverride.com.fasterxml.jackson.core:*@*='
     - '-DprojectMetaSkip=true'
-    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:yarn-config-groovy:groovy:${version.pom-manipulation}'
-    - '-DgroovyManipulationPrecedence=FIRST'
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -413,6 +409,7 @@ builds:
     - '-DprojectMetaSkip=true'
     - '-DdependencyRemoval=org.wildfly.camel.example:example-camel-rest-swagger'
   dependencies:
+  - redhat-fuse-${version.fuse.prefix}
   - wildfly-camel-5.3.0-${version.fuse.prefix}
 
 - name: fuse-eap-${version.fuse.prefix}
@@ -562,7 +559,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: ${camel-k-runtime.tag}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Prelease -Dtest=false -P clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false -P clean deploy -DskipClean'
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
