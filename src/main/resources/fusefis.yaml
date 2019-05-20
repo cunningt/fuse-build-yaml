@@ -94,6 +94,7 @@ builds:
     - '-DdependencyOverride.org.bouncycastle:*@*='
     - '-DdependencyOverride.org.apache.velocity:*@*='
     - '-DprojectMetaSkip=true'
+  buildPodMemory: 8
   buildScript: >
     mvn -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
   dependencies:
@@ -109,6 +110,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
+  buildPodMemory: 12
   buildScript: >
     export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
 
