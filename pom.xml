@@ -85,7 +85,7 @@
     <!-- build information -->
     <build.stage>CR1</build.stage>
     <build.milestone>CR1</build.milestone>
-    <port.number>49168</port.number>
+    <port.number>49159</port.number>
 
     <!-- pom manipulation scripts version (global) -->
     <version.pom-manipulation>1.0.8.redhat-00001</version.pom-manipulation>

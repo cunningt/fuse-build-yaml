@@ -26,7 +26,7 @@ builds:
     - '-DdependencyOverride.org.ow2.asm:*@*='
     - '-DprojectMetaSkip=true'
   buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49168
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49159
 
     sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
 
