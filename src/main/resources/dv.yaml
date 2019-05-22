@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: teiid-12.1.0
+- name: teiid-12.2.0
   project: teiid/teiid
     #fetchScmUrl: ${teiid.fetch.scmUrl}
     #pushScmUrl: ${teiid.push.scmUrl}
@@ -33,7 +33,7 @@ builds:
   buildScript: >
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
 
-- name: teiid-spring-boot-1.0.3
+- name: teiid-spring-boot-1.1.0
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
@@ -49,9 +49,9 @@ builds:
   - '-DprojectMetaSkip=true'
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
-  - teiid-12.1.0
+  - teiid-12.2.0
 
-- name: teiid-openshift-examples-1.0.0
+- name: teiid-openshift-examples-1.1.0
   project: teiid/teiid-openshift-examples
     #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
     #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
@@ -64,7 +64,7 @@ builds:
   - '-DprojectMetaSkip=true'
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
   dependencies:
-  - teiid-spring-boot-1.0.3
+  - teiid-spring-boot-1.1.0
 
 outputPrefixes:
   releaseFile: dv-test
