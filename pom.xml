@@ -43,6 +43,7 @@
     <version.fuse.prefix>7.4.0</version.fuse.prefix>
     <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
+    <dollar>$</dollar>
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
     <version.syndesis>1.6.4.fuse-730002</version.syndesis>
     <version.atlasmap>1.39.6.fuse-73000</version.atlasmap>
