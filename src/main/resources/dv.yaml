@@ -66,6 +66,63 @@ builds:
   dependencies:
   - teiid-spring-boot-1.1.0
 
+- name: modeshape-5.4.1
+  project: modeshape/modeshape
+    #fetchScmUrl: ${modeshape.fetch.scmUrl}
+    #pushScmUrl: ${modeshape.push.scmUrl}
+    #tag: ${modeshape.tag}
+    #buildCommand: ${modeshape.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/modeshape.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/modeshape.git
+  scmRevision: modeshape-${version.modeshape}
+  customPmeParameters:
+  - '-DdependencyOverride.com.fasterxml.jackson.core:*@*=2.9.8'
+  - '-DdependencyOverride.wsdl4j:wsdl4j@*=1.6.3'
+  - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
+  - '-DdependencyOverride.commons-configuration:*@*=1.6'
+  - '-DdependencyOverride.com.io7m.xom:*@*=1.2.10'
+  - '-DdependencyExclusion.com.sun.xml.bind:*@*='
+  - '-DdependencyOverride.org.ow2.asm:*@*='
+  - '-DprojectMetaSkip=true'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy -Passembly'
+
+- name: teiid-modeshape-1.0.1
+  project: teiid/teiid-modeshape
+    #fetchScmUrl: ${teiid-modeshape.fetch.scmUrl}
+    #pushScmUrl: ${teiid-modeshape.push.scmUrl}
+    #tag: ${teiid-modeshape.tag}
+    #buildCommand: ${teiid-modeshape.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-modeshape.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-modeshape.git
+  scmRevision: teiid-modeshape-${version.teiid-modeshape}
+  customPmeParameters:
+  - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
+  - '-DdependencyExclusion.com.sun.xml.bind:*@*='
+  - '-DdependencyOverride.org.ow2.asm:*@*='
+  - '-DprojectMetaSkip=true'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy'
+  dependencies:
+  - modeshape-5.4.1
+  
+- name: teiid-komodo-0.0.5
+  project: teiid/teiid-komodo
+    #fetchScmUrl: ${teiid-komodo.fetch.scmUrl}
+    #pushScmUrl: ${teiid-komodo.push.scmUrl}
+    #tag: ${teiid-komodo.tag}
+    #buildCommand: ${teiid-komodo.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-komodo.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-komodo.git
+  scmRevision: teiid-komodo-${version.teiid-komodo}
+  customPmeParameters:
+  - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
+  - '-DdependencyExclusion.com.sun.xml.bind:*@*='
+  - '-DdependencyOverride.org.ow2.asm:*@*='
+  - '-DprojectMetaSkip=true'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Dskip=true -Prelease clean deploy'
+  dependencies:
+  - modeshape-5.4.1
+  - teiid-modeshape-1.0.1   
+  
 outputPrefixes:
   releaseFile: dv-test
   releaseDir: dv-test
