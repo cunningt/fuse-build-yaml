@@ -263,6 +263,19 @@
     <teiid-komodo.fetch.scmUrl>1</teiid-komodo.fetch.scmUrl>
     <teiid-komodo.push.scmUrl>1</teiid-komodo.push.scmUrl>
     <teiid-komodo.buildCommand>1</teiid-komodo.buildCommand>
+
+    <version.modeshape>1</version.modeshape>
+    <modeshape.tag>1</modeshape.tag>
+    <modeshape.fetch.scmUrl>1</modeshape.fetch.scmUrl>
+    <modeshape.push.scmUrl>1</modeshape.push.scmUrl>
+    <modeshape.buildCommand>1</modeshape.buildCommand>
+
+    <version.teiid-modeshape>1</version.teiid-modeshape>
+    <teiid-modeshape.tag>1</teiid-modeshape.tag>
+    <teiid-modeshape.fetch.scmUrl>1</teiid-modeshape.fetch.scmUrl>
+    <teiid-modeshape.push.scmUrl>1</teiid-modeshape.push.scmUrl>
+    <teiid-modeshape.buildCommand>1</teiid-modeshape.buildCommand>
+
   </properties>
 
   <build>
