@@ -258,7 +258,11 @@
     <teiid-openshift-examples.fetch.scmUrl>1</teiid-openshift-examples.fetch.scmUrl>
     <teiid-openshift-examples.push.scmUrl>1</teiid-openshift-examples.push.scmUrl>
     <teiid-openshift-examples.buildCommand>1</teiid-openshift-examples.buildCommand>
-
+    <version.teiid-komodo>1</version.teiid-komodo>
+    <teiid-komodo.tag>1</teiid-komodo.tag>
+    <teiid-komodo.fetch.scmUrl>1</teiid-komodo.fetch.scmUrl>
+    <teiid-komodo.push.scmUrl>1</teiid-komodo.push.scmUrl>
+    <teiid-komodo.buildCommand>1</teiid-komodo.buildCommand>
   </properties>
 
   <build>
