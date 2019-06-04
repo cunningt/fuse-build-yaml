@@ -37,11 +37,11 @@ builds:
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
-    #tag: ${teiid-spring-boot.tag}
+    #tag: teiid-spring-boot-${version.teiid.springboot}
     #buildCommand: ${teiid-spring-boot.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-spring-boot.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
-  scmRevision: teiid-spring-boot-${version.teiid-springboot}
+  scmRevision: teiid-spring-boot-${version.teiid.springboot}
   customPmeParameters:
   - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
   - '-DdependencyExclusion.com.sun.xml.bind:*@*='
@@ -70,7 +70,7 @@ builds:
   project: modeshape/modeshape
     #fetchScmUrl: ${modeshape.fetch.scmUrl}
     #pushScmUrl: ${modeshape.push.scmUrl}
-    #tag: ${modeshape.tag}
+    #tag: modeshape-${version.modeshape}
     #buildCommand: ${modeshape.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/modeshape.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/modeshape.git
@@ -90,7 +90,7 @@ builds:
   project: teiid/teiid-modeshape
     #fetchScmUrl: ${teiid-modeshape.fetch.scmUrl}
     #pushScmUrl: ${teiid-modeshape.push.scmUrl}
-    #tag: ${teiid-modeshape.tag}
+    #tag: teiid-modeshape-${version.teiid-modeshape}
     #buildCommand: ${teiid-modeshape.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-modeshape.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-modeshape.git
@@ -108,7 +108,7 @@ builds:
   project: teiid/teiid-komodo
     #fetchScmUrl: ${teiid-komodo.fetch.scmUrl}
     #pushScmUrl: ${teiid-komodo.push.scmUrl}
-    #tag: ${teiid-komodo.tag}
+    #tag: teiid-komodo-${version.teiid-komodo}
     #buildCommand: ${teiid-komodo.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-komodo.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-komodo.git
