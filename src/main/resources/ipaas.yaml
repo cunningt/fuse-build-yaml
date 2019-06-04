@@ -16,7 +16,7 @@ builds:
   project: atlasmap/atlasmap
     #fetchScmUrl: ${atlasmap.fetch.scmUrl}
     #pushScmUrl: ${atlasmap.push.scmUrl}
-    #tag: ${atlasmap.tag}
+    #tag: atlasmap-${version.atlasmap}
     #buildCommand: ${atlasmap.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
   scmUrl: git+ssh://code.engineering.redhat.com/atlasmap/atlasmap.git
