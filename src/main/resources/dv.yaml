@@ -7,7 +7,7 @@ version: ${version.fuse.prefix}
 milestone: ${version.sprint.milestone}
 group: Fuse DV ${version.fuse.prefix}
 defaultBuildParameters:
-  environmentId: 1
+  environmentId: 7
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
