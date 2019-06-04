@@ -50,7 +50,7 @@ builds:
     #buildCommand: ${kubernetes-model.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
 
 - name: kubernetes-client-3.1.12-${version.fuse.prefix}
@@ -387,7 +387,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/redhat-fuse.git
   scmRevision: redhat-fuse-${fuse-bom.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy -DskipClean'
   customPmeParameters:
     - '-DprojectMetaSkip=true'
@@ -521,7 +521,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-apicurito-generator.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
   scmRevision: ${fuse-apicurito-generator.tag}
-  buildScript: mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean
+  buildScript: mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
@@ -547,7 +547,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
   scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
     - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
@@ -561,14 +561,14 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: ${camel-k-runtime.tag}
-  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false -P clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
 #- name: application-templates-2.1-${version.fuse.prefix}
 #  project: jboss-fuse/application-templates
 #  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
-#  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+#  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
 #    install '
 #  scmRevision: application-templates-${version.application.templates}
 

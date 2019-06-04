@@ -5,7 +5,7 @@ product:
   issueTrackerUrl: https://github.com/teiid/teiid/issues
 version: ${version.fuse.prefix}
 milestone: ${version.sprint.milestone}
-group: Fuse DV
+group: Fuse DV ${version.fuse.prefix}
 defaultBuildParameters:
   environmentId: 1
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
