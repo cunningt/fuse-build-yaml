@@ -85,6 +85,7 @@ builds:
   - '-DdependencyOverride.com.io7m.xom:*@*=1.2.10'
   - '-DdependencyExclusion.com.sun.xml.bind:*@*='
   - '-DdependencyOverride.org.ow2.asm:*@*='
+  - '-DdependencyOverride.org.jboss.ironjacamar:*@*='
   - '-DprojectMetaSkip=true'
   buildPodMemory: 12
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy -Passembly'
