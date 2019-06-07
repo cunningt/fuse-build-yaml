@@ -37,11 +37,11 @@ builds:
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
-    #tag: teiid-spring-boot-${version.teiid.spring-boot}
+    #tag: teiid-spring-boot-${version.teiid-spring-boot}
     #buildCommand: ${teiid-spring-boot.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-spring-boot.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
-  scmRevision: teiid-spring-boot-${version.teiid.spring-boot}
+  scmRevision: teiid-spring-boot-${version.teiid-spring-boot}
   customPmeParameters:
   - '-DdependencyOverride.org.jboss.logging:jboss-logging@*=3.3.2.Final'
   - '-DdependencyExclusion.com.sun.xml.bind:*@*='

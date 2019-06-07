@@ -248,7 +248,7 @@
     <teiid.fetch.scmUrl>1</teiid.fetch.scmUrl>
     <teiid.push.scmUrl>1</teiid.push.scmUrl>
     <teiid.buildCommand>1</teiid.buildCommand>
-    <version.teiid.springboot>1</version.teiid.springboot>
+    <version.teiid-spring-boot>1</version.teiid-spring-boot>
     <teiid-spring-boot.tag>DUMMY-TAG-0.0.0</teiid-spring-boot.tag>
     <teiid-spring-boot.fetch.scmUrl>1</teiid-spring-boot.fetch.scmUrl>
     <teiid-spring-boot.push.scmUrl>1</teiid-spring-boot.push.scmUrl>
