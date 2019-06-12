@@ -25,8 +25,7 @@ builds:
     -Dcheckstyle.skip=true clean deploy
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
   customPmeParameters:
-  - '-DscanActiveProfiles=true'
-  - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
+    ${cxf-xjc-utils.pme.options}
 
 - name: karaf-4.2.0-${version.fuse.prefix}
   project: jboss-fuse/karaf
@@ -38,9 +37,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/karaf.git
   scmRevision: karaf-${version.karaf}
   customPmeParameters:
-  - '-DdependencyExclusion.com.sun.xml.bind:*@*='
-  - '-DdependencyOverride.org.ow2.asm:*@*='
-  - '-DprojectMetaSkip=true'
+    ${karaf.pme.options}
 
 - name: kubernetes-model-2.0.10-${version.fuse.prefix}
   project: jboss-fuse/kubernetes-model
@@ -52,6 +49,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
+  customPmeParameters:
+    ${kubernetes-model.pme.options}
 
 - name: kubernetes-client-3.1.12-${version.fuse.prefix}
   project: jboss-fuse/kubernetes-client
@@ -63,10 +62,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
   scmRevision: kubernetes-client-${version.kubernetes.client}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+    ${kubernetes-client.pme.options}
   dependencies:
   - kubernetes-model-2.0.10-${version.fuse.prefix}
 
@@ -80,20 +76,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
   customPmeParameters:
-    - '-DdependencyExclusion.javax.ws.rs:*@*=2.1.1'
-    - '-DdependencyOverride.javax.xml.bind:*@*='
-    - '-DdependencyOverride.org.codehaus.woodstox:*@*='
-    - '-DdependencyOverride.org.apache.abdera:*@*='
-    - '-DdependencyOverride.javax.annotation:*@*='
-    - '-DdependencyOverride.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
-    - '-DdependencyOverride.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
-    - '-DdependencyOverride.com.fasterxml.jackson.dataformat:*@*='
-    - '-DdependencyOverride.com.fasterxml.jackson.datatype:*@*='
-    - '-DdependencyOverride.org.bouncycastle:*@*='
-    - '-DdependencyOverride.org.apache.velocity:*@*='
-    - '-DprojectMetaSkip=true'
+    ${cxf.pme.options}
   buildPodMemory: 8
   buildScript: >
     mvn -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
@@ -120,24 +103,7 @@ builds:
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-DdependencyExclusion.io.vertx:*@*=3.5.1.redhat-004'
-    - '-DdependencyExclusion.org.mongodb:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyExclusion.com.sun.xml.bind:*@*='
-    - '-DdependencyExclusion.com.github.everit-org.json-schema:*@*=1.6.0.redhat-1'
-    - '-DdependencyExclusion.org.codehaus.woodstox:*@*='
-    - '-DdependencyExclusion.org.apache.abdera:*@*='
-    - '-DdependencyExclusion.org.reactivestreams:*@*='
-    - '-DdependencyOverride.org.bouncycastle:*@*='
-    - '-DdependencyExclusion.org.apache.kafka:*@*='
-    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
-    - '-DdependencyExclusion.io.reactivex.rxjava2:*@*='
-    - '-DdependencyExclusion.org.apache.activemq:*@*='
+    ${camel.pme.options}
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -154,7 +120,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-extra.git
   scmRevision: camel-extra-${version.camel.extra}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
+    ${camel-extra.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
 
@@ -168,7 +134,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-extras-distro.git
   scmRevision: fuse-extras-distro-${version.fuse.extras.distro}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
+    ${fuse-extras.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
   - cxf-3.2.7-${version.fuse.prefix}
@@ -184,7 +150,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/wsdl2rest.git
   scmRevision: wsdl2rest-${version.wsdl2rest}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
+    ${wsdl2rest.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
 
@@ -209,8 +175,7 @@ builds:
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-Drepo-reporting-removal=true'
+    ${fuse-components.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
 
@@ -242,8 +207,7 @@ builds:
     -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass
     deploy
   customPmeParameters:
-    - '-DdependencyOverride.com.fasterxml.jackson.core:*@*='
-    - '-DprojectMetaSkip=true'
+    ${hawtio.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -272,7 +236,7 @@ builds:
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     clean deploy
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
+    ${hawtio-online.pme.options}
   dependencies:
   - hawtio-2.0.0-${version.fuse.prefix}
 
@@ -288,12 +252,7 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
     clean deploy '
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
-    - '-DdependencyOverride.org.bouncycastle:*@*='
-    - '-DdependencyExclusion.org.apache.activemq:*@*='
+    ${fuse-karaf.pme.options}
   dependencies:
   - fuse-components-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -309,6 +268,8 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-cloud-kubernetes.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-cloud-kubernetes.git
   scmRevision: spring-cloud-kubernetes-${version.spring-cloud-kubernetes}
+  customPmeParameters:
+    ${spring-cloud-kubernetes.pme.options}
   dependencies:
   - kubernetes-client-3.1.12-${version.fuse.prefix}
 
@@ -321,6 +282,8 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/docker-maven-plugin.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/docker-maven-plugin.git
   scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
+  customPmeParameters:
+    ${docker-maven-plugin.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
 - name: fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
@@ -334,6 +297,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8-maven-plugin.git
   scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  customPmeParameters:
+    ${fabric8-maven-plugin.pme.options}
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
 
@@ -347,8 +312,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-Dplugin-removal=org.ec4j.maven:editorconfig-maven-plugin'
+    ${fuse-patch.pme.options}
 
 - name: wildfly-camel-5.3.0-${version.fuse.prefix}
   project: jboss-fuse/wildfly-camel
@@ -366,14 +330,7 @@ builds:
     
     mvn -e -V -B -DskipTests -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-Dplugin-removal=org.ec4j.maven:editorconfig-maven-plugin'
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
-    - '-DdependencyOverride.org.codehaus.mojo:license-maven-plugin@*=1.20.jbossorg-2'
-    - '-DversionSuffixStrip=\"(.*)(.MYSUFFIX)$\"'
+    ${wildfly-camel.pme.options}
   dependencies:
   - fuse-components-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
@@ -390,7 +347,7 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy -DskipClean'
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
+    ${redhat-fuse.pme.options}
   dependencies:
   - fuse-karaf-${version.fuse.prefix}
   - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
@@ -408,8 +365,7 @@ builds:
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-DdependencyRemoval=org.wildfly.camel.example:example-camel-rest-swagger'
+    ${wildfly-camel-examples.pme.options}
   dependencies:
   - redhat-fuse-${version.fuse.prefix}
   - wildfly-camel-5.3.0-${version.fuse.prefix}
@@ -424,7 +380,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-eap.git
   scmRevision: fuse-eap-${version.fuse.eap}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
+    ${fuse-eap.pme.options}
   dependencies:
   - wildfly-camel-5.3.0-${version.fuse.prefix}
   - wildfly-camel-examples-5.3.0-${version.fuse.prefix}
@@ -440,8 +396,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/karaf-quickstarts.git
   scmRevision: karaf-quickstarts-${version.karaf-quickstarts}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
+    ${karaf-quickstarts.pme.options}
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
   - karaf-4.2.0-${version.fuse.prefix}
@@ -460,6 +415,8 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
+  customPmeParameters:
+    ${ipaas-quickstarts.pme.options}
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
@@ -474,16 +431,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
   customPmeParameters:
-    - '-DprofileInjection=org.jboss.fuse.pom-manipulation:fabric8-profiles:${version.pom-manipulation}'
-    - '-DprojectMetaSkip=true'
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
-    - '-DdependencyExclusion.org.glassfish.web:*@*='
-    - '-DdependencyExclusion.javax.ws.rs:*@*=2.1.1'
-    - '-DdependencyExclusion.org.apache.activemq:*@*='
+    ${fabric8v2.pme.options}
   dependencies:
   - docker-maven-plugin-0.23.0-${version.fuse.prefix}
   - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
@@ -498,7 +446,9 @@ builds:
     #buildCommand: ${apicurito.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurito.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
-  scmRevision: ${apicurito.tag}
+  scmRevision: ${apicurito.tag} 
+  customPmeParameters:
+    ${apicurito.pme.options}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
     
@@ -518,6 +468,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
   scmRevision: ${fuse-apicurito-generator.tag}
   buildScript: mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
+  customPmeParameters:
+    ${fuse-apicurito-generator.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
@@ -531,6 +483,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/narayana-spring-boot.git
   scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
+  customPmeParameters:
+    ${narayana-spring-boot-quickstart.pme.options}
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
@@ -544,6 +498,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
   scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    ${spring-boot-camel-xa.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
     - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
@@ -558,6 +514,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: ${camel-k-runtime.tag}
   buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    ${camel-k-runtime.pme.options}
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
