@@ -22,9 +22,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/atlasmap/atlasmap.git
   scmRevision: atlasmap-${version.atlasmap}
   customPmeParameters:
-    - '-DdependencyExclusion.com.sun.xml.bind:*@*='
-    - '-DdependencyOverride.org.ow2.asm:*@*='
-    - '-DprojectMetaSkip=true'
+    ${atlasmap.pme.options}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49159
 
@@ -44,13 +42,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/syndesisio/syndesis.git
   scmRevision: syndesis-${version.syndesis}
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '--file=app/pom.xml'
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+    ${syndesis.pme.options}
   buildScript: > 
     export MAVEN_OPTS=\"-Xmx2048m\"
 
