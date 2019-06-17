@@ -22,7 +22,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/atlasmap/atlasmap.git
   scmRevision: atlasmap-${version.atlasmap}
   customPmeParameters:
-    ${atlasmap.pme.options}
+    - ${atlasmap.pme.options}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49159
 
@@ -42,7 +42,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/syndesisio/syndesis.git
   scmRevision: syndesis-${version.syndesis}
   customPmeParameters:
-    ${syndesis.pme.options}
+    - ${syndesis.pme.options}
   buildScript: > 
     export MAVEN_OPTS=\"-Xmx2048m\"
 
