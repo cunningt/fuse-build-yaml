@@ -196,6 +196,7 @@
     <wildfly-camel.fetch.scmUrl>1</wildfly-camel.fetch.scmUrl>
     <wildfly-camel.push.scmUrl>1</wildfly-camel.push.scmUrl>
     <wildfly-camel.buildCommand>1</wildfly-camel.buildCommand>
+    <apicurito.version>1</apicurito.version>
     <apicurito.tag>DUMMY-TAG-0.0.0</apicurito.tag>
     <apicurito.fetch.scmUrl>1</apicurito.fetch.scmUrl>
     <apicurito.push.scmUrl>1</apicurito.push.scmUrl>
@@ -204,6 +205,7 @@
     <redhat-fuse.fetch.scmUrl>1</redhat-fuse.fetch.scmUrl>
     <redhat-fuse.push.scmUrl>1</redhat-fuse.push.scmUrl>
     <redhat-fuse.buildCommand>1</redhat-fuse.buildCommand>
+    <version.apicurito-generator>1</version.apicurito-generator>
     <fuse-apicurito-generator.tag>DUMMY-TAG-0.0.0</fuse-apicurito-generator.tag>
     <fuse-apicurito-generator.fetch.scmUrl>1</fuse-apicurito-generator.fetch.scmUrl>
     <fuse-apicurito-generator.push.scmUrl>1</fuse-apicurito-generator.push.scmUrl>
