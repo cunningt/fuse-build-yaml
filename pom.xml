@@ -40,6 +40,7 @@
   </prerequisites>
 
   <properties>
+    <pme.filename>pme.properties</pme.filename>
     <version.fuse.prefix>7.4.0</version.fuse.prefix>
     <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
@@ -302,7 +303,7 @@
           </goals>
           <configuration>
             <files>
-            <file>${project.basedir}/pme.properties</file>
+            <file>${project.basedir}/${pme.filename}</file>
             </files>
           </configuration>
         </execution>
@@ -314,7 +315,7 @@
           </goals>
           <configuration>
             <files>
-              <file>${project.basedir}/pme.properties</file>
+              <file>${project.basedir}/${pme.filename}</file>
             </files>
           </configuration>
         </execution>
