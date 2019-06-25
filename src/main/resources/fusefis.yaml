@@ -200,7 +200,7 @@ builds:
     
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
     
-    mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
+    mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy,spring-boot-1 -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -Dproductization -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
