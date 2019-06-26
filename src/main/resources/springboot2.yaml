@@ -1,0 +1,360 @@
+product:
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.stage}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Fuse Spring Boot 2 7.4 ${build.milestone}
+defaultBuildParameters:
+  environmentId: 1
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: cxf-xjc-utils-sb2-3.2.4-${version.fuse.prefix}
+  project: jboss-fuse/cxf-xjc-utils
+    #fetchScmUrl: ${cxf-xjc-utils.fetch.scmUrl}
+    #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
+    #tag: ${cxf-xjc-utils.tag}
+    #buildCommand: ${cxf-xjc-utils.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
+  buildScript: >
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
+    -Dcheckstyle.skip=true clean deploy
+  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
+  customPmeParameters:
+  - '-DscanActiveProfiles=true'
+  - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
+
+- name: cxf-3.2.7-${version.fuse.prefix}
+  project: jboss-fuse/cxf
+    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #tag: ${cxf.tag}
+    #buildCommand: ${cxf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
+  scmRevision: cxf-${version.cxf}
+  buildPodMemory: 8
+  customPmeParameters:
+    - '-DdependencyExclusion.javax.ws.rs:*@*=2.1.1'
+    - '-DdependencyOverride.javax.xml.bind:*@*='
+    - '-DdependencyOverride.org.codehaus.woodstox:*@*='
+    - '-DdependencyOverride.org.apache.abdera:*@*='
+    - '-DdependencyOverride.javax.annotation:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.module:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.jaxrs:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyOverride.com.fasterxml.jackson.datatype:*@*='
+    - '-DdependencyOverride.org.bouncycastle:*@*='
+    - '-DdependencyOverride.org.apache.velocity:*@*='
+    - '-DprojectMetaSkip=true'
+  buildScript: >
+    mvn -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
+  dependencies:
+  - cxf-xjc-utils-sb2-3.2.4-${version.fuse.prefix}
+
+- name: camel-2.23.2-${version.fuse.prefix}
+  project: jboss-fuse/camel
+    #fetchScmUrl: ${camel.fetch.scmUrl}
+    #pushScmUrl: ${camel.push.scmUrl}
+    #tag: ${camel.tag}
+    #buildCommand: ${camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
+  scmRevision: camel-${version.camel}
+  buildScript: >
+    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+
+    export MAVEN_OPTS=\"-Xmx4g\"
+    
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
+    '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
+  buildPodMemory: 12
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+    - '-DdependencyExclusion.io.vertx:*@*=3.5.1.redhat-004'
+    - '-DdependencyExclusion.org.mongodb:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+    - '-DdependencyExclusion.com.sun.xml.bind:*@*='
+    - '-DdependencyExclusion.com.github.everit-org.json-schema:*@*=1.6.0.redhat-1'
+    - '-DdependencyExclusion.org.codehaus.woodstox:*@*='
+    - '-DdependencyExclusion.org.apache.abdera:*@*='
+    - '-DdependencyExclusion.org.reactivestreams:*@*='
+    - '-DdependencyOverride.org.bouncycastle:*@*='
+    - '-DdependencyExclusion.org.apache.kafka:*@*='
+    - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
+    - '-DdependencyExclusion.io.reactivex.rxjava2:*@*='
+    - '-DdependencyExclusion.org.apache.activemq:*@*='
+  dependencies:
+  - cxf-3.2.7-${version.fuse.prefix}
+
+- name: camel-extra-2.23.2-${version.fuse.prefix}
+  project: jboss-fuse/camel-extra
+    #fetchScmUrl: ${camel-extra.fetch.scmUrl}
+    #pushScmUrl: ${camel-extra.push.scmUrl}
+    #tag: camel-extra-${version.camel.extra}
+    #buildCommand: ${camel-extra.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-extra.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-extra.git
+  scmRevision: camel-extra-${version.camel.extra}
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+  dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
+
+- name: fuse-extras-sb2-${version.fuse.prefix}-${version.fuse.prefix}
+  project: jboss-fuse/fuse-extras-distro
+    #fetchScmUrl: ${fuse-extras-distro.fetch.scmUrl}
+    #pushScmUrl: ${fuse-extras-distro.push.scmUrl}
+    #tag: fuse-extras-distro-${version.fuse.extras.distro}
+    #buildCommand: ${fuse-extras-distro.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-extras-distro.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-extras-distro.git
+  scmRevision: fuse-extras-distro-${version.fuse.extras.distro}
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+  dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
+  - cxf-3.2.7-${version.fuse.prefix}
+
+- name: wsdl2rest-sb2-0.8.0-${version.fuse.prefix}
+  project: jboss-fuse/wsdl2rest
+    #fetchScmUrl: ${wsdl2rest.fetch.scmUrl}
+    #pushScmUrl: ${wsdl2rest.push.scmUrl}
+    #tag: wsdl2rest-${version.wsdl2rest}
+    #buildCommand: ${wsdl2rest.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wsdl2rest.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/wsdl2rest.git
+  scmRevision: wsdl2rest-${version.wsdl2rest}
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+  dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
+
+- name: fuse-components-sb2-${version.fuse.prefix}
+  project: jboss-fuse/fuse-components
+    #fetchScmUrl: ${fuse-components.fetch.scmUrl}
+    #pushScmUrl: ${fuse-components.push.scmUrl}
+    #tag: fuse-components-${version.fusesource.camel.sap}
+    #buildCommand: ${fuse-components.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-components.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-components.git
+  scmRevision: fuse-components-${version.fusesource.camel.sap}
+  buildScript: >
+    mvn -Dexec.executable=\"echo\" -Dexec.args='${project.version}' -Dexec.outputFile=\"file.version\" --non-recursive --batch-mode org.codehaus.mojo:exec-maven-plugin:1.3.1:exec > /dev/null 2>&1 || { echo \"Maven invocation failed!\" 1>&2; exit 1; }
+
+    VERSION=$( cat \"file.version\" )
+
+    STRIPVERSION=$( echo $VERSION | sed s/-redhat-[0-9]*//g )
+
+    find . -name \"MANIFEST.MF\" -print | xargs sed -i \"s/Bundle-Version: $STRIPVERSION/Bundle-Version: $VERSION/g\"
+
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+    - '-Drepo-reporting-removal=true'
+  dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
+
+- name: hawtio-sb2-2.0.0-${version.fuse.prefix}
+  project: jboss-fuse/hawtio
+    #fetchScmUrl: ${hawtio.fetch.scmUrl}
+    #pushScmUrl: ${hawtio.push.scmUrl}
+    #tag: hawtio-${version.hawtio}
+    #buildCommand: ${hawtio.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio.git
+  scmRevision: hawtio-${version.hawtio}
+  buildScript: >
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
+    
+    sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
+    
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/app/yarn.lock
+    
+    sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
+    
+    mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
+    -Dproductization -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
+    -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
+    -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass
+    deploy
+  customPmeParameters:
+    - '-DdependencyOverride.com.fasterxml.jackson.core:*@*='
+    - '-DprojectMetaSkip=true'
+  dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
+
+- name: fabric8-maven-plugin-sb2-3.5.33-${version.fuse.prefix}
+  project: jboss-fuse/fabric8-maven-plugin
+    #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
+    #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
+    #tag: fabric8-maven-plugin-${version.fabric8.maven.plugin}
+    #buildCommand: ${fabric8-maven-plugin.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8-maven-plugin.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8-maven-plugin.git
+  scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  dependencies:
+  - fabric8v2-sb2-3.0.11-${version.fuse.prefix}
+
+- name: redhat-fuse-sb2-${version.fuse.prefix}
+  project: jboss-fuse/redhat-fuse
+    #fetchScmUrl: ${redhat-fuse.fetch.scmUrl}
+    #pushScmUrl: ${redhat-fuse.push.scmUrl}
+    #tag: ${redhat-fuse.tag}
+    #buildCommand: ${redhat-fuse.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/redhat-fuse.git
+  scmRevision: redhat-fuse-${fuse-bom.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean
+    deploy -DskipClean'
+  customPmeParameters:
+    - '-DprojectMetaSkip=true'
+  dependencies:
+  - fabric8-maven-plugin-sb2-3.5.33-${version.fuse.prefix}
+
+- name: ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
+  project: fabric8io/ipaas-quickstarts
+    #fetchScmUrl : ${ipaas-quickstarts.fetch.scmUrl}
+    #pushScmUrl : ${ipaas-quickstarts.push.scmUrl}
+    #tag: ipaas-quickstarts-${version.ipaas.quickstarts}
+    #buildCommand: ${ipaas-quickstarts.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
+  externalScmUrl: ssh://git@github.com/fabric8io/ipaas-quickstarts.git
+  scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
+  buildScript: >
+    mv repolist.txt repolist.txt.orig
+    
+    sed 's/https:\/\/github\.com/https:\/\/code.engineering.redhat.com\/gerrit/g' repolist.txt.orig > repolist.txt
+    
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
+  dependencies:
+  - fabric8v2-sb2-3.0.11-${version.fuse.prefix}
+  - redhat-fuse-sb2-${version.fuse.prefix}
+
+- name: fabric8v2-sb2-3.0.11-${version.fuse.prefix}
+  project: jboss-fuse/fabric8
+    #fetchScmUrl: ${fabric8v2.fetch.scmUrl}
+    #pushScmUrl: ${fabric8v2.push.scmUrl}
+    #tag: fabric8v2-${version.fabric8}
+    #buildCommand: ${fabric8v2.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
+  scmRevision: fabric8v2-${version.fabric8}
+  customPmeParameters:
+    - '-DprofileInjection=org.jboss.fuse.pom-manipulation:fabric8-profiles:${version.pom-manipulation}'
+    - '-DprojectMetaSkip=true'
+    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.jaxrs:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
+    - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
+    - '-DdependencyExclusion.org.glassfish.web:*@*='
+    - '-DdependencyExclusion.javax.ws.rs:*@*=2.1.1'
+    - '-DdependencyExclusion.org.apache.activemq:*@*='
+  dependencies:
+  - narayana-spring-boot-quickstart-sb2-1.0.2-${version.fuse.prefix}
+
+- name: apicurito-1.0.0-${version.fuse.prefix}
+  project: jboss-fuse/apicurito
+    #fetchScmUrl: ${apicurito.fetch.scmUrl}
+    #pushScmUrl: ${apicurito.push.scmUrl}
+    #tag:  apicurito-${apicurito.version}
+    #buildCommand: ${apicurito.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurito.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
+  scmRevision:  apicurito-${apicurito.version}
+  buildScript: >
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+    
+    sed -i \"s#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}/#g\" ui/yarn.lock
+    
+    sed -i 's#https:#http:#g' ui/yarn.lock
+    
+    mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
+
+- name:  fuse-apicurito-generator-sb2-1.0.0-${version.fuse.prefix}
+  project: jboss-fuse/fuse-apicurito-generator
+    #fetchScmUrl: ${fuse-apicurito-generator.fetch.scmUrl}
+    #pushScmUrl: ${fuse-apicurito-generator.push.scmUrl}
+    #tag: camel-k-runtime-${version.camel-k-runtime}
+    #buildCommand: ${fuse-apicurito-generator.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-apicurito-generator.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
+  scmRevision: camel-k-runtime-${version.camel-k-runtime}
+  buildScript: mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean
+  dependencies:
+    - redhat-fuse-sb2-${version.fuse.prefix}
+
+- name: narayana-spring-boot-quickstart-sb2-1.0.2-${version.fuse.prefix}
+    #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
+    #pushScmUrl: ${narayana-spring-boot.push.scmUrl}
+    #tag: ${narayana-spring-boot.tag}
+    #buildCommand: ${narayana-spring-boot.buildCommand}
+  project: jboss-fuse/narayana-spring-boot
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/narayana-spring-boot.git
+  scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
+  dependencies:
+    - camel-2.23.2-${version.fuse.prefix}
+
+- name: spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${spring-boot-camel-xa.fetch.scmUrl}
+    #pushScmUrl: ${spring-boot-camel-xa.push.scmUrl}
+    #tag: ${spring-boot-camel-xa.tag}
+    #buildCommand: ${spring-boot-camel-xa.buildCommand}
+  project: jboss-fuse/spring-boot-camel-xa
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
+  scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
+  dependencies:
+    - redhat-fuse-sb2-${version.fuse.prefix}
+    - narayana-spring-boot-quickstart-sb2-1.0.2-${version.fuse.prefix}
+
+- name: camel-k-runtime-sb2-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
+    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
+    #tag: camel-k-runtime-${version.camel-k-runtime}
+    #buildCommand: ${camel-k-runtime.buildCommand}
+  project: jboss-fuse/camel-k-runtime-${version.fuse.prefix}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
+  scmRevision: camel-k-runtime-${version.camel-k-runtime}
+  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false -P clean deploy -DskipClean'
+  dependencies:
+    - camel-2.23.2-${version.fuse.prefix}
+
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
