@@ -28,7 +28,7 @@ builds:
   - '-DscanActiveProfiles=true'
   - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
 
-- name: cxf-3.2.7-${version.fuse.prefix}
+- name: cxf-sb2-3.2.7-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
@@ -96,7 +96,7 @@ builds:
     - '-DdependencyExclusion.io.reactivex.rxjava2:*@*='
     - '-DdependencyExclusion.org.apache.activemq:*@*='
   dependencies:
-  - cxf-3.2.7-${version.fuse.prefix}
+  - cxf-sb2-3.2.7-${version.fuse.prefix}
 
 - name: camel-extra-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel-extra
@@ -273,24 +273,6 @@ builds:
     - '-DdependencyExclusion.org.apache.activemq:*@*='
   dependencies:
   - narayana-spring-boot-quickstart-sb2-1.0.2-${version.fuse.prefix}
-
-- name: apicurito-1.0.0-${version.fuse.prefix}
-  project: jboss-fuse/apicurito
-    #fetchScmUrl: ${apicurito.fetch.scmUrl}
-    #pushScmUrl: ${apicurito.push.scmUrl}
-    #tag:  apicurito-${apicurito.version}
-    #buildCommand: ${apicurito.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurito.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
-  scmRevision:  apicurito-${apicurito.version}
-  buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
-    
-    sed -i \"s#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}/#g\" ui/yarn.lock
-    
-    sed -i 's#https:#http:#g' ui/yarn.lock
-    
-    mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
 
 - name:  fuse-apicurito-generator-sb2-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-apicurito-generator
