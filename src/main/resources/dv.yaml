@@ -94,6 +94,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-komodo.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-komodo.git
   scmRevision: teiid-komodo-${version.teiid-komodo}
+  environmentId: 9
   customPmeParameters:
     - ${teiid-komodo.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Dskip=true -Prelease clean deploy'

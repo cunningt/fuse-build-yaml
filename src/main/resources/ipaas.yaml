@@ -42,6 +42,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/syndesisio/syndesis.git
   scmRevision: syndesis-${version.syndesis}
   buildPodMemory: 12
+  environmentId: 9
   customPmeParameters:
     - ${syndesis.pme.options}
   buildScript: > 
