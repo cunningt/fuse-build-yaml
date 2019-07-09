@@ -96,7 +96,7 @@ builds:
   environmentId: 9
   customPmeParameters:
     - ${teiid-komodo.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Dskip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
   - modeshape-5.4.1
   - teiid-modeshape-1.0.1   
