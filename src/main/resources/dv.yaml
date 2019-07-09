@@ -67,7 +67,6 @@ builds:
   scmRevision: modeshape-${version.modeshape}
   customPmeParameters:
     - ${modeshape.pme.options}
-  buildPodMemory: 12
   buildScript: 'mvn -e -V -B -DskipTests -Dcheckstyle.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy -Passembly'
 
 - name: teiid-modeshape-1.0.1
