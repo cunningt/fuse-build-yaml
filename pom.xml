@@ -40,6 +40,7 @@
   </prerequisites>
 
   <properties>
+    <yaml.name>fusefis</yaml.name>
     <pme.filename>pme.properties</pme.filename>
     <version.fuse.prefix>7.5.0</version.fuse.prefix>
     <version.sprint.milestone>45</version.sprint.milestone>
@@ -374,78 +375,39 @@
               <artifacts>
                 <!-- Fuse and FIS Original (template) -->
                 <artifact>
-                  <file>target/extra-resources/fusefis.yaml</file>
+                  <file>target/extra-resources/${yaml.name}.yaml</file>
                   <type>yaml</type>
                   <classifier>fuse-fis-yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Fixed -->
                 <artifact>
-                  <file>target/extra-resources/fusefis.yaml.modified</file>
+                  <file>target/extra-resources/${yaml.name}.yaml.modified</file>
                   <type>yaml</type>
                   <classifier>fuse-fis-modified-yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Deptree -->
                 <artifact>
-                  <file>target/extra-resources/fusefis.yaml.html</file>
+                  <file>target/extra-resources/${yaml.name}.yaml.html</file>
                   <type>html</type>
                   <classifier>fuse-fis-deptree</classifier>
                 </artifact>
 
                 <artifact>
-                  <file>target/extra-resources/staging.yaml</file>
+                  <file>target/extra-resources/${yaml.name}-staging.yaml</file>
                   <type>yaml</type>
                   <classifier>staging-yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Fixed -->
                 <artifact>
-                  <file>target/extra-resources/staging.yaml.modified</file>
+                  <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
                   <type>yaml</type>
                   <classifier>staging-modified-yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Deptree -->
                 <artifact>
-                  <file>target/extra-resources/staging.yaml.html</file>
+                  <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
                   <type>html</type>
                   <classifier>staging-deptree</classifier>
-                </artifact>
-
-
-                <!-- IPaaS Original (template) -->
-                <artifact>
-                  <file>target/extra-resources/ipaas.yaml</file>
-                  <type>yaml</type>
-                  <classifier>ipaas-yaml</classifier>
-                </artifact>
-                <!-- IPaaS and FIS Fixed -->
-                <artifact>
-                  <file>target/extra-resources/ipaas.yaml.modified</file>
-                  <type>yaml</type>
-                  <classifier>ipaas-modified-yaml</classifier>
-                </artifact>
-                <!-- IPaaS Deptree -->
-                <artifact>
-                  <file>target/extra-resources/ipaas.yaml.html</file>
-                  <type>html</type>
-                  <classifier>ipaas-deptree</classifier>
-                </artifact>
-
-                <!-- DV Original (template) -->
-                <artifact>
-                  <file>target/extra-resources/dv.yaml</file>
-                  <type>yaml</type>
-                  <classifier>dv-yaml</classifier>
-                </artifact>
-                <!-- DV Fixed -->
-                <artifact>
-                  <file>target/extra-resources/dv.yaml.modified</file>
-                  <type>yaml</type>
-                  <classifier>dv-modified-yaml</classifier>
-                </artifact>
-                <!-- DV Deptree -->
-                <artifact>
-                  <file>target/extra-resources/dv.yaml.html</file>
-                  <type>html</type>
-                  <classifier>dv-deptree</classifier>
                 </artifact>
 
                 <artifact>
@@ -465,36 +427,14 @@
         <version>1.0</version>
         <executions>
           <execution>
-            <id>copy-file-fusefis</id>
+            <id>copy-yaml</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>copy</goal>
             </goals>
             <configuration>
-              <sourceFile>target/extra-resources/fusefis.yaml</sourceFile>
-              <destinationFile>target/extra-resources/staging.yaml</destinationFile>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-file-ipaas</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <sourceFile>target/extra-resources/ipaas.yaml</sourceFile>
-              <destinationFile>target/extra-resources/ipaas-staging.yaml</destinationFile>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-file-dv</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <sourceFile>target/extra-resources/dv.yaml</sourceFile>
-              <destinationFile>target/extra-resources/dv-staging.yaml</destinationFile>
+              <sourceFile>target/extra-resources/${yaml.name}.yaml</sourceFile>
+              <destinationFile>target/extra-resources/${yaml.name}-staging.yaml</destinationFile>
             </configuration>
           </execution>
         </executions>
@@ -514,9 +454,7 @@
        </executions>
        <configuration>
           <includes>
-            <include>target/extra-resources/staging.yaml</include>
-            <include>target/extra-resources/ipaas-staging.yaml</include>
-            <include>target/extra-resources/dv-staging.yaml</include>
+            <include>target/extra-resources/${yaml.name}-staging.yaml</include>
           </includes>
            <replacements>
                <replacement>
@@ -538,7 +476,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
+              <outputDirectory>${basedir}/target/extra-resources/</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/main/resources</directory>
