@@ -1,10 +1,10 @@
 product:
   name: Red Hat DV
   abbreviation: Fuse-DV
-  stage: CR*
-  issueTrackerUrl: https://github.com/teiid/teiid/issues
+  stage: ${build.stage}
+  issueTrackerUrl: https://issues.jboss.org/projects/TEIIDTOOLS/issues
 version: ${version.fuse.prefix}
-milestone: ${version.sprint.milestone}
+milestone: ${build.milestone}
 group: Fuse DV ${version.fuse.prefix}
 defaultBuildParameters:
   environmentId: 7
@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: teiid-12.2.0
+- name: teiid-12.3.0
   project: teiid/teiid
     #fetchScmUrl: ${teiid.fetch.scmUrl}
     #pushScmUrl: ${teiid.push.scmUrl}
@@ -26,7 +26,7 @@ builds:
   buildScript: >
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
 
-- name: teiid-spring-boot-1.1.0
+- name: teiid-spring-boot-1.2.0
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
@@ -39,51 +39,7 @@ builds:
     - ${teiid-spring-boot.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
-  - teiid-12.2.0
-
-- name: teiid-openshift-examples-1.1.0
-  project: teiid/teiid-openshift-examples
-    #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
-    #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
-    #tag: ${teiid-openshift-examples.tag}
-    #buildCommand: ${teiid-openshift-examples.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-openshift-examples.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-openshift-examples.git
-  scmRevision: teiid-openshift-examples-${version.teiid-openshift-examples}
-  customPmeParameters:
-    - ${teiid-openshift-examples.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
-  dependencies:
-  - teiid-spring-boot-1.1.0
-
-- name: modeshape-5.4.1
-  project: modeshape/modeshape
-    #fetchScmUrl: ${modeshape.fetch.scmUrl}
-    #pushScmUrl: ${modeshape.push.scmUrl}
-    #tag: modeshape-${version.modeshape}
-    #buildCommand: ${modeshape.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/modeshape.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/modeshape.git
-  scmRevision: modeshape-${version.modeshape}
-  customPmeParameters:
-    - ${modeshape.pme.options}
-  buildPodMemory: 12
-  buildScript: 'mvn -e -V -B -DskipTests -Dcheckstyle.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy -Passembly'
-
-- name: teiid-modeshape-1.0.1
-  project: teiid/teiid-modeshape
-    #fetchScmUrl: ${teiid-modeshape.fetch.scmUrl}
-    #pushScmUrl: ${teiid-modeshape.push.scmUrl}
-    #tag: teiid-modeshape-${version.teiid-modeshape}
-    #buildCommand: ${teiid-modeshape.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-modeshape.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-modeshape.git
-  scmRevision: teiid-modeshape-${version.teiid-modeshape}
-  customPmeParameters:
-    - ${teiid-modeshape.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy'
-  dependencies:
-  - modeshape-5.4.1
+  - teiid-12.3.0
   
 - name: teiid-komodo-0.0.5
   project: teiid/teiid-komodo
@@ -97,10 +53,24 @@ builds:
   environmentId: 9
   customPmeParameters:
     - ${teiid-komodo.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy'
   dependencies:
-  - modeshape-5.4.1
-  - teiid-modeshape-1.0.1   
+  - teiid-spring-boot-1.2.0   
+  
+- name: teiid-openshift-examples-1.2.0
+  project: teiid/teiid-openshift-examples
+    #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
+    #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
+    #tag: ${teiid-openshift-examples.tag}
+    #buildCommand: ${teiid-openshift-examples.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-openshift-examples.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-openshift-examples.git
+  scmRevision: teiid-openshift-examples-${version.teiid-openshift-examples}
+  customPmeParameters:
+    - ${teiid-openshift-examples.pme.options}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
+  dependencies:
+  - teiid-spring-boot-1.2.0
   
 outputPrefixes:
   releaseFile: dv-test
