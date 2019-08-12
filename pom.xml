@@ -404,12 +404,6 @@
                   <type>sh</type>
                   <classifier>sh</classifier>
                 </artifact>
-                <!-- Core SB1 (template) -->
-                <artifact>
-                  <file>target/extra-resources/${yaml.name}.yaml</file>
-                  <type>yaml</type>
-                  <classifier>core-sb1</classifier>
-                </artifact>
               </artifacts>
             </configuration>
           </execution>
