@@ -396,8 +396,8 @@ class BuildConfig {
             <html> 
             <head>
             <title><%=product.name%> <%=product.version%> <%=product.stage%> Dep tree</title>
-            <script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
-            <link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" />
+            <script type="text/javascript" src="https://almende.github.io/vis/dist/vis.js"></script>
+            <link href="https://almende.github.io/vis/dist/vis.css" rel="stylesheet" type="text/css" />
             </head>
 
             <body>
