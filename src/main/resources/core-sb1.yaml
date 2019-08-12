@@ -1,0 +1,227 @@
+product:
+  name: Red Hat Fuse - Core SB1
+  abbreviation: Fuse-Core-SB1
+  stage: ${build.stage}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Core SB1 ${version.fuse.project} ${build.milestone}
+defaultBuildParameters:
+  environmentId: 1
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: karaf-4.2.0-${version.fuse.prefix}
+  project: jboss-fuse/karaf
+    #fetchScmUrl: ${karaf.fetch.scmUrl}
+    #pushScmUrl: ${karaf.push.scmUrl}
+    #tag: karaf-${version.karaf}
+    #buildCommand: ${karaf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/karaf.git
+  scmRevision: karaf-${version.karaf}
+  customPmeParameters:
+    - ${karaf.pme.options}
+
+- name: cxf-xjc-utils-3.2.4-${version.fuse.prefix}
+  project: jboss-fuse/cxf-xjc-utils
+    #fetchScmUrl: ${cxf-xjc-utils.fetch.scmUrl}
+    #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
+    #tag: cxf-xjc-utils-${version.cxf.xjc-utils}
+    #buildCommand: ${cxf-xjc-utils.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
+  buildScript: >
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
+    -Dcheckstyle.skip=true clean deploy
+  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
+  customPmeParameters:
+    - ${cxf-xjc-utils.pme.options}
+
+- name: cxf-3.2.7-${version.fuse.prefix}
+  project: jboss-fuse/cxf
+    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #tag: cxf-${version.cxf}
+    #buildCommand: ${cxf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
+  scmRevision: cxf-${version.cxf}
+  customPmeParameters:
+    - ${cxf.pme.options}
+  buildPodMemory: 8
+  buildScript: >
+    mvn -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
+  dependencies:
+  - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
+
+- name: kubernetes-model-2.0.10-${version.fuse.prefix}
+  project: jboss-fuse/kubernetes-model
+    #fetchScmUrl: ${kubernetes-model.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes-model.push.scmUrl}
+    #tag: kubernetes-model-${version.kubernetes.model}
+    #buildCommand: ${kubernetes-model.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
+  scmRevision: kubernetes-model-${version.kubernetes.model}
+  customPmeParameters:
+    - ${kubernetes-model.pme.options}
+
+- name: kubernetes-client-3.1.12-${version.fuse.prefix}
+  project: jboss-fuse/kubernetes-client
+    #fetchScmUrl: ${kubernetes-client.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes-client.push.scmUrl}
+    #tag: kubernetes-client-${version.kubernetes.client}
+    #buildCommand: ${kubernetes-client.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-client.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
+  scmRevision: kubernetes-client-${version.kubernetes.client}
+  customPmeParameters:
+    - ${kubernetes-client.pme.options}
+  dependencies:
+  - kubernetes-model-2.0.10-${version.fuse.prefix}
+
+- name: camel-2.21.0-${version.fuse.prefix}
+  project: jboss-fuse/camel
+    #fetchScmUrl: ${camel.fetch.scmUrl}
+    #pushScmUrl: ${camel.push.scmUrl}
+    #tag: camel-${version.camel}
+    #buildCommand: ${camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
+  scmRevision: camel-${version.camel}
+  buildPodMemory: 12
+  buildScript: >
+    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+
+    export MAVEN_OPTS=\"-Xmx4g\"
+
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
+    '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
+  customPmeParameters:
+    - ${camel.pme.options}
+  dependencies:
+  - cxf-3.2.7-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
+  - kubernetes-model-2.0.10-${version.fuse.prefix}
+  - kubernetes-client-3.1.12-${version.fuse.prefix}
+
+- name: camel-extra-2.21.0-${version.fuse.prefix}
+  project: jboss-fuse/camel-extra
+    #fetchScmUrl: ${camel-extra.fetch.scmUrl}
+    #pushScmUrl: ${camel-extra.push.scmUrl}
+    #tag: camel-extra-${version.camel.extra}
+    #buildCommand: ${camel-extra.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-extra.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-extra.git
+  scmRevision: camel-extra-${version.camel.extra}
+  customPmeParameters:
+    - ${camel-extra.pme.options}
+  dependencies:
+  - camel-2.21.0-${version.fuse.prefix}
+
+- name: fuse-extras-${version.fuse.prefix}-${version.fuse.prefix}
+  project: jboss-fuse/fuse-extras-distro
+    #fetchScmUrl: ${fuse-extras-distro.fetch.scmUrl}
+    #pushScmUrl: ${fuse-extras-distro.push.scmUrl}
+    #tag: fuse-extras-distro-${version.fuse.extras.distro}
+    #buildCommand: ${fuse-extras-distro.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-extras-distro.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-extras-distro.git
+  scmRevision: fuse-extras-distro-${version.fuse.extras.distro}
+  customPmeParameters:
+    - ${fuse-extras.pme.options}
+  dependencies:
+  - camel-2.21.0-${version.fuse.prefix}
+  - cxf-3.2.7-${version.fuse.prefix}
+
+- name: wsdl2rest-0.8.0-${version.fuse.prefix}
+  project: jboss-fuse/wsdl2rest
+    #fetchScmUrl: ${wsdl2rest.fetch.scmUrl}
+    #pushScmUrl: ${wsdl2rest.push.scmUrl}
+    #tag: wsdl2rest-${version.wsdl2rest}
+    #buildCommand: ${wsdl2rest.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wsdl2rest.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/wsdl2rest.git
+  scmRevision: wsdl2rest-${version.wsdl2rest}
+  customPmeParameters:
+    - ${wsdl2rest.pme.options}
+  dependencies:
+  - camel-2.21.0-${version.fuse.prefix}
+
+- name: fuse-components-${version.fuse.prefix}
+  project: jboss-fuse/fuse-components
+    #fetchScmUrl: ${fuse-components.fetch.scmUrl}
+    #pushScmUrl: ${fuse-components.push.scmUrl}
+    #tag: fuse-components-${version.fusesource.camel.sap}
+    #buildCommand: ${fuse-components.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-components.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-components.git
+  scmRevision: fuse-components-${version.fusesource.camel.sap}
+  buildScript: >
+    mvn -Dexec.executable=\"echo\" -Dexec.args='${dollar}{project.version}' -Dexec.outputFile=\"file.version\" --non-recursive --batch-mode org.codehaus.mojo:exec-maven-plugin:1.3.1:exec > /dev/null 2>&1 || { echo \"Maven invocation failed!\" 1>&2; exit 1; }
+
+    VERSION=$( cat \"file.version\" )
+
+    STRIPVERSION=$( echo $VERSION | sed s/-redhat-[0-9]*//g )
+
+    find . -name \"MANIFEST.MF\" -print | xargs sed -i \"s/Bundle-Version: $STRIPVERSION/Bundle-Version: $VERSION/g\"
+
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
+  customPmeParameters:
+    - ${fuse-components.pme.options}
+  dependencies:
+  - camel-2.21.0-${version.fuse.prefix}
+
+- name: hawtio-2.0.0-${version.fuse.prefix}
+  project: jboss-fuse/hawtio
+    #fetchScmUrl: ${hawtio.fetch.scmUrl}
+    #pushScmUrl: ${hawtio.push.scmUrl}
+    #tag: hawtio-${version.hawtio}
+    #buildCommand: ${hawtio.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio.git
+  scmRevision: hawtio-${version.hawtio}
+  buildScript: >
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
+
+    sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
+
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/app/yarn.lock
+
+    sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
+
+    mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy,spring-boot-1 -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
+    -Dproductization -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
+    -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
+    -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass
+    deploy
+  customPmeParameters:
+    - ${hawtio.pme.options}
+  dependencies:
+  - camel-2.21.0-${version.fuse.prefix}
+  - karaf-4.2.0-${version.fuse.prefix}
+
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'

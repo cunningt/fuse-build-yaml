@@ -42,7 +42,8 @@
   <properties>
     <yaml.name>fusefis</yaml.name>
     <pme.filename>pme.properties</pme.filename>
-    <version.fuse.prefix>7.5.0</version.fuse.prefix>
+    <version.fuse.project>7.5</version.fuse.project>
+    <version.fuse.prefix>${version.fuse.project}.0</version.fuse.prefix>
     <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
     <dollar>$</dollar>
@@ -402,6 +403,12 @@
                   <file>target/extra-resources/release_fis_quickstarts.sh</file>
                   <type>sh</type>
                   <classifier>sh</classifier>
+                </artifact>
+                <!-- Core SB1 (template) -->
+                <artifact>
+                  <file>target/extra-resources/${yaml.name}.yaml</file>
+                  <type>yaml</type>
+                  <classifier>core-sb1</classifier>
                 </artifact>
               </artifacts>
             </configuration>
