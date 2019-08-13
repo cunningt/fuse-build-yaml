@@ -1,0 +1,70 @@
+product:
+  name: Red Hat Fuse - Images
+  abbreviation: Fuse-Images
+  stage: ${build.stage}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Core SB1 ${version.fuse.project} ${build.milestone}
+defaultBuildParameters:
+  environmentId: 1
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: hawtio-online-1.0.0-${version.fuse.prefix}
+  project: hawtio/hawtio-online
+    #fetchScmUrl: ${hawtio-online.fetch.scmUrl}
+    #pushScmUrl: ${hawtio-online.push.scmUrl}
+    #tag: hawtio-online-${version.hawtio.online}
+    #buildCommand: ${hawtio-online.buildCommand}
+    #cherrypick: true
+  scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-online.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio-online.git
+  scmRevision: hawtio-online-${version.hawtio.online}
+  buildScript: >
+    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+    
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" yarn.lock
+    
+    sed -i 's#https:#http:#g' yarn.lock
+    
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false
+    -Dproxy -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
+    -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
+    -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
+    clean deploy
+  customPmeParameters:
+    - ${hawtio-online.pme.options}
+  dependencies:
+  - hawtio-2.0.0-${version.fuse.prefix}
+
+- name: camel-k-runtime-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
+    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
+    #tag: camel-k-runtime-${version.camel-k-runtime}
+    #buildCommand: ${camel-k-runtime.buildCommand}
+  project: jboss-fuse/camel-k-runtime-${version.fuse.prefix}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
+  scmRevision: camel-k-runtime-${version.camel-k-runtime}
+  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${camel-k-runtime.pme.options}
+  dependencies:
+    - camel-2.21.0-${version.fuse.prefix}
+
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
