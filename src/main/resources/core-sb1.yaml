@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: karaf-4.2.0-${version.fuse.prefix}
+- name: karaf-4.2.6-${version.fuse.prefix}
   project: jboss-fuse/karaf
     #fetchScmUrl: ${karaf.fetch.scmUrl}
     #pushScmUrl: ${karaf.push.scmUrl}
@@ -55,7 +55,7 @@ builds:
     mvn -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
   dependencies:
   - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
-  - karaf-4.2.0-${version.fuse.prefix}
+  - karaf-4.2.6-${version.fuse.prefix}
 
 - name: kubernetes-model-2.0.10-${version.fuse.prefix}
   project: jboss-fuse/kubernetes-model
@@ -106,7 +106,7 @@ builds:
     - ${camel.pme.options}
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
-  - karaf-4.2.0-${version.fuse.prefix}
+  - karaf-4.2.6-${version.fuse.prefix}
   - kubernetes-model-2.0.10-${version.fuse.prefix}
   - kubernetes-client-3.1.12-${version.fuse.prefix}
 
