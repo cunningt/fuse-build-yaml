@@ -12,6 +12,25 @@ defaultBuildParameters:
     deploy'
 
 builds:
+- name: fuse-karaf-${version.fuse.prefix}
+  project: jboss-fuse/fuse-karaf
+    #fetchScmUrl: ${fuse-karaf.fetch.scmUrl}
+    #pushScmUrl: ${fuse-karaf.push.scmUrl}
+    #tag: fuse-karaf-${version.bom.fuse}
+    #buildCommand: ${fuse-karaf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-karaf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-karaf.git
+  scmRevision: fuse-karaf-${version.bom.fuse}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
+    clean deploy '
+  customPmeParameters:
+    - ${fuse-karaf.pme.options}
+  dependencies:
+  - fuse-components-${version.fuse.prefix}
+  - karaf-4.2.6-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
+  - camel-2.21.0-${version.fuse.prefix}
+
 - name: spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
   project: jboss-fuse/spring-cloud-kubernetes
     #fetchScmUrl: ${spring-cloud-kubernetes.fetch.scmUrl}
@@ -87,7 +106,7 @@ builds:
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
 
-- name: apicurito-1.0.0-${version.fuse.prefix}
+- name: apicurito-1.0.1-${version.fuse.prefix}
   project: jboss-fuse/apicurito
     #fetchScmUrl: ${apicurito.fetch.scmUrl}
     #pushScmUrl: ${apicurito.push.scmUrl}
@@ -107,25 +126,6 @@ builds:
     
     mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
   
-- name: fuse-karaf-${version.fuse.prefix}
-  project: jboss-fuse/fuse-karaf
-    #fetchScmUrl: ${fuse-karaf.fetch.scmUrl}
-    #pushScmUrl: ${fuse-karaf.push.scmUrl}
-    #tag: fuse-karaf-${version.bom.fuse}
-    #buildCommand: ${fuse-karaf.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-karaf.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-karaf.git
-  scmRevision: fuse-karaf-${version.bom.fuse}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
-    clean deploy '
-  customPmeParameters:
-    - ${fuse-karaf.pme.options}
-  dependencies:
-  - fuse-components-${version.fuse.prefix}
-  - karaf-4.2.0-${version.fuse.prefix}
-  - hawtio-2.0.0-${version.fuse.prefix}
-  - camel-2.21.0-${version.fuse.prefix}
-
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
