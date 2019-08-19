@@ -12,33 +12,6 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: karaf-4.2.6-${version.fuse.prefix}
-  project: jboss-fuse/karaf
-    #fetchScmUrl: ${karaf.fetch.scmUrl}
-    #pushScmUrl: ${karaf.push.scmUrl}
-    #tag: karaf-${version.karaf}
-    #buildCommand: ${karaf.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/karaf.git
-  scmRevision: karaf-${version.karaf}
-  customPmeParameters:
-    - ${karaf.pme.options}
-
-- name: cxf-xjc-utils-3.2.4-${version.fuse.prefix}
-  project: jboss-fuse/cxf-xjc-utils
-    #fetchScmUrl: ${cxf-xjc-utils.fetch.scmUrl}
-    #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
-    #tag: cxf-xjc-utils-${version.cxf.xjc-utils}
-    #buildCommand: ${cxf-xjc-utils.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
-  buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
-    -Dcheckstyle.skip=true clean deploy
-  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
-  customPmeParameters:
-    - ${cxf-xjc-utils.pme.options}
-
 - name: cxf-3.2.7-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
@@ -56,33 +29,6 @@ builds:
   dependencies:
   - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
   - karaf-4.2.6-${version.fuse.prefix}
-
-- name: kubernetes-model-2.0.10-${version.fuse.prefix}
-  project: jboss-fuse/kubernetes-model
-    #fetchScmUrl: ${kubernetes-model.fetch.scmUrl}
-    #pushScmUrl: ${kubernetes-model.push.scmUrl}
-    #tag: kubernetes-model-${version.kubernetes.model}
-    #buildCommand: ${kubernetes-model.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
-  scmRevision: kubernetes-model-${version.kubernetes.model}
-  customPmeParameters:
-    - ${kubernetes-model.pme.options}
-
-- name: kubernetes-client-3.1.12-${version.fuse.prefix}
-  project: jboss-fuse/kubernetes-client
-    #fetchScmUrl: ${kubernetes-client.fetch.scmUrl}
-    #pushScmUrl: ${kubernetes-client.push.scmUrl}
-    #tag: kubernetes-client-${version.kubernetes.client}
-    #buildCommand: ${kubernetes-client.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-client.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
-  scmRevision: kubernetes-client-${version.kubernetes.client}
-  customPmeParameters:
-    - ${kubernetes-client.pme.options}
-  dependencies:
-  - kubernetes-model-2.0.10-${version.fuse.prefix}
 
 - name: camel-2.21.0-${version.fuse.prefix}
   project: jboss-fuse/camel

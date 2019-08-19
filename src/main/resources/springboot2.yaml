@@ -12,22 +12,6 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: cxf-xjc-utils-sb2-3.2.4-${version.fuse.prefix}
-  project: jboss-fuse/cxf-xjc-utils
-    #fetchScmUrl: ${cxf-xjc-utils.fetch.scmUrl}
-    #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
-    #tag: ${cxf-xjc-utils.tag}
-    #buildCommand: ${cxf-xjc-utils.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
-  buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
-    -Dcheckstyle.skip=true clean deploy
-  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
-  customPmeParameters:
-  - '-DscanActiveProfiles=true'
-  - '-DdependencyOverride.javax.ws.rs:*@*=2.1.1'
-
 - name: cxf-sb2-3.2.7-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
