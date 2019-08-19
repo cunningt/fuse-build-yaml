@@ -41,18 +41,18 @@ builds:
   dependencies:
   - teiid-12.3.0
   
-- name: teiid-komodo-0.0.5
-  project: teiid/teiid-komodo
-    #fetchScmUrl: ${teiid-komodo.fetch.scmUrl}
-    #pushScmUrl: ${teiid-komodo.push.scmUrl}
-    #tag: teiid-komodo-${version.teiid-komodo}
-    #buildCommand: ${teiid-komodo.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-komodo.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-komodo.git
-  scmRevision: teiid-komodo-${version.teiid-komodo}
+- name: teiid-syndesis-0.0.6
+  project: teiid/teiid-syndesis
+    #fetchScmUrl: ${teiid-syndesis.fetch.scmUrl}
+    #pushScmUrl: ${teiid-syndesis.push.scmUrl}
+    #tag: teiid-syndesis-${version.teiid-syndesis}
+    #buildCommand: ${teiid-syndesis.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-sndesis.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-syndesis.git
+  scmRevision: teiid-syndesis-${version.teiid-syndesis}
   environmentId: 9
   customPmeParameters:
-    - ${teiid-komodo.pme.options}
+    - ${teiid-syndesis.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy'
   dependencies:
   - teiid-spring-boot-1.2.0   
