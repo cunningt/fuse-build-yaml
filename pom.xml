@@ -366,19 +366,19 @@
                 <artifact>
                   <file>target/extra-resources/${yaml.name}.yaml</file>
                   <type>yaml</type>
-                  <classifier>fuse-fis-yaml</classifier>
+                  <classifier>yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Fixed -->
                 <artifact>
                   <file>target/extra-resources/${yaml.name}.yaml.modified</file>
                   <type>yaml</type>
-                  <classifier>fuse-fis-modified-yaml</classifier>
+                  <classifier>${yaml.name}-modified-yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Deptree -->
                 <artifact>
                   <file>target/extra-resources/${yaml.name}.yaml.html</file>
                   <type>html</type>
-                  <classifier>fuse-fis-deptree</classifier>
+                  <classifier>${yaml.name}-deptree</classifier>
                 </artifact>
 
                 <artifact>
