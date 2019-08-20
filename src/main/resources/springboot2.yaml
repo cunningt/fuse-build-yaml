@@ -1,6 +1,6 @@
 product:
-  name: Red Hat Fuse
-  abbreviation: Fuse-and-FIS
+  name: Red Hat Fuse - SB2
+  abbreviation: Fuse-SB2
   stage: ${build.stage}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
@@ -55,7 +55,7 @@ builds:
     export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
 
     export MAVEN_OPTS=\"-Xmx4g\"
-    
+
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
@@ -166,13 +166,13 @@ builds:
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
 
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
-    
+
     sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
-    
+
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/app/yarn.lock
-    
+
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
-    
+
     mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -Dproductization -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
@@ -227,9 +227,9 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
     mv repolist.txt repolist.txt.orig
-    
+
     sed 's/https:\/\/github\.com/https:\/\/code.engineering.redhat.com\/gerrit/g' repolist.txt.orig > repolist.txt
-    
+
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
   dependencies:
   - fabric8v2-sb2-3.0.11-${version.fuse.prefix}
