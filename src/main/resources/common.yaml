@@ -1,6 +1,6 @@
 product:
-  name: Red Hat Fuse - common
-  abbreviation: Fuse-Common
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
   stage: ${build.stage}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
@@ -119,13 +119,13 @@ builds:
     - ${apicurito.pme.options}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
-    
+
     sed -i \"s#https://registry.yarnpkg.com/#http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}/#g\" ui/yarn.lock
-    
+
     sed -i 's#https:#http:#g' ui/yarn.lock
-    
+
     mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
-  
+
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test

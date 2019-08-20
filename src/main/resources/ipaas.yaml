@@ -1,6 +1,6 @@
 product:
-  name: Red Hat iPaas
-  abbreviation: Fuse-iPaaS
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
   stage: ${build.stage}
   issueTrackerUrl: https://github.com/syndesisio/syndesis/issues
 version: ${version.fuse.prefix}
@@ -45,7 +45,7 @@ builds:
   environmentId: 9
   customPmeParameters:
     - ${syndesis.pme.options}
-  buildScript: > 
+  buildScript: >
     export MAVEN_OPTS=\"-Xmx3048m\"
 
     export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
