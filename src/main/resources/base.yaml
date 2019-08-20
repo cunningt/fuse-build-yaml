@@ -39,33 +39,6 @@ builds:
   customPmeParameters:
     - ${cxf-xjc-utils.pme.options}
 
-- name: kubernetes-model-2.0.10-${version.fuse.prefix}
-  project: jboss-fuse/kubernetes-model
-    #fetchScmUrl: ${kubernetes-model.fetch.scmUrl}
-    #pushScmUrl: ${kubernetes-model.push.scmUrl}
-    #tag: kubernetes-model-${version.kubernetes.model}
-    #buildCommand: ${kubernetes-model.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
-  scmRevision: kubernetes-model-${version.kubernetes.model}
-  customPmeParameters:
-    - ${kubernetes-model.pme.options}
-
-- name: kubernetes-client-3.1.12-${version.fuse.prefix}
-  project: jboss-fuse/kubernetes-client
-    #fetchScmUrl: ${kubernetes-client.fetch.scmUrl}
-    #pushScmUrl: ${kubernetes-client.push.scmUrl}
-    #tag: kubernetes-client-${version.kubernetes.client}
-    #buildCommand: ${kubernetes-client.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-client.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
-  scmRevision: kubernetes-client-${version.kubernetes.client}
-  customPmeParameters:
-    - ${kubernetes-client.pme.options}
-  dependencies:
-  - kubernetes-model-2.0.10-${version.fuse.prefix}
-
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
