@@ -5,7 +5,7 @@ product:
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}
-group: Fuse Spring Boot 2 ${version.fuse.project} ${build.milestone}
+group: Red Hat Fuse - Spring Boot 2 ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 1
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
