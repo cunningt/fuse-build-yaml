@@ -183,7 +183,7 @@ builds:
     - ${hawtio.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
-  - karaf-4.2.0-${version.fuse.prefix}
+  - karaf-4.2.6-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
