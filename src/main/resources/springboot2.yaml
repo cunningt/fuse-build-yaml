@@ -139,11 +139,11 @@ builds:
   buildScript: >
     mvn -Dexec.executable=\"echo\" -Dexec.args='${project.version}' -Dexec.outputFile=\"file.version\" --non-recursive --batch-mode org.codehaus.mojo:exec-maven-plugin:1.3.1:exec > /dev/null 2>&1 || { echo \"Maven invocation failed!\" 1>&2; exit 1; }
 
-    VERSION=$( cat \"file.version\" )
+    STRIPVERSION=$(cat file.version | sed -E 's/([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/\4/' | sed -r 's/fuse-([0-9]*)-//')
 
-    STRIPVERSION=$( echo $VERSION | sed s/-redhat-[0-9]*//g )
+    find . -name MANIFEST.MF -not -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.$STRIPVERSION/\"
 
-    find . -name \"MANIFEST.MF\" -print | xargs sed -i \"s/Bundle-Version: $STRIPVERSION/Bundle-Version: $VERSION/g\"
+    find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/\"
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
   customPmeParameters:
