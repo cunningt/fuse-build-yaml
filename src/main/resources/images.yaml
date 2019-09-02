@@ -45,7 +45,7 @@ builds:
     #pushScmUrl: ${camel-k-runtime.push.scmUrl}
     #tag: camel-k-runtime-${version.camel-k-runtime}
     #buildCommand: ${camel-k-runtime.buildCommand}
-  project: jboss-fuse/camel-k-runtime-${version.fuse.prefix}
+  project: jboss-fuse/camel-k-runtime
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: camel-k-runtime-${version.camel-k-runtime}
