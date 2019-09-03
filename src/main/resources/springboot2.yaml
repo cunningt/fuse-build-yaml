@@ -40,7 +40,7 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
   dependencies:
-  - cxf-xjc-utils-sb2-3.2.4-${version.fuse.prefix}
+  - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
 
 - name: camel-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel
