@@ -1,7 +1,7 @@
 product:
   name: Red Hat Fuse
   abbreviation: Fuse-and-FIS
-  stage: ${build.stage}
+  stage: ${build.milestone}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}

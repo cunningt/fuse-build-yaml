@@ -1,7 +1,7 @@
 product:
   name: Red Hat Fuse
   abbreviation: Fuse-and-FIS
-  stage: ${build.stage}
+  stage: ${build.milestone}
   issueTrackerUrl: https://github.com/syndesisio/syndesis/issues
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}

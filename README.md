@@ -48,5 +48,5 @@ Then, to generate the files:
 our CI does.
 
 Certain properties may be adjusted during build time to give more flexibility
-to the output and ensure a correct mapping with the PNC configuration. The `build.stage` and
-`build.milestone` are 2 examples of that.
+to the output and ensure a correct mapping with the PNC configuration. The
+`build.milestone` is one example of that.
