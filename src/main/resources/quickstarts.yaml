@@ -83,7 +83,7 @@ builds:
     - ${karaf-quickstarts.pme.options}
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
-  - karaf-4.2.0-${version.fuse.prefix}
+  - karaf-4.2.6-${version.fuse.prefix}
   - camel-2.21.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
 
