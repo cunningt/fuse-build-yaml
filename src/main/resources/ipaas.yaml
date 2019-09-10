@@ -5,7 +5,7 @@ product:
   issueTrackerUrl: https://github.com/syndesisio/syndesis/issues
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}
-group: Fuse iPaaS ${version.fuse.prefix}
+group: Red Hat Fuse - iPaaS ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 7
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
