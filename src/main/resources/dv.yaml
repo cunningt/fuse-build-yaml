@@ -12,6 +12,20 @@ defaultBuildParameters:
     deploy'
 
 builds:
+- name: oreva-1.0.x
+  project: teiid/oreva
+    #fetchScmUrl: ${oreva.fetch.scmUrl}
+    #pushScmUrl: ${oreva.push.scmUrl}
+    #tag: ${oreva.tag}
+    #buildCommand: ${oreva.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/oreva.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/oreva.git
+  scmRevision: oreva-${version.oreva}
+  customPmeParameters:
+    - ${oreva.pme.options}
+  buildScript: >
+     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy
+
 - name: teiid-12.3.0
   project: teiid/teiid
     #fetchScmUrl: ${teiid.fetch.scmUrl}
@@ -25,6 +39,8 @@ builds:
     - ${teiid.pme.options}
   buildScript: >
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
+  dependencies:
+  - oreva-1.0.x
 
 - name: teiid-spring-boot-1.2.0
   project: teiid/teiid-spring-boot
