@@ -55,6 +55,7 @@
     <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
     <version.cxf>3.1.11.fuse-000265</version.cxf>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
+    <version.kubernetes.assertions>4.1.0.fuse-sb2-750002</version.kubernetes.assertions>
     <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
     <version.bom.fuse>7.0.1.fuse-000002</version.bom.fuse>
     <version.karaf>4.2.0.fuse-000262</version.karaf>
@@ -130,6 +131,10 @@
     <camel.fetch.scmUrl>1</camel.fetch.scmUrl>
     <camel.push.scmUrl>1</camel.push.scmUrl>
     <camel.buildCommand>1</camel.buildCommand>
+    <kubernetes.assertions.tag>DUMMY-TAG-0.0.0</kubernetes.assertions.tag>
+    <kubernetes.assertions.fetch.scmUrl>1</kubernetes.assertions.fetch.scmUrl>
+    <kubernetes.assertions.push.scmUrl>1</kubernetes.assertions.push.scmUrl>
+    <kubernetes.assertions.buildCommand>1</kubernetes.assertions.buildCommand>
     <fuse-extras-distro.tag>DUMMY-TAG-0.0.0</fuse-extras-distro.tag>
     <fuse-extras-distro.fetch.scmUrl>1</fuse-extras-distro.fetch.scmUrl>
     <fuse-extras-distro.push.scmUrl>1</fuse-extras-distro.push.scmUrl>

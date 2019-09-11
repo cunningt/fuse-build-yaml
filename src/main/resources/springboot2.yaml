@@ -153,7 +153,7 @@ builds:
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
-- name: fabric8-maven-plugin-sb2-3.5.33-${version.fuse.prefix}
+- name: fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   project: jboss-fuse/fabric8-maven-plugin
     #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
     #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
@@ -166,8 +166,6 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   customPmeParameters:
     - ${hawtio.pme.options}
-  dependencies:
-  - fabric8v2-sb2-3.0.11-${version.fuse.prefix}
 
 - name: redhat-fuse-sb2-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
@@ -183,7 +181,9 @@ builds:
   customPmeParameters:
     - ${redhat-fuse.pme.options}
   dependencies:
-  - fabric8-maven-plugin-sb2-3.5.33-${version.fuse.prefix}
+  - kubernetes-assertions-4.1.0-${version.fuse.prefix}
+  - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
+  - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
   project: fabric8io/ipaas-quickstarts
@@ -204,24 +204,23 @@ builds:
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
-  - fabric8v2-sb2-3.0.11-${version.fuse.prefix}
+  - kubernetes-assertions-4.1.0-${version.fuse.prefix}
+  - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
 
-- name: fabric8v2-sb2-3.0.11-${version.fuse.prefix}
-  project: jboss-fuse/fabric8
-    #fetchScmUrl: ${fabric8v2.fetch.scmUrl}
-    #pushScmUrl: ${fabric8v2.push.scmUrl}
-    #tag: fabric8v2-${version.fabric8}
-    #buildCommand: ${fabric8v2.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
-  scmRevision: fabric8v2-${version.fabric8}
+- name: kubernetes-assertions-4.1.0-${version.fuse.prefix}
+  project: jboss-fuse/kubernetes-assertions
+    #fetchScmUrl: ${kubernetes.assertions.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes.assertions.push.scmUrl}
+    #tag: fabric8v2-${version.kubernetes.assertions}
+    #buildCommand: ${kubernetes.assertions.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-assertions.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-assertions.git
+  scmRevision: kubernetes-assertions-${version.kubernetes.assertions}
   customPmeParameters:
-    - ${fabric8v2.pme.options}
-  dependencies:
-  - narayana-spring-boot-quickstart-sb2-1.0.2-${version.fuse.prefix}
+    - ${kubernetes.assertions.pme.options}
 
-- name: narayana-spring-boot-quickstart-sb2-1.0.2-${version.fuse.prefix}
+- name: narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${narayana-spring-boot.push.scmUrl}
     #tag: ${narayana-spring-boot.tag}
@@ -232,7 +231,7 @@ builds:
   scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
   customPmeParameters:
-    - ${narayana-spring-boot-quickstart.pme.options}
+    - ${narayana-spring-boot.pme.options}
   dependencies:
     - camel-2.23.2-${version.fuse.prefix}
 
@@ -250,22 +249,7 @@ builds:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
-    - narayana-spring-boot-quickstart-sb2-1.0.2-${version.fuse.prefix}
-
-- name: camel-k-runtime-sb2-1.0.0-${version.fuse.prefix}
-    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
-    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
-    #tag: camel-k-runtime-${version.camel-k-runtime}
-    #buildCommand: ${camel-k-runtime.buildCommand}
-  project: jboss-fuse/camel-k-runtime-${version.fuse.prefix}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
-  scmRevision: camel-k-runtime-${version.camel-k-runtime}
-  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false -P clean deploy -DskipClean'
-  customPmeParameters:
-    - ${camel-k-runtime.pme.options}
-  dependencies:
-    - camel-2.23.2-${version.fuse.prefix}
+    - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
