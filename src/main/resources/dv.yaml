@@ -61,7 +61,7 @@ builds:
     #pushScmUrl: ${teiid-syndesis.push.scmUrl}
     #tag: teiid-syndesis-${version.teiid-syndesis}
     #buildCommand: ${teiid-syndesis.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-sndesis.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-syndesis.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-syndesis.git
   scmRevision: teiid-syndesis-${version.teiid-syndesis}
   environmentId: 9
