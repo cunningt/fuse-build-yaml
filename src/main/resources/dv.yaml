@@ -18,7 +18,7 @@ builds:
     #pushScmUrl: ${oreva.push.scmUrl}
     #tag: ${oreva.tag}
     #buildCommand: ${oreva.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/oreva.git
+  scmUrl: git+ssh://code.engineering.redhat.com/oreva.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/oreva.git
   scmRevision: oreva-${version.oreva}
   customPmeParameters:
@@ -63,7 +63,7 @@ builds:
     #pushScmUrl: ${teiid-syndesis.push.scmUrl}
     #tag: teiid-syndesis-${version.teiid-syndesis}
     #buildCommand: ${teiid-syndesis.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-syndesis.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-komodo.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-syndesis.git
   scmRevision: teiid-syndesis-${version.teiid-syndesis}
   environmentId: 9
