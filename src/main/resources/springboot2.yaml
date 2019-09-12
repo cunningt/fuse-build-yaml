@@ -197,7 +197,6 @@ builds:
   customPmeParameters:
     - ${redhat-fuse.pme.options}
   dependencies:
-  - kubernetes-assertions-4.1.0-${version.fuse.prefix}
   - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
   - fabric8v2-3.0.11.sb2-${version.fuse.prefix}
   - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
@@ -221,21 +220,8 @@ builds:
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
-  - kubernetes-assertions-4.1.0-${version.fuse.prefix}
   - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
-
-- name: kubernetes-assertions-4.1.0-${version.fuse.prefix}
-  project: jboss-fuse/kubernetes-assertions
-    #fetchScmUrl: ${kubernetes.assertions.fetch.scmUrl}
-    #pushScmUrl: ${kubernetes.assertions.push.scmUrl}
-    #tag: fabric8v2-${version.kubernetes.assertions}
-    #buildCommand: ${kubernetes.assertions.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-assertions.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-assertions.git
-  scmRevision: kubernetes-assertions-${version.kubernetes.assertions}
-  customPmeParameters:
-    - ${kubernetes.assertions.pme.options}
 
 - name: narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
