@@ -21,6 +21,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fuse-patch.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${fuse-patch.pme.options}
 
@@ -33,6 +34,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/redhat-fuse.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/redhat-fuse.git
   scmRevision: redhat-fuse-${fuse-bom.version}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy -DskipClean'
   customPmeParameters:
@@ -236,6 +238,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
   externalScmUrl: ssh://git@github.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
   customPmeParameters:
     - ${wildfly-camel-examples.pme.options}
@@ -252,6 +255,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-eap.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-eap.git
   scmRevision: fuse-eap-${version.fuse.eap}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${fuse-eap.pme.options}
   dependencies:
@@ -268,6 +272,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf-quickstarts.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/karaf-quickstarts.git
   scmRevision: karaf-quickstarts-${version.karaf-quickstarts}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${karaf-quickstarts.pme.options}
   dependencies:
@@ -286,6 +291,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
   externalScmUrl: ssh://git@github.com/fabric8io/ipaas-quickstarts.git
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
   customPmeParameters:
@@ -293,14 +299,6 @@ builds:
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
-
-  dependencies:
-  - fuse-karaf-${version.fuse.prefix}
-  - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
-  - wildfly-camel-5.3.0-${version.fuse.prefix}
-  - hawtio-online-1.0.0-${version.fuse.prefix}
-
-
 
 outputPrefixes:
   releaseFile: fuse-test

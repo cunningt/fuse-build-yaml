@@ -21,6 +21,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-karaf.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-karaf.git
   scmRevision: fuse-karaf-${version.bom.fuse}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
     clean deploy '
   customPmeParameters:
@@ -40,6 +41,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-cloud-kubernetes.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-cloud-kubernetes.git
   scmRevision: spring-cloud-kubernetes-${version.spring-cloud-kubernetes}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${spring-cloud-kubernetes.pme.options}
   dependencies:
@@ -54,6 +56,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/narayana-spring-boot.git
   scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
   customPmeParameters:
     - ${narayana-spring-boot-quickstart.pme.options}
@@ -69,6 +72,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${fabric8v2.pme.options}
   dependencies:
@@ -87,6 +91,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8-maven-plugin.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8-maven-plugin.git
   scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   customPmeParameters:
     - ${fabric8-maven-plugin.pme.options}
@@ -102,6 +107,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
 
@@ -123,6 +129,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurito.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
   scmRevision: apicurito-${apicurito.version}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${apicurito.pme.options}
   buildScript: >

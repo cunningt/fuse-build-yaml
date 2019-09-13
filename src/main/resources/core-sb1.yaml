@@ -22,6 +22,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${kubernetes-model.pme.options}
 
@@ -34,6 +35,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-client.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
   scmRevision: kubernetes-client-${version.kubernetes.client}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${kubernetes-client.pme.options}
   dependencies:
@@ -48,6 +50,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${cxf.pme.options}
   buildPodMemory: 8
@@ -66,6 +69,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 12
   buildScript: >
     export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
@@ -94,6 +98,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-extra.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-extra.git
   scmRevision: camel-extra-${version.camel.extra}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${camel-extra.pme.options}
   dependencies:
@@ -108,6 +113,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-extras-distro.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-extras-distro.git
   scmRevision: fuse-extras-distro-${version.fuse.extras.distro}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${fuse-extras.pme.options}
   dependencies:
@@ -124,6 +130,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wsdl2rest.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/wsdl2rest.git
   scmRevision: wsdl2rest-${version.wsdl2rest}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${wsdl2rest.pme.options}
   dependencies:
@@ -139,6 +146,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-components.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-components.git
   scmRevision: fuse-components-${version.fusesource.camel.sap}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     mvn -Dexec.executable=\"echo\" -Dexec.args='${dollar}{project.version}' -Dexec.outputFile=\"file.version\" --non-recursive --batch-mode org.codehaus.mojo:exec-maven-plugin:1.3.1:exec > /dev/null 2>&1 || { echo \"Maven invocation failed!\" 1>&2; exit 1; }
 
@@ -164,6 +172,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/hawtio.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio.git
   scmRevision: hawtio-${version.hawtio}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
 
