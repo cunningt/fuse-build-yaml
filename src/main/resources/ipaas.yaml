@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: atlasmap-1.40.0
+- name: atlasmap-1.43.0
   project: atlasmap/atlasmap
     #fetchScmUrl: ${atlasmap.fetch.scmUrl}
     #pushScmUrl: ${atlasmap.push.scmUrl}
@@ -32,7 +32,7 @@ builds:
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy
 
-- name: syndesis-1.7.4
+- name: syndesis-1.8.0
   project: syndesisio/syndesis
     #fetchScmUrl: ${syndesis.fetch.scmUrl}
     #pushScmUrl: ${syndesis.push.scmUrl}
@@ -64,9 +64,9 @@ builds:
 
     sed -i 's#https:#http:#g' app/ui-react/yarn.lock
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -DskipITs=true -Dtest=false -Daddrepository -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user="${buildContentId}+tracking" -Dproxy-password="${accessToken}" -Dproxy-port="${proxyPort}" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false -Diltorb-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/iltorb clean deploy -f app/pom.xml
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -DskipITs=true -Dtest=false -Daddrepository -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user="${buildContentId}+tracking" -Dproxy-password=\"${accessToken}\" -Dproxy-port=\"${proxyPort}\" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false -Diltorb-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/iltorb clean deploy -f app/pom.xml
   dependencies:
-  - atlasmap-1.40.0
+  - atlasmap-1.43.0
 
 outputPrefixes:
   releaseFile: ipaas-test
