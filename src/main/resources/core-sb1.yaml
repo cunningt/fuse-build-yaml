@@ -163,7 +163,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio.git
   scmRevision: hawtio-${version.hawtio}
   buildScript: >
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
+    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
 
     sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
 
