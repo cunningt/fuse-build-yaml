@@ -13,13 +13,13 @@ defaultBuildParameters:
 
 builds:
 - name: atlasmap-1.43.0
-  project: atlasmap/atlasmap
+  project: jboss-fuse/atlasmap
     #fetchScmUrl: ${atlasmap.fetch.scmUrl}
     #pushScmUrl: ${atlasmap.push.scmUrl}
     #tag: atlasmap-${version.atlasmap}
     #buildCommand: ${atlasmap.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
-  scmUrl: git+ssh://code.engineering.redhat.com/atlasmap/atlasmap.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/atlasmap.git
   scmRevision: atlasmap-${version.atlasmap}
   customPmeParameters:
     - ${atlasmap.pme.options}
