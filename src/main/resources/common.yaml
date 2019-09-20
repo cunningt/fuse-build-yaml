@@ -141,9 +141,9 @@ builds:
   buildScript: >
     export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
 
-    sed -i "s#https://registry.yarnpkg.com/#${REG}#g" ui/yarn.lock
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
 
-    sed -i "s#https://registry.npmjs.org/#${REG}#g" ui/yarn.lock
+    sed -i \"s#https://registry.npmjs.org/#${REG}#g\" ui/yarn.lock
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
