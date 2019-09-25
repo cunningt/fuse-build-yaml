@@ -55,6 +55,20 @@ builds:
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
+
+- name: apicurio-registry-1.0.0
+    #fetchScmUrl: ${apicurito-registry.fetch.scmUrl}
+    #pushScmUrl: ${apicurito-registry.push.scmUrl}
+    #tag: apicurio-registry-${version.apicurito-registry}
+    #buildCommand: ${apicurito-registry.buildCommand}
+  project: apicurio/apicurio-registry
+  scmUrl: git+ssh://code.engineering.redhat.com/apicurio/apicurio-registry.git
+  externalScmUrl: ssh://git@github.com/apicurio/apicurio-registry.git
+  scmRevision: apicurio-registry-1.0.0-${version.apicurio-registry}
+  buildScript: 'mvn -B clean deploy dependency:tree -DskipTests -Pjpa -Pkafka'
+  customPmeParameters:
+    - ${apicurio-registry.pme.options}
+
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
