@@ -38,6 +38,21 @@ builds:
   customPmeParameters:
     - ${redhat-fuse.pme.options}
 
+- name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
+  project: jboss-fuse/fuse-apicurito-generator
+    #fetchScmUrl: ${fuse-apicurito-generator.fetch.scmUrl}
+    #pushScmUrl: ${fuse-apicurito-generator.push.scmUrl}
+    #tag: fuse-apicurito-generator-${version.apicurito-generator}
+    #buildCommand: ${fuse-apicurito-generator.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-apicurito-generator.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
+  scmRevision: fuse-apicurito-generator-${version.apicurito-generator}
+  buildScript: mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
+  customPmeParameters:
+    - ${fuse-apicurito-generator.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
 - name: wildfly-camel-examples-5.3.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
     #fetchScmUrl: ${wildfly-camel-examples.fetch.scmUrl}
