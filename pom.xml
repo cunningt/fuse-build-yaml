@@ -86,6 +86,7 @@
 
     <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
+    <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
 
     <!-- build information -->
     <build.milestone>CR1</build.milestone>
@@ -279,6 +280,13 @@
     <oreva.fetch.scmUrl>1</oreva.fetch.scmUrl>
     <oreva.push.scmUrl>1</oreva.push.scmUrl>
     <oreva.buildCommand>1</oreva.buildCommand>
+
+    <!-- Fuse Service Registry -->
+    <apicurito-registry.version>1</apicurito-registry.version>
+    <apicurito-registry.tag>DUMMY-TAG-0.0.0</apicurito-registry.tag>
+    <apicurito-registry.fetch.scmUrl>1</apicurito-registry.fetch.scmUrl>
+    <apicurito-registry.push.scmUrl>1</apicurito-registry.push.scmUrl>
+    <apicurito-registry.buildCommand>1</apicurito-registry.buildCommand>
 
   </properties>
 
