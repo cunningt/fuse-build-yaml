@@ -55,7 +55,7 @@ builds:
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
-- name: apicurio-registry-1.0.0
+- name: apicurio-registry-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${apicurito-registry.fetch.scmUrl}
     #pushScmUrl: ${apicurito-registry.push.scmUrl}
     #tag: apicurio-registry-${version.apicurito-registry}
