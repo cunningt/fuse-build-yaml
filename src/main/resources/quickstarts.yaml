@@ -38,6 +38,22 @@ builds:
   customPmeParameters:
     - ${redhat-fuse.pme.options}
 
+- name: spring-boot-camel-xa-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${spring-boot-camel-xa.fetch.scmUrl}
+    #pushScmUrl: ${spring-boot-camel-xa.push.scmUrl}
+    #tag: spring-boot-camel-xa-${spring-boot-camel-xa.version}
+    #buildCommand: ${spring-boot-camel-xa.buildCommand}
+  project: jboss-fuse/spring-boot-camel-xa
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
+  scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${spring-boot-camel-xa.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+    - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
+
 - name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-apicurito-generator
     #fetchScmUrl: ${fuse-apicurito-generator.fetch.scmUrl}
