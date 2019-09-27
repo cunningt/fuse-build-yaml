@@ -1,6 +1,6 @@
 product:
-  name: Red Hat Fuse
-  abbreviation: Fuse-and-FIS
+  name: Red Hat DV
+  abbreviation: Fuse DV
   stage: ${build.milestone}
   issueTrackerUrl: https://issues.jboss.org/projects/TEIIDTOOLS/issues
 version: ${version.fuse.prefix}
