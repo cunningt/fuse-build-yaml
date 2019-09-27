@@ -39,6 +39,19 @@ builds:
   customPmeParameters:
     - ${cxf-xjc-utils.pme.options}
 
+- name: docker-maven-plugin-0.23.0-${version.fuse.prefix}
+  project: jboss-fuse/docker-maven-plugin
+    #fetchScmUrl: ${docker-maven-plugin.fetch.scmUrl}
+    #pushScmUrl: ${docker-maven-plugin.push.scmUrl}
+    #tag: docker-maven-plugin-${docker.maven.plugin.version}
+    #buildCommand: ${docker-maven-plugin.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/docker-maven-plugin.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/docker-maven-plugin.git
+  scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
+  customPmeParameters:
+    - ${docker-maven-plugin.pme.options}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
