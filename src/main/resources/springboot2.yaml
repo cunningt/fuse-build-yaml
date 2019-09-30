@@ -212,10 +212,6 @@ builds:
   externalScmUrl: ssh://git@github.com/fabric8io/ipaas-quickstarts.git
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
-    mv repolist.txt repolist.txt.orig
-
-    sed 's/https:\/\/github\.com/https:\/\/code.engineering.redhat.com\/gerrit/g' repolist.txt.orig > repolist.txt
-
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
