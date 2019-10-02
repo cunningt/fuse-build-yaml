@@ -56,7 +56,7 @@ builds:
   dependencies:
   - teiid-12.3.0
 
-- name: teiid-syndesis-0.0.6
+- name: teiid-syndesis-1.8.1
   project: teiid/teiid-syndesis
     #fetchScmUrl: ${teiid-syndesis.fetch.scmUrl}
     #pushScmUrl: ${teiid-syndesis.push.scmUrl}
