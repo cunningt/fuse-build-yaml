@@ -111,7 +111,7 @@ builds:
 
     STRIPVERSION=$(cat file.version | perl -pe 's/^([0-9\.]+)\.fuse(-sb2)?-([0-9]+)-//g')
 
-    [[ $STRIPVERSION == *"temporary"* ]] && (find . -name MANIFEST.MF -not -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.$STRIPVERSION/\")
+    [[ $STRIPVERSION == *'temporary'* ]] && (find . -name MANIFEST.MF -not -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.$STRIPVERSION/\")
 
     find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/\"
 
