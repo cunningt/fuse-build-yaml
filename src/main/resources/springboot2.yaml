@@ -49,6 +49,8 @@ builds:
   buildPodMemory: 12
   customPmeParameters:
     - ${camel.pme.options}
+  extraRepositories:
+    - http://resources.knopflerfish.org/repo/maven2/release/
   dependencies:
   - cxf-sb2-3.2.7-${version.fuse.prefix}
 

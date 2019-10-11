@@ -77,6 +77,8 @@ builds:
     '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
   customPmeParameters:
     - ${camel.pme.options}
+  extraRepositories:
+    - http://resources.knopflerfish.org/repo/maven2/release/
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
   - karaf-4.2.6-${version.fuse.prefix}
