@@ -219,50 +219,6 @@ builds:
     - redhat-fuse-sb2-${version.fuse.prefix}
     - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
 
-- name: karaf-camel-amq-sb2-1.0.0-${version.fuse.prefix}
-  project: fabric8-quickstarts/karaf-camel-amq
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-amq.git
-  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-amq.git
-  scmRevision: karaf-camel-amq-${karaf-camel-amq.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
-    - ${karaf-camel-amq.pme.options}
-  dependencies:
-    - redhat-fuse-${version.fuse.prefix}
-
-- name: karaf-camel-log-sb2-1.0.0-${version.fuse.prefix}
-  project: fabric8-quickstarts/karaf-camel-log
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-log.git
-  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-log.git
-  scmRevision: karaf-camel-log-${karaf-camel-log.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
-    - ${karaf-camel-log.pme.options}
-  dependencies:
-    - redhat-fuse-${version.fuse.prefix}
-
-- name: karaf-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
-  project: fabric8-quickstarts/karaf-camel-rest-sql
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-rest-sql.git
-  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-rest-sql.git
-  scmRevision: karaf-camel-rest-sql-${karaf-camel-rest-sql.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
-    - ${karaf-camel-rest-sql.pme.options}
-  dependencies:
-    - redhat-fuse-${version.fuse.prefix}
-
-- name: karaf-cxf-rest-sb2-1.0.0-${version.fuse.prefix}
-  project: fabric8-quickstarts/karaf-cxf-rest
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-cxf-rest.git
-  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-cxf-rest.git
-  scmRevision: karaf-cxf-rest-${karaf-cxf-rest.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
-    - ${karaf-cxf-rest.pme.options}
-  dependencies:
-    - redhat-fuse-${version.fuse.prefix}
-
 - name: spring-boot-camel-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel.git
@@ -282,17 +238,6 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-amq.pme.options}
-  dependencies:
-    - redhat-fuse-${version.fuse.prefix}
-
-- name: spring-boot-camel-config-sb2-1.0.0-${version.fuse.prefix}
-  project: fabric8-quickstarts/spring-boot-camel-config
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/sspring-boot-camel-config.git
-  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-config.git
-  scmRevision: spring-boot-camel-config-${spring-boot-camel-config.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
-    - ${spring-boot-camel-config.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
