@@ -22,6 +22,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-online.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/hawtio-online.git
   scmRevision: hawtio-online-${version.hawtio.online}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
 
@@ -49,6 +50,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: camel-k-runtime-${version.camel-k-runtime}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${camel-k-runtime.pme.options}
