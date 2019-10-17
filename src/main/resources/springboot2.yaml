@@ -228,7 +228,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-camel.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-camel-amq-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-amq
@@ -239,7 +239,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-camel-amq.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-camel-drools-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-drools
@@ -250,7 +250,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-camel-drools.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-camel-infinispan-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-infinispan
@@ -261,7 +261,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-camel-infinispan.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-rest-sql
@@ -272,7 +272,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-camel-rest-sql.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-camel-rest-3scale-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-rest-3scale
@@ -283,7 +283,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-camel-rest-3scale.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-camel-xml-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-xml
@@ -294,7 +294,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-camel-xml.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs
@@ -305,7 +305,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-cxf-jaxrs.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxws
@@ -316,7 +316,7 @@ builds:
   customPmeParameters:
     - ${spring-boot-cxf-jaxws.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
   project: fabric8io/ipaas-quickstarts
