@@ -275,6 +275,11 @@
     <teiid-syndesis.fetch.scmUrl>1</teiid-syndesis.fetch.scmUrl>
     <teiid-syndesis.push.scmUrl>1</teiid-syndesis.push.scmUrl>
     <teiid-syndesis.buildCommand>1</teiid-syndesis.buildCommand>
+    <version.teiid-operator>1</version.teiid-operator>
+    <teiid-operator.tag>1</teiid-operator.tag>
+    <teiid-operator.fetch.scmUrl>1</teiid-operator.fetch.scmUrl>
+    <teiid-operator.push.scmUrl>1</teiid-operator.push.scmUrl>
+    <teiid-operator.buildCommand>1</teiid-operator.buildCommand>
 
     <version.oreva>1</version.oreva>
     <oreva.tag>DUMMY-TAG-0.0.0</oreva.tag>
