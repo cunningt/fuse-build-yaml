@@ -293,12 +293,27 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=target/extra-resources/repolist.txt -Dgpg.skip -Prelease clean deploy
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
+  - karaf-camel-amq-1.0.0-${version.fuse.prefix}
+  - karaf-camel-log-1.0.0-${version.fuse.prefix}
+  - karaf-camel-rest-sql-1.0.0-${version.fuse.prefix}
+  - karaf-cxf-rest-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-amq-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-config-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-drools-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-infinispan-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-rest-sql-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-rest-3scale-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-xml-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxrs-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxws-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-xa-1.0.0-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
