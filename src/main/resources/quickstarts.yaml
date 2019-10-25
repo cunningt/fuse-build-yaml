@@ -57,10 +57,6 @@ builds:
     - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
 
 - name: karaf-camel-amq-1.0.0-${version.fuse.prefix}
-    #fetchScmUrl: ${spring-boot-camel-xa.fetch.scmUrl}
-    #pushScmUrl: ${spring-boot-camel-xa.push.scmUrl}
-    #tag: spring-boot-camel-xa-${spring-boot-camel-xa.version}
-    #buildCommand: ${spring-boot-camel-xa.buildCommand}
   project: fabric8-quickstarts/karaf-camel-amq
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-amq.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-amq.git
@@ -141,7 +137,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-camel-drools
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-drools.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-drools.git
-  scmRevision: spring-boot-camel-config-${spring-boot-camel-drools.version}
+  scmRevision: spring-boot-camel-drools-${spring-boot-camel-drools.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-drools.pme.options}
@@ -152,7 +148,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-camel-infinispan
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
-  scmRevision: spring-boot-camel-config-${spring-boot-camel-infinispan.version}
+  scmRevision: spring-boot-camel-infinispan-${spring-boot-camel-infinispan.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-infinispan.pme.options}
@@ -163,7 +159,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-camel-rest-sql
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
-  scmRevision: spring-boot-camel-config-${spring-boot-camel-rest-sql.version}
+  scmRevision: spring-boot-camel-rest-sql-${spring-boot-camel-rest-sql.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-rest-sql.pme.options}
@@ -174,7 +170,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-camel-rest-3scale
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
-  scmRevision: spring-boot-camel-config-${spring-boot-camel-rest-3scale.version}
+  scmRevision: spring-boot-camel-rest-3scale-${spring-boot-camel-rest-3scale.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-rest-3scale.pme.options}
@@ -185,7 +181,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-camel-xml
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-xml.git
-  scmRevision: spring-boot-camel-config-${spring-boot-camel-xml.version}
+  scmRevision: spring-boot-camel-xml-${spring-boot-camel-xml.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-xml.pme.options}
@@ -196,7 +192,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
-  scmRevision: spring-boot-camel-config-${spring-boot-cxf-jaxrs.version}
+  scmRevision: spring-boot-cxf-jaxrs-${spring-boot-cxf-jaxrs.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-cxf-jaxrs.pme.options}
@@ -207,7 +203,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-cxf-jaxws
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
-  scmRevision: spring-boot-camel-config-${spring-boot-cxf-jaxws.version}
+  scmRevision: spring-boot-cxf-jaxws-${spring-boot-cxf-jaxws.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-cxf-jaxws.pme.options}
