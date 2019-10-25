@@ -254,7 +254,7 @@ builds:
   project: fabric8-quickstarts/spring-boot-camel-drools
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-drools.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-drools.git
-  scmRevision: sspring-boot-camel-drools-${spring-boot-camel-drools.version}
+  scmRevision: spring-boot-camel-drools-${spring-boot-camel-drools.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-drools.pme.options}

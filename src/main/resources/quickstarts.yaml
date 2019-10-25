@@ -128,7 +128,7 @@ builds:
 
 - name: spring-boot-camel-config-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-config
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/sspring-boot-camel-config.git
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-config.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-config.git
   scmRevision: spring-boot-camel-config-${spring-boot-camel-config.version}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
