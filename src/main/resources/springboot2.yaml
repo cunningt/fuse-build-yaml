@@ -328,14 +328,14 @@ builds:
     - redhat-fuse-sb2-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
-  project: fabric8io/ipaas-quickstarts
+  project: jboss-fuse/ipaas-quickstarts
     #fetchScmUrl : ${ipaas-quickstarts.fetch.scmUrl}
     #pushScmUrl : ${ipaas-quickstarts.push.scmUrl}
     #tag: ipaas-quickstarts-${version.ipaas.quickstarts}
     #buildCommand: ${ipaas-quickstarts.buildCommand}
     #cherrypick: true
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8io-ipaas-quickstarts.git
-  externalScmUrl: ssh://git@github.com/fabric8io/ipaas-quickstarts.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/ipaas-quickstarts.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/ipaas-quickstarts.git
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
@@ -344,6 +344,16 @@ builds:
   dependencies:
   - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
+  - spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-amq-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-drools-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-infinispan-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-rest-3scale-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-xml-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
 
 - name: narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
