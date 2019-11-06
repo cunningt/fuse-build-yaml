@@ -51,6 +51,8 @@
     <version.syndesis>1.6.4.fuse-730002</version.syndesis>
     <version.atlasmap>1.40.0.fuse-740007</version.atlasmap>
     <version.camel>2.21.0.fuse-000096</version.camel>
+    <version.camel-quarkus>0.3.2.fuse-800008</version.camel-quarkus>
+    <version.camel-kafka-connector>0.0.1.fuse-800001</version.camel-kafka-connector>
     <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
     <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
     <version.cxf>3.1.11.fuse-000265</version.cxf>
