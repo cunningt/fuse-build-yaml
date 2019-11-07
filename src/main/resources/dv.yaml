@@ -59,23 +59,6 @@ builds:
   dependencies:
   - teiid-12.3.0
 
-- name: teiid-syndesis-1.8.1
-  project: teiid/teiid-syndesis
-    #fetchScmUrl: ${teiid-syndesis.fetch.scmUrl}
-    #pushScmUrl: ${teiid-syndesis.push.scmUrl}
-    #tag: teiid-syndesis-${version.teiid-syndesis}
-    #buildCommand: ${teiid-syndesis.buildCommand}
-    #externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-syndesis.git
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-syndesis.git
-  scmRevision: teiid-syndesis-${version.teiid-syndesis}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  environmentId: 9
-  customPmeParameters:
-    - ${teiid-syndesis.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy'
-  dependencies:
-  - teiid-spring-boot-1.2.0
-
 - name: teiid-openshift-examples-1.2.0
   project: teiid/teiid-openshift-examples
     #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
@@ -107,7 +90,7 @@ builds:
   buildScript: >
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy
   dependencies:
-  - teiid-syndesis-1.8.1
+  - teiid-spring-boot-1.2.0
 outputPrefixes:
   releaseFile: dv-test
   releaseDir: dv-test
