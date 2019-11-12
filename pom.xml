@@ -88,6 +88,13 @@
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
     <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
 
+    <!-- boosters -->
+    <version.fuse-configmap-booster>1</version.fuse-configmap-booster>
+    <version.fuse-health-check-booster>1</version.fuse-health-check-booster>
+    <fuse-istio-distributed-tracing-booster.version>1</fuse-istio-distributed-tracing-booster.version>
+    <fuse-rest-http-booster.version>1</fuse-rest-http-booster.version>
+    <fuse-springboot-circuit-breaker-booster.version>1</fuse-springboot-circuit-breaker-booster.version>
+
     <!-- build information -->
     <build.milestone>ER1</build.milestone>
     <port.number>49159</port.number>
