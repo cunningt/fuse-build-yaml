@@ -57,6 +57,21 @@ builds:
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
 
+- name: application-templates-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${application-templates.fetch.scmUrl}
+    #pushScmUrl: ${application-templates.push.scmUrl}
+    #tag: apicurio-registry-${version.application-templates}
+    #buildCommand: ${application-templates.buildCommand}
+  project: jboss-fuse/application-templates
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/application-templates.git
+  scmRevision: application-templates-${version.application-templates}
+  buildScript: 'mvn -B clean deploy dependency:tree -DskipTests -Pprod -Pkafka -Pjpa'
+  customPmeParameters:
+    - ${application-templates.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
 - name: apicurio-registry-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${apicurito-registry.fetch.scmUrl}
     #pushScmUrl: ${apicurito-registry.push.scmUrl}
