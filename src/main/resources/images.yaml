@@ -63,7 +63,7 @@ builds:
     #tag: apicurio-registry-${version.application-templates}
     #buildCommand: ${application-templates.buildCommand}
   project: jboss-fuse/application-templates
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse-application-templates.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/application-templates.git
   scmRevision: application-templates-${version.application-templates}
   buildScript: 'mvn -B clean deploy dependency:tree -DskipTests -Pprod -Pkafka -Pjpa'
