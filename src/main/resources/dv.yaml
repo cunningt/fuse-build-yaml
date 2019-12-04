@@ -75,22 +75,7 @@ builds:
   dependencies:
   - teiid-spring-boot-1.2.0
   
-- name: teiid-operator-0.0.1
-  project: teiid/teiid-operator
-    #fetchScmUrl: ${teiid-operator.fetch.scmUrl}
-    #pushScmUrl: ${teiid-operator.push.scmUrl}
-    #tag: ${teiid-operator.tag}
-    #buildCommand: ${teiid-operator.buildCommand}
-    #externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-operator.git
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-operator.git
-  scmRevision: teiid-operator-${version.teiid-operator}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
-    - ${teiid-operator.pme.options}
-  buildScript: >
-     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy
-  dependencies:
-  - teiid-spring-boot-1.2.0
+
 outputPrefixes:
   releaseFile: dv-test
   releaseDir: dv-test
