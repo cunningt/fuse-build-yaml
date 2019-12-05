@@ -12,28 +12,28 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: oreva-1.0.1 
+- name: oreva-1.0.1-${version.fuse.prefix}
   project: teiid/oreva
     #fetchScmUrl: ${oreva.fetch.scmUrl}
     #pushScmUrl: ${oreva.push.scmUrl}
     #tag: ${oreva.tag}
     #buildCommand: ${oreva.buildCommand}
-    #externalScmUrl: ssh://git@github.com/jboss-fuse/oreva.git
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/oreva.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/oreva.git
   scmRevision: oreva-${version.oreva}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${oreva.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy'
 
-- name: teiid-12.3.0
+- name: teiid-13.0.0-${version.fuse.prefix}
   project: teiid/teiid
     #fetchScmUrl: ${teiid.fetch.scmUrl}
     #pushScmUrl: ${teiid.push.scmUrl}
     #tag: ${teiid.tag}
     #buildCommand: ${teiid.buildCommand}
-    #externalScmUrl: ssh://git@github.com/jboss-fuse/teiid.git
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid.git
   scmRevision: teiid-${version.teiid}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
@@ -41,39 +41,39 @@ builds:
   buildScript: >
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
   dependencies:
-  - oreva-1.0.1
+  - oreva-1.0.1-${version.fuse.prefix}
 
-- name: teiid-spring-boot-1.2.0
+- name: teiid-spring-boot-1.3.0-${version.fuse.prefix}
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
     #tag: teiid-spring-boot-${version.teiid-spring-boot}
     #buildCommand: ${teiid-spring-boot.buildCommand}
-    #externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-spring-boot.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-spring-boot.git
   scmRevision: teiid-spring-boot-${version.teiid-spring-boot}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${teiid-spring-boot.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
-  - teiid-12.3.0
+  - teiid-13.0.0-${version.fuse.prefix}
 
-- name: teiid-openshift-examples-1.2.0
+- name: teiid-openshift-examples-1.2.0-${version.fuse.prefix}
   project: teiid/teiid-openshift-examples
     #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
     #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
     #tag: ${teiid-openshift-examples.tag}
     #buildCommand: ${teiid-openshift-examples.buildCommand}
-    #externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-openshift-examples.git
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-openshift-examples.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-openshift-examples.git
   scmRevision: teiid-openshift-examples-${version.teiid-openshift-examples}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${teiid-openshift-examples.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
   dependencies:
-  - teiid-spring-boot-1.2.0
+  - teiid-spring-boot-1.3.0-${version.fuse.prefix}
   
 
 outputPrefixes:
