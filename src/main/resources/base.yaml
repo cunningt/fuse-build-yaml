@@ -45,12 +45,12 @@ builds:
     export MAVEN_OPTS=\"-Xmx4g\"
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
-    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
-    '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs,!examples'
   customPmeParameters:
     - ${camel.pme.options}
   extraRepositories:
     - http://resources.knopflerfish.org/repo/maven2/release/
+    - http://packages.confluent.io/maven/
   dependencies:
   - cxf-3.3.3-${version.fuse.prefix}
 
