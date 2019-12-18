@@ -338,7 +338,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/ipaas-quickstarts.git
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstarts.url.base="https://code.engineering.redhat.com/gerrit/fabric8-quickstarts" -Dquickstart.git.repos=target/extra-resources/repolist.txt -Dgpg.skip -Prelease clean deploy
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstarts.url.base=https://code.engineering.redhat.com/gerrit/fabric8-quickstarts -Dquickstart.git.repos=target/extra-resources/repolist.txt -Dgpg.skip -Prelease clean deploy
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
