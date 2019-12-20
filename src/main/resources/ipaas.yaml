@@ -32,14 +32,14 @@ builds:
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy
 
-- name: syndesis-1.8.0-${version.fuse.prefix}
-  project: syndesisio/syndesis
+- name: syndesis-1.9.0-${version.fuse.prefix}
+  project: jboss-fuse/syndesis
     #fetchScmUrl: ${syndesis.fetch.scmUrl}
     #pushScmUrl: ${syndesis.push.scmUrl}
     #tag: ${syndesis.tag}
     #buildCommand: ${syndesis.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/syndesisio/syndesis.git
-  scmUrl: git+ssh://code.engineering.redhat.com/syndesisio/syndesis.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/syndesis.git
   scmRevision: syndesis-${version.syndesis}
   buildPodMemory: 12
   environmentId: 9
