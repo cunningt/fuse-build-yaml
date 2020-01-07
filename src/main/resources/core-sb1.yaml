@@ -78,7 +78,7 @@ builds:
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
-    '!org.apache.camel:camel-itest,!org.apache.camel.example:camel-example-swagger-xml'
+    '!org.apache.camel:camel-itest'
   customPmeParameters:
     - ${camel.pme.options}
   extraRepositories:
