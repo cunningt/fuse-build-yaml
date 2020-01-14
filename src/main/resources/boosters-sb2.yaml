@@ -39,7 +39,7 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
     -Dcheckstyle.skip=true clean deploy
-  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
+  scmRevision: fuse-health-check-booster-sb2-${version.fuse-health-check-booster}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${fuse-health-check-booster.pme.options}
