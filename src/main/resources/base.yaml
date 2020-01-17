@@ -94,7 +94,10 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
   scmRevision: camel-quarkus-${version.camel-quarkus}
-  buildScript: 'mvn -B clean deploy -DskipTests'
+  environmentId: 20
+  buildScript: >
+    mvn -B clean deploy -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+
   customPmeParameters:
     - ${camel-quarkus.pme.options}
   dependencies:
