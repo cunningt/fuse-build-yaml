@@ -7,7 +7,7 @@ version: ${version.fuse.prefix}
 milestone: ${build.milestone}
 group: Red Hat Fuse - Base ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
-  environmentId: 29
+  environmentId: 21
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
@@ -21,7 +21,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
-  environmentId: 29
+  environmentId: 21
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${cxf.pme.options}
@@ -38,7 +38,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
-  environmentId: 29
+  environmentId: 21
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 12
   buildScript: >
@@ -65,7 +65,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-kafka-connector.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-kafka-connector.git
   scmRevision: camel-kafka-connector-${version.camel-kafka-connector}
-  environmentId: 29
+  environmentId: 21
   buildScript: 'mvn -B clean deploy -DskipTests'
   customPmeParameters:
     - ${camel-kafka-connector.pme.options}
@@ -81,7 +81,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: camel-k-runtime-${version.camel-k-runtime}
-  environmentId: 29
+  environmentId: 21
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
@@ -99,7 +99,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
   scmRevision: camel-quarkus-${version.camel-quarkus}
-  environmentId: 29
+  environmentId: 21
   buildScript: >
     mvn -B clean deploy -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
 
