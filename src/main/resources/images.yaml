@@ -41,22 +41,6 @@ builds:
   dependencies:
   - hawtio-2.0.0-${version.fuse.prefix}
 
-- name: camel-k-runtime-1.0.0-${version.fuse.prefix}
-    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
-    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
-    #tag: camel-k-runtime-${version.camel-k-runtime}
-    #buildCommand: ${camel-k-runtime.buildCommand}
-  project: jboss-fuse/camel-k-runtime
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
-  scmRevision: camel-k-runtime-${version.camel-k-runtime}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
-    - ${camel-k-runtime.pme.options}
-  dependencies:
-    - camel-2.21.0-${version.fuse.prefix}
-
 - name: application-templates-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${application-templates.fetch.scmUrl}
     #pushScmUrl: ${application-templates.push.scmUrl}
