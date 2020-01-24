@@ -338,6 +338,28 @@ builds:
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
 
+- name: spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/spring-boot-cxf-jaxrs-xml
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs-xml.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxrs-xml.git
+  scmRevision: spring-boot-cxf-jaxrs-xml-${spring-boot-cxf-jaxrs-xml.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${spring-boot-cxf-jaxrs-xml.pme.options}
+  dependencies:
+    - redhat-fuse-sb2-${version.fuse.prefix}
+
+- name: spring-boot-cxf-jaxws-xml-sb2-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/spring-boot-cxf-jaxws-xml
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxws-xml.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxws-xml.git
+  scmRevision: spring-boot-cxf-jaxws-xml-${spring-boot-cxf-jaxws-xml.version}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${spring-boot-cxf-jaxws-xml.pme.options}
+  dependencies:
+    - redhat-fuse-sb2-${version.fuse.prefix}
+
 - name: ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
   project: jboss-fuse/ipaas-quickstarts
     #fetchScmUrl : ${ipaas-quickstarts.fetch.scmUrl}
