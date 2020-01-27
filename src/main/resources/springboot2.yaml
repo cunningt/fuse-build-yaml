@@ -387,6 +387,8 @@ builds:
   - spring-boot-camel-xml-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxws-xml-sb2-1.0.0-${version.fuse.prefix}
 
 - name: narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
