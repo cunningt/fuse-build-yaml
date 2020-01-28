@@ -112,7 +112,7 @@ builds:
     #buildCommand: ${fuse-extras-distro.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-extras-distro.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-extras-distro.git
-  scmRevision: fuse-extras-distro-${version.fuse.extras.distro}
+  scmRevision: fuse-extras-${version.fuse.extras.distro}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${fuse-extras.pme.options}
