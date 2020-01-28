@@ -23,6 +23,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${oreva.pme.options}
+  buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
 - name: teiid-13.0.0-${version.fuse.prefix}
   project: teiid/teiid
