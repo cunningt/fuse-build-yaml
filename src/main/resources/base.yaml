@@ -72,6 +72,23 @@ builds:
   dependencies:
     - camel-3.0.0-${version.fuse.prefix}
 
+- name: camel-quarkus-0.3.2-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
+    #pushScmUrl: ${camel-quarkus.push.scmUrl}
+    #tag: camel-quarkus-${version.camel-quarkus}
+    #buildCommand: ${camel-quarkus.buildCommand}
+  project: jboss-fuse/camel-quarkus
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
+  scmRevision: camel-quarkus-${version.camel-quarkus}
+  environmentId: 21
+  buildScript: >
+    mvn -B clean deploy -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+  customPmeParameters:
+    - ${camel-quarkus.pme.options}
+  dependencies:
+    - camel-3.0.0-${version.fuse.prefix}
+
 - name: camel-k-runtime-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
     #pushScmUrl: ${camel-k-runtime.push.scmUrl}
@@ -89,24 +106,7 @@ builds:
     - ${camel-k-runtime.pme.options}
   dependencies:
     - camel-3.0.0-${version.fuse.prefix}
-
-- name: camel-quarkus-0.3.2-${version.fuse.prefix}
-    #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
-    #pushScmUrl: ${camel-quarkus.push.scmUrl}
-    #tag: camel-quarkus-${version.camel-quarkus}
-    #buildCommand: ${camel-quarkus.buildCommand}
-  project: jboss-fuse/camel-quarkus
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
-  scmRevision: camel-quarkus-${version.camel-quarkus}
-  environmentId: 21
-  buildScript: >
-    mvn -B clean deploy -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
-
-  customPmeParameters:
-    - ${camel-quarkus.pme.options}
-  dependencies:
-    - camel-3.0.0-${version.fuse.prefix}
+    - camel-quarkus-0.3.2-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
