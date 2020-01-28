@@ -8,7 +8,7 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - Core SB1 ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 8
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
@@ -20,7 +20,7 @@ builds:
     #buildCommand: ${kubernetes-model.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-model.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-model.git
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
@@ -55,7 +55,7 @@ builds:
     - ${cxf.pme.options}
   buildPodMemory: 8
   buildScript: >
-    mvn -e -V -B -DskipTests -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
   dependencies:
   - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
   - karaf-4.2.6-${version.fuse.prefix}
@@ -76,7 +76,7 @@ builds:
 
     export MAVEN_OPTS=\"-Xmx4g\"
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     '!org.apache.camel:camel-itest'
   customPmeParameters:
@@ -156,7 +156,7 @@ builds:
 
     find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/\"
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
   customPmeParameters:
     - ${fuse-components.pme.options}
   dependencies:
@@ -185,7 +185,7 @@ builds:
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
 
     mvn  -e -V -B -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy,spring-boot-1 -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
-    -Dproductization -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -Dproductization -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass

@@ -8,7 +8,7 @@ milestone: ${build.milestone}
 group: Fuse Standalone and FIS ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 1
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
@@ -30,9 +30,9 @@ builds:
 
     sed -i 's#https:#http:#g' yarn.lock
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false
     -Dproxy -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
-    -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -DyarnRegistry=$REG -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     clean deploy
@@ -51,7 +51,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-karaf.git
   scmRevision: fuse-karaf-${version.bom.fuse}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Psap
     clean deploy '
   customPmeParameters:
     - ${fuse-karaf.pme.options}
@@ -88,7 +88,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${docker-maven-plugin.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
 - name: fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
   project: jboss-fuse/fabric8-maven-plugin
@@ -101,7 +101,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8-maven-plugin.git
   scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   customPmeParameters:
     - ${fabric8-maven-plugin.pme.options}
   dependencies:
@@ -135,7 +135,7 @@ builds:
 
     export M2_HOME=/usr/share/maven
 
-    mvn -e -V -B -DskipTests -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
   customPmeParameters:
     - ${wildfly-camel.pme.options}
   dependencies:
@@ -152,7 +152,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/redhat-fuse.git
   scmRevision: redhat-fuse-${fuse-bom.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy -DskipClean'
   customPmeParameters:
     - ${redhat-fuse.pme.options}
@@ -172,7 +172,7 @@ builds:
   externalScmUrl: ssh://git@github.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
   customPmeParameters:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
@@ -226,7 +226,7 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
@@ -270,7 +270,7 @@ builds:
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
-    mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
+    mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
 
 - name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-apicurito-generator
@@ -282,7 +282,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
   scmRevision: fuse-apicurito-generator-${version.apicurito-generator}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
+  buildScript: mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
   customPmeParameters:
     - ${fuse-apicurito-generator.pme.options}
   dependencies:
@@ -298,7 +298,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/narayana-spring-boot.git
   scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
   customPmeParameters:
     - ${narayana-spring-boot-quickstart.pme.options}
   dependencies:
@@ -314,7 +314,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
   scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
@@ -331,7 +331,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: camel-k-runtime-${version.camel-k-runtime}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${camel-k-runtime.pme.options}
   dependencies:
@@ -340,7 +340,7 @@ builds:
 #- name: application-templates-2.1-${version.fuse.prefix}
 #  project: jboss-fuse/application-templates
 #  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/application-templates.git
-#  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+#  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
 #    install '
 #  scmRevision: application-templates-${version.application.templates}
 

@@ -8,7 +8,7 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - Base ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 8
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
@@ -34,7 +34,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
     -Dcheckstyle.skip=true clean deploy
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
@@ -52,7 +52,7 @@ builds:
   scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
   customPmeParameters:
     - ${docker-maven-plugin.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
 outputPrefixes:
   releaseFile: fuse-test

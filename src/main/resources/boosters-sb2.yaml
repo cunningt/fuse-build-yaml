@@ -8,7 +8,7 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - Boosters ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 8
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
@@ -37,7 +37,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-health-check-booster.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-health-check-booster.git
   buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
     -Dcheckstyle.skip=true clean deploy
   scmRevision: fuse-health-check-booster-sb2-${version.fuse-health-check-booster}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
@@ -57,7 +57,7 @@ builds:
   scmRevision: fuse-istio-distributed-tracing-booster-${fuse-istio-distributed-tracing-booster.version}
   customPmeParameters:
     - ${fuse-istio-distributed-tracing-booster.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
 
@@ -72,7 +72,7 @@ builds:
   scmRevision: fuse-rest-http-booster-${fuse-rest-http-booster.version}
   customPmeParameters:
     - ${fuse-rest-http-booster.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
 
@@ -87,7 +87,7 @@ builds:
   scmRevision: fuse-springboot-circuit-breaker-booster-${fuse-springboot-circuit-breaker-booster.version}
   customPmeParameters:
     - ${fuse-springboot-circuit-breaker-booster.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
 

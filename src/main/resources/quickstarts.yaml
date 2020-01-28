@@ -8,7 +8,7 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - Quickstarts ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 8
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
@@ -35,7 +35,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/redhat-fuse.git
   scmRevision: redhat-fuse-${fuse-bom.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy -DskipClean'
   customPmeParameters:
     - ${redhat-fuse.pme.options}
@@ -49,7 +49,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-boot-camel-xa.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
   scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
@@ -61,7 +61,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-amq.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-amq.git
   scmRevision: karaf-camel-amq-${karaf-camel-amq.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${karaf-camel-amq.pme.options}
   dependencies:
@@ -72,7 +72,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-log.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-log.git
   scmRevision: karaf-camel-log-${karaf-camel-log.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${karaf-camel-log.pme.options}
   dependencies:
@@ -83,7 +83,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-rest-sql.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-rest-sql.git
   scmRevision: karaf-camel-rest-sql-${karaf-camel-rest-sql.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${karaf-camel-rest-sql.pme.options}
   dependencies:
@@ -94,7 +94,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-cxf-rest.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-cxf-rest.git
   scmRevision: karaf-cxf-rest-${karaf-cxf-rest.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${karaf-cxf-rest.pme.options}
   dependencies:
@@ -105,7 +105,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel.git
   scmRevision: spring-boot-camel-${spring-boot-camel.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel.pme.options}
   dependencies:
@@ -116,7 +116,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-amq.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-amq.git
   scmRevision: spring-boot-camel-amq-${spring-boot-camel-amq.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-amq.pme.options}
   dependencies:
@@ -127,7 +127,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-config.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-config.git
   scmRevision: spring-boot-camel-config-${spring-boot-camel-config.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-config.pme.options}
   dependencies:
@@ -138,7 +138,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-drools.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-drools.git
   scmRevision: spring-boot-camel-drools-${spring-boot-camel-drools.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-drools.pme.options}
   dependencies:
@@ -149,7 +149,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
   scmRevision: spring-boot-camel-infinispan-${spring-boot-camel-infinispan.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-infinispan.pme.options}
   dependencies:
@@ -160,7 +160,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
   scmRevision: spring-boot-camel-rest-sql-${spring-boot-camel-rest-sql.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-rest-sql.pme.options}
   dependencies:
@@ -171,7 +171,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
   scmRevision: spring-boot-camel-rest-3scale-${spring-boot-camel-rest-3scale.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-rest-3scale.pme.options}
   dependencies:
@@ -182,7 +182,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-xml.git
   scmRevision: spring-boot-camel-xml-${spring-boot-camel-xml.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-camel-xml.pme.options}
   dependencies:
@@ -193,7 +193,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
   scmRevision: spring-boot-cxf-jaxrs-${spring-boot-cxf-jaxrs.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-cxf-jaxrs.pme.options}
   dependencies:
@@ -204,7 +204,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
   scmRevision: spring-boot-cxf-jaxws-${spring-boot-cxf-jaxws.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
   customPmeParameters:
     - ${spring-boot-cxf-jaxws.pme.options}
   dependencies:
@@ -219,7 +219,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-apicurito-generator.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
   scmRevision: fuse-apicurito-generator-${version.apicurito-generator}
-  buildScript: mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
+  buildScript: mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
   customPmeParameters:
     - ${fuse-apicurito-generator.pme.options}
   dependencies:
@@ -235,7 +235,7 @@ builds:
   externalScmUrl: ssh://git@github.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
   customPmeParameters:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
@@ -289,7 +289,7 @@ builds:
   scmRevision: ipaas-quickstarts-${version.ipaas.quickstarts}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dquickstarts.url.base=\"https://code.engineering.redhat.com/gerrit/fabric8-quickstarts\" -Dquickstart.git.repos=target/extra-resources/repolist.txt -Dgpg.skip -Prelease clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dquickstarts.url.base=\"https://code.engineering.redhat.com/gerrit/fabric8-quickstarts\" -Dquickstart.git.repos=target/extra-resources/repolist.txt -Dgpg.skip -Prelease clean deploy
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:

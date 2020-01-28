@@ -8,7 +8,7 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - Images ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 8
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
@@ -30,9 +30,9 @@ builds:
 
     sed -i 's#https:#http:#g' yarn.lock
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false
     -Dproxy -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
-    -DyarnRegistry=$REG -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -DyarnRegistry=$REG -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     clean deploy
@@ -50,7 +50,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse-application-templates.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/application-templates.git
   scmRevision: application-templates-${version.application-templates}
-  buildScript: 'mvn -B clean deploy dependency:tree -DskipTests -Pprod -Pkafka -Pjpa'
+  buildScript: 'mvn -B clean deploy dependency:tree -Dmaven.test.skip=true -Pprod -Pkafka -Pjpa'
   customPmeParameters:
     - ${application-templates.pme.options}
   dependencies:
@@ -65,7 +65,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurio-registry.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/apicurio-registry.git
   scmRevision: apicurio-registry-${version.apicurio-registry}
-  buildScript: 'mvn -B clean deploy dependency:tree -DskipTests -Dtar.long.file.mode=posix -Pprod -Pkafka -Pjpa'
+  buildScript: 'mvn -B clean deploy dependency:tree -Dmaven.test.skip=true -Dtar.long.file.mode=posix -Pprod -Pkafka -Pjpa'
   customPmeParameters:
     - ${apicurio-registry.pme.options}
 
