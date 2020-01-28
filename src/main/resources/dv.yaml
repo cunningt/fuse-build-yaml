@@ -8,8 +8,7 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - DV ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 7
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
-    deploy'
+  buildScript: 'mvn -e -V -B -DskipTests  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false  -Dgpg.skip=true clean deploy'
 
 builds:
 - name: oreva-1.0.1-${version.fuse.prefix}
@@ -24,7 +23,6 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${oreva.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy'
 
 - name: teiid-13.0.0-${version.fuse.prefix}
   project: teiid/teiid
@@ -39,7 +37,7 @@ builds:
   customPmeParameters:
     - ${teiid.pme.options}
   buildScript: >
-     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
+     mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
   dependencies:
   - oreva-1.0.1-${version.fuse.prefix}
 
@@ -55,7 +53,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${teiid-spring-boot.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
   - teiid-13.0.0-${version.fuse.prefix}
 
@@ -71,7 +69,6 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${teiid-openshift-examples.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
   dependencies:
   - teiid-spring-boot-1.3.0-${version.fuse.prefix}
   
