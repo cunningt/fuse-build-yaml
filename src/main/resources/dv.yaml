@@ -38,7 +38,7 @@ builds:
   customPmeParameters:
     - ${teiid.pme.options}
   buildScript: >
-     mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
+     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
   dependencies:
   - oreva-1.0.1-${version.fuse.prefix}
 
