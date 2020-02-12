@@ -1,18 +1,17 @@
 product:
-  name: Red Hat DV
-  abbreviation: Fuse DV
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
   stage: ${build.milestone}
-  issueTrackerUrl: https://issues.jboss.org/projects/TEIIDTOOLS/issues
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}
 group: Red Hat Fuse - DV ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 7
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
-    deploy'
+  buildScript: 'mvn -e -V -B -DskipTests  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false  -Dgpg.skip=true clean deploy'
 
 builds:
-- name: oreva-1.0.1 
+- name: oreva-1.0.1-${version.fuse.prefix}
   project: teiid/oreva
     #fetchScmUrl: ${oreva.fetch.scmUrl}
     #pushScmUrl: ${oreva.push.scmUrl}
@@ -24,9 +23,9 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${oreva.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
-- name: teiid-12.3.0
+- name: teiid-13.0.0-${version.fuse.prefix}
   project: teiid/teiid
     #fetchScmUrl: ${teiid.fetch.scmUrl}
     #pushScmUrl: ${teiid.push.scmUrl}
@@ -41,9 +40,9 @@ builds:
   buildScript: >
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
   dependencies:
-  - oreva-1.0.1
+  - oreva-1.0.1-${version.fuse.prefix}
 
-- name: teiid-spring-boot-1.2.0
+- name: teiid-spring-boot-1.3.0-${version.fuse.prefix}
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
@@ -55,28 +54,11 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${teiid-spring-boot.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
-  - teiid-12.3.0
+  - teiid-13.0.0-${version.fuse.prefix}
 
-- name: teiid-syndesis-1.8.1
-  project: teiid/teiid-syndesis
-    #fetchScmUrl: ${teiid-syndesis.fetch.scmUrl}
-    #pushScmUrl: ${teiid-syndesis.push.scmUrl}
-    #tag: teiid-syndesis-${version.teiid-syndesis}
-    #buildCommand: ${teiid-syndesis.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-syndesis.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-syndesis.git
-  scmRevision: teiid-syndesis-${version.teiid-syndesis}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  environmentId: 9
-  customPmeParameters:
-    - ${teiid-syndesis.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy'
-  dependencies:
-  - teiid-spring-boot-1.2.0
-
-- name: teiid-openshift-examples-1.2.0
+- name: teiid-openshift-examples-1.2.0-${version.fuse.prefix}
   project: teiid/teiid-openshift-examples
     #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
     #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
@@ -88,9 +70,9 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${teiid-openshift-examples.pme.options}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean deploy'
   dependencies:
-  - teiid-spring-boot-1.2.0
+  - teiid-spring-boot-1.3.0-${version.fuse.prefix}
+  
 
 outputPrefixes:
   releaseFile: dv-test
