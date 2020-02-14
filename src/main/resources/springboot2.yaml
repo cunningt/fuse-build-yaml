@@ -380,6 +380,7 @@ builds:
   - spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-amq-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-config-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-drools-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-infinispan-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
