@@ -65,7 +65,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurio-registry.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/apicurio-registry.git
   scmRevision: apicurio-registry-${version.apicurio-registry}
-  buildScript: 'mvn -B clean deploy dependency:tree -DskipTests -Pprod -Pkafka -Pjpa'
+  buildScript: 'mvn -B clean deploy dependency:tree -DskipTests -Pprod -Pstreams -Pjpa -Pinfinispan'
   customPmeParameters:
     - ${apicurio-registry.pme.options}
 
