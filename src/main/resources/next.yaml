@@ -29,7 +29,7 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
 
-- name: camel-3.0.0-${version.fuse.prefix}
+- name: camel-3.1.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
@@ -47,7 +47,7 @@ builds:
     export MAVEN_OPTS=\"-Xmx4g\"
 
     mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
-    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs,!examples'
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
   customPmeParameters:
     - ${camel.pme.options}
   extraRepositories:
