@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: cxf-3.3.3-${version.fuse.prefix}
+- name: cxf-3.3.6-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
@@ -56,7 +56,7 @@ builds:
   dependencies:
   - cxf-3.3.3-${version.fuse.prefix}
 
-- name: camel-kafka-connector-0.0.1-${version.fuse.prefix}
+- name: camel-kafka-connector-0.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${camel-kafka-connector.fetch.scmUrl}
     #pushScmUrl: ${camel-kafka-connector.push.scmUrl}
     #tag: camel-kafka-connector-${version.camel-kafka-connector}
@@ -72,7 +72,7 @@ builds:
   dependencies:
     - camel-3.0.0-${version.fuse.prefix}
 
-- name: camel-quarkus-0.3.2-${version.fuse.prefix}
+- name: camel-quarkus-1.1.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
     #pushScmUrl: ${camel-quarkus.push.scmUrl}
     #tag: camel-quarkus-${version.camel-quarkus}
