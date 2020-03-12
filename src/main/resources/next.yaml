@@ -46,7 +46,7 @@ builds:
 
     export MAVEN_OPTS=\"-Xmx4g\"
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
+    mvn -e -V -B -DskipTests -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
   customPmeParameters:
     - ${camel.pme.options}
@@ -54,7 +54,7 @@ builds:
     - http://resources.knopflerfish.org/repo/maven2/release/
     - http://packages.confluent.io/maven/
   dependencies:
-  - cxf-3.3.3-${version.fuse.prefix}
+  - cxf-3.3.6-${version.fuse.prefix}
 
 - name: camel-kafka-connector-0.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${camel-kafka-connector.fetch.scmUrl}
@@ -70,7 +70,7 @@ builds:
   customPmeParameters:
     - ${camel-kafka-connector.pme.options}
   dependencies:
-    - camel-3.0.0-${version.fuse.prefix}
+    - camel-3.1.0-${version.fuse.prefix}
 
 - name: camel-quarkus-1.1.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
@@ -87,7 +87,7 @@ builds:
   customPmeParameters:
     - ${camel-quarkus.pme.options}
   dependencies:
-    - camel-3.0.0-${version.fuse.prefix}
+    - camel-3.1.0-${version.fuse.prefix}
 
 
 outputPrefixes:
