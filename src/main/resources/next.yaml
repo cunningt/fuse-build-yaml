@@ -109,10 +109,10 @@ builds:
     - camel-quarkus-1.1.0-${version.fuse.prefix}
 
 - name: camel-k-${version.fuse.prefix}
-    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
-    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
-    #tag: camel-k-runtime-${version.camel-k-runtime}
-    #buildCommand: ${camel-k-runtime.buildCommand}
+    #fetchScmUrl: ${camel-k.fetch.scmUrl}
+    #pushScmUrl: ${camel-k.push.scmUrl}
+    #tag: camel-k-${version.camel-k}
+    #buildCommand: ${camel-k.buildCommand}
   project: jboss-fuse/camel-k
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k.git
