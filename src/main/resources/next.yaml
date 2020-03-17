@@ -108,6 +108,26 @@ builds:
     - camel-3.1.0-${version.fuse.prefix}
     - camel-quarkus-1.1.0-${version.fuse.prefix}
 
+- name: camel-k-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
+    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
+    #tag: camel-k-runtime-${version.camel-k-runtime}
+    #buildCommand: ${camel-k-runtime.buildCommand}
+  project: jboss-fuse/camel-k
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k.git
+  scmRevision: camel-k-${version.camel-k}
+  environmentId: 27
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    make codegen set-version VERSION=${CAMEL_K_VERSION}; ./script/embed_resources.sh deploy; make build-kamel; make cross-compile VERSION=${CAMEL_K_VERSION}
+  customPmeParameters:
+    - ${camel-k.pme.options}
+  dependencies:
+    - camel-3.1.0-${version.fuse.prefix}
+    - camel-quarkus-1.1.0-${version.fuse.prefix}
+    - camel-k-runtime-1.0.1-${version.fuse.prefix}
+
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test

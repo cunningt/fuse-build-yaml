@@ -86,6 +86,7 @@
     <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
 
+    <version.camel-k>1.0</version.camel-k>
     <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
     <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
@@ -244,7 +245,10 @@
     <camel-k-runtime.fetch.scmUrl>1</camel-k-runtime.fetch.scmUrl>
     <camel-k-runtime.push.scmUrl>1</camel-k-runtime.push.scmUrl>
     <camel-k-runtime.buildCommand>1</camel-k-runtime.buildCommand>
-
+    <camel-k.tag>DUMMY-TAG-0.0.0</camel-k.tag>
+    <camel-k.fetch.scmUrl>1</camel-k.fetch.scmUrl>
+    <camel-k.push.scmUrl>1</camel-k.push.scmUrl>
+    <camel-k.buildCommand>1</camel-k.buildCommand>
 
     <!-- Syndesis project -->
     <atlasmap.tag>DUMMY-TAG-0.0.0</atlasmap.tag>
