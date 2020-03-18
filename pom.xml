@@ -22,11 +22,11 @@
 
   <groupId>com.redhat.fuse</groupId>
   <artifactId>fuse-build-yaml</artifactId>
-  <version>7.2.0.redhat-SNAPSHOT</version>
+  <version>7.7.0.redhat-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Fuse Build YAML</name>
   <description>Fuse Build YAML descriptor generator</description>
- 
+
    <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -40,22 +40,31 @@
   </prerequisites>
 
   <properties>
-    <version.fuse.prefix>7.2.0</version.fuse.prefix>
+    <yaml.name>fusefis</yaml.name>
+    <pme.filename>pme.properties</pme.filename>
+    <version.fuse.project>7.7</version.fuse.project>
+    <version.fuse.prefix>${version.fuse.project}.0</version.fuse.prefix>
+    <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
+    <dollar>$</dollar>
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
+    <version.syndesis>1.6.4.fuse-730002</version.syndesis>
+    <version.atlasmap>1.40.0.fuse-740007</version.atlasmap>
     <version.camel>2.21.0.fuse-000096</version.camel>
     <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
     <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
     <version.cxf>3.1.11.fuse-000265</version.cxf>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
+    <version.kubernetes.assertions>4.1.0.fuse-sb2-750002</version.kubernetes.assertions>
     <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
     <version.bom.fuse>7.0.1.fuse-000002</version.bom.fuse>
     <version.karaf>4.2.0.fuse-000262</version.karaf>
     <version.bom.wildfly.camel>5.1.0.fuse-000071</version.bom.wildfly.camel>
     <version.fusesource.camel.sap>7.0.1.fuse-000002</version.fusesource.camel.sap>
     <karaf.plugin.version>4.2.0.fuse-000262</karaf.plugin.version>
-
-    <application-templates.version>2.1.fuse-000091</application-templates.version>
+    <narayana-spring-boot.version>1.0.3.fuse-730042</narayana-spring-boot.version>
+    <spring-boot-camel-xa.version>1.0.0.fuse-730038</spring-boot-camel-xa.version>
+    <version.application-templates>2.1.fuse-000091</version.application-templates>
     <fuse-bom.version>7.1.0.fuse-000005</fuse-bom.version>
     <version.hawtio>2.0.0.fuse-000186</version.hawtio>
     <version.hawtio.online>1.0.0.fuse-000054</version.hawtio.online>
@@ -75,9 +84,21 @@
     <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
     <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
 
+    <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
+    <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
+    <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
+
+    <!-- boosters -->
+    <version.fuse-configmap-booster>1</version.fuse-configmap-booster>
+    <version.fuse-health-check-booster>1</version.fuse-health-check-booster>
+    <fuse-istio-distributed-tracing-booster.version>1</fuse-istio-distributed-tracing-booster.version>
+    <fuse-rest-http-booster.version>1</fuse-rest-http-booster.version>
+    <fuse-springboot-circuit-breaker-booster.version>1</fuse-springboot-circuit-breaker-booster.version>
+
     <!-- build information -->
-    <build.stage>EA</build.stage>
-    <build.milestone>EA*</build.milestone>
+    <build.milestone>ER1</build.milestone>
+    <port.number>49159</port.number>
+    <build.url>1</build.url>
 
     <!-- pom manipulation scripts version (global) -->
     <version.pom-manipulation>1.0.8.redhat-00001</version.pom-manipulation>
@@ -93,16 +114,23 @@
     <spring-boot-camel-drools.version>1.0.0.fuse-710004</spring-boot-camel-drools.version>
     <spring-boot-camel-infinispan.version>1.0.0.fuse-710004</spring-boot-camel-infinispan.version>
     <spring-boot-camel-rest-sql.version>1.0.0.fuse-710004</spring-boot-camel-rest-sql.version>
+    <spring-boot-camel-rest-3scale.version>1.0.0.fuse-710004</spring-boot-camel-rest-3scale.version>
     <spring-boot-camel-teiid.version>1.0.0.fuse-710004</spring-boot-camel-teiid.version>
     <spring-boot-camel-xml.version>1.0.0.fuse-710004</spring-boot-camel-xml.version>
     <spring-boot-cxf-jaxrs.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs.version>
     <spring-boot-cxf-jaxws.version>1.0.0.fuse-710004</spring-boot-cxf-jaxws.version>
+    <spring-boot-cxf-jaxrs-xml.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs-xml.version>
+    <spring-boot-cxf-jaxws-xml.version>1.0.0.fuse-710004</spring-boot-cxf-jaxws-xml.version>
 
     <!-- Tag and SCM info -->
     <karaf.tag>DUMMY-TAG-0.0.0</karaf.tag>
     <karaf.fetch.scmUrl>1</karaf.fetch.scmUrl>
     <karaf.push.scmUrl>1</karaf.push.scmUrl>
     <karaf.buildCommand>1</karaf.buildCommand>
+    <karaf-quickstarts.tag>DUMMY-TAG-0.0.0</karaf-quickstarts.tag>
+    <karaf-quickstarts.fetch.scmUrl>1</karaf-quickstarts.fetch.scmUrl>
+    <karaf-quickstarts.push.scmUrl>1</karaf-quickstarts.push.scmUrl>
+    <karaf-quickstarts.buildCommand>1</karaf-quickstarts.buildCommand>
     <cxf-xjc-utils.tag>DUMMY-TAG-0.0.0</cxf-xjc-utils.tag>
     <cxf-xjc-utils.fetch.scmUrl>1</cxf-xjc-utils.fetch.scmUrl>
     <cxf-xjc-utils.push.scmUrl>1</cxf-xjc-utils.push.scmUrl>
@@ -115,6 +143,10 @@
     <camel.fetch.scmUrl>1</camel.fetch.scmUrl>
     <camel.push.scmUrl>1</camel.push.scmUrl>
     <camel.buildCommand>1</camel.buildCommand>
+    <kubernetes.assertions.tag>DUMMY-TAG-0.0.0</kubernetes.assertions.tag>
+    <kubernetes.assertions.fetch.scmUrl>1</kubernetes.assertions.fetch.scmUrl>
+    <kubernetes.assertions.push.scmUrl>1</kubernetes.assertions.push.scmUrl>
+    <kubernetes.assertions.buildCommand>1</kubernetes.assertions.buildCommand>
     <fuse-extras-distro.tag>DUMMY-TAG-0.0.0</fuse-extras-distro.tag>
     <fuse-extras-distro.fetch.scmUrl>1</fuse-extras-distro.fetch.scmUrl>
     <fuse-extras-distro.push.scmUrl>1</fuse-extras-distro.push.scmUrl>
@@ -183,6 +215,7 @@
     <wildfly-camel.fetch.scmUrl>1</wildfly-camel.fetch.scmUrl>
     <wildfly-camel.push.scmUrl>1</wildfly-camel.push.scmUrl>
     <wildfly-camel.buildCommand>1</wildfly-camel.buildCommand>
+    <apicurito.version>1</apicurito.version>
     <apicurito.tag>DUMMY-TAG-0.0.0</apicurito.tag>
     <apicurito.fetch.scmUrl>1</apicurito.fetch.scmUrl>
     <apicurito.push.scmUrl>1</apicurito.push.scmUrl>
@@ -191,6 +224,7 @@
     <redhat-fuse.fetch.scmUrl>1</redhat-fuse.fetch.scmUrl>
     <redhat-fuse.push.scmUrl>1</redhat-fuse.push.scmUrl>
     <redhat-fuse.buildCommand>1</redhat-fuse.buildCommand>
+    <version.apicurito-generator>1</version.apicurito-generator>
     <fuse-apicurito-generator.tag>DUMMY-TAG-0.0.0</fuse-apicurito-generator.tag>
     <fuse-apicurito-generator.fetch.scmUrl>1</fuse-apicurito-generator.fetch.scmUrl>
     <fuse-apicurito-generator.push.scmUrl>1</fuse-apicurito-generator.push.scmUrl>
@@ -213,6 +247,11 @@
     <application-templates.fetch.scmUrl>1</application-templates.fetch.scmUrl>
     <application-templates.push.scmUrl>1</application-templates.push.scmUrl>
     <application-templates.buildCommand>1</application-templates.buildCommand>
+    <camel-k-runtime.tag>DUMMY-TAG-0.0.0</camel-k-runtime.tag>
+    <camel-k-runtime.fetch.scmUrl>1</camel-k-runtime.fetch.scmUrl>
+    <camel-k-runtime.push.scmUrl>1</camel-k-runtime.push.scmUrl>
+    <camel-k-runtime.buildCommand>1</camel-k-runtime.buildCommand>
+
 
     <!-- Syndesis project -->
     <atlasmap.tag>DUMMY-TAG-0.0.0</atlasmap.tag>
@@ -223,6 +262,37 @@
     <syndesis.fetch.scmUrl>1</syndesis.fetch.scmUrl>
     <syndesis.push.scmUrl>1</syndesis.push.scmUrl>
     <syndesis.buildCommand>1</syndesis.buildCommand>
+
+    <!-- DV project -->
+    <version.teiid>1</version.teiid>
+    <teiid.tag>DUMMY-TAG-0.0.0</teiid.tag>
+    <teiid.fetch.scmUrl>1</teiid.fetch.scmUrl>
+    <teiid.push.scmUrl>1</teiid.push.scmUrl>
+    <teiid.buildCommand>1</teiid.buildCommand>
+    <version.teiid-spring-boot>1</version.teiid-spring-boot>
+    <teiid-spring-boot.tag>DUMMY-TAG-0.0.0</teiid-spring-boot.tag>
+    <teiid-spring-boot.fetch.scmUrl>1</teiid-spring-boot.fetch.scmUrl>
+    <teiid-spring-boot.push.scmUrl>1</teiid-spring-boot.push.scmUrl>
+    <teiid-spring-boot.buildCommand>1</teiid-spring-boot.buildCommand>
+    <version.teiid-openshift-examples>1</version.teiid-openshift-examples>
+    <teiid-openshift-examples.tag>1</teiid-openshift-examples.tag>
+    <teiid-openshift-examples.fetch.scmUrl>1</teiid-openshift-examples.fetch.scmUrl>
+    <teiid-openshift-examples.push.scmUrl>1</teiid-openshift-examples.push.scmUrl>
+    <teiid-openshift-examples.buildCommand>1</teiid-openshift-examples.buildCommand>
+
+    <version.oreva>1</version.oreva>
+    <oreva.tag>DUMMY-TAG-0.0.0</oreva.tag>
+    <oreva.fetch.scmUrl>1</oreva.fetch.scmUrl>
+    <oreva.push.scmUrl>1</oreva.push.scmUrl>
+    <oreva.buildCommand>1</oreva.buildCommand>
+
+    <!-- Fuse Service Registry -->
+    <apicurito-registry.version>1</apicurito-registry.version>
+    <apicurito-registry.tag>DUMMY-TAG-0.0.0</apicurito-registry.tag>
+    <apicurito-registry.fetch.scmUrl>1</apicurito-registry.fetch.scmUrl>
+    <apicurito-registry.push.scmUrl>1</apicurito-registry.push.scmUrl>
+    <apicurito-registry.buildCommand>1</apicurito-registry.buildCommand>
+
   </properties>
 
   <build>
@@ -234,7 +304,37 @@
     </resources>
 
     <plugins>
-
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+       <execution>
+          <id>install</id>
+          <phase>validate</phase>
+          <goals>
+            <goal>read-project-properties</goal>
+          </goals>
+          <configuration>
+            <files>
+            <file>${project.basedir}/${pme.filename}</file>
+            </files>
+          </configuration>
+        </execution>
+        <execution>
+          <id>pre-clean</id>
+          <phase>pre-clean</phase>
+          <goals>
+            <goal>read-project-properties</goal>
+          </goals>
+          <configuration>
+            <files>
+              <file>${project.basedir}/${pme.filename}</file>
+            </files>
+          </configuration>
+        </execution>
+        </executions>
+      </plugin>
     <plugin>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>groovy-maven-plugin</artifactId>
@@ -246,9 +346,9 @@
                 </goals>
                 <configuration>
                     <properties>
-                        <swapScmUrl>true</swapScmUrl>
-                        <keepOrginalAsComment>true</keepOrginalAsComment>
+                        <swapScmUrl>false</swapScmUrl>
                         <generateDepGraph>true</generateDepGraph>
+                        <uncommentAll>false</uncommentAll>
                     </properties>
                     <source>${project.basedir}/src/main/groovy/formatYaml.groovy</source>
                 </configuration>
@@ -272,8 +372,8 @@
             </dependency>
         </dependencies>
     </plugin>
-    
-    <plugin> 
+
+    <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
         <version>3.0.0</version>
@@ -288,40 +388,39 @@
               <artifacts>
                 <!-- Fuse and FIS Original (template) -->
                 <artifact>
-                  <file>target/extra-resources/fusefis.yaml</file>
+                  <file>target/extra-resources/${yaml.name}.yaml</file>
                   <type>yaml</type>
-                  <classifier>fuse-fis-yaml</classifier>
+                  <classifier>yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Fixed -->
                 <artifact>
-                  <file>target/extra-resources/fusefis.yaml.modified</file>
+                  <file>target/extra-resources/${yaml.name}.yaml.modified</file>
                   <type>yaml</type>
-                  <classifier>fuse-fis-modified-yaml</classifier>
+                  <classifier>${yaml.name}-modified-yaml</classifier>
                 </artifact>
                 <!-- Fuse and FIS Deptree -->
                 <artifact>
-                  <file>target/extra-resources/fusefis.yaml.html</file>
+                  <file>target/extra-resources/${yaml.name}.yaml.html</file>
                   <type>html</type>
-                  <classifier>fuse-fis-deptree</classifier>
+                  <classifier>${yaml.name}-deptree</classifier>
                 </artifact>
 
-                <!-- IPaaS Original (template) -->
                 <artifact>
-                  <file>target/extra-resources/ipaas.yaml</file>
+                  <file>target/extra-resources/${yaml.name}-staging.yaml</file>
                   <type>yaml</type>
-                  <classifier>ipaas-yaml</classifier>
+                  <classifier>staging-yaml</classifier>
                 </artifact>
-                <!-- IPaaS and FIS Fixed -->
+                <!-- Fuse and FIS Fixed -->
                 <artifact>
-                  <file>target/extra-resources/ipaas.yaml.modified</file>
+                  <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
                   <type>yaml</type>
-                  <classifier>ipaas-modified-yaml</classifier>
+                  <classifier>staging-modified-yaml</classifier>
                 </artifact>
-                <!-- IPaaS Deptree -->
+                <!-- Fuse and FIS Deptree -->
                 <artifact>
-                  <file>target/extra-resources/ipaas.yaml.html</file>
+                  <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
                   <type>html</type>
-                  <classifier>ipaas-deptree</classifier>
+                  <classifier>staging-deptree</classifier>
                 </artifact>
 
                 <artifact>
@@ -336,6 +435,50 @@
       </plugin>
 
       <plugin>
+        <groupId>com.coderplus.maven.plugins</groupId>
+        <artifactId>copy-rename-maven-plugin</artifactId>
+        <version>1.0</version>
+        <executions>
+          <execution>
+            <id>copy-yaml</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <sourceFile>target/extra-resources/${yaml.name}.yaml</sourceFile>
+              <destinationFile>target/extra-resources/${yaml.name}-staging.yaml</destinationFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+       <groupId>com.google.code.maven-replacer-plugin</groupId>
+       <artifactId>maven-replacer-plugin</artifactId>
+       <version>1.3.7</version>
+       <executions>
+           <execution>
+               <phase>prepare-package</phase>
+               <goals>
+                   <goal>replace</goal>
+               </goals>
+           </execution>
+       </executions>
+       <configuration>
+          <includes>
+            <include>target/extra-resources/${yaml.name}-staging.yaml</include>
+          </includes>
+           <replacements>
+               <replacement>
+                   <token>code.engineering</token>
+                   <value>code.stage.engineering</value>
+               </replacement>
+           </replacements>
+       </configuration>
+      </plugin>
+
+      <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.1.0</version>
         <executions>
@@ -346,7 +489,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
+              <outputDirectory>${basedir}/target/extra-resources/</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/main/resources</directory>

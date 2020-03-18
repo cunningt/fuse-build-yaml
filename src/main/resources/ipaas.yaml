@@ -1,60 +1,66 @@
 product:
-  name: Red Hat iPaas
-  abbreviation: Fuse-iPaaS
-  stage: CR*
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.milestone}
   issueTrackerUrl: https://github.com/syndesisio/syndesis/issues
 version: ${version.fuse.prefix}
-milestone: ${version.sprint.milestone}
-group: Fuse iPaaS
+milestone: ${build.milestone}
+group: Red Hat Fuse - iPaaS ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
-  environmentId: 1
+  environmentId: 7
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
-- name: atlasmap-1.35.5
-  project: atlasmap/atlasmap
+- name: atlasmap-1.43.0-${version.fuse.prefix}
+  project: jboss-fuse/atlasmap
     #fetchScmUrl: ${atlasmap.fetch.scmUrl}
     #pushScmUrl: ${atlasmap.push.scmUrl}
-    #tag: ${atlasmap.tag}
+    #tag: atlasmap-${version.atlasmap}
     #buildCommand: ${atlasmap.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/atlasmap/atlasmap.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/atlasmap.git
   scmRevision: atlasmap-${version.atlasmap}
   customPmeParameters:
-  - '-DdependencyOverride.com.sun.xml.bind:*@*=2.2.11.redhat-4'
-  - '-DdependencyOverride.org.ow2.asm:*@*='
-  - '-DprojectMetaSkip=true'
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+    - ${atlasmap.pme.options}
+  buildScript: >
+    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
 
-- name: syndesis-3.1.11
-  project: syndesisio/syndesis
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
+
+    sed -i 's#https:#http:#g' ui/yarn.lock
+
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -pl '!ui,!standalone,!ui-react,!standalone-reactui' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy
+
+- name: syndesis-1.9.0-${version.fuse.prefix}
+  project: jboss-fuse/syndesis
     #fetchScmUrl: ${syndesis.fetch.scmUrl}
     #pushScmUrl: ${syndesis.push.scmUrl}
     #tag: ${syndesis.tag}
     #buildCommand: ${syndesis.buildCommand}
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/syndesisio/syndesis.git
-  scmUrl: git+ssh://code.stage.engineering.redhat.com/syndesisio/syndesis.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/syndesis.git
   scmRevision: syndesis-${version.syndesis}
+  buildPodMemory: 12
+  environmentId: 9
   customPmeParameters:
-    - '-DprojectMetaSkip=true'
-    - '--file=app/pom.xml'
-    - '-DdependencyExclusion.com.fasterxml.jackson.core:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.dataformat:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.datatype:*@*='
-    - '-DdependencyExclusion.com.fasterxml.jackson.module:*@*='
-    - '-DgroovyScripts=org.jboss.fuse.pom-manipulation:syndesis-updates:groovy:1.0.8.redhat-00001'
-  buildScript: > 
-    export MAVEN_OPTS="-Xmx2048m"
+    - ${syndesis.pme.options}
+  buildScript: >
+    export MAVEN_OPTS=\"-Xmx3048m\"
+
     export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
-    export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:49195
-    sed -i "s#resolved \"https:\/\/registry.yarnpkg.com\/#resolved \"${REG}\/#g" app/ui/yarn.lock
-    sed -i "s#resolved \"http:\/\/registry.npmjs.org\/#resolved \"${REG}\/#g" app/ui/yarn.lock
-    sed -i "s#https:#http:#g" app/ui/yarn.lock
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml
+
+    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
+
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" app/ui-react/yarn.lock
+
+    sed -i \"s#https://registry.npmjs.org/#${REG}#g\" app/ui-react/yarn.lock
+
+    sed -i 's#https:#http:#g' app/ui-react/yarn.lock
+
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -DskipITs=true -Dtest=false -Daddrepository -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user=\"${buildContentId}+tracking\" -Dproxy-password=\"${accessToken}\" -Dproxy-port=\"${proxyPort}\" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false -Diltorb-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/iltorb -Ds2i.sample-generation.skip=false -Ddeploy.archives=true clean deploy -f app/pom.xml
   dependencies:
-  - atlasmap-1.35.5
+  - atlasmap-1.43.0-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: ipaas-test

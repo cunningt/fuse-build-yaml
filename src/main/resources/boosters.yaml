@@ -1,0 +1,105 @@
+product:
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.milestone}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Boosters ${version.fuse.project} ${build.milestone}
+defaultBuildParameters:
+  environmentId: 8
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: fuse-configmap-booster-${version.fuse.prefix}
+  project: jboss-fuse/fuse-configmap-booster
+    #fetchScmUrl: ${fuse-configmap-booster.scmUrl}
+    #pushScmUrl: ${fuse-configmap-booster.scmUrl}
+    #tag: fuse-configmap-booster-${version.fuse-configmap-booster}
+    #buildCommand: ${fuse-configmap-booster.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-configmap-booster.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-configmap-booster.git
+  scmRevision: fuse-configmap-booster-${version.fuse-configmap-booster}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${fuse-configmap-booster.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+- name: fuse-health-check-booster-${version.fuse.prefix}
+  project: jboss-fuse/fuse-health-check-booster
+    #fetchScmUrl: ${fuse-health-check-booster.fetch.scmUrl}
+    #pushScmUrl: ${fuse-health-check-booster.push.scmUrl}
+    #tag: fuse-health-check-booster-${version.fuse-health-check-booster}
+    #buildCommand: ${fuse-health-check-booster.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-health-check-booster.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-health-check-booster.git
+  buildScript: >
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
+    -Dcheckstyle.skip=true clean deploy
+  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${fuse-health-check-booster.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+- name: fuse-istio-distributed-tracing-booster-${version.fuse.prefix}
+  project: jboss-fuse/fuse-istio-distributed-tracing-booster
+    #fetchScmUrl: ${fuse-istio-distributed-tracing-booster.fetch.scmUrl}
+    #pushScmUrl: ${fuse-istio-distributed-tracing-booster.push.scmUrl}
+    #tag: fuse-istio-distributed-tracing-booster-${fuse-istio-distributed-tracing-booster.version}
+    #buildCommand: ${fuse-istio-distributed-tracing-booster.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-istio-distributed-tracing-booster.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-istio-distributed-tracing-booster.git
+  scmRevision: fuse-istio-distributed-tracing-booster-${fuse-istio-distributed-tracing-booster.version}
+  customPmeParameters:
+    - ${fuse-istio-distributed-tracing-booster.pme.options}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+- name: fuse-rest-http-booster-${version.fuse.prefix}
+  project: jboss-fuse/fuse-rest-http-booster
+    #fetchScmUrl: ${fuse-rest-http-booster.fetch.scmUrl}
+    #pushScmUrl: ${fuse-rest-http-booster.push.scmUrl}
+    #tag: fuse-rest-http-booster-${fuse-rest-http-booster.version}
+    #buildCommand: ${fuse-rest-http-booster.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-rest-http-booster.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-rest-http-booster.git
+  scmRevision: fuse-rest-http-booster-${fuse-rest-http-booster.version}
+  customPmeParameters:
+    - ${fuse-rest-http-booster.pme.options}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+- name: fuse-springboot-circuit-breaker-booster-${version.fuse.prefix}
+  project: jboss-fuse/fuse-springboot-circuit-breaker-booster
+    #fetchScmUrl: ${fuse-springboot-circuit-breaker-booster.fetch.scmUrl}
+    #pushScmUrl: ${fuse-springboot-circuit-breaker-booster.push.scmUrl}
+    #tag: fuse-springboot-circuit-breaker-booster-${fuse-springboot-circuit-breaker-booster.version}
+    #buildCommand: ${fuse-springboot-circuit-breaker-booster.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-springboot-circuit-breaker-booster.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-springboot-circuit-breaker-booster.git
+  scmRevision: fuse-springboot-circuit-breaker-booster-${fuse-springboot-circuit-breaker-booster.version}
+  customPmeParameters:
+    - ${fuse-springboot-circuit-breaker-booster.pme.options}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'

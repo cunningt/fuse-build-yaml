@@ -181,12 +181,6 @@ class BuildConfigSection {
 
     public void recomment()
     {
-        /*
-        def inter =  parsedSection[0].intersect(adjustedParsedSection[0])
-        log.debug("Recommenting section\n before:$adjustedParsedSection \nafter: $inter")
-        adjustedParsedSection = new ArrayList()
-        adjustedParsedSection.add(inter)*/
-
         /* I was sick in my mouth a little bit writing this but it works */
         def toRemove = new ArrayList()
         for(k in adjustedParsedSection[0].keySet())
@@ -372,18 +366,19 @@ class BuildConfig {
     private Map<String, String> mavenProperties
     public Yaml parsedAmalgimatedYaml
     private def buildConfigs = []
-    
-    public BuildConfig(String filePath, Map<String> properties)
+    private Map<String, String> executionProperties
+
+    public BuildConfig(String filePath, Map<String> properties, Map<String> executionProperties)
     {
-        this.BuildConfig(new File(filePath), properties)
+        this.BuildConfig(new File(filePath), properties, executionProperties)
     }
 
-    public BuildConfig(java.io.File file, Map<String> properties)
+    public BuildConfig(java.io.File file, Map<String> properties, Map<String> executionProperties)
     {
         rawFileContents = file.getText('UTF-8')
         mavenProperties = properties
-
-        DumperOptions options = new DumperOptions() 
+        this.executionProperties = executionProperties
+        DumperOptions options = new DumperOptions()
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK)
         options.setLineBreak(DumperOptions.LineBreak.getPlatformLineBreak())
         options.setSplitLines(true)
@@ -401,8 +396,8 @@ class BuildConfig {
             <html> 
             <head>
             <title><%=product.name%> <%=product.version%> <%=product.stage%> Dep tree</title>
-            <script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
-            <link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" />
+            <script type="text/javascript" src="https://almende.github.io/vis/dist/vis.js"></script>
+            <link href="https://almende.github.io/vis/dist/vis.css" rel="stylesheet" type="text/css" />
             </head>
 
             <body>
@@ -489,12 +484,25 @@ class BuildConfig {
             //Sanity check
             assert section.checkKeysPresent()
             //Use github (upstream/midstream)
-        //section.swapInternalAndExternalURL()
+            if(executionProperties['swapScmUrl'] == "true")
+            {
+                log.info("swapping scmUrl")
+                section.swapInternalAndExternalURL()
+            }
             //Change the BC name to match the scm tag ver
             section.adjustBuildConfigName()
             //Change the project section to match repo location
             section.adjustProjectName()
-            section.recomment()
+            if(executionProperties['uncommentAll'] != "true")
+            {
+                section.recomment()
+            }
+            else
+            {
+                section.commentsToArray()
+                section.decodedURL()
+                log.info("uncommentAll is true, not recommenting")
+            }
         }
         //Re-target dependencies
         log.info("Readjusting dependencies")
@@ -544,11 +552,8 @@ class BuildConfig {
 }
 
 
-//List all properties
-//project.getProperties().each { k, v -> println "${k}:${v}" }
-
 def yamlpath = Paths.get(project.getBuild().getDirectory(), "extra-resources").toString()
-
+println properties['swapScmUrl']
 //Spider for yaml files and run our operations on them
 new File(yamlpath).traverse(
     type: FileType.FILES,
@@ -556,9 +561,12 @@ new File(yamlpath).traverse(
     nameFilter: ~/.*.yaml$/,
     ){ yf ->
         log.info("Attempting to load $yf.name")
-        BuildConfig bc = new BuildConfig(yf, project.getProperties())
+        BuildConfig bc = new BuildConfig(yf, project.getProperties(), properties)
         modified = new File(yf.toString()+".modified")
         modified << bc.dump()
         deptree = new File(yf.toString()+".html")
-        deptree << bc.depGraph()
+        if(properties['generateDepGraph'])
+        {
+            deptree << bc.depGraph()
+        }
 }

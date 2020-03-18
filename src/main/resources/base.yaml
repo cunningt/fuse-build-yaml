@@ -1,0 +1,69 @@
+product:
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.milestone}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Base ${version.fuse.project} ${build.milestone}
+defaultBuildParameters:
+  environmentId: 8
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: karaf-4.2.6-${version.fuse.prefix}
+  project: jboss-fuse/karaf
+    #fetchScmUrl: ${karaf.fetch.scmUrl}
+    #pushScmUrl: ${karaf.push.scmUrl}
+    #tag: karaf-${version.karaf}
+    #buildCommand: ${karaf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/karaf.git
+  scmRevision: karaf-${version.karaf}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${karaf.pme.options}
+
+- name: cxf-xjc-utils-3.2.4-${version.fuse.prefix}
+  project: jboss-fuse/cxf-xjc-utils
+    #fetchScmUrl: ${cxf-xjc-utils.fetch.scmUrl}
+    #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
+    #tag: cxf-xjc-utils-${version.cxf.xjc-utils}
+    #buildCommand: ${cxf-xjc-utils.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
+  buildScript: >
+    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false
+    -Dcheckstyle.skip=true clean deploy
+  scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${cxf-xjc-utils.pme.options}
+
+- name: docker-maven-plugin-0.23.0-${version.fuse.prefix}
+  project: jboss-fuse/docker-maven-plugin
+    #fetchScmUrl: ${docker-maven-plugin.fetch.scmUrl}
+    #pushScmUrl: ${docker-maven-plugin.push.scmUrl}
+    #tag: docker-maven-plugin-${docker.maven.plugin.version}
+    #buildCommand: ${docker-maven-plugin.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/docker-maven-plugin.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/docker-maven-plugin.git
+  scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
+  customPmeParameters:
+    - ${docker-maven-plugin.pme.options}
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
