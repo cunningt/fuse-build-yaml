@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: cxf-3.3.3-${version.fuse.prefix}
+- name: cxf-3.3.6-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
@@ -29,7 +29,7 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
 
-- name: camel-3.0.0-${version.fuse.prefix}
+- name: camel-3.1.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
@@ -46,17 +46,17 @@ builds:
 
     export MAVEN_OPTS=\"-Xmx4g\"
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
-    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs,!examples'
+    mvn -e -V -B -DskipTests -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
   customPmeParameters:
     - ${camel.pme.options}
   extraRepositories:
     - http://resources.knopflerfish.org/repo/maven2/release/
     - http://packages.confluent.io/maven/
   dependencies:
-  - cxf-3.3.3-${version.fuse.prefix}
+  - cxf-3.3.6-${version.fuse.prefix}
 
-- name: camel-kafka-connector-0.0.1-${version.fuse.prefix}
+- name: camel-kafka-connector-0.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${camel-kafka-connector.fetch.scmUrl}
     #pushScmUrl: ${camel-kafka-connector.push.scmUrl}
     #tag: camel-kafka-connector-${version.camel-kafka-connector}
@@ -70,9 +70,9 @@ builds:
   customPmeParameters:
     - ${camel-kafka-connector.pme.options}
   dependencies:
-    - camel-3.0.0-${version.fuse.prefix}
-
-- name: camel-quarkus-0.3.2-${version.fuse.prefix}
+    - camel-3.1.0-${version.fuse.prefix}
+    
+- name: camel-quarkus-1.1.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
     #pushScmUrl: ${camel-quarkus.push.scmUrl}
     #tag: camel-quarkus-${version.camel-quarkus}
@@ -83,13 +83,13 @@ builds:
   scmRevision: camel-quarkus-${version.camel-quarkus}
   environmentId: 21
   buildScript: >
-    mvn -B clean deploy -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+    mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   customPmeParameters:
     - ${camel-quarkus.pme.options}
   dependencies:
-    - camel-3.0.0-${version.fuse.prefix}
+    - camel-3.1.0-${version.fuse.prefix}
 
-- name: camel-k-runtime-1.0.0-${version.fuse.prefix}
+- name: camel-k-runtime-1.0.1-${version.fuse.prefix}
     #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
     #pushScmUrl: ${camel-k-runtime.push.scmUrl}
     #tag: camel-k-runtime-${version.camel-k-runtime}
@@ -105,8 +105,28 @@ builds:
   customPmeParameters:
     - ${camel-k-runtime.pme.options}
   dependencies:
-    - camel-3.0.0-${version.fuse.prefix}
-    - camel-quarkus-0.3.2-${version.fuse.prefix}
+    - camel-3.1.0-${version.fuse.prefix}
+    - camel-quarkus-1.1.0-${version.fuse.prefix}
+
+- name: camel-k-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k.fetch.scmUrl}
+    #pushScmUrl: ${camel-k.push.scmUrl}
+    #tag: camel-k-${version.camel-k}
+    #buildCommand: ${camel-k.buildCommand}
+  project: jboss-fuse/camel-k
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k.git
+  scmRevision: camel-k-${version.camel-k}
+  environmentId: 27
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    make codegen set-version VERSION=${CAMEL_K_VERSION}; ./script/embed_resources.sh deploy; make build-kamel; make cross-compile VERSION=${CAMEL_K_VERSION}
+  customPmeParameters:
+    - ${camel-k.pme.options}
+  dependencies:
+    - camel-3.1.0-${version.fuse.prefix}
+    - camel-quarkus-1.1.0-${version.fuse.prefix}
+    - camel-k-runtime-1.0.1-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
