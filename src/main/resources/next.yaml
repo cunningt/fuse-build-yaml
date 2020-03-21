@@ -120,7 +120,7 @@ builds:
   environmentId: 27
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    make codegen set-version VERSION=${CAMEL_K_VERSION}; ./script/embed_resources.sh deploy; make build-kamel; make cross-compile VERSION=${CAMEL_K_VERSION}
+    make codegen set-version VERSION=1.0 RUNTIME_VERSION=${version.camel-k-runtime}; ./script/embed_resources.sh deploy; make build-kamel; make cross-compile VERSION=1.0
   customPmeParameters:
     - ${camel-k.pme.options}
   dependencies:
