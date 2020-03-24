@@ -7,7 +7,7 @@ version: ${version.fuse.prefix}
 milestone: ${build.milestone}
 group: Red Hat Fuse - DV ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
-  environmentId: 7
+  environmentId: 27
   buildScript: 'mvn -e -V -B -DskipTests  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false  -Dgpg.skip=true clean deploy'
 
 builds:
