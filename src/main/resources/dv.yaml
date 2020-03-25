@@ -77,7 +77,11 @@ builds:
 outputPrefixes:
   releaseFile: dv-test
   releaseDir: dv-test
+
 flow:
+  repositoryGeneration:
+    strategy: BUILD_GROUP
+
   #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
   #licensesGeneration: gen.generate()
   #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
