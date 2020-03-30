@@ -66,6 +66,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-kafka-connector.git
   scmRevision: camel-kafka-connector-${version.camel-kafka-connector}
   environmentId: 21
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -B clean deploy -DskipTests'
   customPmeParameters:
     - ${camel-kafka-connector.pme.options}
@@ -82,6 +83,8 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
   scmRevision: camel-quarkus-${version.camel-quarkus}
   environmentId: 21
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildPodMemory: 12
   buildScript: >
     mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   customPmeParameters:
