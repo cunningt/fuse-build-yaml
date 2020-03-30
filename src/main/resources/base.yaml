@@ -86,6 +86,10 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 12
   buildScript: >
+    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+
+    export MAVEN_OPTS=\"-Xmx4g\"
+
     mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   customPmeParameters:
     - ${camel-quarkus.pme.options}
