@@ -73,7 +73,7 @@ builds:
   dependencies:
     - camel-3.1.0-${version.fuse.prefix}
     
-- name: camel-quarkus-1.1.0-${version.fuse.prefix}
+- name: camel-quarkus-1.0.0.M6-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
     #pushScmUrl: ${camel-quarkus.push.scmUrl}
     #tag: camel-quarkus-${version.camel-quarkus}
@@ -84,11 +84,9 @@ builds:
   scmRevision: camel-quarkus-${version.camel-quarkus}
   environmentId: 21
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildPodMemory: 12
+  buildPodMemory: 6
   buildScript: >
-    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
-
-    export MAVEN_OPTS=\"-Xmx4g\"
+    export MAVEN_OPTS=\"-Xmx3000m\"
 
     mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   customPmeParameters:
