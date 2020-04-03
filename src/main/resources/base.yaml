@@ -136,7 +136,13 @@ builds:
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
+
 flow:
+  licensesGeneration:
+    strategy: GENERATE
+
+  repositoryGeneration:
+    strategy: BUILD_GROUP
   #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
   #licensesGeneration: gen.generate()
   #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
