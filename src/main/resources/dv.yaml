@@ -57,21 +57,6 @@ builds:
   buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
   - teiid-${version.fuse.prefix}
-
-- name: teiid-openshift-examples-${version.fuse.prefix}
-  project: teiid/teiid-openshift-examples
-    #fetchScmUrl: ${teiid-openshift-examples.fetch.scmUrl}
-    #pushScmUrl: ${teiid-openshift-examples.push.scmUrl}
-    #tag: ${teiid-openshift-examples.tag}
-    #buildCommand: ${teiid-openshift-examples.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/teiid-openshift-examples.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/teiid-openshift-examples.git
-  scmRevision: teiid-openshift-examples-${version.teiid-openshift-examples}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
-    - ${teiid-openshift-examples.pme.options}
-  dependencies:
-  - teiid-spring-boot-${version.fuse.prefix}
   
 
 outputPrefixes:
@@ -83,11 +68,8 @@ flow:
     strategy: GENERATE
 
   repositoryGeneration:
-    strategy: GENERATE
+    strategy: BUILD_GROUP
     sourceBuild: teiid-spring-boot-${version.fuse.prefix}
-    sourceArtifact: '.*maven-repository\.zip' 
-
-
     
   javadocGeneration:
     strategy: IGNORE
