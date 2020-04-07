@@ -75,22 +75,22 @@ builds:
   
 
 outputPrefixes:
-  releaseFile: dv-test
-  releaseDir: dv-test
+  releaseFile: integration-dv
+  releaseDir: integration-dv
 
 flow:
   licensesGeneration:
     strategy: GENERATE
 
   repositoryGeneration:
-    strategy: BUILD_GROUP
+    strategy: GENERATE
+    sourceBuild: teiid-spring-boot-${version.fuse.prefix}
+    sourceArtifact: '.*maven-repository\.zip' 
 
-  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
-  #licensesGeneration: gen.generate()
-  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
-  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
-  #addons:
-  #runtimeDependenciesAnalyzer:
-  #  downloadFrom: 'WildFly-Swarm'
-  #  matching: '.*runtime-dependencies\.zip'
-  #  referenceBuild: 'WildFly-Swarm'
+
+    
+  javadocGeneration:
+    strategy: IGNORE
+
+addons:
+  notYetAlignedFromDependencyTree:
