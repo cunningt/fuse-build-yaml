@@ -34,6 +34,7 @@ builds:
     #buildCommand: ${kubernetes-client.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-client.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy'
   scmRevision: kubernetes-client-${version.kubernetes.client}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
