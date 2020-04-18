@@ -125,7 +125,7 @@ builds:
   environmentId: 41
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-   make codegen set-version VERSION=1.0 RUNTIME_VERSION=${version.camel-k-runtime} BASE_IMAGE=registry.access.redhat.com/fuse7/fuse-java-openshift:2.0 IMAGE_NAME=registry.redhat.io/integration-tech-preview/camel-k-rhel8-operator; ./script/embed_resources.sh deploy; GO111MODULE=on go build -mod=vendor -o kamel ./cmd/kamel/*.go; make cross-compile VERSION=1.0; mvn clean deploy -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
+   sed -i \"s/-ldflags/-mod=vendor -ldflags/g\" Makefile; make codegen set-version VERSION=1.0 RUNTIME_VERSION=${version.camel-k-runtime} BASE_IMAGE=registry.access.redhat.com/fuse7/fuse-java-openshift:2.0 IMAGE_NAME=registry.redhat.io/integration-tech-preview/camel-k-rhel8-operator; GOFLAGS=\"-mod=vendor\" ./script/embed_resources.sh deploy; GO111MODULE=on go build -mod=vendor -o kamel ./cmd/kamel/*.go; make cross-compile VERSION=1.0; mvn clean deploy -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
   customPmeParameters:
     - ${camel-k.pme.options}
   dependencies:
