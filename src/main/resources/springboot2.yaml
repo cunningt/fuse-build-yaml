@@ -420,7 +420,7 @@ builds:
   customPmeParameters:
     - ${application-templates.pme.options}
   dependencies:
-    - redhat-fuse-${version.fuse.prefix}
+    - redhat-fuse-sb2-${version.fuse.prefix}
     - ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
 
 - name: camel-k-runtime-1.0.0-${version.fuse.prefix}
