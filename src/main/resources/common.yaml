@@ -73,6 +73,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy'
   customPmeParameters:
     - ${fabric8v2.pme.options}
   dependencies:
