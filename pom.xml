@@ -90,6 +90,7 @@
     <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
     <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
+    <version.yaks>0.0.33</version.yaks>
 
     <!-- build information -->
     <build.milestone>ER1</build.milestone>
@@ -249,6 +250,10 @@
     <camel-k.fetch.scmUrl>1</camel-k.fetch.scmUrl>
     <camel-k.push.scmUrl>1</camel-k.push.scmUrl>
     <camel-k.buildCommand>1</camel-k.buildCommand>
+    <yaks.tag>DUMMY-TAG-0.0.0</yaks.tag>
+    <yaks.fetch.scmUrl>1</yaks.fetch.scmUrl>
+    <yaks.push.scmUrl>1</yaks.push.scmUrl>
+    <yaks.buildCommand>1</yaks.buildCommand>
 
     <!-- Syndesis project -->
     <atlasmap.tag>DUMMY-TAG-0.0.0</atlasmap.tag>
