@@ -1,0 +1,61 @@
+product:
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.milestone}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Connectors ${version.fuse.project} ${build.milestone}
+defaultBuildParameters:
+  environmentId: 39
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: camel-kafka-connector-0.0.2-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-kafka-connector.fetch.scmUrl}
+    #pushScmUrl: ${camel-kafka-connector.push.scmUrl}
+    #tag: camel-kafka-connector-${version.camel-kafka-connector}
+    #buildCommand: ${camel-kafka-connector.buildCommand}
+  project: jboss-fuse/camel-kafka-connector
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-kafka-connector.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-kafka-connector.git
+  scmRevision: camel-kafka-connector-${version.camel-kafka-connector}
+  environmentId: 39
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: 'mvn -B clean deploy -DskipTests'
+  customPmeParameters:
+    - ${camel-kafka-connector.pme.options}
+  dependencies:
+    - camel-3.1.0-${version.fuse.prefix}
+
+- name: yaks-0.0.33-${version.fuse.prefix}
+  project: jboss-fuse/yaks
+    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fyaks.git
+    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fyaks.git
+    #tag: yaks-${version.yaks}
+    #buildCommand: ${yaks.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/yaks.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/yaks.git
+  scmRevision: yaks-${version.yaks}
+  environmentId: 41
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${yaks.pme.options}
+  buildPodMemory: 8
+  buildScript: >
+    mvn clean deploy
+
+outputPrefixes:
+  releaseFile: fuse-common-test
+  releaseDir: fuse-common-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'

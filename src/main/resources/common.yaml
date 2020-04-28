@@ -7,145 +7,31 @@ version: ${version.fuse.prefix}
 milestone: ${build.milestone}
 group: Red Hat Fuse - Common ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
-  environmentId: 8
+  environmentId: 39
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
-- name: fuse-karaf-${version.fuse.prefix}
-  project: jboss-fuse/fuse-karaf
-    #fetchScmUrl: ${fuse-karaf.fetch.scmUrl}
-    #pushScmUrl: ${fuse-karaf.push.scmUrl}
-    #tag: fuse-karaf-${version.bom.fuse}
-    #buildCommand: ${fuse-karaf.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-karaf.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-karaf.git
-  scmRevision: fuse-karaf-${version.bom.fuse}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Psap
-    clean deploy '
-  customPmeParameters:
-    - ${fuse-karaf.pme.options}
-  dependencies:
-  - fuse-components-${version.fuse.prefix}
-  - karaf-4.2.6-${version.fuse.prefix}
-  - hawtio-2.0.0-${version.fuse.prefix}
-  - camel-2.21.0-${version.fuse.prefix}
-
-- name: spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
-  project: jboss-fuse/spring-cloud-kubernetes
-    #fetchScmUrl: ${spring-cloud-kubernetes.fetch.scmUrl}
-    #pushScmUrl: ${spring-cloud-kubernetes.push.scmUrl}
-    #tag: spring-cloud-kubernetes-${version.spring-cloud-kubernetes}
-    #buildCommand: ${spring-cloud-kubernetes.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/spring-cloud-kubernetes.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/spring-cloud-kubernetes.git
-  scmRevision: spring-cloud-kubernetes-${version.spring-cloud-kubernetes}
+- name: cxf-3.3.6-${version.fuse.prefix}
+  project: jboss-fuse/cxf
+    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
+    #tag: cxf-${version.cxf}
+    #buildCommand: ${cxf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
+  scmRevision: cxf-${version.cxf}
+  environmentId: 39
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
-    - ${spring-cloud-kubernetes.pme.options}
-  dependencies:
-  - kubernetes-client-3.1.12-${version.fuse.prefix}
-
-- name: narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
-    #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
-    #pushScmUrl: ${narayana-spring-boot.push.scmUrl}
-    #tag: narayana-spring-boot-${narayana-spring-boot.version}
-    #buildCommand: ${narayana-spring-boot.buildCommand}
-  project: jboss-fuse/narayana-spring-boot
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/narayana-spring-boot.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/narayana-spring-boot.git
-  scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
-  customPmeParameters:
-    - ${narayana-spring-boot-quickstart.pme.options}
-  dependencies:
-    - camel-2.21.0-${version.fuse.prefix}
-
-- name: fabric8v2-3.0.11-${version.fuse.prefix}
-  project: jboss-fuse/fabric8
-    #fetchScmUrl: ${fabric8v2.fetch.scmUrl}
-    #pushScmUrl: ${fabric8v2.push.scmUrl}
-    #tag: fabric8v2-${version.fabric8}
-    #buildCommand: ${fabric8v2.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
-  scmRevision: fabric8v2-${version.fabric8}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
-    - ${fabric8v2.pme.options}
-  dependencies:
-  - docker-maven-plugin-0.23.0-${version.fuse.prefix}
-  - spring-cloud-kubernetes-0.1.6-${version.fuse.prefix}
-  - fuse-karaf-${version.fuse.prefix}
-  - narayana-spring-boot-quickstart-1.0.2-${version.fuse.prefix}
-
-- name: fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
-  project: jboss-fuse/fabric8-maven-plugin
-    #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
-    #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
-    #tag: fabric8-maven-plugin-${version.fabric8.maven.plugin}
-    #buildCommand: ${fabric8-maven-plugin.buildCommand}
-    #cherrypick: true
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8-maven-plugin.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8-maven-plugin.git
-  scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
-  customPmeParameters:
-    - ${fabric8-maven-plugin.pme.options}
-  dependencies:
-  - fabric8v2-3.0.11-${version.fuse.prefix}
-
-- name: wildfly-camel-5.4.0-${version.fuse.prefix}
-  project: jboss-fuse/wildfly-camel
-    #fetchScmUrl: ${wildfly-camel.fetch.scmUrl}
-    #pushScmUrl: ${wildfly-camel.push.scmUrl}
-    #tag: wildfly-camel-${version.bom.wildfly.camel}
-    #buildCommand: ${wildfly-camel.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/wildfly-camel.git
-  scmRevision: wildfly-camel-${version.bom.wildfly.camel}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+    - ${cxf.pme.options}
+  buildPodMemory: 8
   buildScript: >
-    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
-
-    export M2_HOME=/usr/share/maven
-
-    mvn -e -V -B -DskipTests -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
-  customPmeParameters:
-    - ${wildfly-camel.pme.options}
-  dependencies:
-  - fuse-components-${version.fuse.prefix}
-  - hawtio-2.0.0-${version.fuse.prefix}
-
-- name: apicurito-1.0.1-${version.fuse.prefix}
-  project: jboss-fuse/apicurito
-    #fetchScmUrl: ${apicurito.fetch.scmUrl}
-    #pushScmUrl: ${apicurito.push.scmUrl}
-    #tag: apicurito-${apicurito.version}
-    #buildCommand: ${apicurito.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurito.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
-  scmRevision: apicurito-${apicurito.version}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
-    - ${apicurito.pme.options}
-  buildScript: >
-    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
-
-    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
-
-    sed -i \"s#https://registry.npmjs.org/#${REG}#g\" ui/yarn.lock
-
-    sed -i 's#https:#http:#g' ui/yarn.lock
-
-    mvn  -e -V -B -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DskipTests=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
+    mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
 
 outputPrefixes:
-  releaseFile: fuse-test
-  releaseDir: fuse-test
+  releaseFile: fuse-common-test
+  releaseDir: fuse-common-test
 flow:
   #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
   #licensesGeneration: gen.generate()
