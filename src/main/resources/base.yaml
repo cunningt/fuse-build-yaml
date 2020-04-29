@@ -12,23 +12,6 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: cxf-3.3.6-${version.fuse.prefix}
-  project: jboss-fuse/cxf
-    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
-    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
-    #tag: cxf-${version.cxf}
-    #buildCommand: ${cxf.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
-  scmRevision: cxf-${version.cxf}
-  environmentId: 39
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
-    - ${cxf.pme.options}
-  buildPodMemory: 8
-  buildScript: >
-    mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
-
 - name: camel-3.1.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
@@ -55,23 +38,6 @@ builds:
     - http://packages.confluent.io/maven/
   dependencies:
   - cxf-3.3.6-${version.fuse.prefix}
-
-- name: camel-kafka-connector-0.0.2-${version.fuse.prefix}
-    #fetchScmUrl: ${camel-kafka-connector.fetch.scmUrl}
-    #pushScmUrl: ${camel-kafka-connector.push.scmUrl}
-    #tag: camel-kafka-connector-${version.camel-kafka-connector}
-    #buildCommand: ${camel-kafka-connector.buildCommand}
-  project: jboss-fuse/camel-kafka-connector
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-kafka-connector.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-kafka-connector.git
-  scmRevision: camel-kafka-connector-${version.camel-kafka-connector}
-  environmentId: 39
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -B clean deploy -DskipTests'
-  customPmeParameters:
-    - ${camel-kafka-connector.pme.options}
-  dependencies:
-    - camel-3.1.0-${version.fuse.prefix}
     
 - name: camel-quarkus-1.0.0.M6-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
