@@ -8,11 +8,11 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - DV ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 7
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean clean
     deploy'
 
 builds:
-- name: oreva-1.0.1-${version.fuse.prefix}
+- name: oreva-${version.fuse.prefix}
   project: teiid/oreva
     #fetchScmUrl: ${oreva.fetch.scmUrl}
     #pushScmUrl: ${oreva.push.scmUrl}
@@ -24,9 +24,9 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${oreva.pme.options}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true clean deploy'
+  buildScript: 'mvn -e -V -B  -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
-- name: teiid-13.0.0-${version.fuse.prefix}
+- name: teiid-${version.fuse.prefix}
   project: teiid/teiid
     #fetchScmUrl: ${teiid.fetch.scmUrl}
     #pushScmUrl: ${teiid.push.scmUrl}
@@ -36,14 +36,14 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/teiid.git
   scmRevision: teiid-${version.teiid}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  customPmeParameters: 
     - ${teiid.pme.options}
   buildScript: >
-     mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
+     mvn -e -V -B -Dmaven.test.skip=true  -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
   dependencies:
-  - oreva-1.0.1-${version.fuse.prefix}
+  - oreva-${version.fuse.prefix}
 
-- name: teiid-spring-boot-1.3.0-${version.fuse.prefix}
+- name: teiid-spring-boot-${version.fuse.prefix}
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
@@ -55,13 +55,14 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${teiid-spring-boot.pme.options}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true  -DskipTests -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
-  - teiid-13.0.0-${version.fuse.prefix}
+  - teiid-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: dv-test
   releaseDir: dv-test
+
 flow:
   licensesGeneration:
     strategy: GENERATE
@@ -69,9 +70,3 @@ flow:
   repositoryGeneration:
     strategy: BUILD_GROUP
     sourceBuild: teiid-spring-boot-${version.fuse.prefix}
-    
-  javadocGeneration:
-    strategy: IGNORE
-
-addons:
-        notYetAlignedFromDependencyTree:
