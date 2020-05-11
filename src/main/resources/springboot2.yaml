@@ -317,6 +317,17 @@ builds:
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
 
+- name: spring-boot-camel-soap-rest-bridge-sb2-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/spring-boot-camel-soap-rest-bridge
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-soap-rest-bridge.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-soap-rest-bridge.git
+  scmRevision: spring-boot-camel-soap-rest-bridge-${spring-boot-camel-soap-rest-bridge.version}
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${spring-boot-camel-soap-rest-bridge.pme.options}
+  dependencies:
+    - redhat-fuse-sb2-${version.fuse.prefix}
+
 - name: spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
@@ -387,6 +398,7 @@ builds:
   - spring-boot-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-rest-3scale-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-xml-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-soap-rest-bridge-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
