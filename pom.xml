@@ -117,6 +117,7 @@
     <spring-boot-camel-rest-3scale.version>1.0.0.fuse-710004</spring-boot-camel-rest-3scale.version>
     <spring-boot-camel-teiid.version>1.0.0.fuse-710004</spring-boot-camel-teiid.version>
     <spring-boot-camel-xml.version>1.0.0.fuse-710004</spring-boot-camel-xml.version>
+    <spring-boot-camel-soap-rest-bridge.version>1.0.0.fuse-710004</spring-boot-camel-soap-rest-bridge.version>
     <spring-boot-cxf-jaxrs.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs.version>
     <spring-boot-cxf-jaxws.version>1.0.0.fuse-710004</spring-boot-cxf-jaxws.version>
     <spring-boot-cxf-jaxrs-xml.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs-xml.version>
