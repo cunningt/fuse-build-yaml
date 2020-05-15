@@ -238,7 +238,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export M2_HOME=/usr/share/maven
-    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -DskipTests=true -pl '!camel-rest-swagger,!itests' clean deploy
+    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -DskipTests=true -pl '!camel-rest-swagger' clean deploy
   customPmeParameters:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
@@ -257,7 +257,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export M2_HOME=/usr/share/maven
-    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy
+    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy
   customPmeParameters:
     - ${fuse-eap.pme.options}
   dependencies:
