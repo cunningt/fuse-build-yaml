@@ -56,19 +56,6 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: apicurio-registry-1.0.0-${version.fuse.prefix}
-    #fetchScmUrl: ${apicurito-registry.fetch.scmUrl}
-    #pushScmUrl: ${apicurito-registry.push.scmUrl}
-    #tag: apicurio-registry-${version.apicurito-registry}
-    #buildCommand: ${apicurito-registry.buildCommand}
-  project: jboss-fuse/apicurio-registry
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurio-registry.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/apicurio-registry.git
-  scmRevision: apicurio-registry-${version.apicurio-registry}
-  buildScript: 'mvn -B clean deploy dependency:tree -Dmaven.test.skip=true -Dtar.long.file.mode=posix -Pprod -Pkafka -Pjpa'
-  customPmeParameters:
-    - ${apicurio-registry.pme.options}
-
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
