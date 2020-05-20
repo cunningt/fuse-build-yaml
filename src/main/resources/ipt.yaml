@@ -1,0 +1,45 @@
+product:
+  name: Red Hat IPT
+  abbreviation: Integration Product Team
+  stage: ${build.milestone}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat IPT - ${version.fuse.project} ${build.milestone}
+defaultBuildParameters:
+  environmentId: 8
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: apicurio-registry-1.0.0-${version.fuse.prefix}
+    #fetchScmUrl: ${apicurito-registry.fetch.scmUrl}
+    #pushScmUrl: ${apicurito-registry.push.scmUrl}
+    #tag: apicurio-registry-${version.apicurito-registry}
+    #buildCommand: ${apicurito-registry.buildCommand}
+  project: jboss-fuse/apicurio-registry
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurio-registry.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/apicurio-registry.git
+  scmRevision: apicurio-registry-${version.apicurio-registry}
+  buildScript: >
+    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
+    sed -i "s#https://registry.yarnpkg.com/#${REG}#g" ui/yarn.lock
+    sed -i "s#https://registry.npmjs.org/#${REG}#g" ui/yarn.lock
+    sed -i 's#https:#http:#g' ui/yarn.lock
+    mvn -B clean deploy dependency:tree -Dmaven.test.skip=true -Dtar.long.file.mode=posix -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user="${buildContentId}+tracking" -Dproxy-password="${accessToken}" -Dproxy-port="${proxyPort}" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Pprod -Pkafka -Pjpa
+  customPmeParameters:
+    - ${apicurio-registry.pme.options}
+
+outputPrefixes:
+  releaseFile: ipt-test
+  releaseDir: ipt-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
