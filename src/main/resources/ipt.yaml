@@ -1,6 +1,6 @@
 product:
-  name: Red Hat IPT
-  abbreviation: Integration Product Team
+  name: Red Hat Integration
+  abbreviation: RHI
   stage: ${build.milestone}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
