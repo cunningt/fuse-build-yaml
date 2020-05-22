@@ -7,7 +7,7 @@ version: ${version.fuse.prefix}
 milestone: ${build.milestone}
 group: Red Hat IPT - ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
-  environmentId: 8
+  environmentId: 33
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy'
 
 builds:
@@ -29,9 +29,11 @@ builds:
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
-    mvn -B clean deploy dependency:tree -Dmaven.test.skip=true -Dtar.long.file.mode=posix -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user=\"${buildContentId}+tracking\" -Dproxy-password=\"${accessToken}\" -Dproxy-port=\"${proxyPort}\" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Pprod -Pkafka -Pjpa
+    mvn -B clean deploy dependency:tree -Dmaven.test.skip.exec=true -Dtar.long.file.mode=posix -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user=\"${buildContentId}+tracking\" -Dproxy-password=\"${accessToken}\" -Dproxy-port=\"${proxyPort}\" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Pprod -Pkafka -Pjpa
   customPmeParameters:
     - ${apicurio-registry.pme.options}
+  extraRepositories:
+    - https://repository.mulesoft.org/nexus/content/repositories/public/
 
 outputPrefixes:
   releaseFile: ipt-test
