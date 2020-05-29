@@ -5,14 +5,14 @@ product:
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}
-group: Red Hat Fuse - Base ${version.fuse.project} ${build.milestone}
+group: Red Hat Fuse - Base ${version.fuse.project} TP2 ${build.milestone}
 defaultBuildParameters:
   environmentId: 21
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
     deploy'
 
 builds:
-- name: camel-3.1.0-${version.fuse.prefix}
+- name: camel-3.3.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
@@ -39,7 +39,7 @@ builds:
   dependencies:
   - cxf-3.3.6-${version.fuse.prefix}
     
-- name: camel-quarkus-1.0.0.M6-${version.fuse.prefix}
+- name: camel-quarkus-1.0.0.CR1-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
     #pushScmUrl: ${camel-quarkus.push.scmUrl}
     #tag: camel-quarkus-${version.camel-quarkus}
@@ -58,9 +58,9 @@ builds:
   customPmeParameters:
     - ${camel-quarkus.pme.options}
   dependencies:
-    - camel-3.1.0-${version.fuse.prefix}
+    - camel-3.3.0-${version.fuse.prefix}
 
-- name: camel-k-runtime-1.0.1-${version.fuse.prefix}
+- name: camel-k-runtime-1.3.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
     #pushScmUrl: ${camel-k-runtime.push.scmUrl}
     #tag: camel-k-runtime-${version.camel-k-runtime}
@@ -76,8 +76,8 @@ builds:
   customPmeParameters:
     - ${camel-k-runtime.pme.options}
   dependencies:
-    - camel-3.1.0-${version.fuse.prefix}
-    - camel-quarkus-1.0.0.M6-${version.fuse.prefix}
+    - camel-3.3.0-${version.fuse.prefix}
+    - camel-quarkus-1.0.0.CR1-${version.fuse.prefix}
 
 - name: camel-k-${version.fuse.prefix}
     #fetchScmUrl: ${camel-k.fetch.scmUrl}
@@ -95,9 +95,9 @@ builds:
   customPmeParameters:
     - ${camel-k.pme.options}
   dependencies:
-    - camel-3.1.0-${version.fuse.prefix}
-    - camel-quarkus-1.0.0.M6-${version.fuse.prefix}
-    - camel-k-runtime-1.0.1-${version.fuse.prefix}
+    - camel-3.3.0-${version.fuse.prefix}
+    - camel-quarkus-1.0.0.CR1-${version.fuse.prefix}
+    - camel-k-runtime-1.3.0-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test

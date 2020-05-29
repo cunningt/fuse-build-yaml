@@ -5,7 +5,7 @@ product:
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.fuse.prefix}
 milestone: ${build.milestone}
-group: Red Hat Fuse - Common ${version.fuse.project} ${build.milestone}
+group: Red Hat Fuse - Common ${version.fuse.project} TP2 ${build.milestone}
 defaultBuildParameters:
   environmentId: 39
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
