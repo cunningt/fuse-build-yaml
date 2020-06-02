@@ -334,6 +334,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
     - ipaas-quickstarts-2.2.0-${version.fuse.prefix}
+    - wildfly-camel-examples-5.4.0-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
