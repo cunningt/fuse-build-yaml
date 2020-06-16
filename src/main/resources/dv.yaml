@@ -3,7 +3,7 @@ product:
   abbreviation: RHI-DV
   stage: ${build.milestone}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
-version: 1.0
+version: 1.0.0
 milestone: ${build.milestone}
 group: Red Hat Integration - DV 1.0 ${build.milestone}
 defaultBuildParameters:
