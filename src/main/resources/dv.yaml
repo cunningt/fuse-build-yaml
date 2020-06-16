@@ -3,15 +3,15 @@ product:
   abbreviation: RHI-DV
   stage: ${build.milestone}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
-version: ${version.fuse.prefix}
+version: ${productVersion}.0
 milestone: ${build.milestone}
-group: Red Hat Integration - DV ${version.fuse.project} ${build.milestone}
+group: Red Hat Integration - DV ${productVersion} ${build.milestone}
 defaultBuildParameters:
   environmentId: 27
   buildScript: 'mvn -e -V -B -DskipTests  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false  -Dgpg.skip=true clean deploy'
 
 builds:
-- name: oreva-${version.fuse.prefix}
+- name: oreva-${productVersion}
   project: teiid/oreva
     #fetchScmUrl: ${oreva.fetch.scmUrl}
     #pushScmUrl: ${oreva.push.scmUrl}
@@ -25,7 +25,7 @@ builds:
     - ${oreva.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
-- name: teiid-${version.fuse.prefix}
+- name: teiid-${productVersion}
   project: teiid/teiid
     #fetchScmUrl: ${teiid.fetch.scmUrl}
     #pushScmUrl: ${teiid.push.scmUrl}
@@ -40,9 +40,9 @@ builds:
   buildScript: >
      mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Pcore-release clean deploy
   dependencies:
-  - oreva-${version.fuse.prefix}
+  - oreva-${productVersion}
 
-- name: teiid-spring-boot-${version.fuse.prefix}
+- name: teiid-spring-boot-${productVersion}
   project: teiid/teiid-spring-boot
     #fetchScmUrl: ${teiid-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${teiid-spring-boot.push.scmUrl}
@@ -56,7 +56,7 @@ builds:
     - ${teiid-spring-boot.pme.options}
   buildScript: 'mvn -e -V -B -DskipTests -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
-  - teiid-${version.fuse.prefix}
+  - teiid-${productVersion}
   
 
 outputPrefixes:
@@ -69,7 +69,7 @@ flow:
 
   repositoryGeneration:
     strategy: BUILD_GROUP
-    sourceBuild: teiid-spring-boot-${version.fuse.prefix}
+    sourceBuild: teiid-spring-boot-${productVersion}
     
   javadocGeneration:
     strategy: GENERATE
