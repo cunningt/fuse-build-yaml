@@ -65,11 +65,12 @@ outputPrefixes:
 
 flow:
   licensesGeneration:
-    strategy: GENERATE
+    strategy: IGNORE
 
   repositoryGeneration:
     strategy: BUILD_GROUP
     sourceBuild: teiid-spring-boot-${version.fuse.prefix}
+    includeLicenses: true
     
   javadocGeneration:
     strategy: GENERATE
