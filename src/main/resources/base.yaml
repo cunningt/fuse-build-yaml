@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: camel-3.4.0-${version.fuse.prefix}
+- name: camel-3.3.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
