@@ -1,0 +1,61 @@
+product:
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.milestone}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Base ${version.fuse.project} TP2 ${build.milestone}
+defaultBuildParameters:
+  environmentId: 21
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: camel-3.4.0-${version.fuse.prefix}
+  project: jboss-fuse/camel
+    #fetchScmUrl: ${camel.fetch.scmUrl}
+    #pushScmUrl: ${camel.push.scmUrl}
+    #tag: camel-${version.camel}
+    #buildCommand: ${camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
+  scmRevision: camel-${version.camel}
+  environmentId: 39
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildPodMemory: 12
+  buildScript: >
+    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+
+    export MAVEN_OPTS=\"-Xmx4g\"
+
+    mvn -e -V -B -DskipTests -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
+  customPmeParameters:
+    - ${camel.pme.options}
+  extraRepositories:
+    - http://resources.knopflerfish.org/repo/maven2/release/
+    - http://packages.confluent.io/maven/
+  dependencies:
+  - cxf-3.3.6-${version.fuse.prefix}
+
+    
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+
+flow:
+  licensesGeneration:
+    strategy: GENERATE
+
+  repositoryGeneration:
+    strategy: BUILD_GROUP
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
