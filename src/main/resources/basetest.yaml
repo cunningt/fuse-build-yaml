@@ -39,6 +39,27 @@ builds:
   dependencies:
   - cxf-3.3.6-${version.fuse.prefix}
 
+- name: camel-quarkus-1.1.0-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
+    #pushScmUrl: ${camel-quarkus.push.scmUrl}
+    #tag: camel-quarkus-${version.camel-quarkus}
+    #buildCommand: ${camel-quarkus.buildCommand}
+  project: jboss-fuse/camel-quarkus
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
+  scmRevision: camel-quarkus-${version.camel-quarkus}
+  environmentId: 39
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildPodMemory: 6
+  buildScript: >
+    export MAVEN_OPTS=\"-Xmx3000m\"
+
+    mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+  customPmeParameters:
+    - ${camel-quarkus.pme.options}
+  dependencies:
+    - camel-3.4.0-${version.fuse.prefix}
+
     
 outputPrefixes:
   releaseFile: fuse-test
