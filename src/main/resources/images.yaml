@@ -40,6 +40,7 @@ builds:
     - ${hawtio-online.pme.options}
   dependencies:
   - hawtio-2.0.0-${version.fuse.prefix}
+  - fabric8-maven-plugin-3.5.33-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
