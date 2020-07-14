@@ -177,6 +177,30 @@ builds:
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
+- name: apicurito-1.0.1-${version.fuse.prefix}
+  project: jboss-fuse/apicurito
+    #fetchScmUrl: ${apicurito.fetch.scmUrl}
+    #pushScmUrl: ${apicurito.push.scmUrl}
+    #tag: apicurito-${apicurito.version}
+    #buildCommand: ${apicurito.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurito.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
+  scmRevision: apicurito-${apicurito.version}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${apicurito.pme.options}
+  buildScript: >
+    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
+
+    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
+
+    sed -i \"s#https://registry.npmjs.org/#${REG}#g\" ui/yarn.lock
+
+    sed -i 's#https:#http:#g' ui/yarn.lock
+
+    mvn  -e -V -B -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
+
+
 - name: fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   project: jboss-fuse/fabric8-maven-plugin
     #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
@@ -212,6 +236,50 @@ builds:
   - fabric8v2-3.0.11.sb2-${version.fuse.prefix}
   - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
+
+- name: karaf-camel-amq-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/karaf-camel-amq
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-amq.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-amq.git
+  scmRevision: karaf-camel-amq-${karaf-camel-amq.version}
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${karaf-camel-amq.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+- name: karaf-camel-log-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/karaf-camel-log
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-log.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-log.git
+  scmRevision: karaf-camel-log-${karaf-camel-log.version}
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${karaf-camel-log.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+- name: karaf-camel-rest-sql-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/karaf-camel-rest-sql
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-rest-sql.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-rest-sql.git
+  scmRevision: karaf-camel-rest-sql-${karaf-camel-rest-sql.version}
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${karaf-camel-rest-sql.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
+- name: karaf-cxf-rest-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/karaf-cxf-rest
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-cxf-rest.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-cxf-rest.git
+  scmRevision: karaf-cxf-rest-${karaf-cxf-rest.version}
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  customPmeParameters:
+    - ${karaf-cxf-rest.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${spring-boot-camel-xa.fetch.scmUrl}
@@ -390,6 +458,10 @@ builds:
   dependencies:
   - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
+  - karaf-camel-amq-1.0.0-${version.fuse.prefix}
+  - karaf-camel-log-1.0.0-${version.fuse.prefix}
+  - karaf-camel-rest-sql-1.0.0-${version.fuse.prefix}
+  - karaf-cxf-rest-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-amq-sb2-1.0.0-${version.fuse.prefix}
@@ -404,6 +476,41 @@ builds:
   - spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxws-xml-sb2-1.0.0-${version.fuse.prefix}
+
+- name: fuse-karaf-${version.fuse.prefix}
+  project: jboss-fuse/fuse-karaf
+    #fetchScmUrl: ${fuse-karaf.fetch.scmUrl}
+    #pushScmUrl: ${fuse-karaf.push.scmUrl}
+    #tag: fuse-karaf-${version.bom.fuse}
+    #buildCommand: ${fuse-karaf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-karaf.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-karaf.git
+  scmRevision: fuse-karaf-${version.bom.fuse}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Psap
+    clean deploy '
+  customPmeParameters:
+    - ${fuse-karaf.pme.options}
+  dependencies:
+  - fuse-components-${version.fuse.prefix}
+  - karaf-4.2.6-${version.fuse.prefix}
+  - hawtio-sb2-2.0.0-${version.fuse.prefix}
+  - camel-2.23.0-${version.fuse.prefix}
+
+- name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
+  project: jboss-fuse/fuse-apicurito-generator
+    #fetchScmUrl: ${fuse-apicurito-generator.fetch.scmUrl}
+    #pushScmUrl: ${fuse-apicurito-generator.push.scmUrl}
+    #tag: fuse-apicurito-generator-${version.apicurito-generator}
+    #buildCommand: ${fuse-apicurito-generator.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-apicurito-generator.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
+  scmRevision: fuse-apicurito-generator-${version.apicurito-generator}
+  buildScript: mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
+  customPmeParameters:
+    - ${fuse-apicurito-generator.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
