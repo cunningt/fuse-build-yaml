@@ -25,7 +25,7 @@ builds:
   customPmeParameters:
     - ${karaf.pme.options}
 
-- name: cxf-xjc-utils-3.2.4-${version.fuse.prefix}
+- name: cxf-xjc-utils-3.3.1-${version.fuse.prefix}
   project: jboss-fuse/cxf-xjc-utils
     #fetchScmUrl: ${cxf-xjc-utils.fetch.scmUrl}
     #pushScmUrl: ${cxf-xjc-utils.push.scmUrl}
