@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: cxf-sb2-3.2.7-${version.fuse.prefix}
+- name: cxf-sb2-3.3.6-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
@@ -28,7 +28,7 @@ builds:
   buildScript: >
     mvn -e -V -B -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
   dependencies:
-  - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
+  - cxf-xjc-utils-3.3.1-${version.fuse.prefix}
 
 - name: camel-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -54,7 +54,7 @@ builds:
   extraRepositories:
     - http://resources.knopflerfish.org/repo/maven2/release/
   dependencies:
-  - cxf-sb2-3.2.7-${version.fuse.prefix}
+  - cxf-sb2-3.3.6-${version.fuse.prefix}
 
 - name: camel-extra-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel-extra
@@ -84,7 +84,7 @@ builds:
     - ${fuse-extras.pme.options}
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
-  - cxf-3.2.7-${version.fuse.prefix}
+  - cxf-sb2-3.3.6-${version.fuse.prefix}
 
 - name: wsdl2rest-sb2-0.8.0-${version.fuse.prefix}
   project: jboss-fuse/wsdl2rest
