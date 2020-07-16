@@ -60,6 +60,45 @@ builds:
   dependencies:
     - camel-3.4.0-${version.fuse.prefix}
 
+- name: camel-k-runtime-1.5.0-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
+    #pushScmUrl: ${camel-k-runtime.push.scmUrl}
+    #tag: camel-k-runtime-${version.camel-k-runtime}
+    #buildCommand: ${camel-k-runtime.buildCommand}
+  project: jboss-fuse/camel-k-runtime
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
+  scmRevision: camel-k-runtime-${version.camel-k-runtime}
+  environmentId: 39
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    mvn -e -V -B -DskipTests -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+  customPmeParameters:
+    - ${camel-k-runtime.pme.options}
+  dependencies:
+    - camel-3.4.0-${version.fuse.prefix}
+    - camel-quarkus-1.1.0-${version.fuse.prefix}
+
+- name: camel-k-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k.fetch.scmUrl}
+    #pushScmUrl: ${camel-k.push.scmUrl}
+    #tag: camel-k-${version.camel-k}
+    #buildCommand: ${camel-k.buildCommand}
+  project: jboss-fuse/camel-k
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k.git
+  scmRevision: camel-k-${version.camel-k}
+  environmentId: 41
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+   sed -i \"s/-ldflags/-mod=vendor -ldflags/g\" Makefile; mvn clean package deploy -Pgolang-build -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
+  customPmeParameters:
+    - ${camel-k.pme.options}
+  dependencies:
+    - camel-3.4.0-${version.fuse.prefix}
+    - camel-quarkus-1.1.0-${version.fuse.prefix}
+    - camel-k-runtime-1.5.0-${version.fuse.prefix}
+
     
 outputPrefixes:
   releaseFile: fuse-test
