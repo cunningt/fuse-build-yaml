@@ -28,7 +28,7 @@ builds:
     - ${fuse-karaf.pme.options}
   dependencies:
   - fuse-components-${version.fuse.prefix}
-  - karaf-4.2.6-${version.fuse.prefix}
+  - karaf-4.2.9-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
   - camel-2.21.0-${version.fuse.prefix}
 
