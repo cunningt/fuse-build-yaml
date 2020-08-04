@@ -115,7 +115,6 @@
     <spring-boot-camel-infinispan.version>1.0.0.fuse-710004</spring-boot-camel-infinispan.version>
     <spring-boot-camel-rest-sql.version>1.0.0.fuse-710004</spring-boot-camel-rest-sql.version>
     <spring-boot-camel-rest-3scale.version>1.0.0.fuse-710004</spring-boot-camel-rest-3scale.version>
-    <spring-boot-camel-teiid.version>1.0.0.fuse-710004</spring-boot-camel-teiid.version>
     <spring-boot-camel-xml.version>1.0.0.fuse-710004</spring-boot-camel-xml.version>
     <spring-boot-camel-soap-rest-bridge.version>1.0.0.fuse-710004</spring-boot-camel-soap-rest-bridge.version>
     <spring-boot-cxf-jaxrs.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs.version>
@@ -263,29 +262,6 @@
     <syndesis.fetch.scmUrl>1</syndesis.fetch.scmUrl>
     <syndesis.push.scmUrl>1</syndesis.push.scmUrl>
     <syndesis.buildCommand>1</syndesis.buildCommand>
-
-    <!-- DV project -->
-    <version.teiid>1</version.teiid>
-    <teiid.tag>DUMMY-TAG-0.0.0</teiid.tag>
-    <teiid.fetch.scmUrl>1</teiid.fetch.scmUrl>
-    <teiid.push.scmUrl>1</teiid.push.scmUrl>
-    <teiid.buildCommand>1</teiid.buildCommand>
-    <version.teiid-spring-boot>1</version.teiid-spring-boot>
-    <teiid-spring-boot.tag>DUMMY-TAG-0.0.0</teiid-spring-boot.tag>
-    <teiid-spring-boot.fetch.scmUrl>1</teiid-spring-boot.fetch.scmUrl>
-    <teiid-spring-boot.push.scmUrl>1</teiid-spring-boot.push.scmUrl>
-    <teiid-spring-boot.buildCommand>1</teiid-spring-boot.buildCommand>
-    <version.teiid-openshift-examples>1</version.teiid-openshift-examples>
-    <teiid-openshift-examples.tag>1</teiid-openshift-examples.tag>
-    <teiid-openshift-examples.fetch.scmUrl>1</teiid-openshift-examples.fetch.scmUrl>
-    <teiid-openshift-examples.push.scmUrl>1</teiid-openshift-examples.push.scmUrl>
-    <teiid-openshift-examples.buildCommand>1</teiid-openshift-examples.buildCommand>
-
-    <version.oreva>1</version.oreva>
-    <oreva.tag>DUMMY-TAG-0.0.0</oreva.tag>
-    <oreva.fetch.scmUrl>1</oreva.fetch.scmUrl>
-    <oreva.push.scmUrl>1</oreva.push.scmUrl>
-    <oreva.buildCommand>1</oreva.buildCommand>
 
     <!-- Fuse Service Registry -->
     <apicurito-registry.version>1</apicurito-registry.version>
