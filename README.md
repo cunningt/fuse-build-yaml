@@ -24,7 +24,6 @@ Currently, the following files are present:
 * base.yaml: for the base Fuse components used by all other projects
 * core-sb1.yaml: for Fuse Core modules with Spring Boot v1
 * common.yaml: for Fuse Common components and products
-* dv.yaml: for the Data Virtualization project
 * fusefis.yaml: for the legacy Fuse FIS project format (likely to be removed)
 * ipaas.yaml: for iPaaS
 * springboot2.yaml: for Fuse components built with Spring Boot v2 support

@@ -36,7 +36,6 @@ release spring-boot-camel-config ${spring-boot-camel-config.version}
 release spring-boot-camel-drools ${spring-boot-camel-drools.version}
 release spring-boot-camel-infinispan ${spring-boot-camel-infinispan.version} 
 release spring-boot-camel-rest-sql ${spring-boot-camel-rest-sql.version}
-release spring-boot-camel-teiid ${spring-boot-camel-teiid.version} 
 release spring-boot-camel-xml ${spring-boot-camel-xml.version}
 release spring-boot-cxf-jaxrs ${spring-boot-cxf-jaxrs.version} 
 release spring-boot-cxf-jaxws ${spring-boot-cxf-jaxws.version}
@@ -63,7 +62,6 @@ add_redhat_version ${spring-boot-camel-config.version}
 add_redhat_version ${spring-boot-camel-drools.version}
 add_redhat_version ${spring-boot-camel-infinispan.version}
 add_redhat_version ${spring-boot-camel-rest-sql.version}
-add_redhat_version ${spring-boot-camel-teiid.version}
 add_redhat_version ${spring-boot-camel-xml.version}
 add_redhat_version ${spring-boot-cxf-jaxrs.version}
 add_redhat_version ${spring-boot-cxf-jaxws.version}
