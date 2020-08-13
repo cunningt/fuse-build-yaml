@@ -161,22 +161,6 @@ builds:
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
-- name: fabric8v2-3.0.11.sb2-${version.fuse.prefix}
-  project: jboss-fuse/fabric8
-    #fetchScmUrl: ${fabric8v2.fetch.scmUrl}
-    #pushScmUrl: ${fabric8v2.push.scmUrl}
-    #tag: fabric8v2-${version.fabric8}
-    #buildCommand: ${fabric8v2.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
-  scmRevision: fabric8v2-${version.fabric8}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy'
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
-    - ${fabric8v2.pme.options}
-  dependencies:
-  - camel-2.23.2-${version.fuse.prefix}
-
 - name: apicurito-1.0.1-${version.fuse.prefix}
   project: jboss-fuse/apicurito
     #fetchScmUrl: ${apicurito.fetch.scmUrl}
@@ -200,8 +184,7 @@ builds:
 
     mvn  -e -V -B -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
 
-
-- name: fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
+- name: fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
   project: jboss-fuse/fabric8-maven-plugin
     #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
     #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
@@ -215,7 +198,29 @@ builds:
   customPmeParameters:
     - ${fabric8-maven-plugin.pme.options}
   dependencies:
-  - fabric8v2-3.0.11.sb2-${version.fuse.prefix}
+  - cxf-sb2-3.3.6-${version.fuse.prefix}
+
+- name: wildfly-camel-5.6.0-${version.fuse.prefix}
+  project: jboss-fuse/wildfly-camel
+    #fetchScmUrl: ${wildfly-camel.fetch.scmUrl}
+    #pushScmUrl: ${wildfly-camel.push.scmUrl}
+    #tag: wildfly-camel-${version.bom.wildfly.camel}
+    #buildCommand: ${wildfly-camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/wildfly-camel.git
+  scmRevision: wildfly-camel-${version.bom.wildfly.camel}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+
+    export M2_HOME=/usr/share/maven
+
+    mvn -e -V -B -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
+  customPmeParameters:
+    - ${wildfly-camel.pme.options}
+  dependencies:
+  - fuse-components-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
 
 - name: redhat-fuse-sb2-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
@@ -233,9 +238,67 @@ builds:
     - ${redhat-fuse.pme.options}
   dependencies:
   - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
-  - fabric8v2-3.0.11.sb2-${version.fuse.prefix}
   - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
+
+- name: wildfly-camel-examples-5.6.0-${version.fuse.prefix}
+  project: wildfly-extras/wildfly-camel-examples
+    #fetchScmUrl: ${wildfly-camel-examples.fetch.scmUrl}
+    #pushScmUrl: ${wildfly-camel-examples.push.scmUrl}
+    #tag: wildfly-camel-examples-${version.wildfly.camel.examples}
+    #buildCommand: ${wildfly-camel-examples.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
+  externalScmUrl: ssh://git@github.com/wildfly-extras/wildfly-camel-examples.git
+  scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    export M2_HOME=/usr/share/maven
+
+    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -DskipTests=true -pl '!camel-rest-swagger' clean deploy
+  customPmeParameters:
+    - ${wildfly-camel-examples.pme.options}
+  dependencies:
+  - redhat-fuse-${version.fuse.prefix}
+  - wildfly-camel-5.6.0-${version.fuse.prefix}
+
+- name: fuse-eap-${version.fuse.prefix}
+    #fetchScmUrl: ${fuse-eap.fetch.scmUrl}
+    #pushScmUrl: ${fuse-eap.push.scmUrl}
+    #tag: fuse-eap-${version.fuse.eap}
+    #buildCommand: ${fuse-eap.buildCommand}
+  project: jboss-fuse/fuse-eap
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-eap.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-eap.git
+  scmRevision: fuse-eap-${version.fuse.eap}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    export M2_HOME=/usr/share/maven
+
+    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy
+  customPmeParameters:
+    - ${fuse-eap.pme.options}
+  dependencies:
+  - wildfly-camel-5.6.0-${version.fuse.prefix}
+  - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
+
+- name: karaf-quickstarts-${version.fuse.prefix}
+    #fetchScmUrl: ${karaf-quickstarts.fetch.scmUrl}
+    #pushScmUrl: ${karaf-quickstarts.push.scmUrl}
+    #tag: karaf-quickstarts-${version.karaf-quickstarts}
+    #buildCommand: ${karaf-quickstarts.buildCommand}
+  project: jboss-fuse/karaf-quickstarts
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/karaf-quickstarts.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/karaf-quickstarts.git
+  scmRevision: karaf-quickstarts-${version.karaf-quickstarts}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${karaf-quickstarts.pme.options}
+  dependencies:
+  - cxf-3.3.6-${version.fuse.prefix}
+  - karaf-4.2.9-${version.fuse.prefix}
+  - camel-2.23.2-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
 
 - name: karaf-camel-amq-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/karaf-camel-amq
