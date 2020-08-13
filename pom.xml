@@ -70,6 +70,9 @@
     <version.hawtio.online>1.0.0.fuse-000054</version.hawtio.online>
     <version.hawtio.integration>1.0.0.fuse-000034</version.hawtio.integration>
 
+    <version.io.swagger.core.v2>1.0</version.io.swagger.core.v2>
+    <version.io.swagger.core.v3>1.0</version.io.swagger.core.v3>
+
     <version.kubernetes.model>2.0.9.fuse-000020</version.kubernetes.model>
     <version.kubernetes.client>3.0.3.fuse-000056</version.kubernetes.client>
 
@@ -135,6 +138,10 @@
     <cxf-xjc-utils.fetch.scmUrl>1</cxf-xjc-utils.fetch.scmUrl>
     <cxf-xjc-utils.push.scmUrl>1</cxf-xjc-utils.push.scmUrl>
     <cxf-xjc-utils.buildCommand>1</cxf-xjc-utils.buildCommand>
+    <swagger-core.tag>DUMMY-TAG-0.0.0</swagger-core.tag>
+    <swagger-core.fetch.scmUrl>1</swagger-core.fetch.scmUrl>
+    <swagger-core.push.scmUrl>1</swagger-core.push.scmUrl>
+    <swagger-core.buildCommand>1</swagger-core.buildCommand>
     <cxf.tag>DUMMY-TAG-0.0.0</cxf.tag>
     <cxf.fetch.scmUrl>1</cxf.fetch.scmUrl>
     <cxf.push.scmUrl>1</cxf.push.scmUrl>
