@@ -59,7 +59,7 @@ builds:
     mvn -e -V -B -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
   dependencies:
   - cxf-xjc-utils-3.2.4-${version.fuse.prefix}
-  - karaf-4.2.6-${version.fuse.prefix}
+  - karaf-4.2.9-${version.fuse.prefix}
 
 - name: camel-2.21.0-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -86,7 +86,7 @@ builds:
     - http://resources.knopflerfish.org/repo/maven2/release/
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
-  - karaf-4.2.6-${version.fuse.prefix}
+  - karaf-4.2.9-${version.fuse.prefix}
   - kubernetes-model-2.0.10-${version.fuse.prefix}
   - kubernetes-client-3.1.12-${version.fuse.prefix}
 
@@ -195,7 +195,7 @@ builds:
     - ${hawtio.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
-  - karaf-4.2.6-${version.fuse.prefix}
+  - karaf-4.2.9-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
