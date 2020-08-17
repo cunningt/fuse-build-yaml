@@ -52,7 +52,7 @@ builds:
   buildScript: >
     mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
     -Dcheckstyle.skip=true clean deploy
-  scmRevision: swagger-core-${version.io.swagger.core.v2}
+  scmRevision: swagger-core-v2-${version.io.swagger.core.v2}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${swagger-core.pme.options}
@@ -68,7 +68,7 @@ builds:
   buildScript: >
     mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
     -Dcheckstyle.skip=true clean deploy
-  scmRevision: swagger-core-${version.io.swagger.core.v3}
+  scmRevision: swagger-core-v3-${version.io.swagger.core.v3}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${swagger-core.pme.options}
