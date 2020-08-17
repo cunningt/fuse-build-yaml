@@ -45,7 +45,7 @@ builds:
   project: jboss-fuse/swagger-core
     #fetchScmUrl: ${swagger-core.fetch.scmUrl}
     #pushScmUrl: ${swagger-core.push.scmUrl}
-    #tag: swagger-core-${version.io.swagger.core.v2}
+    #tag: swagger-core-v2-${version.io.swagger.core.v2}
     #buildCommand: ${swagger-core.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/swagger-core.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/swagger-core.git
@@ -61,7 +61,7 @@ builds:
   project: jboss-fuse/swagger-core
     #fetchScmUrl: ${swagger-core.fetch.scmUrl}
     #pushScmUrl: ${swagger-core.push.scmUrl}
-    #tag: swagger-core-${version.io.swagger.core.v3}
+    #tag: swagger-core-v3-${version.io.swagger.core.v3}
     #buildCommand: ${swagger-core.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/swagger-core.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/swagger-core.git
