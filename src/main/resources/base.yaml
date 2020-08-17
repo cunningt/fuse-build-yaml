@@ -50,7 +50,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/swagger-core.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/swagger-core.git
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
+    mvn -e -V -B -Dmaven.test.skip.exec=true -Denforcer.skip=true
     -Dcheckstyle.skip=true clean deploy
   scmRevision: swagger-core-v2-${version.io.swagger.core.v2}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
@@ -66,7 +66,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/swagger-core.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/swagger-core.git
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
+    mvn -e -V -B -Dmaven.test.skip.exec=true -Denforcer.skip=true
     -Dcheckstyle.skip=true clean deploy
   scmRevision: swagger-core-v3-${version.io.swagger.core.v3}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
