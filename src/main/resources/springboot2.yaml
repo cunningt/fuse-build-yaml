@@ -296,6 +296,7 @@ builds:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
   - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
+  - fuse-patch-3.3.0-${version.fuse.prefix}
 
 - name: karaf-quickstarts-${version.fuse.prefix}
     #fetchScmUrl: ${karaf-quickstarts.fetch.scmUrl}
