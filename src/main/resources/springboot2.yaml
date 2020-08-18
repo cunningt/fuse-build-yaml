@@ -311,7 +311,7 @@ builds:
   customPmeParameters:
     - ${karaf-quickstarts.pme.options}
   dependencies:
-  - cxf-3.3.6-${version.fuse.prefix}
+  - cxf-sb2-3.3.6-${version.fuse.prefix}
   - karaf-4.2.9-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
