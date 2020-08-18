@@ -222,6 +222,20 @@ builds:
   - fuse-components-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
 
+- name: fuse-patch-3.3.0-${version.fuse.prefix}
+  project: jboss-fuse/fuse-patch
+    #fetchScmUrl: ${fuse-patch.fetch.scmUrl}
+    #pushScmUrl: ${fuse-patch.push.scmUrl}
+    #tag: fuse-patch-${version.fuse.patch}
+    #buildCommand: ${fuse-patch.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/fuse-patch.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-patch.git
+  scmRevision: fuse-patch-${version.fuse.patch}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DskipTests=true -DfailIfNoTests=false -Dtest=false clean deploy'
+  customPmeParameters:
+    - ${fuse-patch.pme.options}
+
 - name: redhat-fuse-sb2-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
     #fetchScmUrl: ${redhat-fuse.fetch.scmUrl}
@@ -237,6 +251,7 @@ builds:
   customPmeParameters:
     - ${redhat-fuse.pme.options}
   dependencies:
+  - wildfly-camel-5.6.0-${version.fuse.prefix}
   - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
   - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
@@ -281,6 +296,7 @@ builds:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
   - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
+  - fuse-patch-3.3.0-${version.fuse.prefix}
 
 - name: karaf-quickstarts-${version.fuse.prefix}
     #fetchScmUrl: ${karaf-quickstarts.fetch.scmUrl}
@@ -295,7 +311,7 @@ builds:
   customPmeParameters:
     - ${karaf-quickstarts.pme.options}
   dependencies:
-  - cxf-3.3.6-${version.fuse.prefix}
+  - cxf-sb2-3.3.6-${version.fuse.prefix}
   - karaf-4.2.9-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
