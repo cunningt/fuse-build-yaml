@@ -574,7 +574,7 @@ builds:
   - fuse-components-${version.fuse.prefix}
   - karaf-4.2.9-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
-  - camel-2.23.0-${version.fuse.prefix}
+  - camel-2.23.2-${version.fuse.prefix}
 
 - name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-apicurito-generator
