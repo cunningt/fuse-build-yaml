@@ -238,7 +238,7 @@ builds:
     - ${redhat-fuse.pme.options}
   dependencies:
   - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
-  - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
+  - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
 
 - name: wildfly-camel-examples-5.6.0-${version.fuse.prefix}
@@ -519,7 +519,7 @@ builds:
   customPmeParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
-  - fabric8-maven-plugin-sb2-3.5.42-${version.fuse.prefix}
+  - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
   - karaf-camel-amq-1.0.0-${version.fuse.prefix}
   - karaf-camel-log-1.0.0-${version.fuse.prefix}
