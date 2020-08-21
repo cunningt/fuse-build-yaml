@@ -209,6 +209,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/wildfly-camel.git
   scmRevision: wildfly-camel-${version.bom.wildfly.camel}
+  environmentId: 33
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
@@ -266,6 +267,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/wildfly-extras/wildfly-camel-examples.git
   externalScmUrl: ssh://git@github.com/wildfly-extras/wildfly-camel-examples.git
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
+  environmentId: 33
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export M2_HOME=/usr/share/maven
@@ -286,6 +288,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-eap.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-eap.git
   scmRevision: fuse-eap-${version.fuse.eap}
+  environmentId: 33
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     export M2_HOME=/usr/share/maven
