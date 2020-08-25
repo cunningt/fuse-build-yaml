@@ -220,6 +220,7 @@ builds:
   customPmeParameters:
     - ${wildfly-camel.pme.options}
   dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
   - fuse-components-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
 
