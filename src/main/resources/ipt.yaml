@@ -30,7 +30,7 @@ builds:
     sed -i 's#https:#http:#g' ui/yarn.lock
 
     mvn -B clean deploy dependency:tree -Dmaven.test.skip.exec=true -Dtar.long.file.mode=posix -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user=\"${buildContentId}+tracking\" -Dproxy-password=\"${accessToken}\" -Dproxy-port=\"${proxyPort}\" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Pprod -Pkafka -Pjpa
-  customPmeParameters:
+  alignmentParameters:
     - ${apicurio-registry.pme.options}
   extraRepositories:
     - https://repository.mulesoft.org/nexus/content/repositories/public/

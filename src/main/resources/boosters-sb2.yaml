@@ -22,7 +22,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-configmap-booster.git
   scmRevision: fuse-configmap-booster-${version.fuse-configmap-booster}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-configmap-booster.pme.options}
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
@@ -41,7 +41,7 @@ builds:
     -Dcheckstyle.skip=true clean deploy
   scmRevision: fuse-health-check-booster-${version.fuse-health-check-booster}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-health-check-booster.pme.options}
   dependencies:
     - redhat-fuse-sb2-${version.fuse.prefix}
@@ -55,7 +55,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-istio-distributed-tracing-booster.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-istio-distributed-tracing-booster.git
   scmRevision: fuse-istio-distributed-tracing-booster-${fuse-istio-distributed-tracing-booster.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-istio-distributed-tracing-booster.pme.options}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
@@ -70,7 +70,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-rest-http-booster.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-rest-http-booster.git
   scmRevision: fuse-rest-http-booster-${fuse-rest-http-booster.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-rest-http-booster.pme.options}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:
@@ -85,7 +85,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-springboot-circuit-breaker-booster.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-springboot-circuit-breaker-booster.git
   scmRevision: fuse-springboot-circuit-breaker-booster-${fuse-springboot-circuit-breaker-booster.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-springboot-circuit-breaker-booster.pme.options}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
   dependencies:

@@ -36,7 +36,7 @@ builds:
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     clean deploy
-  customPmeParameters:
+  alignmentParameters:
     - ${hawtio-online.pme.options}
   dependencies:
   - hawtio-2.0.0-${version.fuse.prefix}
@@ -53,7 +53,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Psap
     clean deploy '
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-karaf.pme.options}
   dependencies:
   - fuse-components-${version.fuse.prefix}
@@ -71,7 +71,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-cloud-kubernetes.git
   scmRevision: spring-cloud-kubernetes-${version.spring-cloud-kubernetes}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${spring-cloud-kubernetes.pme.options}
   dependencies:
   - kubernetes-client-3.1.12-${version.fuse.prefix}
@@ -86,7 +86,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/docker-maven-plugin.git
   scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${docker-maven-plugin.pme.options}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
@@ -102,7 +102,7 @@ builds:
   scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
-  customPmeParameters:
+  alignmentParameters:
     - ${fabric8-maven-plugin.pme.options}
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
@@ -117,7 +117,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-patch.pme.options}
 
 - name: wildfly-camel-5.3.0-${version.fuse.prefix}
@@ -136,7 +136,7 @@ builds:
     export M2_HOME=/usr/share/maven
 
     mvn -e -V -B -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
-  customPmeParameters:
+  alignmentParameters:
     - ${wildfly-camel.pme.options}
   dependencies:
   - fuse-components-${version.fuse.prefix}
@@ -154,7 +154,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
     deploy -DskipClean'
-  customPmeParameters:
+  alignmentParameters:
     - ${redhat-fuse.pme.options}
   dependencies:
   - fuse-karaf-${version.fuse.prefix}
@@ -173,7 +173,7 @@ builds:
   scmRevision: wildfly-camel-examples-${version.wildfly.camel.examples}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false  -pl !camel-rest-swagger clean deploy'
-  customPmeParameters:
+  alignmentParameters:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
   - redhat-fuse-${version.fuse.prefix}
@@ -189,7 +189,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-eap.git
   scmRevision: fuse-eap-${version.fuse.eap}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-eap.pme.options}
   dependencies:
   - wildfly-camel-5.3.0-${version.fuse.prefix}
@@ -206,7 +206,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/karaf-quickstarts.git
   scmRevision: karaf-quickstarts-${version.karaf-quickstarts}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${karaf-quickstarts.pme.options}
   dependencies:
   - cxf-3.2.7-${version.fuse.prefix}
@@ -227,7 +227,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dquickstart.git.repos=repolist.txt -Dgpg.skip -Prelease clean deploy
-  customPmeParameters:
+  alignmentParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
   - fabric8v2-3.0.11-${version.fuse.prefix}
@@ -243,7 +243,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8.git
   scmRevision: fabric8v2-${version.fabric8}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fabric8v2.pme.options}
   dependencies:
   - docker-maven-plugin-0.23.0-${version.fuse.prefix}
@@ -261,7 +261,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/apicurito.git
   scmRevision: apicurito-${apicurito.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${apicurito.pme.options}
   buildScript: >
     export REG=http://mwnodereg.hosts.mwqe.eng.bos.redhat.com:${port.number}
@@ -283,7 +283,7 @@ builds:
   scmRevision: fuse-apicurito-generator-${version.apicurito-generator}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-apicurito-generator.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
@@ -299,7 +299,7 @@ builds:
   scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
-  customPmeParameters:
+  alignmentParameters:
     - ${narayana-spring-boot-quickstart.pme.options}
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}
@@ -315,7 +315,7 @@ builds:
   scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
+  alignmentParameters:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
@@ -332,7 +332,7 @@ builds:
   scmRevision: camel-k-runtime-${version.camel-k-runtime}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean'
-  customPmeParameters:
+  alignmentParameters:
     - ${camel-k-runtime.pme.options}
   dependencies:
     - camel-2.21.0-${version.fuse.prefix}

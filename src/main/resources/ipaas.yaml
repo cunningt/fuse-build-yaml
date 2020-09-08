@@ -21,7 +21,7 @@ builds:
     #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/atlasmap.git
   scmRevision: atlasmap-${version.atlasmap}
-  customPmeParameters:
+  alignmentParameters:
     - ${atlasmap.pme.options}
   buildScript: >
     export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
@@ -43,7 +43,7 @@ builds:
   scmRevision: syndesis-${version.syndesis}
   buildPodMemory: 12
   environmentId: 9
-  customPmeParameters:
+  alignmentParameters:
     - ${syndesis.pme.options}
   buildScript: >
     export MAVEN_OPTS=\"-Xmx3048m\"
