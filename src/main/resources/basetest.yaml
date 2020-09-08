@@ -31,7 +31,7 @@ builds:
 
     mvn -e -V -B -DskipTests -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
-  customPmeParameters:
+  alignmentParameters:
     - ${camel.pme.options}
   extraRepositories:
     - http://resources.knopflerfish.org/repo/maven2/release/
@@ -55,7 +55,7 @@ builds:
     export MAVEN_OPTS=\"-Xmx3000m\"
 
     mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
-  customPmeParameters:
+  alignmentParameters:
     - ${camel-quarkus.pme.options}
   dependencies:
     - camel-3.4.0-${version.fuse.prefix}
@@ -73,7 +73,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     mvn -e -V -B -DskipTests -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
-  customPmeParameters:
+  alignmentParameters:
     - ${camel-k-runtime.pme.options}
   dependencies:
     - camel-3.4.0-${version.fuse.prefix}
@@ -92,7 +92,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
    sed -i \"s/-ldflags/-mod=vendor -ldflags/g\" Makefile; mvn clean package deploy -Pgolang-build -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
-  customPmeParameters:
+  alignmentParameters:
     - ${camel-k.pme.options}
   dependencies:
     - camel-3.4.0-${version.fuse.prefix}

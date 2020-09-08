@@ -23,7 +23,7 @@ builds:
   scmRevision: yaks-${version.yaks}
   environmentId: 41
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${yaks.pme.options}
   buildPodMemory: 8
   buildScript: >
