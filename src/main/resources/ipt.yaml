@@ -21,15 +21,15 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/apicurio-registry.git
   scmRevision: apicurio-registry-${version.apicurio-registry}
   buildScript: >
-    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
+    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
 
-    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
+    sed -i "s#https://registry.yarnpkg.com/#${REG}#g" ui/yarn.lock
 
-    sed -i \"s#https://registry.npmjs.org/#${REG}#g\" ui/yarn.lock
+    sed -i "s#https://registry.npmjs.org/#${REG}#g" ui/yarn.lock
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
-    mvn -B clean deploy dependency:tree -Dmaven.test.skip.exec=true -Dtar.long.file.mode=posix -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user=\"${buildContentId}+tracking\" -Dproxy-password=\"${accessToken}\" -Dproxy-port=\"${proxyPort}\" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Pprod -Pkafka -Pjpa
+    mvn -B clean deploy dependency:tree -Dmaven.test.skip.exec=true -Dtar.long.file.mode=posix -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -Dyarn-insecure -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -Dproxy-user="${buildContentId}+tracking" -Dproxy-password="${accessToken}" -Dproxy-port="${proxyPort}" -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Pprod -Pkafka -Pjpa
   alignmentParameters:
     - ${apicurio-registry.pme.options}
   extraRepositories:

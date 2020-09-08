@@ -41,9 +41,9 @@ builds:
   scmRevision: camel-${version.camel}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+    export JAVA_TOOL_OPTIONS="-Xmx3g"
 
-    export MAVEN_OPTS=\"-Xmx4g\"
+    export MAVEN_OPTS="-Xmx4g"
 
     mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
@@ -114,13 +114,13 @@ builds:
   scmRevision: fuse-components-${version.fusesource.camel.sap}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    mvn -Dexec.executable=\"echo\" -Dexec.args='${dollar}{project.version}' -Dexec.outputFile=\"file.version\" --non-recursive --batch-mode org.codehaus.mojo:exec-maven-plugin:1.3.1:exec > /dev/null 2>&1 || { echo \"Maven invocation failed!\" 1>&2; exit 1; }
+    mvn -Dexec.executable="echo" -Dexec.args='${dollar}{project.version}' -Dexec.outputFile="file.version" --non-recursive --batch-mode org.codehaus.mojo:exec-maven-plugin:1.3.1:exec > /dev/null 2>&1 || { echo "Maven invocation failed!" 1>&2; exit 1; }
 
     STRIPVERSION=$(cat file.version | perl -pe 's/^([0-9\.]+)\.fuse(-sb2)?-([0-9]+)-//g')
 
-    [[ $STRIPVERSION == *'temporary'* ]] && (find . -name MANIFEST.MF -not -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.$STRIPVERSION/\")
+    [[ $STRIPVERSION == *'temporary'* ]] && (find . -name MANIFEST.MF -not -path '*fusesource*' -print | xargs sed -i -E "s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.$STRIPVERSION/")
 
-    find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/\"
+    find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E "s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/"
 
     mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
   alignmentParameters:
@@ -140,13 +140,13 @@ builds:
   scmRevision: hawtio-${version.hawtio}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
+    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
 
-    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/yarn.lock
+    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/yarn.lock
 
     sed -i 's#https:#http:#g' hawtio-console-assembly/yarn.lock
 
-    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" hawtio-console-assembly/app/yarn.lock
+    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/app/yarn.lock
 
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
 
@@ -174,11 +174,11 @@ builds:
   alignmentParameters:
     - ${apicurito.pme.options}
   buildScript: >
-    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
+    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
 
-    sed -i \"s#https://registry.yarnpkg.com/#${REG}#g\" ui/yarn.lock
+    sed -i "s#https://registry.yarnpkg.com/#${REG}#g" ui/yarn.lock
 
-    sed -i \"s#https://registry.npmjs.org/#${REG}#g\" ui/yarn.lock
+    sed -i "s#https://registry.npmjs.org/#${REG}#g" ui/yarn.lock
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
@@ -212,7 +212,7 @@ builds:
   environmentId: 33
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+    export JAVA_TOOL_OPTIONS="-Xmx3g"
 
     export M2_HOME=/usr/share/maven
 
@@ -656,9 +656,9 @@ builds:
   scmRevision: hawtio-online-${version.hawtio.online}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    export REG=\"http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/\"
+    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
 
-    sed -i \"s#https://registry.yarnpkg.com/#${REG}/#g\" yarn.lock
+    sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" yarn.lock
 
     sed -i 's#https:#http:#g' yarn.lock
 
