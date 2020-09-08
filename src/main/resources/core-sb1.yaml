@@ -23,7 +23,7 @@ builds:
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy'
   scmRevision: kubernetes-model-${version.kubernetes.model}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${kubernetes-model.pme.options}
 
 - name: kubernetes-client-3.1.12-${version.fuse.prefix}
@@ -37,7 +37,7 @@ builds:
   buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy'
   scmRevision: kubernetes-client-${version.kubernetes.client}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${kubernetes-client.pme.options}
   dependencies:
   - kubernetes-model-2.0.10-${version.fuse.prefix}
@@ -52,7 +52,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
   scmRevision: cxf-${version.cxf}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${cxf.pme.options}
   buildPodMemory: 8
   buildScript: >
@@ -80,7 +80,7 @@ builds:
     mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
     '!org.apache.camel:camel-itest'
-  customPmeParameters:
+  alignmentParameters:
     - ${camel.pme.options}
   extraRepositories:
     - http://resources.knopflerfish.org/repo/maven2/release/
@@ -100,7 +100,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-extra.git
   scmRevision: camel-extra-${version.camel.extra}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${camel-extra.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
@@ -115,7 +115,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-extras-distro.git
   scmRevision: fuse-extras-${version.fuse.extras.distro}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-extras.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
@@ -132,7 +132,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/wsdl2rest.git
   scmRevision: wsdl2rest-${version.wsdl2rest}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  customPmeParameters:
+  alignmentParameters:
     - ${wsdl2rest.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
@@ -158,7 +158,7 @@ builds:
     find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E \"s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/\"
 
     mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
-  customPmeParameters:
+  alignmentParameters:
     - ${fuse-components.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
@@ -191,7 +191,7 @@ builds:
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass
     deploy
-  customPmeParameters:
+  alignmentParameters:
     - ${hawtio.pme.options}
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
