@@ -25,9 +25,9 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 12
   buildScript: >
-    export JAVA_TOOL_OPTIONS=\"-Xmx3g\"
+    export JAVA_TOOL_OPTIONS="-Xmx3g"
 
-    export MAVEN_OPTS=\"-Xmx4g\"
+    export MAVEN_OPTS="-Xmx4g"
 
     mvn -e -V -B -DskipTests -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
@@ -50,7 +50,7 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 6
   buildScript: >
-    export MAVEN_OPTS=\"-Xmx3000m\"
+    export MAVEN_OPTS="-Xmx3000m"
 
     mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   alignmentParameters:
@@ -89,7 +89,7 @@ builds:
   environmentId: 41
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-   sed -i \"s/-ldflags/-mod=vendor -ldflags/g\" Makefile; mvn clean package deploy -Pgolang-build -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
+   sed -i "s/-ldflags/-mod=vendor -ldflags/g" Makefile; mvn clean package deploy -Pgolang-build -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
   alignmentParameters:
     - ${camel-k.pme.options}
   dependencies:
