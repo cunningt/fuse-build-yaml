@@ -27,8 +27,6 @@ builds:
     - ${cxf.pme.options}
   buildScript: >
     mvn -e -V -B -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
-  dependencies:
-  - cxf-xjc-utils-3.3.1-${version.fuse.prefix}
 
 - name: camel-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -317,7 +315,6 @@ builds:
     - ${karaf-quickstarts.pme.options}
   dependencies:
   - cxf-sb2-3.3.6-${version.fuse.prefix}
-  - karaf-4.2.9-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
 
@@ -577,7 +574,6 @@ builds:
     - ${fuse-karaf.pme.options}
   dependencies:
   - fuse-components-sb2-${version.fuse.prefix}
-  - karaf-4.2.9-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
 
