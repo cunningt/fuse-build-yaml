@@ -221,7 +221,7 @@ builds:
     - ${wildfly-camel.pme.options}
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
-  - fuse-components-${version.fuse.prefix}
+  - fuse-components-sb2-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
 
 - name: fuse-patch-3.3.0-${version.fuse.prefix}
@@ -576,7 +576,7 @@ builds:
   alignmentParameters:
     - ${fuse-karaf.pme.options}
   dependencies:
-  - fuse-components-${version.fuse.prefix}
+  - fuse-components-sb2-${version.fuse.prefix}
   - karaf-4.2.9-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
