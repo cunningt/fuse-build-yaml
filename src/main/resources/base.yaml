@@ -36,6 +36,7 @@ builds:
   extraRepositories:
     - http://resources.knopflerfish.org/repo/maven2/release/
     - http://packages.confluent.io/maven/
+    - http://maven.icm.edu.pl/artifactory/repo/
     
 - name: camel-quarkus-1.0.0.CR3-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
