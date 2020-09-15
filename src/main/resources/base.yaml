@@ -49,9 +49,9 @@ builds:
   scmRevision: camel-quarkus-${version.camel-quarkus}
   environmentId: 39
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildPodMemory: 6
+  buildPodMemory: 12
   buildScript: >
-    export MAVEN_OPTS="-Xmx3000m"
+    export MAVEN_OPTS="-Xmx8000m"
 
     mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   alignmentParameters:
