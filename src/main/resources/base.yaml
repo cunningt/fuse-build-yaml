@@ -57,7 +57,7 @@ builds:
   alignmentParameters:
     - ${camel-quarkus.pme.options}
   dependencies:
-    - camel-3.5.0-${version.fuse.prefix}
+    - camel-3.5.1-${version.fuse.prefix}
 
 - name: camel-k-runtime-1.5.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
