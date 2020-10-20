@@ -26,10 +26,8 @@ builds:
   buildScript: 'mvn -B clean deploy -DskipTests'
   alignmentParameters:
     - ${camel-kafka-connector.pme.options}
-  dependencies:
-    - camel-3.1.0-${version.fuse.prefix}
 
-- name: yaks-0.0.33-${version.fuse.prefix}
+- name: yaks-0.0.43-${version.fuse.prefix}
   project: jboss-fuse/yaks
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fyaks.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fyaks.git
