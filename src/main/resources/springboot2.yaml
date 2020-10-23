@@ -256,6 +256,7 @@ builds:
   - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
+  - apicurito-1.0.1-${version.fuse.prefix}
 
 - name: wildfly-camel-examples-5.6.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
