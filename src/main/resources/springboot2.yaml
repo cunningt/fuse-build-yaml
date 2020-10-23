@@ -84,7 +84,7 @@ builds:
   - camel-2.23.2-${version.fuse.prefix}
   - cxf-sb2-3.3.6-${version.fuse.prefix}
 
-- name: wsdl2rest-sb2-0.8.0-${version.fuse.prefix}
+- name: wsdl2rest-0.8.0-${version.fuse.prefix}
   project: jboss-fuse/wsdl2rest
     #fetchScmUrl: ${wsdl2rest.fetch.scmUrl}
     #pushScmUrl: ${wsdl2rest.push.scmUrl}
@@ -182,7 +182,7 @@ builds:
 
     mvn  -e -V -B -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
 
-- name: fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
+- name: fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   project: jboss-fuse/fabric8-maven-plugin
     #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
     #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
@@ -236,7 +236,7 @@ builds:
   alignmentParameters:
     - ${fuse-patch.pme.options}
 
-- name: redhat-fuse-sb2-${version.fuse.prefix}
+- name: redhat-fuse-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
     #fetchScmUrl: ${redhat-fuse.fetch.scmUrl}
     #pushScmUrl: ${redhat-fuse.push.scmUrl}
