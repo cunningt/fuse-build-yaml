@@ -42,7 +42,7 @@ builds:
     - ${yaks.pme.options}
   buildPodMemory: 8
   buildScript: >
-    mvn clean deploy
+    mvn -f java/pom.xml -DskipTests clean deploy
 
 outputPrefixes:
   releaseFile: integration-fuse
