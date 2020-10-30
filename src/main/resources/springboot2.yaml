@@ -214,7 +214,7 @@ builds:
 
     export M2_HOME=/usr/share/maven
 
-    mvn -e -V -B -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Prelease clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Dclean-licenses -Prelease clean deploy
   alignmentParameters:
     - ${wildfly-camel.pme.options}
   dependencies:
