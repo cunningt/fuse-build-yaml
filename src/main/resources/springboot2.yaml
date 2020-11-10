@@ -319,6 +319,19 @@ builds:
   - camel-2.23.2-${version.fuse.prefix}
   - redhat-fuse-sb2-${version.fuse.prefix}
 
+- name: documentation-template-${version.fuse.prefix}
+    #fetchScmUrl: ${documentation-template.fetch.scmUrl}
+    #pushScmUrl: ${documentation-template.push.scmUrl}
+    #tag: documentation-template-${version.fuse.documentation.template}
+    #buildCommand: ${documentation-template.buildCommand}
+  project: jboss-fuse/documentation-template
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/documentation-template.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/documentation-template.git
+  scmRevision: documentation-template-${version.fuse.documentation.template}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  alignmentParameters:
+    - ${documentation-template.pme.options}
+
 - name: karaf-camel-amq-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/karaf-camel-amq
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-amq.git

@@ -40,7 +40,7 @@
   </prerequisites>
 
   <properties>
-    <yaml.name>fusefis</yaml.name>
+    <yaml.name>base</yaml.name>
     <pme.filename>pme.properties</pme.filename>
     <version.fuse.project>7.9</version.fuse.project>
     <version.fuse.prefix>${version.fuse.project}.0</version.fuse.prefix>
@@ -89,6 +89,7 @@
 
     <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
+    <version.fuse.documentation.template>1.0</version.fuse.documentation.template>
     <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
 
     <!-- boosters -->
@@ -134,6 +135,10 @@
     <karaf-quickstarts.fetch.scmUrl>1</karaf-quickstarts.fetch.scmUrl>
     <karaf-quickstarts.push.scmUrl>1</karaf-quickstarts.push.scmUrl>
     <karaf-quickstarts.buildCommand>1</karaf-quickstarts.buildCommand>
+    <documentation-template.tag>DUMMY-TAG-0.0.0</documentation-template.tag>
+    <documentation-template.fetch.scmUrl>1</documentation-template.fetch.scmUrl>
+    <documentation-template.push.scmUrl>1</documentation-template.push.scmUrl>
+    <documentation-template.buildCommand>1</documentation-template.buildCommand>
     <cxf-xjc-utils.tag>DUMMY-TAG-0.0.0</cxf-xjc-utils.tag>
     <cxf-xjc-utils.fetch.scmUrl>1</cxf-xjc-utils.fetch.scmUrl>
     <cxf-xjc-utils.push.scmUrl>1</cxf-xjc-utils.push.scmUrl>
