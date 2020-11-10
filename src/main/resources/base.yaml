@@ -86,6 +86,20 @@ builds:
     - ${docker-maven-plugin.pme.options}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
 
+- name: kubernetes-client-4.6.2-${version.fuse.prefix}
+  project: jboss-fuse/kubernetes-client
+    #fetchScmUrl: ${kubernetes-client.fetch.scmUrl}
+    #pushScmUrl: ${kubernetes-client.push.scmUrl}
+    #tag: kubernetes-client-${version.kubernetes.client}
+    #buildCommand: ${kubernetes-client.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-client.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy'
+  scmRevision: kubernetes-client-${version.kubernetes.client}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${kubernetes-client.pme.options}
+
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
