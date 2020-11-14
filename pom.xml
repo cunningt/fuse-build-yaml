@@ -40,7 +40,7 @@
   </prerequisites>
 
   <properties>
-    <yaml.name>fusefis</yaml.name>
+    <yaml.name>springboot2</yaml.name>
     <pme.filename>pme.properties</pme.filename>
     <version.fuse.project>7.8</version.fuse.project>
     <version.fuse.prefix>${version.fuse.project}.0</version.fuse.prefix>
