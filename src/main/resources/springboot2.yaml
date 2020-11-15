@@ -253,7 +253,7 @@ builds:
   dependencies:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
   - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
-  - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
+  - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
   - apicurito-1.2.2-${version.fuse.prefix}
@@ -538,7 +538,7 @@ builds:
   alignmentParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
-  - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
+  - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
   - karaf-camel-amq-1.0.0-${version.fuse.prefix}
   - karaf-camel-log-1.0.0-${version.fuse.prefix}
