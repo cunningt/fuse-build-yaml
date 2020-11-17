@@ -100,6 +100,20 @@ builds:
   customPmeParameters:
     - ${kubernetes-client.pme.options}
 
+- name: arquillian-cube-1.18.2-${version.fuse.prefix}
+  project: jboss-fuse/arquillian-cube
+    #fetchScmUrl: ${arquillian-cube.fetch.scmUrl}
+    #pushScmUrl: ${arquillian-cube.push.scmUrl}
+    #tag: arquillian-cube-${version.arquillian-cube}
+    #buildCommand: ${arquillian-cube.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/arquillian-cube.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/arquillian-cube.git
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy'
+  scmRevision: arquillian-cube-${version.arquillian-cube}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${arquillian-cube.pme.options}
+
 outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
