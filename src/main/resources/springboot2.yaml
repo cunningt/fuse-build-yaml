@@ -253,7 +253,7 @@ builds:
   dependencies:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
   - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
-  - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
+  - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   - hawtio-sb2-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
   - apicurito-1.2.2-${version.fuse.prefix}
@@ -276,7 +276,7 @@ builds:
   alignmentParameters:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
-  - redhat-fuse-sb2-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
   - wildfly-camel-5.6.0-${version.fuse.prefix}
 
 - name: fuse-eap-${version.fuse.prefix}
@@ -299,7 +299,7 @@ builds:
   dependencies:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
   - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
-  - redhat-fuse-sb2-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
   - fuse-patch-3.3.0-${version.fuse.prefix}
 
 - name: karaf-quickstarts-${version.fuse.prefix}
@@ -317,7 +317,7 @@ builds:
   dependencies:
   - cxf-sb2-3.3.6-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
-  - redhat-fuse-sb2-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
 
 - name: karaf-camel-amq-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/karaf-camel-amq
@@ -328,7 +328,7 @@ builds:
   alignmentParameters:
     - ${karaf-camel-amq.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: karaf-camel-log-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/karaf-camel-log
@@ -339,7 +339,7 @@ builds:
   alignmentParameters:
     - ${karaf-camel-log.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: karaf-camel-rest-sql-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/karaf-camel-rest-sql
@@ -350,7 +350,7 @@ builds:
   alignmentParameters:
     - ${karaf-camel-rest-sql.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: karaf-cxf-rest-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/karaf-cxf-rest
@@ -361,7 +361,7 @@ builds:
   alignmentParameters:
     - ${karaf-cxf-rest.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${spring-boot-camel-xa.fetch.scmUrl}
@@ -377,7 +377,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
     - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
 
 - name: spring-boot-camel-sb2-1.0.0-${version.fuse.prefix}
@@ -389,7 +389,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-amq-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-amq
@@ -400,7 +400,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-amq.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-config-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-config
@@ -411,7 +411,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-config.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-drools-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-drools
@@ -422,7 +422,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-drools.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-infinispan-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-infinispan
@@ -433,7 +433,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-infinispan.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-rest-sql
@@ -444,7 +444,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-rest-sql.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-rest-3scale-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-rest-3scale
@@ -455,7 +455,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-rest-3scale.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-xml-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-xml
@@ -466,7 +466,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-xml.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-camel-soap-rest-bridge-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-soap-rest-bridge
@@ -477,7 +477,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-camel-soap-rest-bridge.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs
@@ -488,7 +488,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-cxf-jaxrs.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxws
@@ -499,7 +499,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-cxf-jaxws.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs-xml
@@ -510,7 +510,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-cxf-jaxrs-xml.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: spring-boot-cxf-jaxws-xml-sb2-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxws-xml
@@ -521,7 +521,7 @@ builds:
   alignmentParameters:
     - ${spring-boot-cxf-jaxws-xml.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
   project: jboss-fuse/ipaas-quickstarts
@@ -538,8 +538,8 @@ builds:
   alignmentParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
-  - fabric8-maven-plugin-sb2-4.3.0-${version.fuse.prefix}
-  - redhat-fuse-sb2-${version.fuse.prefix}
+  - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
+  - redhat-fuse-${version.fuse.prefix}
   - karaf-camel-amq-1.0.0-${version.fuse.prefix}
   - karaf-camel-log-1.0.0-${version.fuse.prefix}
   - karaf-camel-rest-sql-1.0.0-${version.fuse.prefix}
@@ -591,7 +591,7 @@ builds:
   alignmentParameters:
     - ${fuse-apicurito-generator.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
 
 - name: narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
@@ -622,7 +622,7 @@ builds:
   alignmentParameters:
     - ${application-templates.pme.options}
   dependencies:
-    - redhat-fuse-sb2-${version.fuse.prefix}
+    - redhat-fuse-${version.fuse.prefix}
     - ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
 
 - name: hawtio-online-1.0.0-${version.fuse.prefix}
