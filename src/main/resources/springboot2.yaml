@@ -558,6 +558,7 @@ builds:
   - spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxws-xml-sb2-1.0.0-${version.fuse.prefix}
+  - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
 
 - name: fuse-karaf-${version.fuse.prefix}
   project: jboss-fuse/fuse-karaf
