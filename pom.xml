@@ -54,6 +54,7 @@
     <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
     <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
     <version.cxf>3.1.11.fuse-000265</version.cxf>
+    <version.arquillian-cube>1.18.2</version.arquillian-cube>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
     <version.kubernetes.assertions>4.1.0.fuse-sb2-750002</version.kubernetes.assertions>
     <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
@@ -190,6 +191,10 @@
     <kubernetes-client.fetch.scmUrl>1</kubernetes-client.fetch.scmUrl>
     <kubernetes-client.push.scmUrl>1</kubernetes-client.push.scmUrl>
     <kubernetes-client.buildCommand>1</kubernetes-client.buildCommand>
+    <arquillian-cube.tag>DUMMY-TAG-0.0.0</arquillian-cube.tag>
+    <arquillian-cube.fetch.scmUrl>1</arquillian-cube.fetch.scmUrl>
+    <arquillian-cube.push.scmUrl>1</arquillian-cube.push.scmUrl>
+    <arquillian-cube.buildCommand>1</arquillian-cube.buildCommand>
     <spring-cloud-kubernetes.tag>DUMMY-TAG-0.0.0</spring-cloud-kubernetes.tag>
     <spring-cloud-kubernetes.fetch.scmUrl>1</spring-cloud-kubernetes.fetch.scmUrl>
     <spring-cloud-kubernetes.push.scmUrl>1</spring-cloud-kubernetes.push.scmUrl>
