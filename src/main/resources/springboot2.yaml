@@ -624,6 +624,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
     - ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
+    - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
 
 - name: hawtio-online-1.0.0-${version.fuse.prefix}
   project: hawtio/hawtio-online
