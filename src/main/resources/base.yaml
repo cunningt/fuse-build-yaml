@@ -29,7 +29,7 @@ builds:
 
     export MAVEN_OPTS="-Xmx4g"
 
-    mvn -e -V -B -DskipTests -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
+    mvn -e -V -B -DskipTests -Dmaven.compiler.testTarget=1.8 -Dmaven.compiler.testSource=1.8 -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
   alignmentParameters:
     - ${camel.pme.options}
