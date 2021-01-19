@@ -21,7 +21,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
   scmRevision: camel-${version.camel}
-  environmentId: 39
+  environmentId: 110
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 12
   buildScript: >
@@ -47,7 +47,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
   scmRevision: camel-quarkus-${version.camel-quarkus}
-  environmentId: 39
+  environmentId: 110
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 12
   buildScript: >
@@ -68,7 +68,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k-runtime.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k-runtime.git
   scmRevision: camel-k-runtime-${version.camel-k-runtime}
-  environmentId: 39
+  environmentId: 110
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
     mvn -e -V -B -DskipTests -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
