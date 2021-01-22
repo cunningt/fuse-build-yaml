@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: camel-kafka-connector-0.5.0-${version.fuse.prefix}
+- name: camel-kafka-connector-0.7.1-${version.fuse.prefix}
     #fetchScmUrl: ${camel-kafka-connector.fetch.scmUrl}
     #pushScmUrl: ${camel-kafka-connector.push.scmUrl}
     #tag: camel-kafka-connector-${version.camel-kafka-connector}
@@ -54,7 +54,7 @@ flow:
 
   repositoryGeneration:
     strategy: BUILD_GROUP
-    sourceBuild: camel-kafka-connector-0.0.2-${version.fuse.prefix}
+    sourceBuild: camel-kafka-connector-0.7.1-${version.fuse.prefix}
 
   javadocGeneration:
     strategy: IGNORE
