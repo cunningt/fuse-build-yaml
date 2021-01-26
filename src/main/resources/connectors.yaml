@@ -27,7 +27,7 @@ builds:
   alignmentParameters:
     - ${camel-kafka-connector.pme.options}
 
-- name: yaks-0.0.43-${version.fuse.prefix}
+- name: yaks-0.2.0-${version.fuse.prefix}
   project: jboss-fuse/yaks
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fyaks.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fyaks.git
