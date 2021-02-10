@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: cxf-sb2-3.3.6-${version.fuse.prefix}
+- name: cxf-3.3.6-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
