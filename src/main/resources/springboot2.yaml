@@ -52,7 +52,7 @@ builds:
   extraRepositories:
     - http://resources.knopflerfish.org/repo/maven2/release/
   dependencies:
-  - cxf-sb2-3.3.6-${version.fuse.prefix}
+  - cxf-3.3.6-${version.fuse.prefix}
 
 - name: camel-extra-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel-extra
@@ -82,7 +82,7 @@ builds:
     - ${fuse-extras.pme.options}
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
-  - cxf-sb2-3.3.6-${version.fuse.prefix}
+  - cxf-3.3.6-${version.fuse.prefix}
 
 - name: wsdl2rest-0.8.0-${version.fuse.prefix}
   project: jboss-fuse/wsdl2rest
@@ -196,7 +196,7 @@ builds:
   alignmentParameters:
     - ${fabric8-maven-plugin.pme.options}
   dependencies:
-  - cxf-sb2-3.3.6-${version.fuse.prefix}
+  - cxf-3.3.6-${version.fuse.prefix}
 
 - name: wildfly-camel-5.6.0-${version.fuse.prefix}
   project: jboss-fuse/wildfly-camel
@@ -315,7 +315,7 @@ builds:
   alignmentParameters:
     - ${karaf-quickstarts.pme.options}
   dependencies:
-  - cxf-sb2-3.3.6-${version.fuse.prefix}
+  - cxf-3.3.6-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
 
