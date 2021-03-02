@@ -1,0 +1,52 @@
+product:
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.milestone}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Base ${version.fuse.project} TP3 ${build.milestone}
+defaultBuildParameters:
+  environmentId: 21
+  buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
+    deploy'
+
+builds:
+- name: camel-quarkus-1.5.0-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
+    #pushScmUrl: ${camel-quarkus.push.scmUrl}
+    #tag: camel-quarkus-${version.camel-quarkus}
+    #buildCommand: ${camel-quarkus.buildCommand}
+  project: jboss-fuse/camel-quarkus
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
+  scmRevision: camel-quarkus-${version.camel-quarkus}
+  environmentId: 110
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildPodMemory: 12
+  buildScript: >
+    export MAVEN_OPTS="-Xmx8000m"
+
+    mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+  alignmentParameters:
+    - ${camel-quarkus.pme.options}
+
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+
+flow:
+  licensesGeneration:
+    strategy: GENERATE
+
+  repositoryGeneration:
+    strategy: BUILD_GROUP
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
