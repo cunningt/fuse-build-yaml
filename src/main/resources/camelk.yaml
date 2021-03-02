@@ -12,53 +12,6 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: camel-3.7.0-${version.fuse.prefix}
-  project: jboss-fuse/camel
-    #fetchScmUrl: ${camel.fetch.scmUrl}
-    #pushScmUrl: ${camel.push.scmUrl}
-    #tag: camel-${version.camel}
-    #buildCommand: ${camel.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
-  scmRevision: camel-${version.camel}
-  environmentId: 110
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildPodMemory: 12
-  buildScript: >
-    export JAVA_TOOL_OPTIONS="-Xmx3g"
-
-    export MAVEN_OPTS="-Xmx4g"
-
-    mvn -e -V -B -DskipTests -Dmaven.compiler.testTarget=1.8 -Dmaven.compiler.testSource=1.8 -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
-    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
-  alignmentParameters:
-    - ${camel.pme.options}
-  extraRepositories:
-    - http://resources.knopflerfish.org/repo/maven2/release/
-    - http://packages.confluent.io/maven/
-    - http://maven.icm.edu.pl/artifactory/repo/
-    
-- name: camel-quarkus-1.5.0-${version.fuse.prefix}
-    #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
-    #pushScmUrl: ${camel-quarkus.push.scmUrl}
-    #tag: camel-quarkus-${version.camel-quarkus}
-    #buildCommand: ${camel-quarkus.buildCommand}
-  project: jboss-fuse/camel-quarkus
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-quarkus.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-quarkus.git
-  scmRevision: camel-quarkus-${version.camel-quarkus}
-  environmentId: 110
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildPodMemory: 12
-  buildScript: >
-    export MAVEN_OPTS="-Xmx8000m"
-
-    mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
-  alignmentParameters:
-    - ${camel-quarkus.pme.options}
-  dependencies:
-    - camel-3.7.0-${version.fuse.prefix}
-
 - name: camel-k-runtime-1.6.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-k-runtime.fetch.scmUrl}
     #pushScmUrl: ${camel-k-runtime.push.scmUrl}
@@ -74,9 +27,6 @@ builds:
     mvn -e -V -B -DskipTests -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   alignmentParameters:
     - ${camel-k-runtime.pme.options}
-  dependencies:
-    - camel-3.7.0-${version.fuse.prefix}
-    - camel-quarkus-1.5.0-${version.fuse.prefix}
 
 - name: camel-k-${version.fuse.prefix}
     #fetchScmUrl: ${camel-k.fetch.scmUrl}
@@ -94,8 +44,6 @@ builds:
   alignmentParameters:
     - ${camel-k.pme.options}
   dependencies:
-    - camel-3.7.0-${version.fuse.prefix}
-    - camel-quarkus-1.5.0-${version.fuse.prefix}
     - camel-k-runtime-1.6.0-${version.fuse.prefix}
 
 outputPrefixes:

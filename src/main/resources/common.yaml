@@ -29,6 +29,32 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
 
+- name: camel-3.8.0-${version.fuse.prefix}
+  project: jboss-fuse/camel
+    #fetchScmUrl: ${camel.fetch.scmUrl}
+    #pushScmUrl: ${camel.push.scmUrl}
+    #tag: camel-${version.camel}
+    #buildCommand: ${camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
+  scmRevision: camel-${version.camel}
+  environmentId: 110
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildPodMemory: 12
+  buildScript: >
+    export JAVA_TOOL_OPTIONS="-Xmx3g"
+    export MAVEN_OPTS="-Xmx4g"
+    mvn -e -V -B -DskipTests -Dmaven.compiler.testTarget=1.8 -Dmaven.compiler.testSource=1.8 -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
+  alignmentParameters:
+    - ${camel.pme.options}
+  extraRepositories:
+    - http://resources.knopflerfish.org/repo/maven2/release/
+    - http://packages.confluent.io/maven/
+    - http://maven.icm.edu.pl/artifactory/repo/
+  dependencies:
+    - cxf-3.4.1-${version.fuse.prefix}
+
 outputPrefixes:
   releaseFile: fuse-common-test
   releaseDir: fuse-common-test
