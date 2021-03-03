@@ -42,8 +42,8 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildPodMemory: 12
   buildScript: >
-    export JAVA_TOOL_OPTIONS="-Xmx3g"
-    export MAVEN_OPTS="-Xmx4g"
+    export JAVA_TOOL_OPTIONS="-Xmx3g";
+    export MAVEN_OPTS="-Xmx4g";
     mvn -e -V -B -DskipTests -Dmaven.compiler.testTarget=1.8 -Dmaven.compiler.testSource=1.8 -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
     clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
   alignmentParameters:
