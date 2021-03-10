@@ -29,7 +29,7 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
 
-- name: camel-3.8.0-${version.fuse.prefix}
+- name: camel-3.7.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
