@@ -272,7 +272,7 @@ builds:
   buildScript: >
     export M2_HOME=/usr/share/maven
 
-    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -DskipTests=true -pl '!camel-rest-swagger' clean deploy
+    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -Dassembly.tarLongFileMode=posix -DskipTests=true -pl '!camel-rest-swagger' clean deploy
   alignmentParameters:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
