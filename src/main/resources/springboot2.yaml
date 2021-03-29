@@ -68,7 +68,7 @@ builds:
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
-- name: fuse-extras-sb2-${version.fuse.prefix}-${version.fuse.prefix}
+- name: fuse-extras-${version.fuse.prefix}-${version.fuse.prefix}
   project: jboss-fuse/fuse-extras-distro
     #fetchScmUrl: ${fuse-extras-distro.fetch.scmUrl}
     #pushScmUrl: ${fuse-extras-distro.push.scmUrl}
@@ -100,7 +100,7 @@ builds:
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
-- name: fuse-components-sb2-${version.fuse.prefix}
+- name: fuse-components-${version.fuse.prefix}
   project: jboss-fuse/fuse-components
     #fetchScmUrl: ${fuse-components.fetch.scmUrl}
     #pushScmUrl: ${fuse-components.push.scmUrl}
@@ -126,7 +126,7 @@ builds:
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
-- name: hawtio-sb2-2.0.0-${version.fuse.prefix}
+- name: hawtio-2.0.0-${version.fuse.prefix}
   project: jboss-fuse/hawtio
     #fetchScmUrl: ${hawtio.fetch.scmUrl}
     #pushScmUrl: ${hawtio.push.scmUrl}
@@ -219,8 +219,8 @@ builds:
     - ${wildfly-camel.pme.options}
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
-  - fuse-components-sb2-${version.fuse.prefix}
-  - hawtio-sb2-2.0.0-${version.fuse.prefix}
+  - fuse-components-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
 
 - name: fuse-patch-3.3.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-patch
@@ -252,9 +252,9 @@ builds:
     - ${redhat-fuse.pme.options}
   dependencies:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
-  - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
+  - narayana-spring-boot-1.0.2-${version.fuse.prefix}
   - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
-  - hawtio-sb2-2.0.0-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
   - apicurito-1.2.2-${version.fuse.prefix}
 
@@ -363,7 +363,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-xa-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${spring-boot-camel-xa.fetch.scmUrl}
     #pushScmUrl: ${spring-boot-camel-xa.push.scmUrl}
     #tag: ${spring-boot-camel-xa.tag}
@@ -378,9 +378,9 @@ builds:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
-    - narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
+    - narayana-spring-boot-1.0.2-${version.fuse.prefix}
 
-- name: spring-boot-camel-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel.git
@@ -391,7 +391,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-amq-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-amq-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-amq
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-amq.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-amq.git
@@ -402,7 +402,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-config-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-config-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-config
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-config.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-config.git
@@ -413,7 +413,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-drools-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-drools-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-drools
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-drools.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-drools.git
@@ -424,7 +424,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-infinispan-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-infinispan-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-infinispan
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
@@ -435,7 +435,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-rest-sql-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-rest-sql
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
@@ -446,7 +446,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-rest-3scale-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-rest-3scale-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-rest-3scale
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
@@ -457,7 +457,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-xml-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-xml-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-xml
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-xml.git
@@ -468,7 +468,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-soap-rest-bridge-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-camel-soap-rest-bridge-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-soap-rest-bridge
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-soap-rest-bridge.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-soap-rest-bridge.git
@@ -479,7 +479,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-cxf-jaxrs-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
@@ -490,7 +490,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-cxf-jaxws-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxws
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
@@ -501,7 +501,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-cxf-jaxrs-xml-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs-xml
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxrs-xml.git
@@ -512,7 +512,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-cxf-jaxws-xml-sb2-1.0.0-${version.fuse.prefix}
+- name: spring-boot-cxf-jaxws-xml-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxws-xml
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxws-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxws-xml.git
@@ -523,7 +523,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
+- name: ipaas-quickstarts-2.2.0-${version.fuse.prefix}
   project: jboss-fuse/ipaas-quickstarts
     #fetchScmUrl : ${ipaas-quickstarts.fetch.scmUrl}
     #pushScmUrl : ${ipaas-quickstarts.push.scmUrl}
@@ -544,20 +544,20 @@ builds:
   - karaf-camel-log-1.0.0-${version.fuse.prefix}
   - karaf-camel-rest-sql-1.0.0-${version.fuse.prefix}
   - karaf-cxf-rest-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-xa-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-amq-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-config-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-drools-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-infinispan-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-rest-sql-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-rest-3scale-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-xml-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-soap-rest-bridge-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-cxf-jaxrs-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-cxf-jaxws-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-cxf-jaxrs-xml-sb2-1.0.0-${version.fuse.prefix}
-  - spring-boot-cxf-jaxws-xml-sb2-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-xa-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-amq-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-config-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-drools-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-infinispan-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-rest-sql-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-rest-3scale-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-xml-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-soap-rest-bridge-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxrs-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxws-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxrs-xml-1.0.0-${version.fuse.prefix}
+  - spring-boot-cxf-jaxws-xml-1.0.0-${version.fuse.prefix}
   - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
 
 - name: fuse-karaf-${version.fuse.prefix}
@@ -575,8 +575,8 @@ builds:
   alignmentParameters:
     - ${fuse-karaf.pme.options}
   dependencies:
-  - fuse-components-sb2-${version.fuse.prefix}
-  - hawtio-sb2-2.0.0-${version.fuse.prefix}
+  - fuse-components-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
   - camel-2.23.2-${version.fuse.prefix}
 
 - name:  fuse-apicurito-generator-1.0.0-${version.fuse.prefix}
@@ -594,7 +594,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: narayana-spring-boot-sb2-1.0.2-${version.fuse.prefix}
+- name: narayana-spring-boot-1.0.2-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${narayana-spring-boot.push.scmUrl}
     #tag: ${narayana-spring-boot.tag}
@@ -610,7 +610,7 @@ builds:
   dependencies:
     - camel-2.23.2-${version.fuse.prefix}
 
-- name: application-templates-sb2-1.0.0-${version.fuse.prefix}
+- name: application-templates-1.0.0-${version.fuse.prefix}
     #fetchScmUrl: ${application-templates.fetch.scmUrl}
     #pushScmUrl: ${application-templates.push.scmUrl}
     #tag: apicurio-registry-${version.application-templates}
@@ -624,7 +624,7 @@ builds:
     - ${application-templates.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
-    - ipaas-quickstarts-sb2-2.2.0-${version.fuse.prefix}
+    - ipaas-quickstarts-2.2.0-${version.fuse.prefix}
 
 - name: hawtio-online-1.0.0-${version.fuse.prefix}
   project: hawtio/hawtio-online
@@ -653,7 +653,7 @@ builds:
   alignmentParameters:
     - ${hawtio-online.pme.options}
   dependencies:
-  - hawtio-sb2-2.0.0-${version.fuse.prefix}
+  - hawtio-2.0.0-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
