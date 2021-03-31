@@ -26,7 +26,7 @@ builds:
   alignmentParameters:
     - ${cxf.pme.options}
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Pdeploy clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat dependency:tree -Pdeploy clean deploy
 
 - name: camel-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -44,7 +44,7 @@ builds:
     export MAVEN_OPTS="-Xmx4g"
 
     mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
-    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl dependency:tree
     '!org.apache.camel:camel-itest'
   buildPodMemory: 12
   alignmentParameters:
@@ -120,7 +120,7 @@ builds:
 
     find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E "s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/"
 
-    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true dependency:tree -Prelease,deploy,nochecks clean deploy
   alignmentParameters:
     - ${fuse-components.pme.options}
   dependencies:
@@ -153,7 +153,7 @@ builds:
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass
-    deploy
+     dependency:tree deploy
   alignmentParameters:
     - ${hawtio.pme.options}
   dependencies:
@@ -180,7 +180,7 @@ builds:
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
-    mvn  -e -V -B -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' clean deploy
+    mvn  -e -V -B -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' dependency:tree clean deploy
 
 - name: fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   project: jboss-fuse/fabric8-maven-plugin
@@ -192,7 +192,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8-maven-plugin.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8-maven-plugin.git
   scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
-  buildScript: 'mvn -e -V -B -DskipTests=true -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B -DskipTests=true -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true dependency:tree -Prelease clean deploy'
   alignmentParameters:
     - ${fabric8-maven-plugin.pme.options}
   dependencies:
@@ -214,7 +214,7 @@ builds:
 
     export M2_HOME=/usr/share/maven
 
-    mvn -e -V -B -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Dclean-licenses -Dassembly.tarLongFileMode=posix -Prelease clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Dclean-licenses -Dassembly.tarLongFileMode=posix -Prelease dependency:tree clean deploy
   alignmentParameters:
     - ${wildfly-camel.pme.options}
   dependencies:
@@ -232,7 +232,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-patch.git
   scmRevision: fuse-patch-${version.fuse.patch}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DskipTests=true -DfailIfNoTests=false -Dtest=false clean deploy'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DskipTests=true -DfailIfNoTests=false -Dtest=false dependency:tree clean deploy'
   alignmentParameters:
     - ${fuse-patch.pme.options}
 
@@ -247,7 +247,7 @@ builds:
   scmRevision: redhat-fuse-${fuse-bom.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -P clean
-    deploy -DskipClean'
+    dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${redhat-fuse.pme.options}
   dependencies:
@@ -272,7 +272,7 @@ builds:
   buildScript: >
     export M2_HOME=/usr/share/maven
 
-    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -Dassembly.tarLongFileMode=posix -DskipTests=true -pl '!camel-rest-swagger' clean deploy
+    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -Dassembly.tarLongFileMode=posix -DskipTests=true -pl '!camel-rest-swagger' dependency:tree clean deploy
   alignmentParameters:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
@@ -293,7 +293,7 @@ builds:
   buildScript: >
     export M2_HOME=/usr/share/maven
 
-    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy
+    mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false dependency:tree clean deploy
   alignmentParameters:
     - ${fuse-eap.pme.options}
   dependencies:
@@ -324,7 +324,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-amq.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-amq.git
   scmRevision: karaf-camel-amq-${karaf-camel-amq.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false dependency:tree clean deploy -DskipClean'
   alignmentParameters:
     - ${karaf-camel-amq.pme.options}
   dependencies:
@@ -335,7 +335,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-log.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-log.git
   scmRevision: karaf-camel-log-${karaf-camel-log.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false dependency:tree clean deploy -DskipClean'
   alignmentParameters:
     - ${karaf-camel-log.pme.options}
   dependencies:
@@ -346,7 +346,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-rest-sql.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-rest-sql.git
   scmRevision: karaf-camel-rest-sql-${karaf-camel-rest-sql.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false dependency:tree clean deploy -DskipClean'
   alignmentParameters:
     - ${karaf-camel-rest-sql.pme.options}
   dependencies:
@@ -357,7 +357,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-cxf-rest.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-cxf-rest.git
   scmRevision: karaf-cxf-rest-${karaf-cxf-rest.version}
-  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false dependency:tree clean deploy -DskipClean'
   alignmentParameters:
     - ${karaf-cxf-rest.pme.options}
   dependencies:
@@ -373,7 +373,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/spring-boot-camel-xa.git
   scmRevision: spring-boot-camel-xa-${spring-boot-camel-xa.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -P clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -P clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
@@ -385,7 +385,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel.git
   scmRevision: spring-boot-camel-${spring-boot-camel.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel.pme.options}
   dependencies:
@@ -396,7 +396,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-amq.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-amq.git
   scmRevision: spring-boot-camel-amq-${spring-boot-camel-amq.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-amq.pme.options}
   dependencies:
@@ -407,7 +407,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-config.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-config.git
   scmRevision: spring-boot-camel-config-${spring-boot-camel-config.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-config.pme.options}
   dependencies:
@@ -418,7 +418,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-drools.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-drools.git
   scmRevision: spring-boot-camel-drools-${spring-boot-camel-drools.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-drools.pme.options}
   dependencies:
@@ -429,7 +429,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-infinispan.git
   scmRevision: spring-boot-camel-infinispan-${spring-boot-camel-infinispan.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-infinispan.pme.options}
   dependencies:
@@ -440,7 +440,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-sql.git
   scmRevision: spring-boot-camel-rest-sql-${spring-boot-camel-rest-sql.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-rest-sql.pme.options}
   dependencies:
@@ -451,7 +451,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rest-3scale.git
   scmRevision: spring-boot-camel-rest-3scale-${spring-boot-camel-rest-3scale.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-rest-3scale.pme.options}
   dependencies:
@@ -462,7 +462,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-xml.git
   scmRevision: spring-boot-camel-xml-${spring-boot-camel-xml.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-xml.pme.options}
   dependencies:
@@ -473,7 +473,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-soap-rest-bridge.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-soap-rest-bridge.git
   scmRevision: spring-boot-camel-soap-rest-bridge-${spring-boot-camel-soap-rest-bridge.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-camel-soap-rest-bridge.pme.options}
   dependencies:
@@ -484,7 +484,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
   scmRevision: spring-boot-cxf-jaxrs-${spring-boot-cxf-jaxrs.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-cxf-jaxrs.pme.options}
   dependencies:
@@ -495,7 +495,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxws.git
   scmRevision: spring-boot-cxf-jaxws-${spring-boot-cxf-jaxws.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-cxf-jaxws.pme.options}
   dependencies:
@@ -506,7 +506,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxrs-xml.git
   scmRevision: spring-boot-cxf-jaxrs-xml-${spring-boot-cxf-jaxrs-xml.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-cxf-jaxrs-xml.pme.options}
   dependencies:
@@ -517,7 +517,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxws-xml.git
   externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-cxf-jaxws-xml.git
   scmRevision: spring-boot-cxf-jaxws-xml-${spring-boot-cxf-jaxws-xml.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${spring-boot-cxf-jaxws-xml.pme.options}
   dependencies:
@@ -571,7 +571,7 @@ builds:
   scmRevision: fuse-karaf-${version.bom.fuse}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Psap
-    clean deploy '
+    clean dependency:tree deploy '
   alignmentParameters:
     - ${fuse-karaf.pme.options}
   dependencies:
@@ -588,7 +588,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-apicurito-generator.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-apicurito-generator.git
   scmRevision: fuse-apicurito-generator-${version.apicurito-generator}
-  buildScript: mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy -DskipClean
+  buildScript: mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean dependency:tree deploy -DskipClean
   alignmentParameters:
     - ${fuse-apicurito-generator.pme.options}
   dependencies:
@@ -604,7 +604,7 @@ builds:
   externalScmUrl: ssh://git@github.com/jboss-fuse/narayana-spring-boot.git
   scmRevision: narayana-spring-boot-${narayana-spring-boot.version}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Prelease clean deploy -DskipClean'
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Prelease clean dependency:tree deploy -DskipClean'
   alignmentParameters:
     - ${narayana-spring-boot.pme.options}
   dependencies:
@@ -619,7 +619,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse-application-templates.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/application-templates.git
   scmRevision: application-templates-${version.application-templates}
-  buildScript: 'mvn -B clean deploy dependency:tree -Dmaven.test.skip=true -Pprod -Pkafka -Pjpa'
+  buildScript: 'mvn -B clean dependency:tree deploy dependency:tree -Dmaven.test.skip=true -Pprod -Pkafka -Pjpa'
   alignmentParameters:
     - ${application-templates.pme.options}
   dependencies:
@@ -649,7 +649,7 @@ builds:
     -DyarnRegistry=$REG -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
-    clean deploy
+    clean dependency:tree deploy
   alignmentParameters:
     - ${hawtio-online.pme.options}
   dependencies:
@@ -659,6 +659,11 @@ outputPrefixes:
   releaseFile: fuse-test
   releaseDir: fuse-test
 flow:
+  licensesGeneration:
+    strategy: GENERATE
+
+  repositoryGeneration:
+    strategy: BUILD_GROUP
   #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
   #licensesGeneration: gen.generate()
   #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
@@ -668,3 +673,5 @@ flow:
   #  downloadFrom: 'WildFly-Swarm'
   #  matching: '.*runtime-dependencies\.zip'
   #  referenceBuild: 'WildFly-Swarm'
+addons:
+  notYetAlignedFromDependencyTree:
