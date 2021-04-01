@@ -36,8 +36,8 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-health-check-booster.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-health-check-booster.git
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
-    -Dcheckstyle.skip=true dependency:tree clean deploy
+    mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
+    -Dcheckstyle.skip=true clean deploy dependency:tree
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   alignmentParameters:
@@ -56,7 +56,7 @@ builds:
   scmRevision: fuse-istio-distributed-tracing-booster-${fuse-istio-distributed-tracing-booster.version}
   alignmentParameters:
     - ${fuse-istio-distributed-tracing-booster.pme.options}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease dependency:tree clean deploy'
+  buildScript: 'mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
@@ -71,7 +71,7 @@ builds:
   scmRevision: fuse-rest-http-booster-${fuse-rest-http-booster.version}
   alignmentParameters:
     - ${fuse-rest-http-booster.pme.options}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease dependency:tree clean deploy'
+  buildScript: 'mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
@@ -86,7 +86,7 @@ builds:
   scmRevision: fuse-springboot-circuit-breaker-booster-${fuse-springboot-circuit-breaker-booster.version}
   alignmentParameters:
     - ${fuse-springboot-circuit-breaker-booster.pme.options}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease dependency:tree clean deploy'
+  buildScript: 'mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree'
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 

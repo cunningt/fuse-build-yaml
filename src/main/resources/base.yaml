@@ -8,7 +8,7 @@ milestone: ${build.milestone}
 group: Red Hat Fuse - Base ${version.fuse.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 8
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean 
     deploy '
 
 builds:
@@ -34,8 +34,8 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf-xjc-utils.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/cxf-xjc-utils.git
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
-    -Dcheckstyle.skip=true dependency:tree clean deploy
+    mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false
+    -Dcheckstyle.skip=true clean deploy dependency:tree
   scmRevision: cxf-xjc-utils-${version.cxf.xjc-utils}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   alignmentParameters:
@@ -50,8 +50,8 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/swagger-core.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/swagger-core.git
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip.exec=true -Denforcer.skip=true
-    -Dcheckstyle.skip=true dependency:tree clean deploy
+    mvn -e -V -B  -Dmaven.test.skip.exec=true -Denforcer.skip=true
+    -Dcheckstyle.skip=true clean deploy dependency:tree
   scmRevision: swagger-core-v2-${version.io.swagger.core.v2}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   alignmentParameters:
@@ -66,8 +66,8 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/swagger-core.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/swagger-core.git
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip.exec=true -Denforcer.skip=true
-    -Dcheckstyle.skip=true  dependency:tree clean deploy
+    mvn -e -V -B  -Dmaven.test.skip.exec=true -Denforcer.skip=true
+    -Dcheckstyle.skip=true clean deploy dependency:tree
   scmRevision: swagger-core-v3-${version.io.swagger.core.v3}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   alignmentParameters:
@@ -84,7 +84,7 @@ builds:
   scmRevision: docker-maven-plugin-${docker.maven.plugin.version}
   alignmentParameters:
     - ${docker-maven-plugin.pme.options}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true dependency:tree -Prelease clean deploy'
+  buildScript: 'mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree'
 
 - name: kubernetes-client-4.6.2-${version.fuse.prefix}
   project: jboss-fuse/kubernetes-client
@@ -94,7 +94,7 @@ builds:
     #buildCommand: ${kubernetes-client.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/kubernetes-client.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/kubernetes-client.git
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false  dependency:tree clean deploy'
+  buildScript: 'mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy dependency:tree'
   scmRevision: kubernetes-client-${version.kubernetes.client}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
@@ -108,7 +108,7 @@ builds:
     #buildCommand: ${arquillian-cube.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/arquillian-cube.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/arquillian-cube.git
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false dependency:tree clean deploy'
+  buildScript: 'mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false clean deploy dependency:tree'
   scmRevision: arquillian-cube-${version.arquillian-cube}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
