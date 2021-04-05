@@ -42,7 +42,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/syndesis.git
   scmRevision: syndesis-${version.syndesis}
   buildPodMemory: 12
-  environmentId: 9
+  environmentId: 34
   alignmentParameters:
     - ${syndesis.pme.options}
   buildScript: >
