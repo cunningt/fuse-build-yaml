@@ -152,8 +152,7 @@ builds:
     -Dproductization -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
     -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
-    -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass
-     deploy
+    -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass deploy
   alignmentParameters:
     - ${hawtio.pme.options}
   dependencies:
