@@ -99,6 +99,9 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${kubernetes-client.pme.options}
+  dependencies:
+    - karaf-4.2.9-${version.fuse.prefix}
+
 
 - name: arquillian-cube-1.18.2-${version.fuse.prefix}
   project: jboss-fuse/arquillian-cube
