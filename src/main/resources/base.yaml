@@ -113,6 +113,8 @@ builds:
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   customPmeParameters:
     - ${arquillian-cube.pme.options}
+  dependencies:
+    - kubernetes-client-4.6.2-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
