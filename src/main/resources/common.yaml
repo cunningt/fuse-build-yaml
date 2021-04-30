@@ -59,6 +59,11 @@ outputPrefixes:
   releaseFile: fuse-common-test
   releaseDir: fuse-common-test
 flow:
+  licensesGeneration:
+    strategy: GENERATE
+
+  repositoryGeneration:
+    strategy: BUILD_GROUP
   #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
   #licensesGeneration: gen.generate()
   #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
