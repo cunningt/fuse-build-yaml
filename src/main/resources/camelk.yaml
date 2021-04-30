@@ -37,7 +37,7 @@ builds:
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k.git
   scmRevision: camel-k-${version.camel-k}
-  environmentId: 41
+  environmentId: 119
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
    sed -i "s/-ldflags/-mod=vendor -ldflags/g" Makefile; mvn clean package deploy -Pgolang-build -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
