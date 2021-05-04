@@ -251,7 +251,7 @@ builds:
     - ${redhat-fuse.pme.options}
   dependencies:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
-  - narayana-spring-boot-1.0.2-${version.fuse.prefix}
+  - narayana-spring-boot-2.1.1-${version.fuse.prefix}
   - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
@@ -377,7 +377,7 @@ builds:
     - ${spring-boot-camel-xa.pme.options}
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
-    - narayana-spring-boot-1.0.2-${version.fuse.prefix}
+    - narayana-spring-boot-2.1.1-${version.fuse.prefix}
 
 - name: spring-boot-camel-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel
@@ -593,7 +593,7 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: narayana-spring-boot-1.0.2-${version.fuse.prefix}
+- name: narayana-spring-boot-2.1.1-${version.fuse.prefix}
     #fetchScmUrl: ${narayana-spring-boot.fetch.scmUrl}
     #pushScmUrl: ${narayana-spring-boot.push.scmUrl}
     #tag: ${narayana-spring-boot.tag}
