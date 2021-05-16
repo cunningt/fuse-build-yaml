@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: cxf-3.4.2-${version.fuse.prefix}
+- name: cxf-3.4.3-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
     #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
@@ -29,7 +29,7 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
 
-- name: camel-3.9.0-${version.fuse.prefix}
+- name: camel-3.10.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
@@ -53,7 +53,7 @@ builds:
     - http://packages.confluent.io/maven/
     - http://maven.icm.edu.pl/artifactory/repo/
   dependencies:
-    - cxf-3.4.2-${version.fuse.prefix}
+    - cxf-3.4.3-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-common-test
