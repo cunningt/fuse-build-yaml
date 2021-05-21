@@ -88,6 +88,7 @@
 
     <version.camel-k>1.0</version.camel-k>
     <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
+    <version.kamelet-catalog>1.0</version.kamelet-catalog>
     <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
     <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
     <version.yaks>0.0.33</version.yaks>
@@ -245,6 +246,10 @@
     <camel-k-runtime.fetch.scmUrl>1</camel-k-runtime.fetch.scmUrl>
     <camel-k-runtime.push.scmUrl>1</camel-k-runtime.push.scmUrl>
     <camel-k-runtime.buildCommand>1</camel-k-runtime.buildCommand>
+    <kamelet-catalog.tag>DUMMY-TAG-0.0.0</kamelet-catalog.tag>
+    <kamelet-catalog.fetch.scmUrl>1</kamelet-catalog.fetch.scmUrl>
+    <kamelet-catalog.push.scmUrl>1</kamelet-catalog.push.scmUrl>
+    <kamelet-catalog.buildCommand>1</kamelet-catalog.buildCommand>
     <camel-k.tag>DUMMY-TAG-0.0.0</camel-k.tag>
     <camel-k.fetch.scmUrl>1</camel-k.fetch.scmUrl>
     <camel-k.push.scmUrl>1</camel-k.push.scmUrl>
