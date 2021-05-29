@@ -40,7 +40,7 @@ builds:
   environmentId: 110
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    mvn -e -V -B -DskipTests -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+    mvn -e -V -B -DskipTests -Denforcer.skip=true -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
   alignmentParameters:
     - ${camel-k-runtime.pme.options}
 
