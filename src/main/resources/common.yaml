@@ -27,7 +27,7 @@ builds:
     - ${cxf.pme.options}
   buildPodMemory: 8
   buildScript: >
-    mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://dev138.mw.lab.eng.bos.redhat.com/miscellaneous/effective_tld_names.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
+    mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
 
 - name: camel-3.10.0-${version.fuse.prefix}
   project: jboss-fuse/camel
