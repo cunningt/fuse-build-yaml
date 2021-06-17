@@ -24,7 +24,7 @@ builds:
   environmentId: 110
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    mvn clean deploy -DskipClean
+    mvn clean deploy -DskipClean dependency:tree
   alignmentParameters:
     - ${kamelet-catalog.pme.options}
 
@@ -40,7 +40,7 @@ builds:
   environmentId: 110
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    mvn -e -V -B -DskipTests -Denforcer.skip=true -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+    mvn -e -V -B -DskipTests -Denforcer.skip=true -Dinvoker.skip=true -Dgpg.skip=true -DfailIfNoTests=false -Prelease -Dtest=false clean deploy -DskipClean -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} dependency:tree
   alignmentParameters:
     - ${camel-k-runtime.pme.options}
 
@@ -56,7 +56,7 @@ builds:
   environmentId: 119
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-   sed -i "s/-ldflags/-mod=vendor -ldflags/g" Makefile; mvn clean package deploy -Pgolang-build -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn
+   sed -i "s/-ldflags/-mod=vendor -ldflags/g" Makefile; mvn clean package deploy -Pgolang-build -Durl=${AProxDeployUrl} -DrepositoryId=indy-mvn dependency:tree
   alignmentParameters:
     - ${camel-k.pme.options}
   dependencies:
@@ -81,3 +81,5 @@ flow:
   #  downloadFrom: 'WildFly-Swarm'
   #  matching: '.*runtime-dependencies\.zip'
   #  referenceBuild: 'WildFly-Swarm'
+addons:
+  notYetAlignedFromDependencyTree:
