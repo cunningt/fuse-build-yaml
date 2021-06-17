@@ -27,7 +27,7 @@ builds:
     - ${cxf.pme.options}
   buildPodMemory: 8
   buildScript: >
-    mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Dcheckstyle.skip=true -Pdeploy clean deploy
+    mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Dcheckstyle.skip=true -Pdeploy clean deploy dependency:tree
 
 - name: camel-3.10.0-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -45,7 +45,7 @@ builds:
     export JAVA_TOOL_OPTIONS="-Xmx3g";
     export MAVEN_OPTS="-Xmx4g";
     mvn -e -V -B -DskipTests -Dmaven.compiler.testTarget=1.8 -Dmaven.compiler.testSource=1.8 -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
-    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs'
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs' dependency:tree
   alignmentParameters:
     - ${camel.pme.options}
   extraRepositories:
@@ -73,3 +73,5 @@ flow:
   #  downloadFrom: 'WildFly-Swarm'
   #  matching: '.*runtime-dependencies\.zip'
   #  referenceBuild: 'WildFly-Swarm'
+addons:
+  notYetAlignedFromDependencyTree:

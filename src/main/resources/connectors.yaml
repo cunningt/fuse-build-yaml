@@ -23,7 +23,7 @@ builds:
   scmRevision: camel-kafka-connector-${version.camel-kafka-connector}
   environmentId: 39
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -B clean deploy -DskipTests'
+  buildScript: 'mvn -B clean deploy -DskipTests dependency:tree'
   alignmentParameters:
     - ${camel-kafka-connector.pme.options}
 
@@ -51,3 +51,5 @@ flow:
   #  downloadFrom: 'WildFly-Swarm'
   #  matching: '.*runtime-dependencies\.zip'
   #  referenceBuild: 'WildFly-Swarm'
+addons:
+  notYetAlignedFromDependencyTree:

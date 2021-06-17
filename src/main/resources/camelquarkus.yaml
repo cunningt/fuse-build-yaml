@@ -27,7 +27,7 @@ builds:
   buildScript: >
     export MAVEN_OPTS="-Xmx8000m"
 
-    mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl}
+    mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} dependency:tree
   alignmentParameters:
     - ${camel-quarkus.pme.options}
 
@@ -50,3 +50,5 @@ flow:
   #  downloadFrom: 'WildFly-Swarm'
   #  matching: '.*runtime-dependencies\.zip'
   #  referenceBuild: 'WildFly-Swarm'
+addons:
+  notYetAlignedFromDependencyTree:
