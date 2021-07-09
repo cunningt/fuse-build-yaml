@@ -26,7 +26,7 @@ builds:
   alignmentParameters:
     - ${cxf.pme.options}
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Pdeploy clean deploy
+    mvn -e -V -B -Dcheckstyle.skip=true -Dpmd.skip=true -Dmaven.test.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Pdeploy clean deploy
 
 - name: camel-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel
