@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: camel-quarkus-1.8.1-${version.fuse.prefix}
+- name: camel-quarkus-2.1.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
     #pushScmUrl: ${camel-quarkus.push.scmUrl}
     #tag: camel-quarkus-${version.camel-quarkus}
