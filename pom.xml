@@ -55,6 +55,7 @@
     <version.camel-kafka-connector>0.0.1.fuse-800001</version.camel-kafka-connector>
     <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
     <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
+    <version.maven-exclude-extension>1.0</version.maven-exclude-extension>
     <version.cxf>3.1.11.fuse-000265</version.cxf>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
     <version.kubernetes.assertions>4.1.0.fuse-sb2-750002</version.kubernetes.assertions>
@@ -134,6 +135,10 @@
     <cxf.fetch.scmUrl>1</cxf.fetch.scmUrl>
     <cxf.push.scmUrl>1</cxf.push.scmUrl>
     <cxf.buildCommand>1</cxf.buildCommand>
+    <maven-exclude-extension.tag>DUMMY-TAG-0.0.0</maven-exclude-extension.tag>
+    <maven-exclude-extension.fetch.scmUrl>1</maven-exclude-extension.fetch.scmUrl>
+    <maven-exclude-extension.push.scmUrl>1</maven-exclude-extension.push.scmUrl>
+    <maven-exclude-extension.buildCommand>1</maven-exclude-extension.buildCommand>
     <camel.tag>DUMMY-TAG-0.0.0</camel.tag>
     <camel.fetch.scmUrl>1</camel.fetch.scmUrl>
     <camel.push.scmUrl>1</camel.push.scmUrl>
