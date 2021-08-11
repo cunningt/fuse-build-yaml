@@ -12,6 +12,23 @@ defaultBuildParameters:
     deploy'
 
 builds:
+- name: maven-exclude-extension-1.0-${version.fuse.prefix}
+  project: jboss-fuse/maven-exclude-extension
+    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fmaven-exclude-extension.git
+    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fmaven-exclude-extension.git
+    #tag: maven-exclude-extension-${version.maven-exclude-extension}
+    #buildCommand: ${maven-exclude-extension.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/maven-exclude-extension.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/maven-exclude-extension.git
+  scmRevision: maven-exclude-extension-${version.maven-exclude-extension}
+  environmentId: 110
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  alignmentParameters:
+    - ${maven-exclude-extension.pme.options}
+  buildPodMemory: 8
+  buildScript: >
+    mvn -e -V -B -DskipTests -Dcheckstyle.skip=true -Pdeploy clean deploy dependency:tree
+
 - name: cxf-3.4.4-${version.fuse.prefix}
   project: jboss-fuse/cxf
     #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
