@@ -22,7 +22,7 @@
 
   <groupId>com.redhat.fuse</groupId>
   <artifactId>fuse-build-yaml</artifactId>
-  <version>7.9.0.redhat-SNAPSHOT</version>
+  <version>7.10.0.redhat-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Fuse Build YAML</name>
   <description>Fuse Build YAML descriptor generator</description>
@@ -42,7 +42,7 @@
   <properties>
     <yaml.name>springboot2</yaml.name>
     <pme.filename>pme.properties</pme.filename>
-    <version.fuse.project>7.9</version.fuse.project>
+    <version.fuse.project>7.10</version.fuse.project>
     <version.fuse.prefix>${version.fuse.project}.0</version.fuse.prefix>
     <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
