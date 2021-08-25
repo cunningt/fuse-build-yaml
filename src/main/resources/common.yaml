@@ -29,23 +29,6 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dcheckstyle.skip=true -Pdeploy clean deploy dependency:tree
 
-- name: cxf-3.4.4-${version.fuse.prefix}
-  project: jboss-fuse/cxf
-    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
-    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fcxf.git
-    #tag: cxf-${version.cxf}
-    #buildCommand: ${cxf.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/cxf.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/cxf.git
-  scmRevision: cxf-${version.cxf}
-  environmentId: 110
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  alignmentParameters:
-    - ${cxf.pme.options}
-  buildPodMemory: 8
-  buildScript: >
-    mvn -e -V -B -DskipTests -Dtar.long.file.mode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Dcheckstyle.skip=true -Pdeploy clean deploy dependency:tree
-
 - name: camel-3.11.0-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
@@ -70,7 +53,7 @@ builds:
     - http://packages.confluent.io/maven/
     - http://maven.icm.edu.pl/artifactory/repo/
   dependencies:
-    - cxf-3.4.4-${version.fuse.prefix}
+    - maven-exclude-extension-1.0-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-common-test
