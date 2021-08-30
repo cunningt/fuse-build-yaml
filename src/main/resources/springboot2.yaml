@@ -138,7 +138,7 @@ builds:
   scmRevision: hawtio-${version.hawtio}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
+    export REG="http://indy.indy.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
 
     sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" hawtio-console-assembly/yarn.lock
 
@@ -171,7 +171,7 @@ builds:
   alignmentParameters:
     - ${apicurito.pme.options}
   buildScript: >
-    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
+    export REG="http://indy.indy.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
 
     sed -i "s#https://registry.yarnpkg.com/#${REG}#g" ui/yarn.lock
 
@@ -661,7 +661,7 @@ builds:
   scmRevision: hawtio-online-${version.hawtio.online}
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   buildScript: >
-    export REG="http://indy.newcastle.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
+    export REG="http://indy.indy.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
 
     sed -i "s#https://registry.yarnpkg.com/#${REG}/#g" yarn.lock
 
