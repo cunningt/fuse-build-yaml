@@ -118,7 +118,7 @@ builds:
 
     [[ $STRIPVERSION == *'temporary'* ]] && (find . -name MANIFEST.MF -not -path '*fusesource*' -print | xargs sed -i -E "s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.$STRIPVERSION/")
 
-    find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E "s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: \1.\2.\3.\4-$STRIPVERSION/"
+    find . -name MANIFEST.MF -path '*fusesource*' -print | xargs sed -i -E "s/Bundle-Version: ([0-9]*)\.([0-9]*)\.([0-9]*)\.(.*)/Bundle-Version: $STRIPVERSION/"
 
     mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease,deploy,nochecks clean deploy
   alignmentParameters:
