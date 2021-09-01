@@ -29,7 +29,7 @@ builds:
   buildScript: >
     mvn -e -V -B -DskipTests -Dcheckstyle.skip=true -Pdeploy clean deploy dependency:tree
 
-- name: camel-3.11.0-${version.fuse.prefix}
+- name: camel-3.11.1-${version.fuse.prefix}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
