@@ -32,7 +32,7 @@ builds:
 
     mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree
 
-- name: syndesis-1.12.0-${version.fuse.prefix}
+- name: syndesis-1.13.0-${version.fuse.prefix}
   project: jboss-fuse/syndesis
     #fetchScmUrl: ${syndesis.fetch.scmUrl}
     #pushScmUrl: ${syndesis.push.scmUrl}
