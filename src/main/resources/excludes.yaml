@@ -37,7 +37,7 @@ builds:
     #buildCommand: ${maven-excludes-extension-test.buildCommand}
   scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/maven-excludes-extension-test.git
   externalScmUrl: ssh://git@github.com/jboss-fuse/maven-excludes-extension-test.git
-  scmRevision: maven-exclude-extension-${version.maven-excludes-extension-test}
+  scmRevision: maven-excludes-extension-test-${version.maven-excludes-extension-test}
   environmentId: 110
   pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
   alignmentParameters:
