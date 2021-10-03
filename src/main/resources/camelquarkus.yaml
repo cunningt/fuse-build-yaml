@@ -27,7 +27,7 @@ builds:
   buildScript: >
     export MAVEN_OPTS="-Xmx8000m"
 
-    mvn -B clean deploy -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} dependency:tree
+    mvn -B clean deploy -Dcq.prod-artifacts.skip=true -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} dependency:tree
   alignmentParameters:
     - ${camel-quarkus.pme.options}
 
