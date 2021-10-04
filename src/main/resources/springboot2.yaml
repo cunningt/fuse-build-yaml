@@ -235,6 +235,26 @@ builds:
   alignmentParameters:
     - ${fuse-patch.pme.options}
 
+- name: atlasmap-2.3-${version.fuse.prefix}
+  project: jboss-fuse/atlasmap
+    #fetchScmUrl: ${atlasmap.fetch.scmUrl}
+    #pushScmUrl: ${atlasmap.push.scmUrl}
+    #tag: atlasmap-${version.atlasmap}
+    #buildCommand: ${atlasmap.buildCommand}
+    #externalScmUrl: git+https://code.engineering.redhat.com/gerrit/atlasmap/atlasmap.git
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/atlasmap.git
+  scmRevision: atlasmap-${version.atlasmap}
+  alignmentParameters:
+    - ${atlasmap.pme.options}
+  buildScript: >
+    export REG="http://indy.indy.svc.cluster.local/api/folo/track/${buildContentId}/npm/remote/yarnpkg/"
+
+    sed -i "s#https://registry.yarnpkg.com/#${REG}#g" ui/yarn.lock
+
+    sed -i 's#https:#http:#g' ui/yarn.lock
+
+    mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree
+
 - name: redhat-fuse-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
     #fetchScmUrl: ${redhat-fuse.fetch.scmUrl}
@@ -256,6 +276,7 @@ builds:
   - hawtio-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
   - apicurito-1.2.2-${version.fuse.prefix}
+  - atlasmap-2.3-${version.fuse.prefix}
 
 - name: wildfly-camel-examples-5.6.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
