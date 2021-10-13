@@ -254,6 +254,8 @@ builds:
     sed -i 's#https:#http:#g' ui/yarn.lock
 
     mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree
+  dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
 
 - name: redhat-fuse-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
