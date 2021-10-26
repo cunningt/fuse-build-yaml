@@ -40,7 +40,7 @@
   </prerequisites>
 
   <properties>
-    <yaml.name>common</yaml.name>
+    <yaml.name>camelquarkus</yaml.name>
     <pme.filename>pme.properties</pme.filename>
     <version.fuse.project>8.5</version.fuse.project>
     <version.fuse.prefix>${version.fuse.project}.0</version.fuse.prefix>

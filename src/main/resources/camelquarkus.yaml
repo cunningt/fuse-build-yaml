@@ -12,6 +12,49 @@ defaultBuildParameters:
     deploy'
 
 builds:
+- name: maven-exclude-extension-1.0-${version.fuse.prefix}
+  project: jboss-fuse/maven-exclude-extension
+    #fetchScmUrl: git%40github.com%3Ajboss-fuse%2Fmaven-exclude-extension.git
+    #pushScmUrl: git%40github.com%3Ajboss-fuse%2Fmaven-exclude-extension.git
+    #tag: maven-exclude-extension-${version.maven-exclude-extension}
+    #buildCommand: ${maven-exclude-extension.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/maven-exclude-extension.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/maven-exclude-extension.git
+  scmRevision: maven-exclude-extension-${version.maven-exclude-extension}
+  environmentId: 110
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  alignmentParameters:
+    - ${maven-exclude-extension.pme.options}
+  buildPodMemory: 8
+  buildScript: >
+    mvn -e -V -B -DskipTests -Dcheckstyle.skip=true -Pdeploy clean deploy dependency:tree
+
+- name: camel-3.11.1-${version.fuse.prefix}
+  project: jboss-fuse/camel
+    #fetchScmUrl: ${camel.fetch.scmUrl}
+    #pushScmUrl: ${camel.push.scmUrl}
+    #tag: camel-${version.camel}
+    #buildCommand: ${camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
+  scmRevision: camel-${version.camel}
+  environmentId: 110
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildPodMemory: 12
+  buildScript: >
+    export JAVA_TOOL_OPTIONS="-Xmx3g";
+    export MAVEN_OPTS="-Xmx4g";
+    mvn -e -V -B -DskipTests -Dmaven.compiler.testTarget=1.8 -Dmaven.compiler.testSource=1.8 -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs' dependency:tree
+  alignmentParameters:
+    - ${camel.pme.options}
+  extraRepositories:
+    - http://resources.knopflerfish.org/repo/maven2/release/
+    - http://packages.confluent.io/maven/
+    - http://maven.icm.edu.pl/artifactory/repo/
+  dependencies:
+    - maven-exclude-extension-1.0-${version.fuse.prefix}
+
 - name: camel-quarkus-2.2.0-${version.fuse.prefix}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
     #pushScmUrl: ${camel-quarkus.push.scmUrl}
@@ -30,6 +73,8 @@ builds:
     mvn -B clean deploy -Dcq.prod-artifacts.skip=true -Denforcer.skip=true -DskipTests -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} dependency:tree
   alignmentParameters:
     - ${camel-quarkus.pme.options}
+  dependencies:
+    - camel-3.11.1-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
