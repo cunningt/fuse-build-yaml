@@ -45,7 +45,7 @@ builds:
     export JAVA_TOOL_OPTIONS="-Xmx3g";
     export MAVEN_OPTS="-Xmx4g";
     mvn -e -V -B -DskipTests -Dmaven.compiler.testTarget=1.8 -Dcq.onCheckFailure=WARN -Dcq.camel-prod-excludes.skip=true -Dmaven.compiler.testSource=1.8 -DtarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcamel.javadoc.offline=true -Dmaven.javadoc.isOffline=true -Penable-schemagen,release,apt
-    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl '!docs' dependency:tree
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true dependency:tree
   alignmentParameters:
     - ${camel.pme.options}
   extraRepositories:
