@@ -181,22 +181,6 @@ builds:
 
     mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress'  clean deploy
 
-- name: fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
-  project: jboss-fuse/fabric8-maven-plugin
-    #fetchScmUrl: ${fabric8-maven-plugin.fetch.scmUrl}
-    #pushScmUrl: ${fabric8-maven-plugin.push.scmUrl}
-    #tag: fabric8-maven-plugin-${version.fabric8.maven.plugin}
-    #buildCommand: ${fabric8-maven-plugin.buildCommand}
-    #cherrypick: true
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fabric8-maven-plugin.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fabric8-maven-plugin.git
-  scmRevision: fabric8-maven-plugin-${version.fabric8.maven.plugin}
-  buildScript: 'mvn -e -V -B  -DskipTests=true -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Dgpg.skip=true -Prelease clean deploy'
-  alignmentParameters:
-    - ${fabric8-maven-plugin.pme.options}
-  dependencies:
-  - cxf-3.3.6-${version.fuse.prefix}
-
 - name: wildfly-camel-5.6.0-${version.fuse.prefix}
   project: jboss-fuse/wildfly-camel
     #fetchScmUrl: ${wildfly-camel.fetch.scmUrl}
@@ -274,7 +258,6 @@ builds:
   dependencies:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
   - narayana-spring-boot-2.1.1-${version.fuse.prefix}
-  - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
   - apicurito-1.2.2-${version.fuse.prefix}
@@ -582,7 +565,6 @@ builds:
   alignmentParameters:
     - ${ipaas-quickstarts.pme.options}
   dependencies:
-  - fabric8-maven-plugin-4.3.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
   - karaf-camel-amq-1.0.0-${version.fuse.prefix}
   - karaf-camel-log-1.0.0-${version.fuse.prefix}
