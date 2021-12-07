@@ -3,7 +3,7 @@ product:
   abbreviation: Fuse-and-FIS
   stage: ${build.milestone}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
-version: ${version.fuse.prefix}
+version: ${version.camel-quarkus.project}
 milestone: ${build.milestone}
 group: Red Hat Fuse - Camel Quarkus ${version.camel-quarkus.project} ${build.milestone}
 defaultBuildParameters:
@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy'
 
 builds:
-- name: camel-3.11.1-${version.fuse.prefix}
+- name: camel-3.11.1-${version.camel-quarkus.project}
   project: jboss-fuse/camel
     #fetchScmUrl: ${camel.fetch.scmUrl}
     #pushScmUrl: ${camel.push.scmUrl}
@@ -35,10 +35,8 @@ builds:
     - http://resources.knopflerfish.org/repo/maven2/release/
     - http://packages.confluent.io/maven/
     - http://maven.icm.edu.pl/artifactory/repo/
-  dependencies:
-    - maven-exclude-extension-1.0-${version.fuse.prefix}
 
-- name: camel-quarkus-${version.camel-quarkus.project}-${version.fuse.prefix}
+- name: camel-quarkus-${version.camel-quarkus.project}-${version.camel-quarkus.project}
     #fetchScmUrl: ${camel-quarkus.fetch.scmUrl}
     #pushScmUrl: ${camel-quarkus.push.scmUrl}
     #tag: camel-quarkus-${version.camel-quarkus}
@@ -57,7 +55,7 @@ builds:
   alignmentParameters:
     - ${camel-quarkus.pme.options}
   dependencies:
-    - camel-3.11.1-${version.fuse.prefix}
+    - camel-3.11.1-${version.camel-quarkus.project}
 
 outputPrefixes:
   releaseFile: fuse-test
