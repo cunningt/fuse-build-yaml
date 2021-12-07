@@ -22,7 +22,7 @@
 
   <groupId>com.redhat.fuse</groupId>
   <artifactId>fuse-build-yaml</artifactId>
-  <version>8.5.0.redhat-SNAPSHOT</version>
+  <version>2.2.1.redhat-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Fuse Build YAML</name>
   <description>Fuse Build YAML descriptor generator</description>
@@ -42,8 +42,7 @@
   <properties>
     <yaml.name>camelquarkus</yaml.name>
     <pme.filename>pme.properties</pme.filename>
-    <version.fuse.project>8.5</version.fuse.project>
-    <version.fuse.prefix>${version.fuse.project}.0</version.fuse.prefix>
+    <version.fuse.project>2.2.1</version.fuse.project>
     <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
     <dollar>$</dollar>
