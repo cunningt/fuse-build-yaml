@@ -42,7 +42,7 @@
   <properties>
     <yaml.name>camelquarkus</yaml.name>
     <pme.filename>pme.properties</pme.filename>
-    <version.fuse.project>2.2.1</version.fuse.project>
+    <version.camel-quarkus.project>2.2.1</version.camel-quarkus.project>
     <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
     <dollar>$</dollar>
