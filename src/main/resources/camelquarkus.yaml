@@ -1,11 +1,11 @@
 product:
-  name: Red Hat Fuse
-  abbreviation: Fuse-and-FIS
+  name: Camel Extensions for Quarkus
+  abbreviation: camel-quarkus
   stage: ${build.milestone}
   issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
 version: ${version.camel-quarkus.project}
 milestone: ${build.milestone}
-group: Red Hat Fuse - Camel Quarkus ${version.camel-quarkus.project} ${build.milestone}
+group: Camel Extensions for Quarkus ${version.camel-quarkus.project} ${build.milestone}
 defaultBuildParameters:
   environmentId: 21
   buildScript: 'mvn -e -V -B -DskipTests -DfailIfNoTests=false -Dtest=false clean
