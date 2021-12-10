@@ -205,7 +205,7 @@ builds:
   - fuse-components-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
 
-- name: fuse-patch-3.3.0-${version.fuse.prefix}
+- name: fuse-patch-3.4.0-${version.fuse.prefix}
   project: jboss-fuse/fuse-patch
     #fetchScmUrl: ${fuse-patch.fetch.scmUrl}
     #pushScmUrl: ${fuse-patch.push.scmUrl}
@@ -305,7 +305,7 @@ builds:
   - wildfly-camel-5.6.0-${version.fuse.prefix}
   - wildfly-camel-examples-5.6.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
-  - fuse-patch-3.3.0-${version.fuse.prefix}
+  - fuse-patch-3.4.0-${version.fuse.prefix}
 
 - name: karaf-quickstarts-${version.fuse.prefix}
     #fetchScmUrl: ${karaf-quickstarts.fetch.scmUrl}
