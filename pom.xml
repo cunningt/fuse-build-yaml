@@ -65,6 +65,7 @@
     <karaf.plugin.version>4.2.0.fuse-000262</karaf.plugin.version>
     <narayana-spring-boot.version>1.0.3.fuse-730042</narayana-spring-boot.version>
     <spring-boot-camel-xa.version>1.0.0.fuse-730038</spring-boot-camel-xa.version>
+    <spring-boot-camel-singleton-services-kubernetes.version>1.0</spring-boot-camel-singleton-services-kubernetes.version>
     <version.application-templates>2.1.fuse-000091</version.application-templates>
     <fuse-bom.version>7.1.0.fuse-000005</fuse-bom.version>
     <version.hawtio>2.0.0.fuse-000186</version.hawtio>

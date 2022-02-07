@@ -407,6 +407,17 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
+- name: spring-boot-camel-singleton-services-kubernetes-1.0.0-${version.fuse.prefix}
+  project: fabric8-quickstarts/spring-boot-camel-singleton-services-kubernetes
+  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-singleton-services-kubernetes.git
+  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-singleton-services-kubernetes.git
+  scmRevision: spring-boot-camel-singleton-services-kubernetes-${spring-boot-camel-singleton-services-kubernetes.version}
+  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy dependency:tree -DskipClean'
+  alignmentParameters:
+    - ${spring-boot-camel-singleton-services-kubernetes.pme.options}
+  dependencies:
+    - redhat-fuse-${version.fuse.prefix}
+
 - name: spring-boot-camel-amq-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-camel-amq
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-amq.git
