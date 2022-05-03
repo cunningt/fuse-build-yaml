@@ -593,6 +593,7 @@ builds:
   - spring-boot-camel-rhosak-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-xml-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-soap-rest-bridge-1.0.0-${version.fuse.prefix}
+  - spring-boot-camel-singleton-services-kubernetes-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxws-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-xml-1.0.0-${version.fuse.prefix}
