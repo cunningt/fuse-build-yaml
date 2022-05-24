@@ -12,6 +12,48 @@ defaultBuildParameters:
     deploy '
 
 builds:
+- name: camel-2.23.2-${version.fuse.prefix}
+  project: jboss-fuse/camel
+    #fetchScmUrl: ${camel.fetch.scmUrl}
+    #pushScmUrl: ${camel.push.scmUrl}
+    #tag: ${camel.tag}
+    #buildCommand: ${camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel.git
+  scmRevision: camel-${version.camel}
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    export JAVA_TOOL_OPTIONS="-Xmx3g"
+    export MAVEN_OPTS="-Xmx4g"
+    mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -Dtest=false -Penable-schemagen,release,apt
+    clean deploy -DkeepStagingRepositoryOnCloseRuleFailure=true -Dgpg.skip=true -pl
+    '!org.apache.camel:camel-itest'
+  buildPodMemory: 12
+  alignmentParameters:
+    - ${camel.pme.options}
+  extraRepositories:
+    - http://resources.knopflerfish.org/repo/maven2/release/
+
+- name: wildfly-camel-5.8.0-${version.fuse.prefix}
+  project: jboss-fuse/wildfly-camel
+    #fetchScmUrl: ${wildfly-camel.fetch.scmUrl}
+    #pushScmUrl: ${wildfly-camel.push.scmUrl}
+    #tag: wildfly-camel-${version.bom.wildfly.camel}
+    #buildCommand: ${wildfly-camel.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/wildfly-camel.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/wildfly-camel.git
+  scmRevision: wildfly-camel-${version.bom.wildfly.camel}
+  environmentId: 33
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    export JAVA_TOOL_OPTIONS="-Xmx3g"
+    export M2_HOME=/usr/share/maven
+    mvn -e -V -B  -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Dclean-licenses -Dassembly.tarLongFileMode=posix -Prelease clean deploy dependency:tree
+  alignmentParameters:
+    - ${wildfly-camel.pme.options}
+  dependencies:
+  - camel-2.23.2-${version.fuse.prefix}
+
 - name: redhat-fuse-${version.fuse.prefix}
   project: jboss-fuse/redhat-fuse
     #fetchScmUrl: ${redhat-fuse.fetch.scmUrl}
@@ -27,23 +69,8 @@ builds:
   alignmentParameters:
     - ${redhat-fuse.pme.options}
   dependencies:
-    - fuse-karaf-${version.fuse.prefix}
-
-- name: fuse-karaf-${version.fuse.prefix}
-  project: jboss-fuse/fuse-karaf
-    #fetchScmUrl: ${fuse-karaf.fetch.scmUrl}
-    #pushScmUrl: ${fuse-karaf.push.scmUrl}
-    #tag: fuse-karaf-${version.bom.fuse}
-    #buildCommand: ${fuse-karaf.buildCommand}
-  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/fuse-karaf.git
-  externalScmUrl: ssh://git@github.com/jboss-fuse/fuse-karaf.git
-  scmRevision: fuse-karaf-${version.bom.fuse}
-  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
-  buildScript: 'mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false -Psap
-    clean deploy dependency:tree'
-  alignmentParameters:
-    - ${fuse-karaf.pme.options}
-
+    - camel-2.23.2-${version.fuse.prefix}
+    - wildfly-camel-5.8.0-${version.fuse.prefix}
 
 outputPrefixes:
   releaseFile: fuse-test
