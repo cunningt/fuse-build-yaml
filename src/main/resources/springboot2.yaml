@@ -48,7 +48,7 @@ builds:
   buildScript: >
     export JAVA_TOOL_OPTIONS="-Xmx3g"
     export M2_HOME=/usr/share/maven
-    mvn -e -V -B  -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Dclean-licenses -Dassembly.tarLongFileMode=posix -Prelease clean deploy dependency:tree
+    mvn -e -V -B -PCVE-2021-22573 -Dmaven.test.skip=true -Dskip-update-licenses-xml -DfailIfNoTests=false -Dtest=false -Dts.all -Dclean-licenses -Dassembly.tarLongFileMode=posix -Prelease clean deploy dependency:tree
   alignmentParameters:
     - ${wildfly-camel.pme.options}
   dependencies:
