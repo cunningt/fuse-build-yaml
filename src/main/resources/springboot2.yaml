@@ -158,7 +158,7 @@ builds:
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
-- name: apicurito-1.2.2-${version.fuse.prefix}
+- name: apicurito-1.2.5-${version.fuse.prefix}
   project: jboss-fuse/apicurito
     #fetchScmUrl: ${apicurito.fetch.scmUrl}
     #pushScmUrl: ${apicurito.push.scmUrl}
@@ -260,7 +260,7 @@ builds:
   - narayana-spring-boot-2.1.1-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
-  - apicurito-1.2.2-${version.fuse.prefix}
+  - apicurito-1.2.5-${version.fuse.prefix}
   - atlasmap-2.3-${version.fuse.prefix}
 
 - name: wildfly-camel-examples-5.9.0-${version.fuse.prefix}
