@@ -22,7 +22,7 @@
 
   <groupId>com.redhat.fuse</groupId>
   <artifactId>fuse-build-yaml</artifactId>
-  <version>7.11.1.redhat-SNAPSHOT</version>
+  <version>7.12.0.redhat-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Fuse Build YAML</name>
   <description>Fuse Build YAML descriptor generator</description>
@@ -49,48 +49,48 @@
     <dollar>$</dollar>
     <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
     <version.syndesis>1.6.4.fuse-730002</version.syndesis>
-    <version.atlasmap>1.40.0.fuse-740007</version.atlasmap>
-    <version.camel>2.21.0.fuse-000096</version.camel>
-    <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
-    <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
-    <version.cxf>3.1.11.fuse-000265</version.cxf>
-    <version.arquillian-cube>1.18.2</version.arquillian-cube>
+    <version.atlasmap>2.3.19.fuse-7_11_1-00005</version.atlasmap>
+    <version.camel>2.23.2.fuse-7_11_1-00015</version.camel>
+    <version.camel.extra>2.23.2.fuse-sb2-7_11_1-00015</version.camel.extra>
+    <version.fuse.extras.distro>7.11.1.fuse-sb2-7_11_1-00015</version.fuse.extras.distro>
+    <version.cxf>3.3.6.fuse-7_11_1-00015</version.cxf>
+    <version.arquillian-cube>1.8.2.fuse-7_11_1-00015</version.arquillian-cube>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
     <version.kubernetes.assertions>4.1.0.fuse-sb2-750002</version.kubernetes.assertions>
     <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
-    <version.bom.fuse>7.0.1.fuse-000002</version.bom.fuse>
-    <version.karaf>4.2.0.fuse-000262</version.karaf>
-    <version.bom.wildfly.camel>5.1.0.fuse-000071</version.bom.wildfly.camel>
-    <version.fusesource.camel.sap>7.0.1.fuse-000002</version.fusesource.camel.sap>
-    <karaf.plugin.version>4.2.0.fuse-000262</karaf.plugin.version>
-    <narayana-spring-boot.version>1.0.3.fuse-730042</narayana-spring-boot.version>
-    <spring-boot-camel-xa.version>1.0.0.fuse-730038</spring-boot-camel-xa.version>
-    <spring-boot-camel-singleton-services-kubernetes.version>1.0</spring-boot-camel-singleton-services-kubernetes.version>
-    <version.application-templates>2.1.fuse-000091</version.application-templates>
-    <fuse-bom.version>7.1.0.fuse-000005</fuse-bom.version>
-    <version.hawtio>2.0.0.fuse-000186</version.hawtio>
-    <version.hawtio.online>1.0.0.fuse-000054</version.hawtio.online>
+    <version.bom.fuse>7.11.1.fuse-7_11_1-00013</version.bom.fuse>
+    <version.karaf>4.2.15.fuse-7_11_1-00017</version.karaf>
+    <version.bom.wildfly.camel>5.9.0.fuse-7_11_1-00014</version.bom.wildfly.camel>
+    <version.fusesource.camel.sap>7.11.1.fuse-sb2-7_11_1-00013</version.fusesource.camel.sap>
+    <karaf.plugin.version>4.2.15.fuse-7_11_1-00017</karaf.plugin.version>
+    <narayana-spring-boot.version>2.1.1.fuse-sb2-7_11_1-00013</narayana-spring-boot.version>
+    <spring-boot-camel-xa.version>7.11.1.fuse-sb2-7_11_1-00014</spring-boot-camel-xa.version>
+    <spring-boot-camel-singleton-services-kubernetes.version>7.11.1.fuse-sb2-7_11_1-00014</spring-boot-camel-singleton-services-kubernetes.version>
+    <version.application-templates>2.1.0.fuse-sb2-7_11_1-00016</version.application-templates>
+    <fuse-bom.version>7.11.1.fuse-sb2-7_11_1-00017</fuse-bom.version>
+    <version.hawtio>2.0.0.fuse-sb2-7_11_1-00013</version.hawtio>
+    <version.hawtio.online>1.0.0.fuse-7_11_1-00009</version.hawtio.online>
     <version.hawtio.integration>1.0.0.fuse-000034</version.hawtio.integration>
 
     <version.io.swagger.core.v2>1.0</version.io.swagger.core.v2>
     <version.io.swagger.core.v3>1.0</version.io.swagger.core.v3>
 
     <version.kubernetes.model>2.0.9.fuse-000020</version.kubernetes.model>
-    <version.kubernetes.client>3.0.3.fuse-000056</version.kubernetes.client>
+    <version.kubernetes.client>4.6.2.fuse-7_11_1-00015</version.kubernetes.client>
 
     <version.application.templates>2.1.fuse-000087</version.application.templates>
-    <version.cxf.xjc-utils>3.1.1.fuse-000118</version.cxf.xjc-utils>
-    <version.ipaas.quickstarts>2.2.0.fuse-000098</version.ipaas.quickstarts>
+    <version.cxf.xjc-utils>3.3.1.fuse-7_11_1-00011</version.cxf.xjc-utils>
+    <version.ipaas.quickstarts>2.2.0.fuse-sb2-7_11_1-00018</version.ipaas.quickstarts>
     <version.spring-cloud-kubernetes>0.1.6.fuse-000056</version.spring-cloud-kubernetes>
-    <version.wsdl2rest>0.7.0.fuse-000071</version.wsdl2rest>
+    <version.wsdl2rest>0.8.0-fuse-sb2-7_11_1-00015</version.wsdl2rest>
 
-    <docker.maven.plugin.version>0.23.0.fuse-000051</docker.maven.plugin.version>
-    <version.fuse.patch>3.0.0.fuse-000069</version.fuse.patch>
-    <version.wildfly.camel.examples>5.1.0.fuse-000047</version.wildfly.camel.examples>
-    <version.fuse.eap>7.0.1.fuse-000001</version.fuse.eap>
+    <docker.maven.plugin.version>0.31.0.fuse-7_11_1-00014</docker.maven.plugin.version>
+    <version.fuse.patch>3.4.0.fuse-7_11_1-00009</version.fuse.patch>
+    <version.wildfly.camel.examples>5.9.0.fuse-7_11_1-00014</version.wildfly.camel.examples>
+    <version.fuse.eap>7.11.1.fuse-7_11_1-00014</version.fuse.eap>
 
     <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
-    <version.karaf-quickstarts>7.3.0.fuse-730010</version.karaf-quickstarts>
+    <version.karaf-quickstarts>7.11.1.fuse-7_11_1-00014</version.karaf-quickstarts>
     <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
 
     <!-- boosters -->
