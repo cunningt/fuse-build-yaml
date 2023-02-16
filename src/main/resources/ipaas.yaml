@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy '
 
 builds:
-- name: syndesis-1.14.0-${version.fuse.prefix}
+- name: syndesis-1.15.0-${version.fuse.prefix}
   project: jboss-fuse/syndesis
     #fetchScmUrl: ${syndesis.fetch.scmUrl}
     #pushScmUrl: ${syndesis.push.scmUrl}
