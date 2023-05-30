@@ -357,17 +357,6 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: karaf-camel-rhosak-1.0.0-${version.fuse.prefix}
-  project: fabric8-quickstarts/karaf-camel-rhosak
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-camel-rhosak.git
-  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/karaf-camel-rhosak.git
-  scmRevision: karaf-camel-rhosak-${karaf-camel-rhosak.version}
-  buildScript: 'mvn -e -V -B  -DaltDeploymentRepository=indy-mvn::${AProxDeployUrl} -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy dependency:tree -DskipClean'
-  alignmentParameters:
-    - ${karaf-camel-rhosak.pme.options}
-  dependencies:
-    - redhat-fuse-${version.fuse.prefix}
-
 - name: karaf-cxf-rest-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/karaf-cxf-rest
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/karaf-cxf-rest.git
@@ -506,17 +495,6 @@ builds:
   dependencies:
     - redhat-fuse-${version.fuse.prefix}
 
-- name: spring-boot-camel-rhosak-1.0.0-${version.fuse.prefix}
-  project: fabric8-quickstarts/spring-boot-camel-rhosak
-  scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-camel-rhosak.git
-  externalScmUrl: ssh://git@github.com/fabric8-quickstarts/spring-boot-camel-rhosak.git
-  scmRevision: spring-boot-camel-rhosak-${spring-boot-camel-rhosak.version}
-  buildScript: 'mvn -e -V -B  -Dmaven.test.skip=true -DfailIfNoTests=false -Dtest=false clean deploy dependency:tree -DskipClean'
-  alignmentParameters:
-    - ${spring-boot-camel-rhosak.pme.options}
-  dependencies:
-    - redhat-fuse-${version.fuse.prefix}
-
 - name: spring-boot-cxf-jaxrs-1.0.0-${version.fuse.prefix}
   project: fabric8-quickstarts/spring-boot-cxf-jaxrs
   scmUrl: git+ssh://code.engineering.redhat.com/fabric8-quickstarts/spring-boot-cxf-jaxrs.git
@@ -580,7 +558,6 @@ builds:
   - karaf-camel-amq-1.0.0-${version.fuse.prefix}
   - karaf-camel-log-1.0.0-${version.fuse.prefix}
   - karaf-camel-rest-sql-1.0.0-${version.fuse.prefix}
-  - karaf-camel-rhosak-1.0.0-${version.fuse.prefix}
   - karaf-cxf-rest-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-xa-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-1.0.0-${version.fuse.prefix}
@@ -590,7 +567,6 @@ builds:
   - spring-boot-camel-infinispan-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-rest-sql-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-rest-3scale-1.0.0-${version.fuse.prefix}
-  - spring-boot-camel-rhosak-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-xml-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-soap-rest-bridge-1.0.0-${version.fuse.prefix}
   - spring-boot-camel-singleton-services-kubernetes-1.0.0-${version.fuse.prefix}

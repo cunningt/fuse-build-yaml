@@ -112,7 +112,6 @@
     <karaf-camel-amq.version>1.0.0.fuse-710004</karaf-camel-amq.version>
     <karaf-camel-log.version>1.0.0.fuse-710004</karaf-camel-log.version>
     <karaf-camel-rest-sql.version>1.0.0.fuse-710004</karaf-camel-rest-sql.version>
-    <karaf-camel-rhosak.version>1.0.0.fuse-710004</karaf-camel-rhosak.version>
     <karaf-cxf-rest.version>1.0.0.fuse-710004</karaf-cxf-rest.version>
     <spring-boot-camel.version>1.0.0.fuse-710004</spring-boot-camel.version>
     <spring-boot-camel-amq.version>1.0.0.fuse-710004</spring-boot-camel-amq.version>
@@ -121,7 +120,6 @@
     <spring-boot-camel-infinispan.version>1.0.0.fuse-710004</spring-boot-camel-infinispan.version>
     <spring-boot-camel-rest-sql.version>1.0.0.fuse-710004</spring-boot-camel-rest-sql.version>
     <spring-boot-camel-rest-3scale.version>1.0.0.fuse-710004</spring-boot-camel-rest-3scale.version>
-    <spring-boot-camel-rhosak.version>1.0.0.fuse-710004</spring-boot-camel-rhosak.version>
     <spring-boot-camel-xml.version>1.0.0.fuse-710004</spring-boot-camel-xml.version>
     <spring-boot-camel-soap-rest-bridge.version>1.0.0.fuse-710004</spring-boot-camel-soap-rest-bridge.version>
     <spring-boot-cxf-jaxrs.version>1.0.0.fuse-710004</spring-boot-cxf-jaxrs.version>
