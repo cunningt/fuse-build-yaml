@@ -26,7 +26,7 @@ builds:
   alignmentParameters:
     - ${cxf.pme.options}
   buildScript: >
-    mvn -e -V -B -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dpmd.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Pdeploy clean deploy
+    mvn -e -V -B -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dpmd.skip=true -Dassembly.tarLongFileMode=posix -DfailIfNoTests=false -Dtest=false -Dcxf.public.suffix.list.url=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/public_suffix_list.dat -Pdeploy clean deploy
 
 - name: camel-2.23.2-${version.fuse.prefix}
   project: jboss-fuse/camel
@@ -148,11 +148,11 @@ builds:
 
     sed -i 's#https:#http:#g' hawtio-console-assembly/app/yarn.lock
 
-    mvn  -e -V -B  -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy,spring-boot-2 -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
-    -Dproductization -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
-    -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
+    mvn  -e -V -B  -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy,spring-boot-2 -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
+    -Dproductization -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -DnodeDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
-    -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass deploy
+    -Dsass-binary-site=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/node-sass deploy
   alignmentParameters:
     - ${hawtio.pme.options}
   dependencies:
@@ -179,7 +179,7 @@ builds:
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
-    mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress'  clean deploy
+    mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress'  clean deploy
 
 - name: wildfly-camel-5.9.0-${version.fuse.prefix}
   project: jboss-fuse/wildfly-camel
@@ -237,7 +237,7 @@ builds:
 
     sed -i 's#https:#http:#g' ui/yarn.lock
 
-    mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree
+    mvn -e -V -B  -Dmaven.test.skip.exec=true -DfailIfNoTests=false -pl '!ui,!standalone' -Dtest=false -Dgpg.skip=true -Prelease -DnpmRegistryURL2=$REG -DnpmDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -DyarnDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress' -Dtest=false -Dgpg.skip=true -Prelease clean deploy dependency:tree
   dependencies:
   - camel-2.23.2-${version.fuse.prefix}
 
@@ -661,9 +661,9 @@ builds:
     sed -i 's#https:#http:#g' yarn.lock
 
     mvn -e -V -B -Dmaven.test.skip=true -DfailIfNoTests=false
-    -Dproxy -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
-    -DyarnRegistry=$REG -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/
-    -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/
+    -Dproxy -Dtest=false -DnpmRegistryURL=$REG -DnpmDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
+    -DyarnRegistry=$REG -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/
+    -DnodeDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     clean deploy dependency:tree
   alignmentParameters:
