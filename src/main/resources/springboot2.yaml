@@ -150,7 +150,7 @@ builds:
 
     mvn  -e -V -B  -Pall,spring3.2,enable-schemagen,jetty9,ts.all,release,nochecks,sap,jaxws22,deploy,spring-boot-2 -DnpmRegistryURL=$REG  -Dgpg.skip=true -DnpmDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/
     -Dproductization -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/
-    -DnodeDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/staging/fuse/npm/dist/
+    -DnodeDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/
     -Dyarn.install.args='--network-concurrency 1 --child-concurrency 1 --no-progress'
     -Dsass-binary-site=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/node-sass deploy
   alignmentParameters:
