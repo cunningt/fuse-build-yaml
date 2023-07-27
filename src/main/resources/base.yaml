@@ -12,7 +12,7 @@ defaultBuildParameters:
     deploy '
 
 builds:
-- name: karaf-4.2.12-${version.fuse.prefix}
+- name: karaf-4.4.3-${version.fuse.prefix}
   project: jboss-fuse/karaf
     #fetchScmUrl: ${karaf.fetch.scmUrl}
     #pushScmUrl: ${karaf.push.scmUrl}
@@ -68,7 +68,7 @@ builds:
   customPmeParameters:
     - ${kubernetes-client.pme.options}
   dependencies:
-    - karaf-4.2.12-${version.fuse.prefix}
+    - karaf-4.4.3-${version.fuse.prefix}
 
 
 - name: arquillian-cube-1.18.2-${version.fuse.prefix}

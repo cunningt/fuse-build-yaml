@@ -181,7 +181,7 @@ builds:
 
     mvn  -e -V -B  -DnpmRegistryURL2=$REG -Dproductization -Dgpg.skip=true -DnpmDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG  -Dmaven.test.skip=true=true -DyarnDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download.devel.redhat.com/rcm-guest/staging/fuse/npm/dist/   -DyarnInheritsProxyConfigFromMaven=false -Dyarn.install.args='--network-concurrency 30 --child-concurrency 2 --no-progress'  clean deploy
 
-- name: wildfly-camel-5.9.0-${version.fuse.prefix}
+- name: wildfly-camel-5.10.0-${version.fuse.prefix}
   project: jboss-fuse/wildfly-camel
     #fetchScmUrl: ${wildfly-camel.fetch.scmUrl}
     #pushScmUrl: ${wildfly-camel.push.scmUrl}
@@ -256,14 +256,14 @@ builds:
   alignmentParameters:
     - ${redhat-fuse.pme.options}
   dependencies:
-  - wildfly-camel-5.9.0-${version.fuse.prefix}
+  - wildfly-camel-5.10.0-${version.fuse.prefix}
   - narayana-spring-boot-2.1.1-${version.fuse.prefix}
   - hawtio-2.0.0-${version.fuse.prefix}
   - fuse-karaf-${version.fuse.prefix}
   - apicurito-1.2.5-${version.fuse.prefix}
   - atlasmap-2.3-${version.fuse.prefix}
 
-- name: wildfly-camel-examples-5.9.0-${version.fuse.prefix}
+- name: wildfly-camel-examples-5.10.0-${version.fuse.prefix}
   project: wildfly-extras/wildfly-camel-examples
     #fetchScmUrl: ${wildfly-camel-examples.fetch.scmUrl}
     #pushScmUrl: ${wildfly-camel-examples.push.scmUrl}
@@ -282,7 +282,7 @@ builds:
     - ${wildfly-camel-examples.pme.options}
   dependencies:
   - redhat-fuse-${version.fuse.prefix}
-  - wildfly-camel-5.9.0-${version.fuse.prefix}
+  - wildfly-camel-5.10.0-${version.fuse.prefix}
 
 - name: fuse-eap-${version.fuse.prefix}
     #fetchScmUrl: ${fuse-eap.fetch.scmUrl}
@@ -302,8 +302,8 @@ builds:
   alignmentParameters:
     - ${fuse-eap.pme.options}
   dependencies:
-  - wildfly-camel-5.9.0-${version.fuse.prefix}
-  - wildfly-camel-examples-5.9.0-${version.fuse.prefix}
+  - wildfly-camel-5.10.0-${version.fuse.prefix}
+  - wildfly-camel-examples-5.10.0-${version.fuse.prefix}
   - redhat-fuse-${version.fuse.prefix}
   - fuse-patch-3.4.0-${version.fuse.prefix}
 
@@ -574,7 +574,7 @@ builds:
   - spring-boot-cxf-jaxws-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxrs-xml-1.0.0-${version.fuse.prefix}
   - spring-boot-cxf-jaxws-xml-1.0.0-${version.fuse.prefix}
-  - wildfly-camel-examples-5.9.0-${version.fuse.prefix}
+  - wildfly-camel-examples-5.10.0-${version.fuse.prefix}
 
 - name: fuse-karaf-${version.fuse.prefix}
   project: jboss-fuse/fuse-karaf
