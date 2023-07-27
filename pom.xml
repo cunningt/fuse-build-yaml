@@ -47,51 +47,38 @@
     <version.sprint.milestone>45</version.sprint.milestone>
     <build.number>1</build.number>
     <dollar>$</dollar>
-    <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
-    <version.syndesis>1.6.4.fuse-730002</version.syndesis>
-    <version.atlasmap>2.3.19.fuse-7_11_1-00005</version.atlasmap>
-    <version.camel>2.23.2.fuse-7_11_1-00015</version.camel>
-    <version.camel.extra>2.23.2.fuse-sb2-7_11_1-00015</version.camel.extra>
-    <version.fuse.extras.distro>7.11.1.fuse-sb2-7_11_1-00015</version.fuse.extras.distro>
-    <version.cxf>3.3.6.fuse-7_11_1-00015</version.cxf>
-    <version.arquillian-cube>1.8.2.fuse-7_11_1-00015</version.arquillian-cube>
-    <version.fabric8>3.0.8.fuse-000051</version.fabric8>
-    <version.kubernetes.assertions>4.1.0.fuse-sb2-750002</version.kubernetes.assertions>
-    <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
-    <version.bom.fuse>7.11.1.fuse-7_11_1-00013</version.bom.fuse>
-    <version.karaf>4.2.15.fuse-7_11_1-00017</version.karaf>
-    <version.bom.wildfly.camel>5.9.0.fuse-7_11_1-00014</version.bom.wildfly.camel>
-    <version.fusesource.camel.sap>7.11.1.fuse-sb2-7_11_1-00013</version.fusesource.camel.sap>
-    <karaf.plugin.version>4.2.15.fuse-7_11_1-00017</karaf.plugin.version>
-    <narayana-spring-boot.version>2.1.1.fuse-sb2-7_11_1-00013</narayana-spring-boot.version>
-    <spring-boot-camel-xa.version>7.11.1.fuse-sb2-7_11_1-00014</spring-boot-camel-xa.version>
-    <spring-boot-camel-singleton-services-kubernetes.version>7.11.1.fuse-sb2-7_11_1-00014</spring-boot-camel-singleton-services-kubernetes.version>
-    <version.application-templates>2.1.0.fuse-sb2-7_11_1-00016</version.application-templates>
-    <fuse-bom.version>7.11.1.fuse-sb2-7_11_1-00017</fuse-bom.version>
-    <version.hawtio>2.0.0.fuse-sb2-7_11_1-00013</version.hawtio>
-    <version.hawtio.online>1.0.0.fuse-7_11_1-00009</version.hawtio.online>
-    <version.hawtio.integration>1.0.0.fuse-000034</version.hawtio.integration>
+    <version.syndesis>1.15.0.fuse-7_12_0-00020</version.syndesis>
+    <version.atlasmap>2.3.19.fuse-7_12_0-00015</version.atlasmap>
+    <version.camel>2.23.2.fuse-7_12_0-00019</version.camel>
+    <version.camel.extra>2.23.2.fuse-7_12_0-00019</version.camel.extra>
+    <version.fuse.extras.distro>7.12.0.fuse-7_12_0-00019</version.fuse.extras.distro>
+    <version.cxf>3.3.6.fuse-7_12_0-00020</version.cxf>
+    <version.arquillian-cube>1.8.2.fuse-7_12_0-00015</version.arquillian-cube>
+    <version.bom.fuse>7.12.0.fuse-7_12_0-00019</version.bom.fuse>
+    <version.karaf>4.4.3.fuse-7_12_0-00014</version.karaf>
+    <version.bom.wildfly.camel>5.10.0.fuse-7_12_0-00017</version.bom.wildfly.camel>
+    <version.fusesource.camel.sap>7.12.0.fuse-7_12_0-00019</version.fusesource.camel.sap>
+    <karaf.plugin.version>4.4.3.fuse-7_12_0-00014</karaf.plugin.version>
+    <narayana-spring-boot.version>2.1.1.fuse-7_12_0-00019</narayana-spring-boot.version>
+    <spring-boot-camel-xa.version>7.12.0.fuse-7_12_0-00016</spring-boot-camel-xa.version>
+    <spring-boot-camel-singleton-services-kubernetes.version>7.12.0.fuse-7_12_0-00019</spring-boot-camel-singleton-services-kubernetes.version>
+    <version.application-templates>2.1.0.fuse-7_12_0-00017</version.application-templates>
+    <fuse-bom.version>7.12.0.fuse-7_12_0-00016</fuse-bom.version>
+    <version.hawtio>2.0.0.fuse-7_12_0-00019</version.hawtio>
+    <version.hawtio.online>1.0.0.fuse-7_12_0-00002</version.hawtio.online>
 
-    <version.io.swagger.core.v2>1.0</version.io.swagger.core.v2>
-    <version.io.swagger.core.v3>1.0</version.io.swagger.core.v3>
+    <version.kubernetes.client>4.6.2.fuse-7_12_0-00015</version.kubernetes.client>
 
-    <version.kubernetes.model>2.0.9.fuse-000020</version.kubernetes.model>
-    <version.kubernetes.client>4.6.2.fuse-7_11_1-00015</version.kubernetes.client>
-
-    <version.application.templates>2.1.fuse-000087</version.application.templates>
-    <version.cxf.xjc-utils>3.3.1.fuse-7_11_1-00011</version.cxf.xjc-utils>
-    <version.ipaas.quickstarts>2.2.0.fuse-sb2-7_11_1-00018</version.ipaas.quickstarts>
-    <version.spring-cloud-kubernetes>0.1.6.fuse-000056</version.spring-cloud-kubernetes>
-    <version.wsdl2rest>0.8.0-fuse-sb2-7_11_1-00015</version.wsdl2rest>
+    <version.cxf.xjc-utils>3.3.1.fuse-7_12_0-00009</version.cxf.xjc-utils>
+    <version.ipaas.quickstarts>2.2.0.fuse-7_12_0-00018</version.ipaas.quickstarts>
+    <version.wsdl2rest>0.8.0.fuse-7_12_0-00019</version.wsdl2rest>
 
     <docker.maven.plugin.version>0.31.0.fuse-7_11_1-00014</docker.maven.plugin.version>
     <version.fuse.patch>3.4.0.fuse-7_11_1-00009</version.fuse.patch>
     <version.wildfly.camel.examples>5.9.0.fuse-7_11_1-00014</version.wildfly.camel.examples>
     <version.fuse.eap>7.11.1.fuse-7_11_1-00014</version.fuse.eap>
 
-    <version.camel-k-runtime>1.0.0.fuse-730005</version.camel-k-runtime>
-    <version.karaf-quickstarts>7.11.1.fuse-7_11_1-00014</version.karaf-quickstarts>
-    <version.apicurio-registry>7.3.0.fuse-730010</version.apicurio-registry>
+    <version.karaf-quickstarts>7.12.0.fuse-7_12_0-00016</version.karaf-quickstarts>
 
     <!-- boosters -->
     <version.fuse-configmap-booster>1</version.fuse-configmap-booster>
@@ -140,10 +127,6 @@
     <cxf-xjc-utils.fetch.scmUrl>1</cxf-xjc-utils.fetch.scmUrl>
     <cxf-xjc-utils.push.scmUrl>1</cxf-xjc-utils.push.scmUrl>
     <cxf-xjc-utils.buildCommand>1</cxf-xjc-utils.buildCommand>
-    <swagger-core.tag>DUMMY-TAG-0.0.0</swagger-core.tag>
-    <swagger-core.fetch.scmUrl>1</swagger-core.fetch.scmUrl>
-    <swagger-core.push.scmUrl>1</swagger-core.push.scmUrl>
-    <swagger-core.buildCommand>1</swagger-core.buildCommand>
     <cxf.tag>DUMMY-TAG-0.0.0</cxf.tag>
     <cxf.fetch.scmUrl>1</cxf.fetch.scmUrl>
     <cxf.push.scmUrl>1</cxf.push.scmUrl>
@@ -152,10 +135,6 @@
     <camel.fetch.scmUrl>1</camel.fetch.scmUrl>
     <camel.push.scmUrl>1</camel.push.scmUrl>
     <camel.buildCommand>1</camel.buildCommand>
-    <kubernetes.assertions.tag>DUMMY-TAG-0.0.0</kubernetes.assertions.tag>
-    <kubernetes.assertions.fetch.scmUrl>1</kubernetes.assertions.fetch.scmUrl>
-    <kubernetes.assertions.push.scmUrl>1</kubernetes.assertions.push.scmUrl>
-    <kubernetes.assertions.buildCommand>1</kubernetes.assertions.buildCommand>
     <fuse-extras-distro.tag>DUMMY-TAG-0.0.0</fuse-extras-distro.tag>
     <fuse-extras-distro.fetch.scmUrl>1</fuse-extras-distro.fetch.scmUrl>
     <fuse-extras-distro.push.scmUrl>1</fuse-extras-distro.push.scmUrl>
@@ -184,10 +163,6 @@
     <fuse-karaf.fetch.scmUrl>1</fuse-karaf.fetch.scmUrl>
     <fuse-karaf.push.scmUrl>1</fuse-karaf.push.scmUrl>
     <fuse-karaf.buildCommand>1</fuse-karaf.buildCommand>
-    <kubernetes-model.tag></kubernetes-model.tag>
-    <kubernetes-model.fetch.scmUrl>1</kubernetes-model.fetch.scmUrl>
-    <kubernetes-model.push.scmUrl>1</kubernetes-model.push.scmUrl>
-    <kubernetes-model.buildCommand>1</kubernetes-model.buildCommand>
     <kubernetes-client.tag>DUMMY-TAG-0.0.0</kubernetes-client.tag>
     <kubernetes-client.fetch.scmUrl>1</kubernetes-client.fetch.scmUrl>
     <kubernetes-client.push.scmUrl>1</kubernetes-client.push.scmUrl>
@@ -196,10 +171,6 @@
     <arquillian-cube.fetch.scmUrl>1</arquillian-cube.fetch.scmUrl>
     <arquillian-cube.push.scmUrl>1</arquillian-cube.push.scmUrl>
     <arquillian-cube.buildCommand>1</arquillian-cube.buildCommand>
-    <spring-cloud-kubernetes.tag>DUMMY-TAG-0.0.0</spring-cloud-kubernetes.tag>
-    <spring-cloud-kubernetes.fetch.scmUrl>1</spring-cloud-kubernetes.fetch.scmUrl>
-    <spring-cloud-kubernetes.push.scmUrl>1</spring-cloud-kubernetes.push.scmUrl>
-    <spring-cloud-kubernetes.buildCommand>1</spring-cloud-kubernetes.buildCommand>
     <docker-maven-plugin.tag>DUMMY-TAG-0.0.0</docker-maven-plugin.tag>
     <docker-maven-plugin.fetch.scmUrl>1</docker-maven-plugin.fetch.scmUrl>
     <docker-maven-plugin.push.scmUrl>1</docker-maven-plugin.push.scmUrl>
@@ -212,14 +183,6 @@
     <spring-boot-camel-xa.fetch.scmUrl>1</spring-boot-camel-xa.fetch.scmUrl>
     <spring-boot-camel-xa.push.scmUrl>1</spring-boot-camel-xa.push.scmUrl>
     <spring-boot-camel-xa.buildCommand>1</spring-boot-camel-xa.buildCommand>
-    <fabric8v2.tag>DUMMY-TAG-0.0.0</fabric8v2.tag>
-    <fabric8v2.fetch.scmUrl>1</fabric8v2.fetch.scmUrl>
-    <fabric8v2.push.scmUrl>1</fabric8v2.push.scmUrl>
-    <fabric8v2.buildCommand>1</fabric8v2.buildCommand>
-    <fabric8-maven-plugin.tag>DUMMY-TAG-0.0.0</fabric8-maven-plugin.tag>
-    <fabric8-maven-plugin.fetch.scmUrl>1</fabric8-maven-plugin.fetch.scmUrl>
-    <fabric8-maven-plugin.push.scmUrl>1</fabric8-maven-plugin.push.scmUrl>
-    <fabric8-maven-plugin.buildCommand>1</fabric8-maven-plugin.buildCommand>
     <fuse-patch.tag>DUMMY-TAG-0.0.0</fuse-patch.tag>
     <fuse-patch.fetch.scmUrl>1</fuse-patch.fetch.scmUrl>
     <fuse-patch.push.scmUrl>1</fuse-patch.push.scmUrl>
@@ -260,11 +223,6 @@
     <application-templates.fetch.scmUrl>1</application-templates.fetch.scmUrl>
     <application-templates.push.scmUrl>1</application-templates.push.scmUrl>
     <application-templates.buildCommand>1</application-templates.buildCommand>
-    <camel-k-runtime.tag>DUMMY-TAG-0.0.0</camel-k-runtime.tag>
-    <camel-k-runtime.fetch.scmUrl>1</camel-k-runtime.fetch.scmUrl>
-    <camel-k-runtime.push.scmUrl>1</camel-k-runtime.push.scmUrl>
-    <camel-k-runtime.buildCommand>1</camel-k-runtime.buildCommand>
-
 
     <!-- Syndesis project -->
     <atlasmap.tag>DUMMY-TAG-0.0.0</atlasmap.tag>
@@ -275,13 +233,6 @@
     <syndesis.fetch.scmUrl>1</syndesis.fetch.scmUrl>
     <syndesis.push.scmUrl>1</syndesis.push.scmUrl>
     <syndesis.buildCommand>1</syndesis.buildCommand>
-
-    <!-- Fuse Service Registry -->
-    <apicurito-registry.version>1</apicurito-registry.version>
-    <apicurito-registry.tag>DUMMY-TAG-0.0.0</apicurito-registry.tag>
-    <apicurito-registry.fetch.scmUrl>1</apicurito-registry.fetch.scmUrl>
-    <apicurito-registry.push.scmUrl>1</apicurito-registry.push.scmUrl>
-    <apicurito-registry.buildCommand>1</apicurito-registry.buildCommand>
 
   </properties>
 
